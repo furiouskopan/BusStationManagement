@@ -15,7 +15,12 @@ namespace BusStationInterface.Models
         public DateTime DepartureTime { get; set; }
         public DateTime EstimatedArrivalTime { get; set; }
 
+        public int StartDestinationId { get; set; } // Foreign Key
+        public int EndDestinationId { get; set; }   // Foreign Key
+
         // Navigation Properties
+        public Destination StartDestination { get; set; } 
+        public Destination EndDestination { get; set; }  
         public Bus Bus { get; set; }
         public Route Route { get; set; }
         public Driver Driver { get; set; }

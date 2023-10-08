@@ -8,7 +8,7 @@ namespace BusStationInterface.Models
 {
     public class TicketingLog
     {
-        public int LogID { get; set; }
+        public int TicketingLogID { get; set; }
         public int EmployeeID { get; set; }
         public int TicketID { get; set; }
         public DateTime Timestamp { get; set; }
