@@ -17,5 +17,4 @@ namespace BusStationInterface.Models
         public ICollection<Schedule> Schedules { get; set; }
         public ICollection<BusLocationLog> BusLocationLogs { get; set; }
     }
-
 }
