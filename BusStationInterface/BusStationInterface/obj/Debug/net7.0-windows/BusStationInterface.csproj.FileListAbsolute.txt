@@ -57,3 +57,5 @@ C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStati
 C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.pdb
 C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.genruntimeconfig.cache
 C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\ref\BusStationInterface.dll
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.BusEditForm.resources
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.DriverEditForm.resources

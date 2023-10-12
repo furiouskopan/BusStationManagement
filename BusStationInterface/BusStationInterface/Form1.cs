@@ -36,30 +36,32 @@ namespace BusStationInterface
         }
         private void btnEditBus_Click(object sender, EventArgs e)
         {
-            dataGridViewBuses.Rows[1].Selected = true;
+            // Create an instance of BusDataAccess to pass to the edit form
+            BusDataAccess busDataAccess = new BusDataAccess();
 
-            // Check if a row is selected in the DataGridView
-            if (dataGridViewBuses.SelectedRows.Count > 0)
+            // Create an instance of the edit window and pass the bus data access
+            BusEditForm editForm = new BusEditForm(busDataAccess);
+
+            // Show the edit window
+            if (editForm.ShowDialog() == DialogResult.OK)
             {
-                // Retrieve the selected row
-                DataGridViewRow selectedRow = dataGridViewBuses.SelectedRows[0];
-
-                // Extract data from the selected row
-                int busID = Convert.ToInt32(selectedRow.Cells["busIDDataGridViewTextBoxColumn"].Value);
-                string busType = selectedRow.Cells["busTypeDataGridViewTextBoxColumn"].Value.ToString(); // Replace "OtherData" with other column names
-                int totalSeats = (int)selectedRow.Cells["totalSeatsDataGridViewTextBoxColumn"].Value;
-
-                // Create an instance of the edit window and pass the data
-                BusDataAccess busDataAccess = new BusDataAccess();
-                BusEditForm editForm = new BusEditForm(busID, busType, totalSeats, busDataAccess); // Modify the constructor parameters accordingly
-                editForm.SelectedRow = selectedRow;
-
-                // Show the edit window
-                editForm.ShowDialog();
+                // Reload the buses on the main form after editing
+                LoadBuses();
             }
-            else
+        }
+        private void btnEditDriver_Click(object sender, EventArgs e)
+        {
+            // Create an instance of BusDataAccess to pass to the edit form
+            DriverDataAccess driverDataAccess = new DriverDataAccess();
+
+            // Create an instance of the edit window and pass the bus data access
+            DriverEditForm editForm = new DriverEditForm(driverDataAccess);
+
+            // Show the edit window
+            if (editForm.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("Please select a row to edit.");
+                // Reload the buses on the main form after editing
+                LoadDrivers();
             }
         }
     }
