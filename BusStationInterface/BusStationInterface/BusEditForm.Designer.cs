@@ -40,15 +40,16 @@
             lblType = new Label();
             txtBusType = new TextBox();
             txtTotalSeats = new TextBox();
+            btnDeleteBus = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBusesOnEditForm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             SuspendLayout();
             // 
             // btnSaveBusEdit
             // 
-            btnSaveBusEdit.Location = new Point(147, 326);
+            btnSaveBusEdit.Location = new Point(158, 386);
             btnSaveBusEdit.Name = "btnSaveBusEdit";
-            btnSaveBusEdit.Size = new Size(82, 26);
+            btnSaveBusEdit.Size = new Size(104, 39);
             btnSaveBusEdit.TabIndex = 6;
             btnSaveBusEdit.Text = "Save";
             btnSaveBusEdit.UseVisualStyleBackColor = true;
@@ -63,11 +64,12 @@
             dataGridViewBusesOnEditForm.Columns.AddRange(new DataGridViewColumn[] { busIDDataGridViewTextBoxColumn, busTypeDataGridViewTextBoxColumn, totalSeatsDataGridViewTextBoxColumn });
             dataGridViewBusesOnEditForm.DataSource = busBindingSource;
             dataGridViewBusesOnEditForm.Location = new Point(12, 12);
+            dataGridViewBusesOnEditForm.MultiSelect = false;
             dataGridViewBusesOnEditForm.Name = "dataGridViewBusesOnEditForm";
             dataGridViewBusesOnEditForm.RowTemplate.Height = 25;
             dataGridViewBusesOnEditForm.ScrollBars = ScrollBars.Vertical;
-            dataGridViewBusesOnEditForm.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            dataGridViewBusesOnEditForm.Size = new Size(387, 150);
+            dataGridViewBusesOnEditForm.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewBusesOnEditForm.Size = new Size(387, 206);
             dataGridViewBusesOnEditForm.TabIndex = 7;
             // 
             // busIDDataGridViewTextBoxColumn
@@ -94,9 +96,9 @@
             // 
             // btnAddBus
             // 
-            btnAddBus.Location = new Point(278, 204);
+            btnAddBus.Location = new Point(260, 250);
             btnAddBus.Name = "btnAddBus";
-            btnAddBus.Size = new Size(88, 38);
+            btnAddBus.Size = new Size(123, 38);
             btnAddBus.TabIndex = 12;
             btnAddBus.Text = "Add Bus";
             btnAddBus.UseVisualStyleBackColor = true;
@@ -105,7 +107,7 @@
             // lblSeats
             // 
             lblSeats.AutoSize = true;
-            lblSeats.Location = new Point(159, 195);
+            lblSeats.Location = new Point(141, 241);
             lblSeats.Name = "lblSeats";
             lblSeats.Size = new Size(34, 15);
             lblSeats.TabIndex = 11;
@@ -114,7 +116,7 @@
             // lblType
             // 
             lblType.AutoSize = true;
-            lblType.Location = new Point(44, 195);
+            lblType.Location = new Point(26, 241);
             lblType.Name = "lblType";
             lblType.Size = new Size(31, 15);
             lblType.TabIndex = 10;
@@ -122,23 +124,36 @@
             // 
             // txtBusType
             // 
-            txtBusType.Location = new Point(44, 213);
+            txtBusType.Location = new Point(26, 259);
             txtBusType.Name = "txtBusType";
             txtBusType.Size = new Size(100, 23);
             txtBusType.TabIndex = 9;
             // 
             // txtTotalSeats
             // 
-            txtTotalSeats.Location = new Point(159, 213);
+            txtTotalSeats.Location = new Point(141, 259);
             txtTotalSeats.Name = "txtTotalSeats";
             txtTotalSeats.Size = new Size(100, 23);
             txtTotalSeats.TabIndex = 8;
+            // 
+            // btnDeleteBus
+            // 
+            btnDeleteBus.BackColor = Color.Firebrick;
+            btnDeleteBus.ForeColor = Color.White;
+            btnDeleteBus.Location = new Point(260, 304);
+            btnDeleteBus.Name = "btnDeleteBus";
+            btnDeleteBus.Size = new Size(123, 35);
+            btnDeleteBus.TabIndex = 13;
+            btnDeleteBus.Text = "Delete Selected Bus";
+            btnDeleteBus.UseVisualStyleBackColor = false;
+            btnDeleteBus.Click += btnDeleteBus_Click;
             // 
             // BusEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(411, 437);
+            Controls.Add(btnDeleteBus);
             Controls.Add(btnAddBus);
             Controls.Add(lblSeats);
             Controls.Add(lblType);
@@ -167,5 +182,6 @@
         private Label lblType;
         private TextBox txtBusType;
         private TextBox txtTotalSeats;
+        private Button btnDeleteBus;
     }
 }

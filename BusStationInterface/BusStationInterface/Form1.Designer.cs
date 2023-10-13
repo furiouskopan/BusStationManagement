@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dataGridViewBuses = new DataGridView();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             busTypeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -63,6 +64,14 @@
             dataGridViewBuses.DataSource = busBindingSource;
             dataGridViewBuses.Location = new Point(36, 57);
             dataGridViewBuses.Name = "dataGridViewBuses";
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewBuses.RowHeadersVisible = false;
             dataGridViewBuses.RowTemplate.Height = 25;
             dataGridViewBuses.Size = new Size(151, 115);
@@ -129,7 +138,7 @@
             dataGridViewDrivers.Location = new Point(228, 58);
             dataGridViewDrivers.Name = "dataGridViewDrivers";
             dataGridViewDrivers.RowTemplate.Height = 25;
-            dataGridViewDrivers.ScrollBars = ScrollBars.None;
+            dataGridViewDrivers.ScrollBars = ScrollBars.Vertical;
             dataGridViewDrivers.Size = new Size(273, 114);
             dataGridViewDrivers.TabIndex = 3;
             // 

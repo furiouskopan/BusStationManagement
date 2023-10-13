@@ -29,6 +29,18 @@ public class BusDataAccess
             context.SaveChanges();
         }
     }
+    public void DeleteBus(int busID)
+    {
+        using (var context = new BusManagementContext())
+        {
+            Bus busToDelete = context.Buses.FirstOrDefault(b => b.BusID == busID);
+            if (busToDelete != null)
+            {
+                context.Buses.Remove(busToDelete);
+                context.SaveChanges();
+            }
+        }
+    }
     public Bus GetBusById(int busID)
     {
         using (var context = new BusManagementContext())
@@ -52,6 +64,26 @@ public class DriverDataAccess
         {
             context.Drivers.Update(updatedDriver);
             context.SaveChanges();
+        }
+    }
+    public void AddDriver(Driver newDriver)
+    {
+        using (var context = new BusManagementContext())
+        {
+            context.Drivers.Add(newDriver);
+            context.SaveChanges();
+        }
+    }
+    public void DeleteDriver(int driverID)
+    {
+        using (var context = new BusManagementContext())
+        {
+            Driver driver = context.Drivers.FirstOrDefault(d => d.DriverID == driverID);
+            if (driver != null)
+            {
+                context.Drivers.Remove(driver);
+                context.SaveChanges();
+            }
         }
     }
     public Driver GetDriverById(int driverID)

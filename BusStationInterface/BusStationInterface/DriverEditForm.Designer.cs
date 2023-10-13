@@ -35,11 +35,12 @@
             contactInformationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             driverBindingSource = new BindingSource(components);
             btnSaveDriverEdit = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txtDriverContact = new TextBox();
+            txtDriverName = new TextBox();
             lblName = new Label();
             lblContact = new Label();
             btnAddDriver = new Button();
+            btnDeleteDriver = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDriversOnEditForm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
             SuspendLayout();
@@ -55,6 +56,8 @@
             dataGridViewDriversOnEditForm.Location = new Point(41, 12);
             dataGridViewDriversOnEditForm.Name = "dataGridViewDriversOnEditForm";
             dataGridViewDriversOnEditForm.RowTemplate.Height = 25;
+            dataGridViewDriversOnEditForm.ScrollBars = ScrollBars.Vertical;
+            dataGridViewDriversOnEditForm.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewDriversOnEditForm.Size = new Size(323, 150);
             dataGridViewDriversOnEditForm.TabIndex = 0;
             // 
@@ -92,19 +95,19 @@
             btnSaveDriverEdit.UseVisualStyleBackColor = true;
             btnSaveDriverEdit.Click += btnSaveDriverEdit_Click;
             // 
-            // textBox1
+            // txtDriverContact
             // 
-            textBox1.Location = new Point(157, 194);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 2;
+            txtDriverContact.Location = new Point(157, 194);
+            txtDriverContact.Name = "txtDriverContact";
+            txtDriverContact.Size = new Size(100, 23);
+            txtDriverContact.TabIndex = 2;
             // 
-            // textBox2
+            // txtDriverName
             // 
-            textBox2.Location = new Point(42, 194);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 3;
+            txtDriverName.Location = new Point(42, 194);
+            txtDriverName.Name = "txtDriverName";
+            txtDriverName.Size = new Size(100, 23);
+            txtDriverName.TabIndex = 3;
             // 
             // lblName
             // 
@@ -134,16 +137,29 @@
             btnAddDriver.UseVisualStyleBackColor = true;
             btnAddDriver.Click += btnAddDriver_Click;
             // 
+            // btnDeleteDriver
+            // 
+            btnDeleteDriver.BackColor = Color.Firebrick;
+            btnDeleteDriver.ForeColor = Color.White;
+            btnDeleteDriver.Location = new Point(241, 229);
+            btnDeleteDriver.Name = "btnDeleteDriver";
+            btnDeleteDriver.Size = new Size(140, 35);
+            btnDeleteDriver.TabIndex = 14;
+            btnDeleteDriver.Text = "Delete Selected Driver";
+            btnDeleteDriver.UseVisualStyleBackColor = false;
+            btnDeleteDriver.Click += btnDeleteDriver_Click;
+            // 
             // DriverEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(414, 418);
+            Controls.Add(btnDeleteDriver);
             Controls.Add(btnAddDriver);
             Controls.Add(lblContact);
             Controls.Add(lblName);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtDriverName);
+            Controls.Add(txtDriverContact);
             Controls.Add(btnSaveDriverEdit);
             Controls.Add(dataGridViewDriversOnEditForm);
             Name = "DriverEditForm";
@@ -163,10 +179,11 @@
         private DataGridViewTextBoxColumn driverIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn contactInformationDataGridViewTextBoxColumn;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txtDriverContact;
+        private TextBox txtDriverName;
         private Label lblName;
         private Label lblContact;
         private Button btnAddDriver;
+        private Button btnDeleteDriver;
     }
 }

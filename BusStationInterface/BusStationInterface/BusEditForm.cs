@@ -15,6 +15,7 @@ namespace BusStationInterface
     {
         private BusDataAccess _busDataAccess;
         private List<Bus> _allBuses;
+        private List<int> _busesToDelete;
 
         public BusEditForm(BusDataAccess busDataAccess)
         {
@@ -22,6 +23,7 @@ namespace BusStationInterface
 
             _busDataAccess = busDataAccess;
             _allBuses = _busDataAccess.GetBuses();
+            _busesToDelete = new List<int>();
 
             dataGridViewBusesOnEditForm.DataSource = _allBuses;
             dataGridViewBusesOnEditForm.RowHeadersVisible = false;
@@ -52,7 +54,10 @@ namespace BusStationInterface
 
                 _busDataAccess.UpdateBus(bus);
             }
-
+            foreach (int busID in _busesToDelete)
+            {
+                _busDataAccess.DeleteBus(busID);
+            }
             this.DialogResult = DialogResult.OK;
         }
 
@@ -91,6 +96,34 @@ namespace BusStationInterface
             _allBuses = _busDataAccess.GetBuses();
             dataGridViewBusesOnEditForm.DataSource = null;
             dataGridViewBusesOnEditForm.DataSource = _allBuses;
+        }
+
+        private void btnDeleteBus_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewBusesOnEditForm.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridViewBusesOnEditForm.SelectedRows[0];
+                int busID = Convert.ToInt32(selectedRow.Cells["busIDDataGridViewTextBoxColumn"].Value);
+
+                // Ask for confirmation before queuing deletion
+                DialogResult result = MessageBox.Show("This bus will be deleted after saving. Proceed?", "Confirm Deletion", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    // Queue up the bus ID for deletion
+                    _busesToDelete.Add(busID);
+
+                    // Remove the bus from the _allBuses list
+                    _allBuses.RemoveAll(bus => bus.BusID == busID);
+
+                    // Refresh the DataGridView to reflect the change
+                    dataGridViewBusesOnEditForm.DataSource = null;
+                    dataGridViewBusesOnEditForm.DataSource = _allBuses;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a bus to delete.");
+            }
         }
     }
 }
