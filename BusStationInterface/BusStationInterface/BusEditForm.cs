@@ -55,5 +55,42 @@ namespace BusStationInterface
 
             this.DialogResult = DialogResult.OK;
         }
+
+        private void btnAddBus_Click(object sender, EventArgs e)
+        {
+            // 1. Gather input from the textboxes
+            string newBusType = txtBusType.Text; // Assuming you have a textbox named txtBusType
+            int newTotalSeats;
+            if (!int.TryParse(txtTotalSeats.Text, out newTotalSeats)) // Assuming you have a textbox named txtTotalSeats
+            {
+                MessageBox.Show("Please enter a valid number for total seats.");
+                return;
+            }
+
+            // 2. Create a new Bus object
+            Bus newBus = new Bus
+            {
+                BusType = newBusType,
+                TotalSeats = newTotalSeats
+                // Add other properties as needed
+            };
+
+            // 3. Add the new Bus object to the database
+            _busDataAccess.AddBus(newBus);
+
+            // Optionally:
+            // 4. Refresh the data on your DataGridView
+            RefreshBusData();
+
+            // Clear the textboxes after adding
+            txtBusType.Clear();
+            txtTotalSeats.Clear();
+        }
+        private void RefreshBusData()
+        {
+            _allBuses = _busDataAccess.GetBuses();
+            dataGridViewBusesOnEditForm.DataSource = null;
+            dataGridViewBusesOnEditForm.DataSource = _allBuses;
+        }
     }
 }

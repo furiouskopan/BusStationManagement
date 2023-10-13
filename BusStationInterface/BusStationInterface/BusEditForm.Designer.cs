@@ -34,17 +34,19 @@
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             busTypeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             totalSeatsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            seatsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            schedulesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            busLocationLogsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             busBindingSource = new BindingSource(components);
+            btnAddBus = new Button();
+            lblSeats = new Label();
+            lblType = new Label();
+            txtBusType = new TextBox();
+            txtTotalSeats = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBusesOnEditForm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             SuspendLayout();
             // 
             // btnSaveBusEdit
             // 
-            btnSaveBusEdit.Location = new Point(152, 220);
+            btnSaveBusEdit.Location = new Point(147, 326);
             btnSaveBusEdit.Name = "btnSaveBusEdit";
             btnSaveBusEdit.Size = new Size(82, 26);
             btnSaveBusEdit.TabIndex = 6;
@@ -54,61 +56,94 @@
             // 
             // dataGridViewBusesOnEditForm
             // 
+            dataGridViewBusesOnEditForm.AllowUserToResizeColumns = false;
+            dataGridViewBusesOnEditForm.AllowUserToResizeRows = false;
             dataGridViewBusesOnEditForm.AutoGenerateColumns = false;
             dataGridViewBusesOnEditForm.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewBusesOnEditForm.Columns.AddRange(new DataGridViewColumn[] { busIDDataGridViewTextBoxColumn, busTypeDataGridViewTextBoxColumn, totalSeatsDataGridViewTextBoxColumn, seatsDataGridViewTextBoxColumn, schedulesDataGridViewTextBoxColumn, busLocationLogsDataGridViewTextBoxColumn });
+            dataGridViewBusesOnEditForm.Columns.AddRange(new DataGridViewColumn[] { busIDDataGridViewTextBoxColumn, busTypeDataGridViewTextBoxColumn, totalSeatsDataGridViewTextBoxColumn });
             dataGridViewBusesOnEditForm.DataSource = busBindingSource;
-            dataGridViewBusesOnEditForm.Location = new Point(73, 64);
+            dataGridViewBusesOnEditForm.Location = new Point(12, 12);
             dataGridViewBusesOnEditForm.Name = "dataGridViewBusesOnEditForm";
             dataGridViewBusesOnEditForm.RowTemplate.Height = 25;
-            dataGridViewBusesOnEditForm.Size = new Size(240, 150);
+            dataGridViewBusesOnEditForm.ScrollBars = ScrollBars.Vertical;
+            dataGridViewBusesOnEditForm.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            dataGridViewBusesOnEditForm.Size = new Size(387, 150);
             dataGridViewBusesOnEditForm.TabIndex = 7;
             // 
             // busIDDataGridViewTextBoxColumn
             // 
             busIDDataGridViewTextBoxColumn.DataPropertyName = "BusID";
-            busIDDataGridViewTextBoxColumn.HeaderText = "BusID";
+            busIDDataGridViewTextBoxColumn.HeaderText = "ID";
             busIDDataGridViewTextBoxColumn.Name = "busIDDataGridViewTextBoxColumn";
             // 
             // busTypeDataGridViewTextBoxColumn
             // 
             busTypeDataGridViewTextBoxColumn.DataPropertyName = "BusType";
-            busTypeDataGridViewTextBoxColumn.HeaderText = "BusType";
+            busTypeDataGridViewTextBoxColumn.HeaderText = "Type";
             busTypeDataGridViewTextBoxColumn.Name = "busTypeDataGridViewTextBoxColumn";
             // 
             // totalSeatsDataGridViewTextBoxColumn
             // 
             totalSeatsDataGridViewTextBoxColumn.DataPropertyName = "TotalSeats";
-            totalSeatsDataGridViewTextBoxColumn.HeaderText = "TotalSeats";
+            totalSeatsDataGridViewTextBoxColumn.HeaderText = "Seats";
             totalSeatsDataGridViewTextBoxColumn.Name = "totalSeatsDataGridViewTextBoxColumn";
-            // 
-            // seatsDataGridViewTextBoxColumn
-            // 
-            seatsDataGridViewTextBoxColumn.DataPropertyName = "Seats";
-            seatsDataGridViewTextBoxColumn.HeaderText = "Seats";
-            seatsDataGridViewTextBoxColumn.Name = "seatsDataGridViewTextBoxColumn";
-            // 
-            // schedulesDataGridViewTextBoxColumn
-            // 
-            schedulesDataGridViewTextBoxColumn.DataPropertyName = "Schedules";
-            schedulesDataGridViewTextBoxColumn.HeaderText = "Schedules";
-            schedulesDataGridViewTextBoxColumn.Name = "schedulesDataGridViewTextBoxColumn";
-            // 
-            // busLocationLogsDataGridViewTextBoxColumn
-            // 
-            busLocationLogsDataGridViewTextBoxColumn.DataPropertyName = "BusLocationLogs";
-            busLocationLogsDataGridViewTextBoxColumn.HeaderText = "BusLocationLogs";
-            busLocationLogsDataGridViewTextBoxColumn.Name = "busLocationLogsDataGridViewTextBoxColumn";
             // 
             // busBindingSource
             // 
             busBindingSource.DataSource = typeof(Models.Bus);
+            // 
+            // btnAddBus
+            // 
+            btnAddBus.Location = new Point(278, 204);
+            btnAddBus.Name = "btnAddBus";
+            btnAddBus.Size = new Size(88, 38);
+            btnAddBus.TabIndex = 12;
+            btnAddBus.Text = "Add Bus";
+            btnAddBus.UseVisualStyleBackColor = true;
+            btnAddBus.Click += btnAddBus_Click;
+            // 
+            // lblSeats
+            // 
+            lblSeats.AutoSize = true;
+            lblSeats.Location = new Point(159, 195);
+            lblSeats.Name = "lblSeats";
+            lblSeats.Size = new Size(34, 15);
+            lblSeats.TabIndex = 11;
+            lblSeats.Text = "Seats";
+            // 
+            // lblType
+            // 
+            lblType.AutoSize = true;
+            lblType.Location = new Point(44, 195);
+            lblType.Name = "lblType";
+            lblType.Size = new Size(31, 15);
+            lblType.TabIndex = 10;
+            lblType.Text = "Type";
+            // 
+            // txtBusType
+            // 
+            txtBusType.Location = new Point(44, 213);
+            txtBusType.Name = "txtBusType";
+            txtBusType.Size = new Size(100, 23);
+            txtBusType.TabIndex = 9;
+            // 
+            // txtTotalSeats
+            // 
+            txtTotalSeats.Location = new Point(159, 213);
+            txtTotalSeats.Name = "txtTotalSeats";
+            txtTotalSeats.Size = new Size(100, 23);
+            txtTotalSeats.TabIndex = 8;
             // 
             // BusEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(411, 437);
+            Controls.Add(btnAddBus);
+            Controls.Add(lblSeats);
+            Controls.Add(lblType);
+            Controls.Add(txtBusType);
+            Controls.Add(txtTotalSeats);
             Controls.Add(dataGridViewBusesOnEditForm);
             Controls.Add(btnSaveBusEdit);
             Name = "BusEditForm";
@@ -117,17 +152,20 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewBusesOnEditForm).EndInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
         private Button btnSaveBusEdit;
         private DataGridView dataGridViewBusesOnEditForm;
+        private BindingSource busBindingSource;
         private DataGridViewTextBoxColumn busIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn busTypeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn totalSeatsDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn seatsDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn schedulesDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn busLocationLogsDataGridViewTextBoxColumn;
-        private BindingSource busBindingSource;
+        private Button btnAddBus;
+        private Label lblSeats;
+        private Label lblType;
+        private TextBox txtBusType;
+        private TextBox txtTotalSeats;
     }
 }

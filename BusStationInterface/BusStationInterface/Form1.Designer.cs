@@ -61,7 +61,7 @@
             dataGridViewBuses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewBuses.Columns.AddRange(new DataGridViewColumn[] { busIDDataGridViewTextBoxColumn, busTypeDataGridViewTextBoxColumn, totalSeatsDataGridViewTextBoxColumn });
             dataGridViewBuses.DataSource = busBindingSource;
-            dataGridViewBuses.Location = new Point(12, 56);
+            dataGridViewBuses.Location = new Point(36, 57);
             dataGridViewBuses.Name = "dataGridViewBuses";
             dataGridViewBuses.RowHeadersVisible = false;
             dataGridViewBuses.RowTemplate.Height = 25;
@@ -98,7 +98,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(12, 28);
+            label1.Location = new Point(36, 28);
             label1.Name = "label1";
             label1.Size = new Size(94, 25);
             label1.TabIndex = 1;
@@ -108,7 +108,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(197, 28);
+            label2.Location = new Point(228, 29);
             label2.Name = "label2";
             label2.Size = new Size(105, 25);
             label2.TabIndex = 2;
@@ -120,14 +120,17 @@
             // 
             // dataGridViewDrivers
             // 
+            dataGridViewDrivers.AllowUserToResizeColumns = false;
+            dataGridViewDrivers.AllowUserToResizeRows = false;
             dataGridViewDrivers.AutoGenerateColumns = false;
             dataGridViewDrivers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDrivers.Columns.AddRange(new DataGridViewColumn[] { driverIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, contactInformationDataGridViewTextBoxColumn });
             dataGridViewDrivers.DataSource = driverBindingSource;
-            dataGridViewDrivers.Location = new Point(197, 57);
+            dataGridViewDrivers.Location = new Point(228, 58);
             dataGridViewDrivers.Name = "dataGridViewDrivers";
             dataGridViewDrivers.RowTemplate.Height = 25;
-            dataGridViewDrivers.Size = new Size(259, 114);
+            dataGridViewDrivers.ScrollBars = ScrollBars.None;
+            dataGridViewDrivers.Size = new Size(273, 114);
             dataGridViewDrivers.TabIndex = 3;
             // 
             // driverIDDataGridViewTextBoxColumn
@@ -151,7 +154,7 @@
             // 
             // btnEditBus
             // 
-            btnEditBus.Location = new Point(74, 177);
+            btnEditBus.Location = new Point(98, 177);
             btnEditBus.Name = "btnEditBus";
             btnEditBus.Size = new Size(89, 35);
             btnEditBus.TabIndex = 4;
@@ -161,7 +164,7 @@
             // 
             // btnEditDriver
             // 
-            btnEditDriver.Location = new Point(371, 177);
+            btnEditDriver.Location = new Point(416, 178);
             btnEditDriver.Name = "btnEditDriver";
             btnEditDriver.Size = new Size(85, 35);
             btnEditDriver.TabIndex = 5;

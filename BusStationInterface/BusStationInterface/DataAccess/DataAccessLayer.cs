@@ -21,6 +21,14 @@ public class BusDataAccess
             context.SaveChanges();
         }
     }
+    public void AddBus(Bus newBus)
+    {
+        using (var context = new BusManagementContext())
+        {
+            context.Buses.Add(newBus);
+            context.SaveChanges();
+        }
+    }
     public Bus GetBusById(int busID)
     {
         using (var context = new BusManagementContext())

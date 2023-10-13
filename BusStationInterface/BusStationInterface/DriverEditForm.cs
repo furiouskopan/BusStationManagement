@@ -52,5 +52,10 @@ namespace BusStationInterface
 
             this.DialogResult = DialogResult.OK;
         }
+
+        private void btnAddDriver_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
