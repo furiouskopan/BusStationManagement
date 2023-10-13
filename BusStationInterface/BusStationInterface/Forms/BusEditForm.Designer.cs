@@ -35,24 +35,28 @@
             busTypeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             totalSeatsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             busBindingSource = new BindingSource(components);
-            btnAddBus = new Button();
             lblSeats = new Label();
             lblType = new Label();
             txtBusType = new TextBox();
-            txtTotalSeats = new TextBox();
             btnDeleteBus = new Button();
+            groupBox1 = new GroupBox();
+            btnAddBus = new Button();
+            txtTotalSeats = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBusesOnEditForm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // btnSaveBusEdit
             // 
-            btnSaveBusEdit.Location = new Point(158, 386);
+            btnSaveBusEdit.BackColor = Color.LimeGreen;
+            btnSaveBusEdit.Font = new Font("Microsoft JhengHei", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSaveBusEdit.Location = new Point(141, 381);
             btnSaveBusEdit.Name = "btnSaveBusEdit";
-            btnSaveBusEdit.Size = new Size(104, 39);
+            btnSaveBusEdit.Size = new Size(126, 44);
             btnSaveBusEdit.TabIndex = 6;
             btnSaveBusEdit.Text = "Save";
-            btnSaveBusEdit.UseVisualStyleBackColor = true;
+            btnSaveBusEdit.UseVisualStyleBackColor = false;
             btnSaveBusEdit.Click += btnSaveBusEdit_Click;
             // 
             // dataGridViewBusesOnEditForm
@@ -94,20 +98,10 @@
             // 
             busBindingSource.DataSource = typeof(Models.Bus);
             // 
-            // btnAddBus
-            // 
-            btnAddBus.Location = new Point(260, 250);
-            btnAddBus.Name = "btnAddBus";
-            btnAddBus.Size = new Size(123, 38);
-            btnAddBus.TabIndex = 12;
-            btnAddBus.Text = "Add Bus";
-            btnAddBus.UseVisualStyleBackColor = true;
-            btnAddBus.Click += btnAddBus_Click;
-            // 
             // lblSeats
             // 
             lblSeats.AutoSize = true;
-            lblSeats.Location = new Point(141, 241);
+            lblSeats.Location = new Point(129, 23);
             lblSeats.Name = "lblSeats";
             lblSeats.Size = new Size(34, 15);
             lblSeats.TabIndex = 11;
@@ -116,7 +110,7 @@
             // lblType
             // 
             lblType.AutoSize = true;
-            lblType.Location = new Point(26, 241);
+            lblType.Location = new Point(14, 23);
             lblType.Name = "lblType";
             lblType.Size = new Size(31, 15);
             lblType.TabIndex = 10;
@@ -124,23 +118,16 @@
             // 
             // txtBusType
             // 
-            txtBusType.Location = new Point(26, 259);
+            txtBusType.Location = new Point(14, 41);
             txtBusType.Name = "txtBusType";
             txtBusType.Size = new Size(100, 23);
             txtBusType.TabIndex = 9;
-            // 
-            // txtTotalSeats
-            // 
-            txtTotalSeats.Location = new Point(141, 259);
-            txtTotalSeats.Name = "txtTotalSeats";
-            txtTotalSeats.Size = new Size(100, 23);
-            txtTotalSeats.TabIndex = 8;
             // 
             // btnDeleteBus
             // 
             btnDeleteBus.BackColor = Color.Firebrick;
             btnDeleteBus.ForeColor = Color.White;
-            btnDeleteBus.Location = new Point(260, 304);
+            btnDeleteBus.Location = new Point(260, 330);
             btnDeleteBus.Name = "btnDeleteBus";
             btnDeleteBus.Size = new Size(123, 35);
             btnDeleteBus.TabIndex = 13;
@@ -148,17 +135,44 @@
             btnDeleteBus.UseVisualStyleBackColor = false;
             btnDeleteBus.Click += btnDeleteBus_Click;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(btnAddBus);
+            groupBox1.Controls.Add(txtTotalSeats);
+            groupBox1.Controls.Add(txtBusType);
+            groupBox1.Controls.Add(lblSeats);
+            groupBox1.Controls.Add(lblType);
+            groupBox1.Location = new Point(12, 233);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(387, 91);
+            groupBox1.TabIndex = 14;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Insert";
+            // 
+            // btnAddBus
+            // 
+            btnAddBus.Location = new Point(248, 32);
+            btnAddBus.Name = "btnAddBus";
+            btnAddBus.Size = new Size(123, 38);
+            btnAddBus.TabIndex = 12;
+            btnAddBus.Text = "Add Bus";
+            btnAddBus.UseVisualStyleBackColor = true;
+            btnAddBus.Click += btnAddBus_Click;
+            // 
+            // txtTotalSeats
+            // 
+            txtTotalSeats.Location = new Point(129, 41);
+            txtTotalSeats.Name = "txtTotalSeats";
+            txtTotalSeats.Size = new Size(100, 23);
+            txtTotalSeats.TabIndex = 8;
+            // 
             // BusEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(411, 437);
+            Controls.Add(groupBox1);
             Controls.Add(btnDeleteBus);
-            Controls.Add(btnAddBus);
-            Controls.Add(lblSeats);
-            Controls.Add(lblType);
-            Controls.Add(txtBusType);
-            Controls.Add(txtTotalSeats);
             Controls.Add(dataGridViewBusesOnEditForm);
             Controls.Add(btnSaveBusEdit);
             Name = "BusEditForm";
@@ -166,8 +180,9 @@
             Load += BusEditForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewBusesOnEditForm).EndInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -177,11 +192,12 @@
         private DataGridViewTextBoxColumn busIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn busTypeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn totalSeatsDataGridViewTextBoxColumn;
-        private Button btnAddBus;
         private Label lblSeats;
         private Label lblType;
         private TextBox txtBusType;
-        private TextBox txtTotalSeats;
         private Button btnDeleteBus;
+        private GroupBox groupBox1;
+        private Button btnAddBus;
+        private TextBox txtTotalSeats;
     }
 }

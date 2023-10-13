@@ -41,8 +41,10 @@
             lblContact = new Label();
             btnAddDriver = new Button();
             btnDeleteDriver = new Button();
+            groupBox1 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDriversOnEditForm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridViewDriversOnEditForm
@@ -53,12 +55,12 @@
             dataGridViewDriversOnEditForm.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDriversOnEditForm.Columns.AddRange(new DataGridViewColumn[] { driverIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, contactInformationDataGridViewTextBoxColumn });
             dataGridViewDriversOnEditForm.DataSource = driverBindingSource;
-            dataGridViewDriversOnEditForm.Location = new Point(41, 12);
+            dataGridViewDriversOnEditForm.Location = new Point(12, 12);
             dataGridViewDriversOnEditForm.Name = "dataGridViewDriversOnEditForm";
             dataGridViewDriversOnEditForm.RowTemplate.Height = 25;
             dataGridViewDriversOnEditForm.ScrollBars = ScrollBars.Vertical;
             dataGridViewDriversOnEditForm.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewDriversOnEditForm.Size = new Size(323, 150);
+            dataGridViewDriversOnEditForm.Size = new Size(333, 209);
             dataGridViewDriversOnEditForm.TabIndex = 0;
             // 
             // driverIDDataGridViewTextBoxColumn
@@ -87,24 +89,27 @@
             // 
             // btnSaveDriverEdit
             // 
-            btnSaveDriverEdit.Location = new Point(157, 362);
+            btnSaveDriverEdit.BackColor = Color.LimeGreen;
+            btnSaveDriverEdit.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSaveDriverEdit.ForeColor = SystemColors.ControlText;
+            btnSaveDriverEdit.Location = new Point(113, 377);
             btnSaveDriverEdit.Name = "btnSaveDriverEdit";
-            btnSaveDriverEdit.Size = new Size(96, 34);
+            btnSaveDriverEdit.Size = new Size(126, 44);
             btnSaveDriverEdit.TabIndex = 1;
             btnSaveDriverEdit.Text = "Save";
-            btnSaveDriverEdit.UseVisualStyleBackColor = true;
+            btnSaveDriverEdit.UseVisualStyleBackColor = false;
             btnSaveDriverEdit.Click += btnSaveDriverEdit_Click;
             // 
             // txtDriverContact
             // 
-            txtDriverContact.Location = new Point(157, 194);
+            txtDriverContact.Location = new Point(129, 39);
             txtDriverContact.Name = "txtDriverContact";
             txtDriverContact.Size = new Size(100, 23);
             txtDriverContact.TabIndex = 2;
             // 
             // txtDriverName
             // 
-            txtDriverName.Location = new Point(42, 194);
+            txtDriverName.Location = new Point(14, 39);
             txtDriverName.Name = "txtDriverName";
             txtDriverName.Size = new Size(100, 23);
             txtDriverName.TabIndex = 3;
@@ -112,7 +117,7 @@
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Location = new Point(42, 176);
+            lblName.Location = new Point(14, 21);
             lblName.Name = "lblName";
             lblName.Size = new Size(39, 15);
             lblName.TabIndex = 4;
@@ -121,7 +126,7 @@
             // lblContact
             // 
             lblContact.AutoSize = true;
-            lblContact.Location = new Point(157, 176);
+            lblContact.Location = new Point(129, 21);
             lblContact.Name = "lblContact";
             lblContact.Size = new Size(49, 15);
             lblContact.TabIndex = 5;
@@ -129,7 +134,7 @@
             // 
             // btnAddDriver
             // 
-            btnAddDriver.Location = new Point(276, 185);
+            btnAddDriver.Location = new Point(239, 30);
             btnAddDriver.Name = "btnAddDriver";
             btnAddDriver.Size = new Size(88, 38);
             btnAddDriver.TabIndex = 6;
@@ -141,7 +146,7 @@
             // 
             btnDeleteDriver.BackColor = Color.Firebrick;
             btnDeleteDriver.ForeColor = Color.White;
-            btnDeleteDriver.Location = new Point(241, 229);
+            btnDeleteDriver.Location = new Point(197, 334);
             btnDeleteDriver.Name = "btnDeleteDriver";
             btnDeleteDriver.Size = new Size(140, 35);
             btnDeleteDriver.TabIndex = 14;
@@ -149,26 +154,37 @@
             btnDeleteDriver.UseVisualStyleBackColor = false;
             btnDeleteDriver.Click += btnDeleteDriver_Click;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(btnAddDriver);
+            groupBox1.Controls.Add(txtDriverContact);
+            groupBox1.Controls.Add(txtDriverName);
+            groupBox1.Controls.Add(lblContact);
+            groupBox1.Controls.Add(lblName);
+            groupBox1.Location = new Point(10, 242);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(333, 86);
+            groupBox1.TabIndex = 15;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Insert";
+            // 
             // DriverEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(414, 418);
+            ClientSize = new Size(359, 433);
+            Controls.Add(groupBox1);
             Controls.Add(btnDeleteDriver);
-            Controls.Add(btnAddDriver);
-            Controls.Add(lblContact);
-            Controls.Add(lblName);
-            Controls.Add(txtDriverName);
-            Controls.Add(txtDriverContact);
             Controls.Add(btnSaveDriverEdit);
             Controls.Add(dataGridViewDriversOnEditForm);
             Name = "DriverEditForm";
-            Text = "DriverEditForm";
+            Text = "Edit Drivers";
             Load += DriverEditForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewDriversOnEditForm).EndInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -185,5 +201,6 @@
         private Label lblContact;
         private Button btnAddDriver;
         private Button btnDeleteDriver;
+        private GroupBox groupBox1;
     }
 }
