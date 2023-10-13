@@ -1,3 +1,4 @@
+using BusStationInterface.Forms;
 using BusStationInterface.Models;
 using System.Windows.Forms;
 
@@ -14,7 +15,20 @@ namespace BusStationInterface
         {
             LoadBuses();
             LoadDrivers();
+            LoadDestinations();
         }
+
+        private void LoadDestinations()
+        {
+            DestinationDataAccess destinationDataAccess = new DestinationDataAccess();
+            List<Destination> destinations = destinationDataAccess.GetDestinations();
+
+            // Populate your user interface controls with the bus data.
+            dataGridViewDestinations.DataSource = destinations;
+            dataGridViewDestinations.RowHeadersVisible = false;
+            dataGridViewDestinations.ReadOnly = true;  // Make it read-only
+        }
+
         private void LoadBuses()
         {
             BusDataAccess busDataAccess = new BusDataAccess();
@@ -63,6 +77,22 @@ namespace BusStationInterface
             {
                 // Reload the buses on the main form after editing
                 LoadDrivers();
+            }
+        }
+
+        private void btnEditDestinations_Click(object sender, EventArgs e)
+        {
+            // Create an instance of BusDataAccess to pass to the edit form
+            DestinationDataAccess destinationDataAccess = new DestinationDataAccess();
+
+            // Create an instance of the edit window and pass the bus data access
+            DestinationEditForm editForm = new DestinationEditForm(destinationDataAccess);
+
+            // Show the edit window
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                // Reload the buses on the main form after editing
+                LoadDestinations();
             }
         }
     }

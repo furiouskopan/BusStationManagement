@@ -44,10 +44,19 @@
             contactInformationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             btnEditBus = new Button();
             btnEditDriver = new Button();
+            dataGridViewDestinations = new DataGridView();
+            destinationIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            destinationBindingSource = new BindingSource(components);
+            label3 = new Label();
+            btnEditDestinations = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDrivers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDestinations).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)destinationBindingSource).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewBuses
@@ -74,7 +83,7 @@
             dataGridViewBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewBuses.RowHeadersVisible = false;
             dataGridViewBuses.RowTemplate.Height = 25;
-            dataGridViewBuses.Size = new Size(151, 115);
+            dataGridViewBuses.Size = new Size(151, 150);
             dataGridViewBuses.TabIndex = 0;
             // 
             // busIDDataGridViewTextBoxColumn
@@ -117,7 +126,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(228, 29);
+            label2.Location = new Point(246, 30);
             label2.Name = "label2";
             label2.Size = new Size(105, 25);
             label2.TabIndex = 2;
@@ -135,11 +144,11 @@
             dataGridViewDrivers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDrivers.Columns.AddRange(new DataGridViewColumn[] { driverIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, contactInformationDataGridViewTextBoxColumn });
             dataGridViewDrivers.DataSource = driverBindingSource;
-            dataGridViewDrivers.Location = new Point(228, 58);
+            dataGridViewDrivers.Location = new Point(246, 58);
             dataGridViewDrivers.Name = "dataGridViewDrivers";
             dataGridViewDrivers.RowTemplate.Height = 25;
             dataGridViewDrivers.ScrollBars = ScrollBars.Vertical;
-            dataGridViewDrivers.Size = new Size(273, 114);
+            dataGridViewDrivers.Size = new Size(273, 149);
             dataGridViewDrivers.TabIndex = 3;
             // 
             // driverIDDataGridViewTextBoxColumn
@@ -163,9 +172,9 @@
             // 
             // btnEditBus
             // 
-            btnEditBus.Location = new Point(98, 177);
+            btnEditBus.Location = new Point(97, 213);
             btnEditBus.Name = "btnEditBus";
-            btnEditBus.Size = new Size(89, 35);
+            btnEditBus.Size = new Size(90, 40);
             btnEditBus.TabIndex = 4;
             btnEditBus.Text = "Edit Buses";
             btnEditBus.UseVisualStyleBackColor = true;
@@ -173,19 +182,86 @@
             // 
             // btnEditDriver
             // 
-            btnEditDriver.Location = new Point(416, 178);
+            btnEditDriver.Location = new Point(429, 213);
             btnEditDriver.Name = "btnEditDriver";
-            btnEditDriver.Size = new Size(85, 35);
+            btnEditDriver.Size = new Size(90, 40);
             btnEditDriver.TabIndex = 5;
             btnEditDriver.Text = "Edit Drivers";
             btnEditDriver.UseVisualStyleBackColor = true;
             btnEditDriver.Click += btnEditDriver_Click;
+            // 
+            // dataGridViewDestinations
+            // 
+            dataGridViewDestinations.AllowUserToAddRows = false;
+            dataGridViewDestinations.AllowUserToDeleteRows = false;
+            dataGridViewDestinations.AllowUserToResizeColumns = false;
+            dataGridViewDestinations.AllowUserToResizeRows = false;
+            dataGridViewDestinations.AutoGenerateColumns = false;
+            dataGridViewDestinations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDestinations.Columns.AddRange(new DataGridViewColumn[] { destinationIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn1, descriptionDataGridViewTextBoxColumn });
+            dataGridViewDestinations.DataSource = destinationBindingSource;
+            dataGridViewDestinations.Location = new Point(563, 61);
+            dataGridViewDestinations.Name = "dataGridViewDestinations";
+            dataGridViewDestinations.ReadOnly = true;
+            dataGridViewDestinations.RowTemplate.Height = 25;
+            dataGridViewDestinations.Size = new Size(373, 150);
+            dataGridViewDestinations.TabIndex = 6;
+            // 
+            // destinationIDDataGridViewTextBoxColumn
+            // 
+            destinationIDDataGridViewTextBoxColumn.DataPropertyName = "DestinationID";
+            destinationIDDataGridViewTextBoxColumn.HeaderText = "ID";
+            destinationIDDataGridViewTextBoxColumn.Name = "destinationIDDataGridViewTextBoxColumn";
+            destinationIDDataGridViewTextBoxColumn.ReadOnly = true;
+            destinationIDDataGridViewTextBoxColumn.Width = 30;
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            nameDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            descriptionDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // destinationBindingSource
+            // 
+            destinationBindingSource.DataSource = typeof(Models.Destination);
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft JhengHei", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(563, 31);
+            label3.Name = "label3";
+            label3.Size = new Size(167, 27);
+            label3.TabIndex = 7;
+            label3.Text = "All Destinations";
+            // 
+            // btnEditDestinations
+            // 
+            btnEditDestinations.Location = new Point(832, 217);
+            btnEditDestinations.Name = "btnEditDestinations";
+            btnEditDestinations.Size = new Size(104, 40);
+            btnEditDestinations.TabIndex = 8;
+            btnEditDestinations.Text = "Edit Destinations";
+            btnEditDestinations.UseVisualStyleBackColor = true;
+            btnEditDestinations.Click += btnEditDestinations_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1283, 586);
+            Controls.Add(btnEditDestinations);
+            Controls.Add(label3);
+            Controls.Add(dataGridViewDestinations);
             Controls.Add(btnEditDriver);
             Controls.Add(btnEditBus);
             Controls.Add(dataGridViewDrivers);
@@ -199,6 +275,8 @@
             ((System.ComponentModel.ISupportInitialize)busBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDrivers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDestinations).EndInit();
+            ((System.ComponentModel.ISupportInitialize)destinationBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -219,5 +297,12 @@
         private DataGridViewTextBoxColumn contactInformationDataGridViewTextBoxColumn;
         private Button btnEditBus;
         private Button btnEditDriver;
+        private DataGridView dataGridViewDestinations;
+        private DataGridViewTextBoxColumn destinationIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private BindingSource destinationBindingSource;
+        private Label label3;
+        private Button btnEditDestinations;
     }
 }
