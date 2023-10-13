@@ -41,13 +41,13 @@ public class BusDataAccess
             }
         }
     }
-    public Bus GetBusById(int busID)
-    {
-        using (var context = new BusManagementContext())
-        {
-            return context.Buses.FirstOrDefault(b => b.BusID == busID);
-        }
-    }
+    //public Bus GetBusById(int busID)
+    //{
+    //    using (var context = new BusManagementContext())
+    //    {
+    //        return context.Buses.FirstOrDefault(b => b.BusID == busID);
+    //    }
+    //}
 }
 public class DriverDataAccess
 {
@@ -86,11 +86,53 @@ public class DriverDataAccess
             }
         }
     }
-    public Driver GetDriverById(int driverID)
+    //public Driver GetDriverById(int driverID)
+    //{
+    //    using (var context = new BusManagementContext())
+    //    {
+    //        return context.Drivers.FirstOrDefault(b => b.DriverID == driverID);
+    //    }
+    //}
+
+}
+public class DestinationDataAccess
+{
+    public List<Destination> GetDestinations()
     {
         using (var context = new BusManagementContext())
         {
-            return context.Drivers.FirstOrDefault(b => b.DriverID == driverID);
+            return context.Destinations.ToList();
+        }
+    }
+
+    public void UpdateDestination(Destination updatedDestination)
+    {
+        using (var context = new BusManagementContext())
+        {
+            context.Destinations.Update(updatedDestination);
+            context.SaveChanges();
+        }
+    }
+
+    public void AddDestination(Destination newDestination)
+    {
+        using (var context = new BusManagementContext())
+        {
+            context.Destinations.Add(newDestination);
+            context.SaveChanges();
+        }
+    }
+
+    public void DeleteDestination(int destinationID)
+    {
+        using (var context = new BusManagementContext())
+        {
+            Destination destination = context.Destinations.FirstOrDefault(d => d.DestinationID == destinationID);
+            if (destination != null)
+            {
+                context.Destinations.Remove(destination);
+                context.SaveChanges();
+            }
         }
     }
 }
