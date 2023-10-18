@@ -58,13 +58,13 @@ namespace BusStationInterface.Data
                 .HasOne(t => t.Seat)
                 .WithOne(s => s.Ticket)
                 .HasForeignKey<Ticket>(t => t.SeatID)
-                .IsRequired(true); // Depending on your business logic, you might want to set this to true or false
+                .IsRequired(true);
 
             modelBuilder.Entity<Seat>()
                 .HasOne(s => s.Ticket)
                 .WithOne(t => t.Seat)
                 .HasForeignKey<Ticket>(t => t.SeatID)
-                .IsRequired(true); // Depending on your business logic, you might want to set this to true or false
+                .IsRequired(true); 
 
             // Configure the Tickets -> Seats relationship with DeleteBehavior.NoAction
             modelBuilder.Entity<Ticket>()
