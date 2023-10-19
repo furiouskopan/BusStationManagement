@@ -52,8 +52,7 @@
             label3 = new Label();
             btnEditDestinations = new Button();
             label4 = new Label();
-            dataGridView1 = new DataGridView();
-            routeBindingSource = new BindingSource(components);
+            dataGridViewRoutes = new DataGridView();
             routeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             startDestinationIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             endDestinationIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -62,6 +61,7 @@
             endDestinationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             schedulesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             routeDetailsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            routeBindingSource = new BindingSource(components);
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
             btnSearchRoute = new Button();
@@ -72,7 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewDrivers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDestinations).BeginInit();
             ((System.ComponentModel.ISupportInitialize)destinationBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewRoutes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)routeBindingSource).BeginInit();
             SuspendLayout();
             // 
@@ -296,28 +296,24 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(62, 390);
+            label4.Location = new Point(62, 414);
             label4.Name = "label4";
             label4.Size = new Size(130, 32);
             label4.TabIndex = 9;
             label4.Text = "All Routes";
             // 
-            // dataGridView1
+            // dataGridViewRoutes
             // 
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { routeIDDataGridViewTextBoxColumn, startDestinationIDDataGridViewTextBoxColumn, endDestinationIDDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn1, startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn, schedulesDataGridViewTextBoxColumn, routeDetailsDataGridViewTextBoxColumn });
-            dataGridView1.DataSource = routeBindingSource;
-            dataGridView1.Location = new Point(62, 486);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(538, 188);
-            dataGridView1.TabIndex = 10;
-            // 
-            // routeBindingSource
-            // 
-            routeBindingSource.DataSource = typeof(Models.Route);
+            dataGridViewRoutes.AutoGenerateColumns = false;
+            dataGridViewRoutes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewRoutes.Columns.AddRange(new DataGridViewColumn[] { routeIDDataGridViewTextBoxColumn, startDestinationIDDataGridViewTextBoxColumn, endDestinationIDDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn1, startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn, schedulesDataGridViewTextBoxColumn, routeDetailsDataGridViewTextBoxColumn });
+            dataGridViewRoutes.DataSource = routeBindingSource;
+            dataGridViewRoutes.Location = new Point(41, 486);
+            dataGridViewRoutes.Name = "dataGridViewRoutes";
+            dataGridViewRoutes.RowHeadersWidth = 51;
+            dataGridViewRoutes.RowTemplate.Height = 29;
+            dataGridViewRoutes.Size = new Size(980, 252);
+            dataGridViewRoutes.TabIndex = 10;
             // 
             // routeIDDataGridViewTextBoxColumn
             // 
@@ -383,10 +379,14 @@
             routeDetailsDataGridViewTextBoxColumn.Name = "routeDetailsDataGridViewTextBoxColumn";
             routeDetailsDataGridViewTextBoxColumn.Width = 125;
             // 
+            // routeBindingSource
+            // 
+            routeBindingSource.DataSource = typeof(Models.Route);
+            // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(606, 486);
+            comboBox1.Location = new Point(1076, 486);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(179, 28);
             comboBox1.TabIndex = 11;
@@ -400,7 +400,7 @@
             // 
             // btnSearchRoute
             // 
-            btnSearchRoute.Location = new Point(262, 451);
+            btnSearchRoute.Location = new Point(231, 447);
             btnSearchRoute.Name = "btnSearchRoute";
             btnSearchRoute.Size = new Size(94, 29);
             btnSearchRoute.TabIndex = 13;
@@ -409,7 +409,7 @@
             // 
             // btnEditRoute
             // 
-            btnEditRoute.Location = new Point(476, 692);
+            btnEditRoute.Location = new Point(1027, 694);
             btnEditRoute.Name = "btnEditRoute";
             btnEditRoute.Size = new Size(108, 44);
             btnEditRoute.TabIndex = 14;
@@ -426,7 +426,7 @@
             Controls.Add(btnSearchRoute);
             Controls.Add(textBox1);
             Controls.Add(comboBox1);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewRoutes);
             Controls.Add(label4);
             Controls.Add(btnEditDestinations);
             Controls.Add(label3);
@@ -447,7 +447,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewDrivers).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDestinations).EndInit();
             ((System.ComponentModel.ISupportInitialize)destinationBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewRoutes).EndInit();
             ((System.ComponentModel.ISupportInitialize)routeBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -477,7 +477,11 @@
         private Label label3;
         private Button btnEditDestinations;
         private Label label4;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewRoutes;
+        private ComboBox comboBox1;
+        private TextBox textBox1;
+        private Button btnSearchRoute;
+        private Button btnEditRoute;
         private DataGridViewTextBoxColumn routeIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn startDestinationIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn endDestinationIDDataGridViewTextBoxColumn;
@@ -487,9 +491,5 @@
         private DataGridViewTextBoxColumn schedulesDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn routeDetailsDataGridViewTextBoxColumn;
         private BindingSource routeBindingSource;
-        private ComboBox comboBox1;
-        private TextBox textBox1;
-        private Button btnSearchRoute;
-        private Button btnEditRoute;
     }
 }

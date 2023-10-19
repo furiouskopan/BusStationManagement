@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusStationInterface.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,20 @@ namespace BusStationInterface.Forms
 {
     public partial class RouteEditForm : Form
     {
-        public RouteEditForm()
+        private RouteDataAccess _routeDataAccess;
+        private Route _selectedRoute;
+
+        public RouteEditForm(RouteDataAccess routeDataAccess)
         {
             InitializeComponent();
+            _routeDataAccess = routeDataAccess;
+            _selectedRoute = null;
+            LoadRoutes();
+        }
+        private void LoadRoutes()
+        {
+            var routes = _routeDataAccess.GetRoutes();
+            dataGridViewDriversOnEditForm.DataSource = routes;
         }
 
         private void RouteEditForm_Load(object sender, EventArgs e)

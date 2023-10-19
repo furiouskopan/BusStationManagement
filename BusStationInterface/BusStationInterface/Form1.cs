@@ -1,5 +1,7 @@
+using BusStationInterface.Data;
 using BusStationInterface.Forms;
 using BusStationInterface.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Windows.Forms;
 
 namespace BusStationInterface
@@ -16,6 +18,16 @@ namespace BusStationInterface
             LoadBuses();
             LoadDrivers();
             LoadDestinations();
+            LoadRoutes();
+            using (var context = new BusManagementContext())
+            {
+                var routes = context.Routes
+                    .Include(r => r.StartDestination)
+                    .Include(r => r.EndDestination)
+                    .Include(r => r.RouteDetails)
+                        .ThenInclude(rd => rd.Location)
+                    .ToList();
+            }
         }
 
         private void LoadDestinations()
