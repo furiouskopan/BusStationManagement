@@ -49,6 +49,17 @@ namespace BusStationInterface
             dataGridViewDrivers.RowHeadersVisible = false;
             dataGridViewDrivers.ReadOnly = true;  // Make it read-only
         }
+        private void LoadRoutes()
+        {
+            RouteDataAccess routeDataAccess = new RouteDataAccess();
+            List<Route> routes = routeDataAccess.GetRoutes();
+
+            // Populate your user interface controls with the route data.
+            dataGridViewRoutes.DataSource = routes;
+            dataGridViewRoutes.RowHeadersVisible = false;
+            dataGridViewRoutes.ReadOnly = true;  // Make it read-only
+        }
+
         private void btnEditBus_Click(object sender, EventArgs e)
         {
             // Create an instance of BusDataAccess to pass to the edit form
@@ -93,6 +104,21 @@ namespace BusStationInterface
             {
                 // Reload the buses on the main form after editing
                 LoadDestinations();
+            }
+        }
+
+        private void btnEditRoute_Click(object sender, EventArgs e)
+        {
+            RouteDataAccess routeDataAccess = new RouteDataAccess();
+
+            // Create an instance of the edit window and pass the route data access
+            RouteEditForm editForm = new RouteEditForm(routeDataAccess);
+
+            // Show the edit window
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                // Reload the routes on the main form after editing
+                LoadRoutes();
             }
         }
     }

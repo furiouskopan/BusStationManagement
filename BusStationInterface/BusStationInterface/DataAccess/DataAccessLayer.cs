@@ -136,4 +136,42 @@ public class DestinationDataAccess
         }
     }
 }
+public class RouteDataAccess
+{
+    public List<Route> GetRoutes()
+    {
+        using (var context = new BusManagementContext())
+        {
+            return context.Routes.ToList();
+        }
+    }
 
+    public void UpdateRoute(Route updatedRoute)
+    {
+        using (var context = new BusManagementContext())
+        {
+            context.Routes.Update(updatedRoute);
+            context.SaveChanges();
+        }
+    }
+    public void AddRoute(Route newRoute)
+    {
+        using (var context = new BusManagementContext())
+        {
+            context.Routes.Add(newRoute);
+            context.SaveChanges();
+        }
+    }
+    public void DeleteRoute(int routeID)
+    {
+        using (var context = new BusManagementContext())
+        {
+            Route routeToDelete = context.Routes.FirstOrDefault(r => r.RouteID == routeID);
+            if (routeToDelete != null)
+            {
+                context.Routes.Remove(routeToDelete);
+                context.SaveChanges();
+            }
+        }
+    }
+}

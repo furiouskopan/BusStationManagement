@@ -78,7 +78,7 @@ namespace BusStationInterface.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-S5ULU19\\SQLEXPRESS;Initial Catalog=BusStation;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-SJ17PE6\\SQLEXPRESS;Initial Catalog=BusStation;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
             }
         }
     }
