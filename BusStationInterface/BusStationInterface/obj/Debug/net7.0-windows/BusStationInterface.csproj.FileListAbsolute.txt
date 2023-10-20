@@ -123,3 +123,4 @@ C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationIn
 C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.genruntimeconfig.cache
 C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\ref\BusStationInterface.dll
 C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.Forms.RouteEditForm.resources
+C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.Forms.RouteDetailsEditForm.resources

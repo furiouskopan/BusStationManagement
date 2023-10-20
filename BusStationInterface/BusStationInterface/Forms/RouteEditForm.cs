@@ -1,37 +1,69 @@
-﻿using BusStationInterface.Models;
+﻿using BusStationInterface.Data;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BusStationInterface.Forms
 {
     public partial class RouteEditForm : Form
     {
-        private RouteDataAccess _routeDataAccess;
-        private Route _selectedRoute;
+        private readonly BusManagementContext _context;
+        private readonly int _routeId;
 
-        public RouteEditForm(RouteDataAccess routeDataAccess)
+        public RouteEditForm(dynamic selectedRoute)
         {
             InitializeComponent();
-            _routeDataAccess = routeDataAccess;
-            _selectedRoute = null;
-            LoadRoutes();
-        }
-        private void LoadRoutes()
-        {
-            var routes = _routeDataAccess.GetRoutes();
-            dataGridViewDriversOnEditForm.DataSource = routes;
+            _context = new BusManagementContext();
+
+            _routeId = selectedRoute.RouteID;
+
+            // Populate the Destinations ComboBox for Start and End destinations
+            var destinations = _context.Destinations.ToList();
+            cmbStartDestinations.DataSource = destinations;
+            cmbStartDestinations.DisplayMember = "Name";
+            cmbStartDestinations.ValueMember = "DestinationID";
+
+            cmbEndDestinations.DataSource = destinations.ToList(); // Cloning the list to make sure both comboboxes are independent
+            cmbEndDestinations.DisplayMember = "Name";
+            cmbEndDestinations.ValueMember = "DestinationID";
+
+            // Populate the form fields
+            txtRouteID.Text = selectedRoute.RouteID.ToString();
+            cmbStartDestinations.SelectedValue = selectedRoute.StartDestinationID;
+            cmbEndDestinations.SelectedValue = selectedRoute.EndDestinationID;
+            txtDescription.Text = selectedRoute.Description;
         }
 
-        private void RouteEditForm_Load(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var route = _context.Routes.FirstOrDefault(r => r.RouteID == _routeId);
 
+                if (route != null)
+                {
+                    route.StartDestinationID = (int)cmbStartDestinations.SelectedValue;
+                    route.EndDestinationID = (int)cmbEndDestinations.SelectedValue;
+                    route.Description = txtDescription.Text;
+
+                    _context.SaveChanges();
+                    MessageBox.Show("Changes saved successfully.");
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Route not found!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

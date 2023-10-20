@@ -54,13 +54,9 @@
             label4 = new Label();
             dataGridViewRoutes = new DataGridView();
             routeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            startDestinationIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            endDestinationIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descriptionDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             startDestinationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             endDestinationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            schedulesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            routeDetailsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             routeBindingSource1 = new BindingSource(components);
             routeBindingSource = new BindingSource(components);
             comboBox1 = new ComboBox();
@@ -68,14 +64,12 @@
             btnSearchRoute = new Button();
             btnEditRoute = new Button();
             dataGridViewRouteDetails = new DataGridView();
-            routeDetailBindingSource = new BindingSource(components);
-            routeIDDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            locationIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             sequenceNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            LocationName = new DataGridViewTextBoxColumn();
             timeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descriptionDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            routeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            locationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            routeDetailBindingSource = new BindingSource(components);
+            btnEditRouteDetails = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -133,7 +127,7 @@
             busTypeDataGridViewTextBoxColumn.HeaderText = "Type";
             busTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
             busTypeDataGridViewTextBoxColumn.Name = "busTypeDataGridViewTextBoxColumn";
-            busTypeDataGridViewTextBoxColumn.Width = 60;
+            busTypeDataGridViewTextBoxColumn.Width = 70;
             // 
             // totalSeatsDataGridViewTextBoxColumn
             // 
@@ -141,7 +135,7 @@
             totalSeatsDataGridViewTextBoxColumn.HeaderText = "Seats";
             totalSeatsDataGridViewTextBoxColumn.MinimumWidth = 6;
             totalSeatsDataGridViewTextBoxColumn.Name = "totalSeatsDataGridViewTextBoxColumn";
-            totalSeatsDataGridViewTextBoxColumn.Width = 40;
+            totalSeatsDataGridViewTextBoxColumn.Width = 50;
             // 
             // busBindingSource
             // 
@@ -214,7 +208,7 @@
             // 
             // btnEditBus
             // 
-            btnEditBus.Location = new Point(111, 284);
+            btnEditBus.Location = new Point(41, 284);
             btnEditBus.Margin = new Padding(3, 4, 3, 4);
             btnEditBus.Name = "btnEditBus";
             btnEditBus.Size = new Size(103, 53);
@@ -225,7 +219,7 @@
             // 
             // btnEditDriver
             // 
-            btnEditDriver.Location = new Point(490, 284);
+            btnEditDriver.Location = new Point(281, 284);
             btnEditDriver.Margin = new Padding(3, 4, 3, 4);
             btnEditDriver.Name = "btnEditDriver";
             btnEditDriver.Size = new Size(103, 53);
@@ -296,10 +290,10 @@
             // 
             // btnEditDestinations
             // 
-            btnEditDestinations.Location = new Point(951, 289);
+            btnEditDestinations.Location = new Point(917, 289);
             btnEditDestinations.Margin = new Padding(3, 4, 3, 4);
             btnEditDestinations.Name = "btnEditDestinations";
-            btnEditDestinations.Size = new Size(119, 53);
+            btnEditDestinations.Size = new Size(153, 53);
             btnEditDestinations.TabIndex = 8;
             btnEditDestinations.Text = "Edit Destinations";
             btnEditDestinations.UseVisualStyleBackColor = true;
@@ -309,7 +303,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(62, 414);
+            label4.Location = new Point(46, 366);
             label4.Name = "label4";
             label4.Size = new Size(130, 32);
             label4.TabIndex = 9;
@@ -319,14 +313,14 @@
             // 
             dataGridViewRoutes.AutoGenerateColumns = false;
             dataGridViewRoutes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewRoutes.Columns.AddRange(new DataGridViewColumn[] { routeIDDataGridViewTextBoxColumn, startDestinationIDDataGridViewTextBoxColumn, endDestinationIDDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn1, startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn, schedulesDataGridViewTextBoxColumn, routeDetailsDataGridViewTextBoxColumn });
+            dataGridViewRoutes.Columns.AddRange(new DataGridViewColumn[] { routeIDDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn1, startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn });
             dataGridViewRoutes.DataSource = routeBindingSource1;
-            dataGridViewRoutes.Location = new Point(41, 486);
+            dataGridViewRoutes.Location = new Point(36, 434);
             dataGridViewRoutes.Name = "dataGridViewRoutes";
             dataGridViewRoutes.RowHeadersWidth = 51;
             dataGridViewRoutes.RowTemplate.Height = 29;
             dataGridViewRoutes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewRoutes.Size = new Size(1028, 252);
+            dataGridViewRoutes.Size = new Size(557, 252);
             dataGridViewRoutes.TabIndex = 10;
             dataGridViewRoutes.SelectionChanged += dataGridViewRoutes_SelectionChanged;
             // 
@@ -337,22 +331,6 @@
             routeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
             routeIDDataGridViewTextBoxColumn.Name = "routeIDDataGridViewTextBoxColumn";
             routeIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // startDestinationIDDataGridViewTextBoxColumn
-            // 
-            startDestinationIDDataGridViewTextBoxColumn.DataPropertyName = "StartDestinationID";
-            startDestinationIDDataGridViewTextBoxColumn.HeaderText = "StartDestinationID";
-            startDestinationIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            startDestinationIDDataGridViewTextBoxColumn.Name = "startDestinationIDDataGridViewTextBoxColumn";
-            startDestinationIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // endDestinationIDDataGridViewTextBoxColumn
-            // 
-            endDestinationIDDataGridViewTextBoxColumn.DataPropertyName = "EndDestinationID";
-            endDestinationIDDataGridViewTextBoxColumn.HeaderText = "EndDestinationID";
-            endDestinationIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            endDestinationIDDataGridViewTextBoxColumn.Name = "endDestinationIDDataGridViewTextBoxColumn";
-            endDestinationIDDataGridViewTextBoxColumn.Width = 125;
             // 
             // descriptionDataGridViewTextBoxColumn1
             // 
@@ -378,22 +356,6 @@
             endDestinationDataGridViewTextBoxColumn.Name = "endDestinationDataGridViewTextBoxColumn";
             endDestinationDataGridViewTextBoxColumn.Width = 125;
             // 
-            // schedulesDataGridViewTextBoxColumn
-            // 
-            schedulesDataGridViewTextBoxColumn.DataPropertyName = "Schedules";
-            schedulesDataGridViewTextBoxColumn.HeaderText = "Schedules";
-            schedulesDataGridViewTextBoxColumn.MinimumWidth = 6;
-            schedulesDataGridViewTextBoxColumn.Name = "schedulesDataGridViewTextBoxColumn";
-            schedulesDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // routeDetailsDataGridViewTextBoxColumn
-            // 
-            routeDetailsDataGridViewTextBoxColumn.DataPropertyName = "RouteDetails";
-            routeDetailsDataGridViewTextBoxColumn.HeaderText = "RouteDetails";
-            routeDetailsDataGridViewTextBoxColumn.MinimumWidth = 6;
-            routeDetailsDataGridViewTextBoxColumn.Name = "routeDetailsDataGridViewTextBoxColumn";
-            routeDetailsDataGridViewTextBoxColumn.Width = 125;
-            // 
             // routeBindingSource1
             // 
             routeBindingSource1.DataSource = typeof(Models.Route);
@@ -405,21 +367,21 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(891, 452);
+            comboBox1.Location = new Point(414, 396);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(179, 28);
             comboBox1.TabIndex = 11;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(62, 449);
+            textBox1.Location = new Point(36, 401);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(163, 27);
             textBox1.TabIndex = 12;
             // 
             // btnSearchRoute
             // 
-            btnSearchRoute.Location = new Point(231, 447);
+            btnSearchRoute.Location = new Point(205, 399);
             btnSearchRoute.Name = "btnSearchRoute";
             btnSearchRoute.Size = new Size(94, 29);
             btnSearchRoute.TabIndex = 13;
@@ -428,9 +390,9 @@
             // 
             // btnEditRoute
             // 
-            btnEditRoute.Location = new Point(777, 439);
+            btnEditRoute.Location = new Point(36, 692);
             btnEditRoute.Name = "btnEditRoute";
-            btnEditRoute.Size = new Size(108, 44);
+            btnEditRoute.Size = new Size(108, 56);
             btnEditRoute.TabIndex = 14;
             btnEditRoute.Text = "Edit Routes";
             btnEditRoute.UseVisualStyleBackColor = true;
@@ -440,42 +402,30 @@
             // 
             dataGridViewRouteDetails.AutoGenerateColumns = false;
             dataGridViewRouteDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { routeIDDataGridViewTextBoxColumn1, locationIDDataGridViewTextBoxColumn, sequenceNumberDataGridViewTextBoxColumn, timeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn2, routeDataGridViewTextBoxColumn, locationDataGridViewTextBoxColumn });
+            dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { sequenceNumberDataGridViewTextBoxColumn, LocationName, timeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn2 });
             dataGridViewRouteDetails.DataSource = routeDetailBindingSource;
-            dataGridViewRouteDetails.Location = new Point(41, 759);
+            dataGridViewRouteDetails.Location = new Point(638, 434);
             dataGridViewRouteDetails.Name = "dataGridViewRouteDetails";
             dataGridViewRouteDetails.RowHeadersWidth = 51;
             dataGridViewRouteDetails.RowTemplate.Height = 29;
-            dataGridViewRouteDetails.Size = new Size(929, 188);
+            dataGridViewRouteDetails.Size = new Size(489, 252);
             dataGridViewRouteDetails.TabIndex = 15;
-            // 
-            // routeDetailBindingSource
-            // 
-            routeDetailBindingSource.DataSource = typeof(Models.RouteDetail);
-            // 
-            // routeIDDataGridViewTextBoxColumn1
-            // 
-            routeIDDataGridViewTextBoxColumn1.DataPropertyName = "RouteID";
-            routeIDDataGridViewTextBoxColumn1.HeaderText = "RouteID";
-            routeIDDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            routeIDDataGridViewTextBoxColumn1.Name = "routeIDDataGridViewTextBoxColumn1";
-            routeIDDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // locationIDDataGridViewTextBoxColumn
-            // 
-            locationIDDataGridViewTextBoxColumn.DataPropertyName = "LocationID";
-            locationIDDataGridViewTextBoxColumn.HeaderText = "LocationID";
-            locationIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            locationIDDataGridViewTextBoxColumn.Name = "locationIDDataGridViewTextBoxColumn";
-            locationIDDataGridViewTextBoxColumn.Width = 125;
             // 
             // sequenceNumberDataGridViewTextBoxColumn
             // 
             sequenceNumberDataGridViewTextBoxColumn.DataPropertyName = "SequenceNumber";
-            sequenceNumberDataGridViewTextBoxColumn.HeaderText = "SequenceNumber";
+            sequenceNumberDataGridViewTextBoxColumn.HeaderText = "Sequence";
             sequenceNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
             sequenceNumberDataGridViewTextBoxColumn.Name = "sequenceNumberDataGridViewTextBoxColumn";
-            sequenceNumberDataGridViewTextBoxColumn.Width = 125;
+            sequenceNumberDataGridViewTextBoxColumn.Width = 85;
+            // 
+            // LocationName
+            // 
+            LocationName.DataPropertyName = "LocationName";
+            LocationName.HeaderText = "Location";
+            LocationName.MinimumWidth = 6;
+            LocationName.Name = "LocationName";
+            LocationName.Width = 125;
             // 
             // timeDataGridViewTextBoxColumn
             // 
@@ -493,27 +443,26 @@
             descriptionDataGridViewTextBoxColumn2.Name = "descriptionDataGridViewTextBoxColumn2";
             descriptionDataGridViewTextBoxColumn2.Width = 125;
             // 
-            // routeDataGridViewTextBoxColumn
+            // routeDetailBindingSource
             // 
-            routeDataGridViewTextBoxColumn.DataPropertyName = "Route";
-            routeDataGridViewTextBoxColumn.HeaderText = "Route";
-            routeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            routeDataGridViewTextBoxColumn.Name = "routeDataGridViewTextBoxColumn";
-            routeDataGridViewTextBoxColumn.Width = 125;
+            routeDetailBindingSource.DataSource = typeof(Models.RouteDetail);
             // 
-            // locationDataGridViewTextBoxColumn
+            // btnEditRouteDetails
             // 
-            locationDataGridViewTextBoxColumn.DataPropertyName = "LocationName";
-            locationDataGridViewTextBoxColumn.HeaderText = "Location";
-            locationDataGridViewTextBoxColumn.MinimumWidth = 6;
-            locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
-            locationDataGridViewTextBoxColumn.Width = 125;
+            btnEditRouteDetails.Location = new Point(979, 692);
+            btnEditRouteDetails.Name = "btnEditRouteDetails";
+            btnEditRouteDetails.Size = new Size(148, 56);
+            btnEditRouteDetails.TabIndex = 16;
+            btnEditRouteDetails.Text = "Edit Route Details";
+            btnEditRouteDetails.UseVisualStyleBackColor = true;
+            btnEditRouteDetails.Click += btnEditRouteDetails_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1725, 1025);
+            ClientSize = new Size(1725, 769);
+            Controls.Add(btnEditRouteDetails);
             Controls.Add(dataGridViewRouteDetails);
             Controls.Add(btnEditRoute);
             Controls.Add(btnSearchRoute);
@@ -557,9 +506,6 @@
         private Label label2;
         private BindingSource driverBindingSource;
         private DataGridView dataGridViewDrivers;
-        private DataGridViewTextBoxColumn busIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn busTypeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn totalSeatsDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn driverIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn contactInformationDataGridViewTextBoxColumn;
@@ -578,24 +524,22 @@
         private TextBox textBox1;
         private Button btnSearchRoute;
         private Button btnEditRoute;
-        private DataGridViewTextBoxColumn routeIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn startDestinationIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn endDestinationIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn startDestinationDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn endDestinationDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn schedulesDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn routeDetailsDataGridViewTextBoxColumn;
         private BindingSource routeBindingSource;
         private BindingSource routeBindingSource1;
         private DataGridView dataGridViewRouteDetails;
         private BindingSource routeDetailBindingSource;
-        private DataGridViewTextBoxColumn routeIDDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn locationIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn busIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn busTypeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn totalSeatsDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn routeIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn startDestinationDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn endDestinationDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn sequenceNumberDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn LocationName;
         private DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn routeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
+        private Button btnEditRouteDetails;
     }
 }

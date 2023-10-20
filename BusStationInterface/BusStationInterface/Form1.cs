@@ -205,5 +205,23 @@ namespace BusStationInterface
                 LoadRouteDetails(selectedRoute);
             }
         }
+
+        private void btnEditRouteDetails_Click(object sender, EventArgs e)
+        {
+            // Check if a row is selected in dataGridViewRouteDetails
+            if (dataGridViewRouteDetails.SelectedRows.Count <= 0) return;
+
+            var selectedRouteDetail = dataGridViewRouteDetails.SelectedRows[0].DataBoundItem as dynamic;
+
+            // Create an instance of the edit window and pass the selected route detail
+            RouteDetailsEditForm editForm = new RouteDetailsEditForm(selectedRouteDetail);
+
+            // Show the edit window and check the DialogResult
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                // Reload the route details on the main form after editing
+                LoadRouteDetails(selectedRouteDetail);
+            }
+        }
     }
 }
