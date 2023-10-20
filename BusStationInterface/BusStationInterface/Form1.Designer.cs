@@ -503,7 +503,7 @@
             // 
             // locationDataGridViewTextBoxColumn
             // 
-            locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
+            locationDataGridViewTextBoxColumn.DataPropertyName = "LocationName";
             locationDataGridViewTextBoxColumn.HeaderText = "Location";
             locationDataGridViewTextBoxColumn.MinimumWidth = 6;
             locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
