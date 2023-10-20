@@ -29,7 +29,6 @@ namespace BusStationInterface
                     .ToList();
             }
         }
-
         private void LoadDestinations()
         {
             DestinationDataAccess destinationDataAccess = new DestinationDataAccess();
@@ -66,12 +65,50 @@ namespace BusStationInterface
             RouteDataAccess routeDataAccess = new RouteDataAccess();
             List<Route> routes = routeDataAccess.GetRoutes();
 
-            // Populate your user interface controls with the route data.
-            dataGridViewRoutes.DataSource = routes;
-            dataGridViewRoutes.RowHeadersVisible = false;
-            dataGridViewRoutes.ReadOnly = true;  // Make it read-only
-        }
+            // Ensure the StartDestination and EndDestination are loaded
+            if (routes.Any() && routes.First().StartDestination == null)
+            {
+                using (var context = new BusManagementContext())
+                {
+                    routes = context.Routes
+                        .Include(r => r.StartDestination)
+                        .Include(r => r.EndDestination)
+                        .ToList();
+                }
+            }
+            var routesWithDestinations = routes.Select(route => new
+            {
+                route.RouteID,
+                StartDestinationId = route.StartDestinationID,
+                EndDestinationId = route.EndDestinationID,
+                StartDestination = route.StartDestination.Name, // Assuming Name is the property of the Destination entity.
+                EndDestination = route.EndDestination.Name,     // Assuming Name is the property of the Destination entity.
+                route.Description
+            }).ToList();
 
+            // Populate your user interface controls with the route data including destination information.
+            dataGridViewRoutes.DataSource = routesWithDestinations;
+            dataGridViewRoutes.RowHeadersVisible = false;
+            dataGridViewRoutes.ReadOnly = true;
+        }
+        private void LoadRouteDetails(Route selectedRoute)
+        {
+            RouteDetailDataAccess routeDetailDataAccess = new RouteDetailDataAccess(); // Create a new instance here
+
+            if (selectedRoute == null)
+            {
+                // Clear or hide the detail view if no route is selected
+                dataGridViewRouteDetails.DataSource = null;
+            }
+            else
+            {
+                // Fetch route details based on the selected route
+                List<RouteDetail> routeDetails = routeDetailDataAccess.GetRouteDetails(selectedRoute.RouteID);
+
+                // Bind the details to the detail view
+                dataGridViewRouteDetails.DataSource = routeDetails;
+            }
+        }
         private void btnEditBus_Click(object sender, EventArgs e)
         {
             // Create an instance of BusDataAccess to pass to the edit form
@@ -131,6 +168,26 @@ namespace BusStationInterface
             {
                 // Reload the routes on the main form after editing
                 LoadRoutes();
+            }
+        }
+
+        private void dataGridViewRoutes_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewRoutes.SelectedRows.Count > 0)
+            {
+                // Get the RouteID from the selected row's DataBoundItem
+                var selectedItem = dataGridViewRoutes.SelectedRows[0].DataBoundItem as dynamic;
+                int selectedRouteId = selectedItem.RouteID;
+
+                // Fetch the Route object using this RouteID
+                Route selectedRoute;
+                using (var context = new BusManagementContext())
+                {
+                    selectedRoute = context.Routes.FirstOrDefault(r => r.RouteID == selectedRouteId);
+                }
+
+                // Load and display route details including intermediary stops
+                LoadRouteDetails(selectedRoute);
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using BusStationInterface.Data;
 using BusStationInterface.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -172,6 +173,26 @@ public class RouteDataAccess
                 context.Routes.Remove(routeToDelete);
                 context.SaveChanges();
             }
+        }
+    }
+    // Method to retrieve routes with related data.
+    public List<Route> GetRoutesIncludingDestinations()
+    {
+        using (var context = new BusManagementContext())
+        {
+            return context.Routes.Include(r => r.StartDestination).Include(r => r.EndDestination).ToList();
+        }
+    }
+}
+public class RouteDetailDataAccess
+{
+    public List<RouteDetail> GetRouteDetails(int routeId)
+    {
+        using (var context = new BusManagementContext())
+        {
+            return context.RouteDetails
+                          .Where(rd => rd.RouteID == routeId)
+                          .ToList();
         }
     }
 }

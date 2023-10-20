@@ -61,11 +61,22 @@
             endDestinationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             schedulesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             routeDetailsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            routeBindingSource1 = new BindingSource(components);
             routeBindingSource = new BindingSource(components);
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
             btnSearchRoute = new Button();
             btnEditRoute = new Button();
+            dataGridViewRouteDetails = new DataGridView();
+            routeDetailIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            routeIDDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            locationIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            sequenceNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            timeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            routeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            locationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            routeDetailBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -73,7 +84,10 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewDestinations).BeginInit();
             ((System.ComponentModel.ISupportInitialize)destinationBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRoutes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)routeBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)routeBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewRouteDetails).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)routeDetailBindingSource).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewBuses
@@ -307,13 +321,15 @@
             dataGridViewRoutes.AutoGenerateColumns = false;
             dataGridViewRoutes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewRoutes.Columns.AddRange(new DataGridViewColumn[] { routeIDDataGridViewTextBoxColumn, startDestinationIDDataGridViewTextBoxColumn, endDestinationIDDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn1, startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn, schedulesDataGridViewTextBoxColumn, routeDetailsDataGridViewTextBoxColumn });
-            dataGridViewRoutes.DataSource = routeBindingSource;
+            dataGridViewRoutes.DataSource = routeBindingSource1;
             dataGridViewRoutes.Location = new Point(41, 486);
             dataGridViewRoutes.Name = "dataGridViewRoutes";
             dataGridViewRoutes.RowHeadersWidth = 51;
             dataGridViewRoutes.RowTemplate.Height = 29;
-            dataGridViewRoutes.Size = new Size(980, 252);
+            dataGridViewRoutes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewRoutes.Size = new Size(1028, 252);
             dataGridViewRoutes.TabIndex = 10;
+            dataGridViewRoutes.SelectionChanged += dataGridViewRoutes_SelectionChanged;
             // 
             // routeIDDataGridViewTextBoxColumn
             // 
@@ -379,6 +395,10 @@
             routeDetailsDataGridViewTextBoxColumn.Name = "routeDetailsDataGridViewTextBoxColumn";
             routeDetailsDataGridViewTextBoxColumn.Width = 125;
             // 
+            // routeBindingSource1
+            // 
+            routeBindingSource1.DataSource = typeof(Models.Route);
+            // 
             // routeBindingSource
             // 
             routeBindingSource.DataSource = typeof(Models.Route);
@@ -386,7 +406,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(1076, 486);
+            comboBox1.Location = new Point(891, 452);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(179, 28);
             comboBox1.TabIndex = 11;
@@ -409,7 +429,7 @@
             // 
             // btnEditRoute
             // 
-            btnEditRoute.Location = new Point(1027, 694);
+            btnEditRoute.Location = new Point(777, 439);
             btnEditRoute.Name = "btnEditRoute";
             btnEditRoute.Size = new Size(108, 44);
             btnEditRoute.TabIndex = 14;
@@ -417,11 +437,93 @@
             btnEditRoute.UseVisualStyleBackColor = true;
             btnEditRoute.Click += btnEditRoute_Click;
             // 
+            // dataGridViewRouteDetails
+            // 
+            dataGridViewRouteDetails.AutoGenerateColumns = false;
+            dataGridViewRouteDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { routeDetailIDDataGridViewTextBoxColumn, routeIDDataGridViewTextBoxColumn1, locationIDDataGridViewTextBoxColumn, sequenceNumberDataGridViewTextBoxColumn, timeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn2, routeDataGridViewTextBoxColumn, locationDataGridViewTextBoxColumn });
+            dataGridViewRouteDetails.DataSource = routeDetailBindingSource;
+            dataGridViewRouteDetails.Location = new Point(41, 759);
+            dataGridViewRouteDetails.Name = "dataGridViewRouteDetails";
+            dataGridViewRouteDetails.RowHeadersWidth = 51;
+            dataGridViewRouteDetails.RowTemplate.Height = 29;
+            dataGridViewRouteDetails.Size = new Size(1028, 188);
+            dataGridViewRouteDetails.TabIndex = 15;
+            // 
+            // routeDetailIDDataGridViewTextBoxColumn
+            // 
+            routeDetailIDDataGridViewTextBoxColumn.DataPropertyName = "RouteDetailID";
+            routeDetailIDDataGridViewTextBoxColumn.HeaderText = "RouteDetailID";
+            routeDetailIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            routeDetailIDDataGridViewTextBoxColumn.Name = "routeDetailIDDataGridViewTextBoxColumn";
+            routeDetailIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // routeIDDataGridViewTextBoxColumn1
+            // 
+            routeIDDataGridViewTextBoxColumn1.DataPropertyName = "RouteID";
+            routeIDDataGridViewTextBoxColumn1.HeaderText = "RouteID";
+            routeIDDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            routeIDDataGridViewTextBoxColumn1.Name = "routeIDDataGridViewTextBoxColumn1";
+            routeIDDataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // locationIDDataGridViewTextBoxColumn
+            // 
+            locationIDDataGridViewTextBoxColumn.DataPropertyName = "LocationID";
+            locationIDDataGridViewTextBoxColumn.HeaderText = "LocationID";
+            locationIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            locationIDDataGridViewTextBoxColumn.Name = "locationIDDataGridViewTextBoxColumn";
+            locationIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // sequenceNumberDataGridViewTextBoxColumn
+            // 
+            sequenceNumberDataGridViewTextBoxColumn.DataPropertyName = "SequenceNumber";
+            sequenceNumberDataGridViewTextBoxColumn.HeaderText = "SequenceNumber";
+            sequenceNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
+            sequenceNumberDataGridViewTextBoxColumn.Name = "sequenceNumberDataGridViewTextBoxColumn";
+            sequenceNumberDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // timeDataGridViewTextBoxColumn
+            // 
+            timeDataGridViewTextBoxColumn.DataPropertyName = "Time";
+            timeDataGridViewTextBoxColumn.HeaderText = "Time";
+            timeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
+            timeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // descriptionDataGridViewTextBoxColumn2
+            // 
+            descriptionDataGridViewTextBoxColumn2.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn2.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn2.MinimumWidth = 6;
+            descriptionDataGridViewTextBoxColumn2.Name = "descriptionDataGridViewTextBoxColumn2";
+            descriptionDataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // routeDataGridViewTextBoxColumn
+            // 
+            routeDataGridViewTextBoxColumn.DataPropertyName = "Route";
+            routeDataGridViewTextBoxColumn.HeaderText = "Route";
+            routeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            routeDataGridViewTextBoxColumn.Name = "routeDataGridViewTextBoxColumn";
+            routeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // locationDataGridViewTextBoxColumn
+            // 
+            locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
+            locationDataGridViewTextBoxColumn.HeaderText = "Location";
+            locationDataGridViewTextBoxColumn.MinimumWidth = 6;
+            locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
+            locationDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // routeDetailBindingSource
+            // 
+            routeDetailBindingSource.DataSource = typeof(Models.RouteDetail);
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1466, 781);
+            ClientSize = new Size(1725, 1025);
+            Controls.Add(dataGridViewRouteDetails);
             Controls.Add(btnEditRoute);
             Controls.Add(btnSearchRoute);
             Controls.Add(textBox1);
@@ -448,7 +550,10 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewDestinations).EndInit();
             ((System.ComponentModel.ISupportInitialize)destinationBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRoutes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)routeBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)routeBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewRouteDetails).EndInit();
+            ((System.ComponentModel.ISupportInitialize)routeDetailBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -491,5 +596,16 @@
         private DataGridViewTextBoxColumn schedulesDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn routeDetailsDataGridViewTextBoxColumn;
         private BindingSource routeBindingSource;
+        private BindingSource routeBindingSource1;
+        private DataGridView dataGridViewRouteDetails;
+        private DataGridViewTextBoxColumn routeDetailIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn routeIDDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn locationIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn sequenceNumberDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn routeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
+        private BindingSource routeDetailBindingSource;
     }
 }
