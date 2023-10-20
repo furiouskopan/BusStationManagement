@@ -42,6 +42,12 @@ namespace BusStationInterface.Data
                 .HasForeignKey(r => r.StartDestinationID)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<RouteDetail>()
+                .HasOne(rd => rd.Location)
+                .WithMany()
+                .HasForeignKey(rd => rd.LocationID)
+                .OnDelete(DeleteBehavior.Restrict);
+
             modelBuilder.Entity<Route>()
                 .HasOne(r => r.EndDestination)
                 .WithMany()

@@ -42,13 +42,6 @@ public class BusDataAccess
             }
         }
     }
-    //public Bus GetBusById(int busID)
-    //{
-    //    using (var context = new BusManagementContext())
-    //    {
-    //        return context.Buses.FirstOrDefault(b => b.BusID == busID);
-    //    }
-    //}
 }
 public class DriverDataAccess
 {
@@ -87,14 +80,6 @@ public class DriverDataAccess
             }
         }
     }
-    //public Driver GetDriverById(int driverID)
-    //{
-    //    using (var context = new BusManagementContext())
-    //    {
-    //        return context.Drivers.FirstOrDefault(b => b.DriverID == driverID);
-    //    }
-    //}
-
 }
 public class DestinationDataAccess
 {
@@ -191,6 +176,7 @@ public class RouteDetailDataAccess
         using (var context = new BusManagementContext())
         {
             return context.RouteDetails
+                          .Include(rd => rd.Location) // This ensures the Destination data is loaded.
                           .Where(rd => rd.RouteID == routeId)
                           .ToList();
         }

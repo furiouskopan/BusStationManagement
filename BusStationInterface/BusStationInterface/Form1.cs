@@ -93,8 +93,6 @@ namespace BusStationInterface
         }
         private void LoadRouteDetails(Route selectedRoute)
         {
-            RouteDetailDataAccess routeDetailDataAccess = new RouteDetailDataAccess(); // Create a new instance here
-
             if (selectedRoute == null)
             {
                 // Clear or hide the detail view if no route is selected
@@ -102,11 +100,28 @@ namespace BusStationInterface
             }
             else
             {
-                // Fetch route details based on the selected route
-                List<RouteDetail> routeDetails = routeDetailDataAccess.GetRouteDetails(selectedRoute.RouteID);
+                // Use the existing context created in Form1_Load
+                using (var context = new BusManagementContext())
+                {
+                    // Fetch route details based on the selected route with associated Location
+                    var routeDetailsWithLocation = context.RouteDetails
+                        .Where(rd => rd.RouteID == selectedRoute.RouteID)
+                        .Include(rd => rd.Location)  // This line ensures the Location is loaded
+                        .Select(rd => new
+                        {
+                            rd.RouteDetailID,
+                            rd.RouteID,
+                            rd.LocationID,
+                            LocationName = rd.Location.Name,  // This will now work because Location is loaded
+                            rd.SequenceNumber,
+                            rd.Time,
+                            rd.Description
+                        })
+                        .ToList();
 
-                // Bind the details to the detail view
-                dataGridViewRouteDetails.DataSource = routeDetails;
+                    // Bind the details with location name to the detail view
+                    dataGridViewRouteDetails.DataSource = routeDetailsWithLocation;
+                }
             }
         }
         private void btnEditBus_Click(object sender, EventArgs e)

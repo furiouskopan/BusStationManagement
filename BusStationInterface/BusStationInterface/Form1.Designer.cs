@@ -68,7 +68,7 @@
             btnSearchRoute = new Button();
             btnEditRoute = new Button();
             dataGridViewRouteDetails = new DataGridView();
-            routeDetailIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            routeDetailBindingSource = new BindingSource(components);
             routeIDDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             locationIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             sequenceNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -76,7 +76,6 @@
             descriptionDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             routeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             locationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            routeDetailBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -441,22 +440,18 @@
             // 
             dataGridViewRouteDetails.AutoGenerateColumns = false;
             dataGridViewRouteDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { routeDetailIDDataGridViewTextBoxColumn, routeIDDataGridViewTextBoxColumn1, locationIDDataGridViewTextBoxColumn, sequenceNumberDataGridViewTextBoxColumn, timeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn2, routeDataGridViewTextBoxColumn, locationDataGridViewTextBoxColumn });
+            dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { routeIDDataGridViewTextBoxColumn1, locationIDDataGridViewTextBoxColumn, sequenceNumberDataGridViewTextBoxColumn, timeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn2, routeDataGridViewTextBoxColumn, locationDataGridViewTextBoxColumn });
             dataGridViewRouteDetails.DataSource = routeDetailBindingSource;
             dataGridViewRouteDetails.Location = new Point(41, 759);
             dataGridViewRouteDetails.Name = "dataGridViewRouteDetails";
             dataGridViewRouteDetails.RowHeadersWidth = 51;
             dataGridViewRouteDetails.RowTemplate.Height = 29;
-            dataGridViewRouteDetails.Size = new Size(1028, 188);
+            dataGridViewRouteDetails.Size = new Size(929, 188);
             dataGridViewRouteDetails.TabIndex = 15;
             // 
-            // routeDetailIDDataGridViewTextBoxColumn
+            // routeDetailBindingSource
             // 
-            routeDetailIDDataGridViewTextBoxColumn.DataPropertyName = "RouteDetailID";
-            routeDetailIDDataGridViewTextBoxColumn.HeaderText = "RouteDetailID";
-            routeDetailIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            routeDetailIDDataGridViewTextBoxColumn.Name = "routeDetailIDDataGridViewTextBoxColumn";
-            routeDetailIDDataGridViewTextBoxColumn.Width = 125;
+            routeDetailBindingSource.DataSource = typeof(Models.RouteDetail);
             // 
             // routeIDDataGridViewTextBoxColumn1
             // 
@@ -513,10 +508,6 @@
             locationDataGridViewTextBoxColumn.MinimumWidth = 6;
             locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
             locationDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // routeDetailBindingSource
-            // 
-            routeDetailBindingSource.DataSource = typeof(Models.RouteDetail);
             // 
             // Form1
             // 
@@ -598,7 +589,7 @@
         private BindingSource routeBindingSource;
         private BindingSource routeBindingSource1;
         private DataGridView dataGridViewRouteDetails;
-        private DataGridViewTextBoxColumn routeDetailIDDataGridViewTextBoxColumn;
+        private BindingSource routeDetailBindingSource;
         private DataGridViewTextBoxColumn routeIDDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn locationIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn sequenceNumberDataGridViewTextBoxColumn;
@@ -606,6 +597,5 @@
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn routeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
-        private BindingSource routeDetailBindingSource;
     }
 }
