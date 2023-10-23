@@ -28,6 +28,11 @@ namespace BusStationInterface
                         .ThenInclude(rd => rd.Location)
                     .ToList();
             }
+            dataGridViewRoutes.ClearSelection();
+            dataGridViewBuses.ClearSelection();
+            dataGridViewDrivers.ClearSelection();
+            dataGridViewDestinations.ClearSelection();
+            dataGridViewRouteDetails.ClearSelection();
         }
         private void LoadDestinations()
         {

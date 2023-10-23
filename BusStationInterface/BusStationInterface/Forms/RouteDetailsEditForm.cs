@@ -66,5 +66,10 @@ namespace BusStationInterface.Forms
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void RouteDetailsEditForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
