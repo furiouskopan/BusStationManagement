@@ -32,10 +32,10 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            txtStartDestination = new TextBox();
-            txtEndDestination = new TextBox();
-            txtDescription = new TextBox();
             groupBox1 = new GroupBox();
+            cmbEndDestination = new ComboBox();
+            cmbStartDestination = new ComboBox();
+            txtDescription = new TextBox();
             dataGridViewRoutes = new DataGridView();
             startDestinationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             endDestinationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -51,7 +51,6 @@
             label7 = new Label();
             txtRouteDetailDescription = new TextBox();
             txtSequenceNumber = new TextBox();
-            txtLocation = new TextBox();
             label4 = new Label();
             label5 = new Label();
             txtTime = new TextBox();
@@ -60,6 +59,7 @@
             btnAddRouteDetails = new Button();
             btnDeleteRoute = new Button();
             btnSaveRoutesEdit = new Button();
+            cmbDetailLocation = new ComboBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRoutes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)routeBindingSource).BeginInit();
@@ -98,31 +98,10 @@
             label3.TabIndex = 2;
             label3.Text = "Description";
             // 
-            // txtStartDestination
-            // 
-            txtStartDestination.Location = new Point(156, 38);
-            txtStartDestination.Name = "txtStartDestination";
-            txtStartDestination.Size = new Size(140, 29);
-            txtStartDestination.TabIndex = 3;
-            // 
-            // txtEndDestination
-            // 
-            txtEndDestination.Location = new Point(156, 78);
-            txtEndDestination.Name = "txtEndDestination";
-            txtEndDestination.Size = new Size(140, 29);
-            txtEndDestination.TabIndex = 4;
-            // 
-            // txtDescription
-            // 
-            txtDescription.Location = new Point(156, 117);
-            txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(140, 29);
-            txtDescription.TabIndex = 5;
-            // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(txtStartDestination);
-            groupBox1.Controls.Add(txtEndDestination);
+            groupBox1.Controls.Add(cmbEndDestination);
+            groupBox1.Controls.Add(cmbStartDestination);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtDescription);
@@ -134,6 +113,29 @@
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Add Route";
+            // 
+            // cmbEndDestination
+            // 
+            cmbEndDestination.FormattingEnabled = true;
+            cmbEndDestination.Location = new Point(156, 76);
+            cmbEndDestination.Name = "cmbEndDestination";
+            cmbEndDestination.Size = new Size(140, 29);
+            cmbEndDestination.TabIndex = 7;
+            // 
+            // cmbStartDestination
+            // 
+            cmbStartDestination.FormattingEnabled = true;
+            cmbStartDestination.Location = new Point(156, 36);
+            cmbStartDestination.Name = "cmbStartDestination";
+            cmbStartDestination.Size = new Size(140, 29);
+            cmbStartDestination.TabIndex = 6;
+            // 
+            // txtDescription
+            // 
+            txtDescription.Location = new Point(156, 117);
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(140, 29);
+            txtDescription.TabIndex = 5;
             // 
             // dataGridViewRoutes
             // 
@@ -219,10 +221,10 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(cmbDetailLocation);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(txtRouteDetailDescription);
             groupBox2.Controls.Add(txtSequenceNumber);
-            groupBox2.Controls.Add(txtLocation);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(txtTime);
@@ -247,24 +249,17 @@
             // 
             // txtRouteDetailDescription
             // 
-            txtRouteDetailDescription.Location = new Point(167, 163);
+            txtRouteDetailDescription.Location = new Point(167, 157);
             txtRouteDetailDescription.Name = "txtRouteDetailDescription";
             txtRouteDetailDescription.Size = new Size(140, 29);
             txtRouteDetailDescription.TabIndex = 7;
             // 
             // txtSequenceNumber
             // 
-            txtSequenceNumber.Location = new Point(167, 42);
+            txtSequenceNumber.Location = new Point(167, 71);
             txtSequenceNumber.Name = "txtSequenceNumber";
             txtSequenceNumber.Size = new Size(140, 29);
             txtSequenceNumber.TabIndex = 3;
-            // 
-            // txtLocation
-            // 
-            txtLocation.Location = new Point(167, 82);
-            txtLocation.Name = "txtLocation";
-            txtLocation.Size = new Size(140, 29);
-            txtLocation.TabIndex = 4;
             // 
             // label4
             // 
@@ -280,7 +275,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(25, 76);
+            label5.Location = new Point(25, 28);
             label5.Name = "label5";
             label5.Size = new Size(69, 21);
             label5.TabIndex = 1;
@@ -288,7 +283,7 @@
             // 
             // txtTime
             // 
-            txtTime.Location = new Point(167, 121);
+            txtTime.Location = new Point(167, 115);
             txtTime.Name = "txtTime";
             txtTime.Size = new Size(140, 29);
             txtTime.TabIndex = 5;
@@ -297,7 +292,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(25, 36);
+            label6.Location = new Point(22, 71);
             label6.Name = "label6";
             label6.Size = new Size(139, 21);
             label6.TabIndex = 0;
@@ -346,6 +341,14 @@
             btnSaveRoutesEdit.UseVisualStyleBackColor = false;
             btnSaveRoutesEdit.Click += btnSaveRoutesEdit_Click;
             // 
+            // cmbDetailLocation
+            // 
+            cmbDetailLocation.FormattingEnabled = true;
+            cmbDetailLocation.Location = new Point(167, 28);
+            cmbDetailLocation.Name = "cmbDetailLocation";
+            cmbDetailLocation.Size = new Size(140, 29);
+            cmbDetailLocation.TabIndex = 8;
+            // 
             // RDForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -378,9 +381,6 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox txtStartDestination;
-        private TextBox txtEndDestination;
-        private TextBox txtDescription;
         private GroupBox groupBox1;
         private DataGridView dataGridViewRoutes;
         private DataGridViewTextBoxColumn startDestinationDataGridViewTextBoxColumn;
@@ -393,7 +393,6 @@
         private Label label7;
         private TextBox txtRouteDetailDescription;
         private TextBox txtSequenceNumber;
-        private TextBox txtLocation;
         private Label label4;
         private Label label5;
         private TextBox txtTime;
@@ -407,5 +406,9 @@
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
         private Button btnDeleteRoute;
         private Button btnSaveRoutesEdit;
+        private ComboBox cmbEndDestination;
+        private ComboBox cmbStartDestination;
+        private TextBox txtDescription;
+        private ComboBox cmbDetailLocation;
     }
 }

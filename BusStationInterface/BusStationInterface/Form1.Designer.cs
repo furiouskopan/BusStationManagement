@@ -61,14 +61,12 @@
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
             btnSearchRoute = new Button();
-            btnEditRoute = new Button();
             dataGridViewRouteDetails = new DataGridView();
             sequenceNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             LocationName = new DataGridViewTextBoxColumn();
             timeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descriptionDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             routeDetailBindingSource = new BindingSource(components);
-            btnEditRouteDetails = new Button();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
@@ -382,17 +380,6 @@
             btnSearchRoute.Text = "Search";
             btnSearchRoute.UseVisualStyleBackColor = true;
             // 
-            // btnEditRoute
-            // 
-            btnEditRoute.Location = new Point(17, 563);
-            btnEditRoute.Margin = new Padding(3, 2, 3, 2);
-            btnEditRoute.Name = "btnEditRoute";
-            btnEditRoute.Size = new Size(94, 42);
-            btnEditRoute.TabIndex = 14;
-            btnEditRoute.Text = "Edit Routes";
-            btnEditRoute.UseVisualStyleBackColor = true;
-            //btnEditRoute.Click += btnEditRoute_Click;
-            // 
             // dataGridViewRouteDetails
             // 
             dataGridViewRouteDetails.AllowUserToResizeRows = false;
@@ -444,17 +431,6 @@
             // routeDetailBindingSource
             // 
             routeDetailBindingSource.DataSource = typeof(Models.RouteDetail);
-            // 
-            // btnEditRouteDetails
-            // 
-            btnEditRouteDetails.Location = new Point(792, 563);
-            btnEditRouteDetails.Margin = new Padding(3, 2, 3, 2);
-            btnEditRouteDetails.Name = "btnEditRouteDetails";
-            btnEditRouteDetails.Size = new Size(130, 42);
-            btnEditRouteDetails.TabIndex = 16;
-            btnEditRouteDetails.Text = "Edit Route Details";
-            btnEditRouteDetails.UseVisualStyleBackColor = true;
-            //btnEditRouteDetails.Click += btnEditRouteDetails_Click;
             // 
             // label5
             // 
@@ -508,9 +484,7 @@
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
-            Controls.Add(btnEditRouteDetails);
             Controls.Add(dataGridViewRouteDetails);
-            Controls.Add(btnEditRoute);
             Controls.Add(btnSearchRoute);
             Controls.Add(textBox1);
             Controls.Add(comboBox1);
@@ -568,7 +542,6 @@
         private ComboBox comboBox1;
         private TextBox textBox1;
         private Button btnSearchRoute;
-        private Button btnEditRoute;
         private BindingSource routeBindingSource;
         private BindingSource routeBindingSource1;
         private DataGridView dataGridViewRouteDetails;
@@ -577,7 +550,6 @@
         private DataGridViewTextBoxColumn busIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn busTypeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn totalSeatsDataGridViewTextBoxColumn;
-        private Button btnEditRouteDetails;
         private Label label5;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn startDestinationDataGridViewTextBoxColumn;

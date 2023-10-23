@@ -26,6 +26,7 @@ namespace BusStationInterface.Forms
         {
             // Load and display routes in the dataGridViewRoutes
             LoadRoutes();
+            LoadDestinationsIntoComboBoxes();
 
             // By default, no route is selected, so load an empty route details DataGridView.
             //dataGridViewRouteDetails.DataSource = null;
@@ -99,6 +100,28 @@ namespace BusStationInterface.Forms
                 }
             }
         }
+        private void LoadDestinationsIntoComboBoxes()
+        {
+            using (var context = new BusManagementContext())
+            {
+                // Fetch all destinations.
+                var destinations = context.Destinations.ToList();
+
+                // Bind to the ComboBoxes.
+                cmbStartDestination.DataSource = destinations;
+                cmbStartDestination.DisplayMember = "Name";
+                cmbStartDestination.ValueMember = "DestinationID";
+
+                cmbEndDestination.DataSource = destinations.ToList(); // Create a new list to separate it from the other combobox.
+                cmbEndDestination.DisplayMember = "Name";
+                cmbEndDestination.ValueMember = "DestinationID";
+
+                cmbDetailLocation.DataSource = destinations;
+                cmbDetailLocation.DisplayMember = "Name";
+                cmbDetailLocation.ValueMember = "DestinationID";
+            }
+        }
+
         private void dataGridViewRoutes_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridViewRoutes.SelectedRows.Count > 0)
@@ -126,8 +149,8 @@ namespace BusStationInterface.Forms
             {
                 var newRoute = new Route
                 {
-                    StartDestinationID = Convert.ToInt32(txtStartDestination.Text), // Assuming this is an ID. If not, some lookup may be needed.
-                    EndDestinationID = Convert.ToInt32(txtEndDestination.Text),     // Similarly here.
+                    StartDestinationID = Convert.ToInt32(cmbStartDestination.Text), // Assuming this is an ID. If not, some lookup may be needed.
+                    EndDestinationID = Convert.ToInt32(cmbEndDestination.Text),     // Similarly here.
                     Description = txtDescription.Text
                 };
                 context.Routes.Add(newRoute);
@@ -157,7 +180,7 @@ namespace BusStationInterface.Forms
                     {
                         RouteID = selectedRouteId,
                         SequenceNumber = Convert.ToInt32(txtSequenceNumber.Text),
-                        LocationID = Convert.ToInt32(txtLocation.Text),  // Assuming this is an ID. If not, some lookup may be needed.
+                        LocationID = Convert.ToInt32(cmbDetailLocation.Text),  // Assuming this is an ID. If not, some lookup may be needed.
                         Time = timeSpanValue,
                         Description = txtRouteDetailDescription.Text
                     };
@@ -168,7 +191,7 @@ namespace BusStationInterface.Forms
             }
         }
 
-    private void btnSaveRoutesEdit_Click(object sender, EventArgs e)
+        private void btnSaveRoutesEdit_Click(object sender, EventArgs e)
         {
             LoadRoutes();
         }
@@ -193,15 +216,27 @@ namespace BusStationInterface.Forms
         }
         private void RDForm_Load(object sender, EventArgs e)
         {
+            dataGridViewRoutes.EditMode = DataGridViewEditMode.EditOnEnter;
+            dataGridViewRouteDetails.EditMode = DataGridViewEditMode.EditOnEnter;
+
+            cmbStartDestination.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbStartDestination.AutoCompleteSource = AutoCompleteSource.ListItems;
             dataGridViewRoutes.ReadOnly = false;
             dataGridViewRouteDetails.ReadOnly = false;
+
+            cmbStartDestination.Text = string.Empty;
+            cmbEndDestination.Text = string.Empty;
+            cmbDetailLocation.Text = string.Empty;
         }
 
         private void EnableUserEdits()
         {
             // Set the DataGridView's EditMode property to allow user edits
-            dataGridViewRoutes.EditMode = DataGridViewEditMode.EditOnEnter;
-            dataGridViewRouteDetails.EditMode = DataGridViewEditMode.EditOnEnter;
+
+
+            cmbEndDestination.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbEndDestination.AutoCompleteSource = AutoCompleteSource.ListItems;
+
         }
     }
 }
