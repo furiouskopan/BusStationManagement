@@ -72,6 +72,7 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
+            btnEditRD = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -390,7 +391,7 @@
             btnEditRoute.TabIndex = 14;
             btnEditRoute.Text = "Edit Routes";
             btnEditRoute.UseVisualStyleBackColor = true;
-            btnEditRoute.Click += btnEditRoute_Click;
+            //btnEditRoute.Click += btnEditRoute_Click;
             // 
             // dataGridViewRouteDetails
             // 
@@ -453,7 +454,7 @@
             btnEditRouteDetails.TabIndex = 16;
             btnEditRouteDetails.Text = "Edit Route Details";
             btnEditRouteDetails.UseVisualStyleBackColor = true;
-            btnEditRouteDetails.Click += btnEditRouteDetails_Click;
+            //btnEditRouteDetails.Click += btnEditRouteDetails_Click;
             // 
             // label5
             // 
@@ -486,12 +487,24 @@
             label7.TabIndex = 19;
             label7.Text = "EXPRESS";
             // 
+            // btnEditRD
+            // 
+            btnEditRD.Location = new Point(422, 563);
+            btnEditRD.Margin = new Padding(3, 2, 3, 2);
+            btnEditRD.Name = "btnEditRD";
+            btnEditRD.Size = new Size(94, 42);
+            btnEditRD.TabIndex = 20;
+            btnEditRD.Text = "Edit RD";
+            btnEditRD.UseVisualStyleBackColor = true;
+            btnEditRD.Click += btnEditRD_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
             ClientSize = new Size(1509, 622);
+            Controls.Add(btnEditRD);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -575,5 +588,6 @@
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn2;
         private Label label6;
         private Label label7;
+        private Button btnEditRD;
     }
 }

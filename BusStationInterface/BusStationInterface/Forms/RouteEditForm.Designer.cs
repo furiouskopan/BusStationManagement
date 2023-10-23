@@ -54,11 +54,12 @@
             dataGridViewDriversOnEditForm.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDriversOnEditForm.Columns.AddRange(new DataGridViewColumn[] { routeIDDataGridViewTextBoxColumn, startDestinationIDDataGridViewTextBoxColumn, endDestinationIDDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn, schedulesDataGridViewTextBoxColumn, routeDetailsDataGridViewTextBoxColumn });
             dataGridViewDriversOnEditForm.DataSource = routeBindingSource;
-            dataGridViewDriversOnEditForm.Location = new Point(12, 12);
+            dataGridViewDriversOnEditForm.Location = new Point(10, 9);
+            dataGridViewDriversOnEditForm.Margin = new Padding(3, 2, 3, 2);
             dataGridViewDriversOnEditForm.Name = "dataGridViewDriversOnEditForm";
             dataGridViewDriversOnEditForm.RowHeadersWidth = 51;
             dataGridViewDriversOnEditForm.RowTemplate.Height = 29;
-            dataGridViewDriversOnEditForm.Size = new Size(1057, 188);
+            dataGridViewDriversOnEditForm.Size = new Size(925, 141);
             dataGridViewDriversOnEditForm.TabIndex = 0;
             // 
             // routeIDDataGridViewTextBoxColumn
@@ -132,53 +133,60 @@
             // cmbStartDestinations
             // 
             cmbStartDestinations.FormattingEnabled = true;
-            cmbStartDestinations.Location = new Point(34, 221);
+            cmbStartDestinations.Location = new Point(30, 166);
+            cmbStartDestinations.Margin = new Padding(3, 2, 3, 2);
             cmbStartDestinations.Name = "cmbStartDestinations";
-            cmbStartDestinations.Size = new Size(151, 28);
+            cmbStartDestinations.Size = new Size(133, 23);
             cmbStartDestinations.TabIndex = 1;
             // 
             // cmbEndDestinations
             // 
             cmbEndDestinations.FormattingEnabled = true;
-            cmbEndDestinations.Location = new Point(191, 221);
+            cmbEndDestinations.Location = new Point(167, 166);
+            cmbEndDestinations.Margin = new Padding(3, 2, 3, 2);
             cmbEndDestinations.Name = "cmbEndDestinations";
-            cmbEndDestinations.Size = new Size(151, 28);
+            cmbEndDestinations.Size = new Size(133, 23);
             cmbEndDestinations.TabIndex = 2;
             // 
             // txtRouteID
             // 
-            txtRouteID.Location = new Point(363, 221);
+            txtRouteID.Location = new Point(318, 166);
+            txtRouteID.Margin = new Padding(3, 2, 3, 2);
             txtRouteID.Name = "txtRouteID";
-            txtRouteID.Size = new Size(125, 27);
+            txtRouteID.Size = new Size(110, 23);
             txtRouteID.TabIndex = 3;
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(494, 221);
+            txtDescription.Location = new Point(432, 166);
+            txtDescription.Margin = new Padding(3, 2, 3, 2);
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(125, 27);
+            txtDescription.Size = new Size(110, 23);
             txtDescription.TabIndex = 4;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(961, 206);
+            btnSave.Location = new Point(841, 154);
+            btnSave.Margin = new Padding(3, 2, 3, 2);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(108, 44);
+            btnSave.Size = new Size(94, 33);
             btnSave.TabIndex = 5;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click_1;
             // 
             // RouteEditForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1232, 450);
+            ClientSize = new Size(1078, 338);
             Controls.Add(btnSave);
             Controls.Add(txtDescription);
             Controls.Add(txtRouteID);
             Controls.Add(cmbEndDestinations);
             Controls.Add(cmbStartDestinations);
             Controls.Add(dataGridViewDriversOnEditForm);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "RouteEditForm";
             Text = "RouteEditForm";
             ((System.ComponentModel.ISupportInitialize)dataGridViewDriversOnEditForm).EndInit();

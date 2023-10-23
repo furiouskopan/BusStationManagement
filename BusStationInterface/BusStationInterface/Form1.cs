@@ -19,15 +19,16 @@ namespace BusStationInterface
             LoadDrivers();
             LoadDestinations();
             LoadRoutes();
-            using (var context = new BusManagementContext())
-            {
-                var routes = context.Routes
-                    .Include(r => r.StartDestination)
-                    .Include(r => r.EndDestination)
-                    .Include(r => r.RouteDetails)
-                        .ThenInclude(rd => rd.Location)
-                    .ToList();
-            }
+            dataGridViewRouteDetails.DataSource = null;
+            //using (var context = new BusManagementContext())
+            //{
+            //    var routes = context.Routes
+            //        .Include(r => r.StartDestination)
+            //        .Include(r => r.EndDestination)
+            //        .Include(r => r.RouteDetails)
+            //            .ThenInclude(rd => rd.Location)
+            //        .ToList();
+            //}
             dataGridViewRoutes.ClearSelection();
             dataGridViewBuses.ClearSelection();
             dataGridViewDrivers.ClearSelection();
@@ -175,22 +176,6 @@ namespace BusStationInterface
                 LoadDestinations();
             }
         }
-
-        private void btnEditRoute_Click(object sender, EventArgs e)
-        {
-            RouteDataAccess routeDataAccess = new RouteDataAccess();
-
-            // Create an instance of the edit window and pass the route data access
-            RouteEditForm editForm = new RouteEditForm(routeDataAccess);
-
-            // Show the edit window
-            if (editForm.ShowDialog() == DialogResult.OK)
-            {
-                // Reload the routes on the main form after editing
-                LoadRoutes();
-            }
-        }
-
         private void dataGridViewRoutes_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridViewRoutes.SelectedRows.Count > 0)
@@ -210,23 +195,44 @@ namespace BusStationInterface
                 LoadRouteDetails(selectedRoute);
             }
         }
-
-        private void btnEditRouteDetails_Click(object sender, EventArgs e)
+        private void btnEditRD_Click(object sender, EventArgs e)
         {
-            // Check if a row is selected in dataGridViewRouteDetails
-            if (dataGridViewRouteDetails.SelectedRows.Count <= 0) return;
-
-            var selectedRouteDetail = dataGridViewRouteDetails.SelectedRows[0].DataBoundItem as dynamic;
-
-            // Create an instance of the edit window and pass the selected route detail
-            RouteDetailsEditForm editForm = new RouteDetailsEditForm(selectedRouteDetail);
-
-            // Show the edit window and check the DialogResult
-            if (editForm.ShowDialog() == DialogResult.OK)
-            {
-                // Reload the route details on the main form after editing
-                LoadRouteDetails(selectedRouteDetail);
-            }
+            RDForm rdForm = new RDForm();
+            rdForm.ShowDialog();
+            LoadRoutes();
         }
+
+        //private void btnEditRoute_Click(object sender, EventArgs e)
+        //{
+        //    RouteDataAccess routeDataAccess = new RouteDataAccess();
+
+        //    // Create an instance of the edit window and pass the route data access
+        //    RouteEditForm editForm = new RouteEditForm(routeDataAccess);
+
+        //    // Show the edit window
+        //    if (editForm.ShowDialog() == DialogResult.OK)
+        //    {
+        //        // Reload the routes on the main form after editing
+        //        LoadRoutes();
+        //    }
+        //}
+        //private void btnEditRouteDetails_Click(object sender, EventArgs e)
+        //{
+        //    // Check if a row is selected in dataGridViewRouteDetails
+        //    if (dataGridViewRouteDetails.SelectedRows.Count <= 0) return;
+
+        //    var selectedRouteDetail = dataGridViewRouteDetails.SelectedRows[0].DataBoundItem as dynamic;
+
+        //    // Create an instance of the edit window and pass the selected route detail
+        //    RouteDetailsEditForm editForm = new RouteDetailsEditForm(selectedRouteDetail);
+
+        //    // Show the edit window and check the DialogResult
+        //    if (editForm.ShowDialog() == DialogResult.OK)
+        //    {
+        //        // Reload the route details on the main form after editing
+        //        LoadRouteDetails(selectedRouteDetail);
+        //    }
+        //}
+
     }
 }

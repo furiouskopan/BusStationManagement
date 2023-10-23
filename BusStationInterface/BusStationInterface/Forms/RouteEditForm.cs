@@ -65,5 +65,10 @@ namespace BusStationInterface.Forms
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
