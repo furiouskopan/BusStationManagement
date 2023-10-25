@@ -19,7 +19,6 @@ namespace BusStationInterface.Forms
         {
             InitializeComponent();
             LoadData(); // Load data when the form is initialized.
-            EnableUserEdits();
         }
 
         private void LoadData()
@@ -149,8 +148,8 @@ namespace BusStationInterface.Forms
             {
                 var newRoute = new Route
                 {
-                    StartDestinationID = Convert.ToInt32(cmbStartDestination.Text), // Assuming this is an ID. If not, some lookup may be needed.
-                    EndDestinationID = Convert.ToInt32(cmbEndDestination.Text),     // Similarly here.
+                    StartDestinationID = Convert.ToInt32(cmbStartDestination.SelectedValue),
+                    EndDestinationID = Convert.ToInt32(cmbEndDestination.SelectedValue),
                     Description = txtDescription.Text
                 };
                 context.Routes.Add(newRoute);
@@ -171,7 +170,6 @@ namespace BusStationInterface.Forms
                     TimeSpan timeSpanValue;
                     if (!TimeSpan.TryParse(txtTime.Text, out timeSpanValue))
                     {
-                        // Handle invalid time format
                         MessageBox.Show("Please enter a valid time format (e.g., 'hh:mm:ss').");
                         return;
                     }
@@ -180,19 +178,23 @@ namespace BusStationInterface.Forms
                     {
                         RouteID = selectedRouteId,
                         SequenceNumber = Convert.ToInt32(txtSequenceNumber.Text),
-                        LocationID = Convert.ToInt32(cmbDetailLocation.Text),  // Assuming this is an ID. If not, some lookup may be needed.
+                        LocationID = Convert.ToInt32(cmbDetailLocation.SelectedValue),
                         Time = timeSpanValue,
                         Description = txtRouteDetailDescription.Text
                     };
                     context.RouteDetails.Add(newRouteDetail);
                     context.SaveChanges();
                 }
-                LoadRouteDetails(selectedItem as Route); // Refresh the route details.
+                LoadRouteDetails(selectedItem as Route);
             }
         }
 
         private void btnSaveRoutesEdit_Click(object sender, EventArgs e)
         {
+            using (var context = new BusManagementContext())
+            {
+                context.SaveChanges();
+            }
             LoadRoutes();
         }
         private void btnDeleteRoute_Click(object sender, EventArgs e)
@@ -214,29 +216,52 @@ namespace BusStationInterface.Forms
                 LoadRoutes();
             }
         }
+        private void btnDeleteRouteDetail_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridViewRouteDetails.SelectedRows.Count > 0)
+                {
+                    var selectedItem = dataGridViewRouteDetails.SelectedRows[0].DataBoundItem as dynamic;
+                    int selectedRouteDetailId = selectedItem.RouteDetailID;
+
+                    using (var context = new BusManagementContext())
+                    {
+                        var routeDetailToDelete = context.RouteDetails.FirstOrDefault(rd => rd.RouteDetailID == selectedRouteDetailId);
+                        if (routeDetailToDelete != null)
+                        {
+                            context.RouteDetails.Remove(routeDetailToDelete);
+                            context.SaveChanges();
+                        }
+                    }
+                    LoadRouteDetails(selectedItem as Route); // Refresh the DataGridView.
+                }
+                else
+                {
+                    MessageBox.Show($"An error occurred:");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
+
         private void RDForm_Load(object sender, EventArgs e)
         {
-            dataGridViewRoutes.EditMode = DataGridViewEditMode.EditOnEnter;
-            dataGridViewRouteDetails.EditMode = DataGridViewEditMode.EditOnEnter;
-
             cmbStartDestination.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cmbStartDestination.AutoCompleteSource = AutoCompleteSource.ListItems;
-            dataGridViewRoutes.ReadOnly = false;
-            dataGridViewRouteDetails.ReadOnly = false;
 
             cmbStartDestination.Text = string.Empty;
             cmbEndDestination.Text = string.Empty;
             cmbDetailLocation.Text = string.Empty;
-        }
 
-        private void EnableUserEdits()
-        {
-            // Set the DataGridView's EditMode property to allow user edits
-
-
-            cmbEndDestination.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cmbEndDestination.AutoCompleteSource = AutoCompleteSource.ListItems;
-
+            dataGridViewRoutes.RowHeadersVisible = false;
+            dataGridViewRoutes.ReadOnly = false;
+            dataGridViewRouteDetails.RowHeadersVisible = false;
+            dataGridViewRouteDetails.ReadOnly = false;
         }
     }
 }
