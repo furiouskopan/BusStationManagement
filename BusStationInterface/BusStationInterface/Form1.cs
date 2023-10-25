@@ -112,7 +112,8 @@ namespace BusStationInterface
                     // Fetch route details based on the selected route with associated Location
                     var routeDetailsWithLocation = context.RouteDetails
                         .Where(rd => rd.RouteID == selectedRoute.RouteID)
-                        .Include(rd => rd.Location)  // This line ensures the Location is loaded
+                        .Include(rd => rd.Location)
+                        .OrderBy(rd => rd.SequenceNumber)
                         .Select(rd => new
                         {
                             rd.RouteDetailID,

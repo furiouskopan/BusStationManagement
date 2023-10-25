@@ -76,6 +76,7 @@ namespace BusStationInterface.Forms
                 {
                     // Fetch route details based on the selected route with associated Location
                     var routeDetailsWithLocation = context.RouteDetails
+                        .OrderBy(rd => rd.SequenceNumber)
                         .Where(rd => rd.RouteID == selectedRoute.RouteID)
                         .Include(rd => rd.Location)
                         .Select(rd => new
