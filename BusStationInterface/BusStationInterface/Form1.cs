@@ -19,6 +19,7 @@ namespace BusStationInterface
             LoadDrivers();
             LoadDestinations();
             LoadRoutes();
+            timer1.Start();
             dataGridViewRouteDetails.DataSource = null;
             //using (var context = new BusManagementContext())
             //{
@@ -203,37 +204,9 @@ namespace BusStationInterface
             LoadRoutes();
         }
 
-        //private void btnEditRoute_Click(object sender, EventArgs e)
-        //{
-        //    RouteDataAccess routeDataAccess = new RouteDataAccess();
-
-        //    // Create an instance of the edit window and pass the route data access
-        //    RouteEditForm editForm = new RouteEditForm(routeDataAccess);
-
-        //    // Show the edit window
-        //    if (editForm.ShowDialog() == DialogResult.OK)
-        //    {
-        //        // Reload the routes on the main form after editing
-        //        LoadRoutes();
-        //    }
-        //}
-        //private void btnEditRouteDetails_Click(object sender, EventArgs e)
-        //{
-        //    // Check if a row is selected in dataGridViewRouteDetails
-        //    if (dataGridViewRouteDetails.SelectedRows.Count <= 0) return;
-
-        //    var selectedRouteDetail = dataGridViewRouteDetails.SelectedRows[0].DataBoundItem as dynamic;
-
-        //    // Create an instance of the edit window and pass the selected route detail
-        //    RouteDetailsEditForm editForm = new RouteDetailsEditForm(selectedRouteDetail);
-
-        //    // Show the edit window and check the DialogResult
-        //    if (editForm.ShowDialog() == DialogResult.OK)
-        //    {
-        //        // Reload the route details on the main form after editing
-        //        LoadRouteDetails(selectedRouteDetail);
-        //    }
-        //}
-
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblTimer.Text = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+        }
     }
 }

@@ -207,6 +207,7 @@
             dataGridViewRouteDetails.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewRouteDetails.Size = new Size(461, 289);
             dataGridViewRouteDetails.TabIndex = 8;
+            dataGridViewRouteDetails.CellEndEdit += dataGridViewRouteDetails_CellEndEdit;
             // 
             // sequenceNumberDataGridViewTextBoxColumn
             // 

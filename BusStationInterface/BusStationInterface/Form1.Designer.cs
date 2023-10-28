@@ -71,6 +71,8 @@
             label6 = new Label();
             label7 = new Label();
             btnEditRD = new Button();
+            timer1 = new System.Windows.Forms.Timer(components);
+            lblTimer = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -96,7 +98,8 @@
             dataGridViewBuses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewBuses.Columns.AddRange(new DataGridViewColumn[] { busIDDataGridViewTextBoxColumn, busTypeDataGridViewTextBoxColumn, totalSeatsDataGridViewTextBoxColumn });
             dataGridViewBuses.DataSource = busBindingSource;
-            dataGridViewBuses.Location = new Point(21, 101);
+            dataGridViewBuses.Location = new Point(24, 135);
+            dataGridViewBuses.Margin = new Padding(3, 4, 3, 4);
             dataGridViewBuses.Name = "dataGridViewBuses";
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.ControlLight;
@@ -109,7 +112,7 @@
             dataGridViewBuses.RowHeadersVisible = false;
             dataGridViewBuses.RowHeadersWidth = 51;
             dataGridViewBuses.RowTemplate.Height = 25;
-            dataGridViewBuses.Size = new Size(151, 150);
+            dataGridViewBuses.Size = new Size(173, 200);
             dataGridViewBuses.TabIndex = 0;
             // 
             // busIDDataGridViewTextBoxColumn
@@ -145,9 +148,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(21, 72);
+            label1.Location = new Point(24, 96);
             label1.Name = "label1";
-            label1.Size = new Size(94, 25);
+            label1.Size = new Size(115, 32);
             label1.TabIndex = 1;
             label1.Text = "All Buses\r\n";
             // 
@@ -155,9 +158,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(225, 74);
+            label2.Location = new Point(257, 99);
             label2.Name = "label2";
-            label2.Size = new Size(105, 25);
+            label2.Size = new Size(130, 32);
             label2.TabIndex = 2;
             label2.Text = "All Drivers";
             // 
@@ -173,12 +176,13 @@
             dataGridViewDrivers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDrivers.Columns.AddRange(new DataGridViewColumn[] { driverIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, contactInformationDataGridViewTextBoxColumn });
             dataGridViewDrivers.DataSource = driverBindingSource;
-            dataGridViewDrivers.Location = new Point(225, 102);
+            dataGridViewDrivers.Location = new Point(257, 136);
+            dataGridViewDrivers.Margin = new Padding(3, 4, 3, 4);
             dataGridViewDrivers.Name = "dataGridViewDrivers";
             dataGridViewDrivers.RowHeadersWidth = 51;
             dataGridViewDrivers.RowTemplate.Height = 25;
             dataGridViewDrivers.ScrollBars = ScrollBars.Vertical;
-            dataGridViewDrivers.Size = new Size(273, 149);
+            dataGridViewDrivers.Size = new Size(312, 199);
             dataGridViewDrivers.TabIndex = 3;
             // 
             // driverIDDataGridViewTextBoxColumn
@@ -207,9 +211,10 @@
             // 
             // btnEditBus
             // 
-            btnEditBus.Location = new Point(21, 257);
+            btnEditBus.Location = new Point(24, 343);
+            btnEditBus.Margin = new Padding(3, 4, 3, 4);
             btnEditBus.Name = "btnEditBus";
-            btnEditBus.Size = new Size(90, 40);
+            btnEditBus.Size = new Size(103, 53);
             btnEditBus.TabIndex = 4;
             btnEditBus.Text = "Edit Buses";
             btnEditBus.UseVisualStyleBackColor = true;
@@ -217,9 +222,10 @@
             // 
             // btnEditDriver
             // 
-            btnEditDriver.Location = new Point(225, 257);
+            btnEditDriver.Location = new Point(257, 343);
+            btnEditDriver.Margin = new Padding(3, 4, 3, 4);
             btnEditDriver.Name = "btnEditDriver";
-            btnEditDriver.Size = new Size(90, 40);
+            btnEditDriver.Size = new Size(103, 53);
             btnEditDriver.TabIndex = 5;
             btnEditDriver.Text = "Edit Drivers";
             btnEditDriver.UseVisualStyleBackColor = true;
@@ -235,12 +241,13 @@
             dataGridViewDestinations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDestinations.Columns.AddRange(new DataGridViewColumn[] { destinationIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn1, descriptionDataGridViewTextBoxColumn });
             dataGridViewDestinations.DataSource = destinationBindingSource;
-            dataGridViewDestinations.Location = new Point(548, 105);
+            dataGridViewDestinations.Location = new Point(626, 140);
+            dataGridViewDestinations.Margin = new Padding(3, 4, 3, 4);
             dataGridViewDestinations.Name = "dataGridViewDestinations";
             dataGridViewDestinations.ReadOnly = true;
             dataGridViewDestinations.RowHeadersWidth = 51;
             dataGridViewDestinations.RowTemplate.Height = 25;
-            dataGridViewDestinations.Size = new Size(373, 150);
+            dataGridViewDestinations.Size = new Size(426, 200);
             dataGridViewDestinations.TabIndex = 6;
             // 
             // destinationIDDataGridViewTextBoxColumn
@@ -278,17 +285,18 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft JhengHei", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(548, 75);
+            label3.Location = new Point(626, 100);
             label3.Name = "label3";
-            label3.Size = new Size(167, 27);
+            label3.Size = new Size(212, 34);
             label3.TabIndex = 7;
             label3.Text = "All Destinations";
             // 
             // btnEditDestinations
             // 
-            btnEditDestinations.Location = new Point(787, 261);
+            btnEditDestinations.Location = new Point(899, 348);
+            btnEditDestinations.Margin = new Padding(3, 4, 3, 4);
             btnEditDestinations.Name = "btnEditDestinations";
-            btnEditDestinations.Size = new Size(134, 40);
+            btnEditDestinations.Size = new Size(153, 53);
             btnEditDestinations.TabIndex = 8;
             btnEditDestinations.Text = "Edit Destinations";
             btnEditDestinations.UseVisualStyleBackColor = true;
@@ -298,9 +306,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(25, 318);
+            label4.Location = new Point(29, 424);
             label4.Name = "label4";
-            label4.Size = new Size(106, 25);
+            label4.Size = new Size(130, 32);
             label4.TabIndex = 9;
             label4.Text = "All Routes";
             // 
@@ -311,13 +319,12 @@
             dataGridViewRoutes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewRoutes.Columns.AddRange(new DataGridViewColumn[] { descriptionDataGridViewTextBoxColumn1, startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn });
             dataGridViewRoutes.DataSource = routeBindingSource1;
-            dataGridViewRoutes.Location = new Point(17, 370);
-            dataGridViewRoutes.Margin = new Padding(3, 2, 3, 2);
+            dataGridViewRoutes.Location = new Point(19, 493);
             dataGridViewRoutes.Name = "dataGridViewRoutes";
             dataGridViewRoutes.RowHeadersWidth = 51;
             dataGridViewRoutes.RowTemplate.Height = 29;
             dataGridViewRoutes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewRoutes.Size = new Size(430, 189);
+            dataGridViewRoutes.Size = new Size(491, 252);
             dataGridViewRoutes.TabIndex = 10;
             dataGridViewRoutes.SelectionChanged += dataGridViewRoutes_SelectionChanged;
             // 
@@ -356,26 +363,23 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(290, 343);
-            comboBox1.Margin = new Padding(3, 2, 3, 2);
+            comboBox1.Location = new Point(331, 457);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(157, 23);
+            comboBox1.Size = new Size(179, 28);
             comboBox1.TabIndex = 11;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(17, 345);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Location = new Point(19, 460);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(143, 23);
+            textBox1.Size = new Size(163, 27);
             textBox1.TabIndex = 12;
             // 
             // btnSearchRoute
             // 
-            btnSearchRoute.Location = new Point(166, 343);
-            btnSearchRoute.Margin = new Padding(3, 2, 3, 2);
+            btnSearchRoute.Location = new Point(190, 457);
             btnSearchRoute.Name = "btnSearchRoute";
-            btnSearchRoute.Size = new Size(82, 25);
+            btnSearchRoute.Size = new Size(94, 33);
             btnSearchRoute.TabIndex = 13;
             btnSearchRoute.Text = "Search";
             btnSearchRoute.UseVisualStyleBackColor = true;
@@ -387,13 +391,12 @@
             dataGridViewRouteDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { sequenceNumberDataGridViewTextBoxColumn, LocationName, timeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn2 });
             dataGridViewRouteDetails.DataSource = routeDetailBindingSource;
-            dataGridViewRouteDetails.Location = new Point(493, 370);
-            dataGridViewRouteDetails.Margin = new Padding(3, 2, 3, 2);
+            dataGridViewRouteDetails.Location = new Point(563, 493);
             dataGridViewRouteDetails.Name = "dataGridViewRouteDetails";
             dataGridViewRouteDetails.RowHeadersVisible = false;
             dataGridViewRouteDetails.RowHeadersWidth = 51;
             dataGridViewRouteDetails.RowTemplate.Height = 29;
-            dataGridViewRouteDetails.Size = new Size(428, 189);
+            dataGridViewRouteDetails.Size = new Size(489, 252);
             dataGridViewRouteDetails.TabIndex = 15;
             // 
             // sequenceNumberDataGridViewTextBoxColumn
@@ -436,9 +439,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(498, 336);
+            label5.Location = new Point(569, 448);
             label5.Name = "label5";
-            label5.Size = new Size(220, 25);
+            label5.Size = new Size(274, 32);
             label5.TabIndex = 17;
             label5.Text = "Selected Route Details";
             // 
@@ -446,9 +449,9 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Copperplate Gothic Bold", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(20, 28);
+            label6.Location = new Point(23, 37);
             label6.Name = "label6";
-            label6.Size = new Size(83, 33);
+            label6.Size = new Size(105, 41);
             label6.TabIndex = 18;
             label6.Text = "BUS";
             // 
@@ -457,29 +460,46 @@
             label7.AutoSize = true;
             label7.Font = new Font("Copperplate Gothic Bold", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(96, 28);
+            label7.Location = new Point(134, 37);
             label7.Name = "label7";
-            label7.Size = new Size(168, 33);
+            label7.Size = new Size(214, 41);
             label7.TabIndex = 19;
             label7.Text = "EXPRESS";
             // 
             // btnEditRD
             // 
-            btnEditRD.Location = new Point(422, 563);
-            btnEditRD.Margin = new Padding(3, 2, 3, 2);
+            btnEditRD.Location = new Point(482, 751);
             btnEditRD.Name = "btnEditRD";
-            btnEditRD.Size = new Size(94, 42);
+            btnEditRD.Size = new Size(107, 56);
             btnEditRD.TabIndex = 20;
             btnEditRD.Text = "Edit RD";
             btnEditRD.UseVisualStyleBackColor = true;
             btnEditRD.Click += btnEditRD_Click;
             // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
+            // lblTimer
+            // 
+            lblTimer.AutoSize = true;
+            lblTimer.Dock = DockStyle.Right;
+            lblTimer.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTimer.ForeColor = Color.Red;
+            lblTimer.Location = new Point(1629, 0);
+            lblTimer.Margin = new Padding(0, 50, 0, 50);
+            lblTimer.Name = "lblTimer";
+            lblTimer.Size = new Size(96, 38);
+            lblTimer.TabIndex = 21;
+            lblTimer.Text = "label8";
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
-            ClientSize = new Size(1509, 622);
+            ClientSize = new Size(1725, 829);
+            Controls.Add(lblTimer);
             Controls.Add(btnEditRD);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -499,6 +519,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dataGridViewBuses);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Bus Station";
             Load += Form1_Load;
@@ -561,5 +582,7 @@
         private Label label6;
         private Label label7;
         private Button btnEditRD;
+        private System.Windows.Forms.Timer timer1;
+        private Label lblTimer;
     }
 }

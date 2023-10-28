@@ -175,10 +175,24 @@ namespace BusStationInterface.Forms
                         return;
                     }
 
+                    int desiredSequenceNumber = Convert.ToInt32(txtSequenceNumber.Text);
+
+                    var existingDetail = context.RouteDetails.FirstOrDefault(rd => rd.SequenceNumber == desiredSequenceNumber && rd.RouteID == selectedRouteId);
+
+                    if (existingDetail != null)
+                    {
+                        // Increment sequence numbers of all subsequent route details for the selected route
+                        var detailsToUpdate = context.RouteDetails.Where(rd => rd.SequenceNumber >= desiredSequenceNumber && rd.RouteID == selectedRouteId);
+                        foreach (var detail in detailsToUpdate)
+                        {
+                            detail.SequenceNumber++;
+                        }
+                    }
+
                     var newRouteDetail = new RouteDetail
                     {
                         RouteID = selectedRouteId,
-                        SequenceNumber = Convert.ToInt32(txtSequenceNumber.Text),
+                        SequenceNumber = desiredSequenceNumber,
                         LocationID = Convert.ToInt32(cmbDetailLocation.SelectedValue),
                         Time = timeSpanValue,
                         Description = txtRouteDetailDescription.Text
@@ -189,6 +203,7 @@ namespace BusStationInterface.Forms
                 LoadRouteDetails(selectedItem as Route);
             }
         }
+
 
         private void btnSaveRoutesEdit_Click(object sender, EventArgs e)
         {
@@ -219,36 +234,30 @@ namespace BusStationInterface.Forms
         }
         private void btnDeleteRouteDetail_Click(object sender, EventArgs e)
         {
-            try
+            if (dataGridViewRouteDetails.SelectedRows.Count > 0)
             {
-                if (dataGridViewRouteDetails.SelectedRows.Count > 0)
-                {
-                    var selectedItem = dataGridViewRouteDetails.SelectedRows[0].DataBoundItem as dynamic;
-                    int selectedRouteDetailId = selectedItem.RouteDetailID;
+                var selectedItem = dataGridViewRouteDetails.SelectedRows[0].DataBoundItem as dynamic;
+                int selectedRouteDetailId = selectedItem.RouteDetailID;
 
-                    using (var context = new BusManagementContext())
+                using (var context = new BusManagementContext())
+                {
+                    var routeDetailToDelete = context.RouteDetails.FirstOrDefault(rd => rd.RouteDetailID == selectedRouteDetailId);
+                    if (routeDetailToDelete != null)
                     {
-                        var routeDetailToDelete = context.RouteDetails.FirstOrDefault(rd => rd.RouteDetailID == selectedRouteDetailId);
-                        if (routeDetailToDelete != null)
+                        // Decrement sequence numbers of all subsequent route details for the selected route
+                        var detailsToUpdate = context.RouteDetails.Where(rd => rd.SequenceNumber > routeDetailToDelete.SequenceNumber && rd.RouteID == routeDetailToDelete.RouteID);
+                        foreach (var detail in detailsToUpdate)
                         {
-                            context.RouteDetails.Remove(routeDetailToDelete);
-                            context.SaveChanges();
+                            detail.SequenceNumber--;
                         }
-                    }
-                    LoadRouteDetails(selectedItem as Route); // Refresh the DataGridView.
-                }
-                else
-                {
-                    MessageBox.Show($"An error occurred:");
 
+                        context.RouteDetails.Remove(routeDetailToDelete);
+                        context.SaveChanges();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                LoadRouteDetails(selectedItem as Route); // Refresh the DataGridView.
             }
         }
-
 
         private void RDForm_Load(object sender, EventArgs e)
         {
@@ -263,6 +272,34 @@ namespace BusStationInterface.Forms
             dataGridViewRoutes.ReadOnly = false;
             dataGridViewRouteDetails.RowHeadersVisible = false;
             dataGridViewRouteDetails.ReadOnly = false;
+        }
+
+        private void dataGridViewRouteDetails_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            var cell = dataGridViewRouteDetails.Rows[e.RowIndex].Cells[e.ColumnIndex];
+    var columnName = dataGridViewRouteDetails.Columns[e.ColumnIndex].Name;
+
+    // Assuming RouteDetailID is the primary key for your RouteDetails table.
+    var routeDetailId = Convert.ToInt32(dataGridViewRouteDetails.Rows[e.RowIndex].Cells["RouteDetailID"].Value);
+
+    using (var context = new BusManagementContext())
+    {
+        var routeDetail = context.RouteDetails.FirstOrDefault(rd => rd.RouteDetailID == routeDetailId);
+        
+        if (routeDetail != null)
+        {
+            if (columnName == "Time")
+            {
+                routeDetail.Time = TimeSpan.Parse(cell.Value.ToString());
+            }
+            else if (columnName == "Description")
+            {
+                routeDetail.Description = cell.Value.ToString();
+            }
+
+            context.SaveChanges();
+        }
+    }
         }
     }
 }
