@@ -193,7 +193,6 @@ public class ScheduleDataAccess
                 .Include(s => s.StartDestination)
                 .Include(s => s.EndDestination)
                 .Include(s => s.Bus)
-                .Include(s => s.Day)
                 .Include(s => s.Route)
                     .ThenInclude(r => r.StartDestination)
                 .Include(s => s.Route)

@@ -19,6 +19,7 @@ namespace BusStationInterface
             LoadDrivers();
             LoadDestinations();
             LoadRoutes();
+            LoadSchedules();
             timer1.Start();
             dataGridViewRouteDetails.DataSource = null;
             //using (var context = new BusManagementContext())
