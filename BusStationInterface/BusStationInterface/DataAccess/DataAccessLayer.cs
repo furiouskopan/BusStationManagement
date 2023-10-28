@@ -182,3 +182,56 @@ public class RouteDetailDataAccess
         }
     }
 }
+
+public class ScheduleDataAccess
+{
+    public List<Schedule> GetSchedules()
+    {
+        using (var context = new BusManagementContext())
+        {
+            return context.Schedules
+                .Include(s => s.StartDestination)
+                .Include(s => s.EndDestination)
+                .Include(s => s.Bus)
+                .Include(s => s.Day)
+                .Include(s => s.Route)
+                    .ThenInclude(r => r.StartDestination)
+                .Include(s => s.Route)
+                    .ThenInclude(r => r.EndDestination)
+                .Include(s => s.Driver)
+                .ToList();
+        }
+    }
+
+    public void UpdateSchedule(Schedule updatedSchedule)
+    {
+        using (var context = new BusManagementContext())
+        {
+            context.Schedules.Update(updatedSchedule);
+            context.SaveChanges();
+        }
+    }
+
+    public void AddSchedule(Schedule newSchedule)
+    {
+        using (var context = new BusManagementContext())
+        {
+            context.Schedules.Add(newSchedule);
+            context.SaveChanges();
+        }
+    }
+
+    public void DeleteSchedule(int scheduleID)
+    {
+        using (var context = new BusManagementContext())
+        {
+            Schedule scheduleToDelete = context.Schedules.FirstOrDefault(s => s.ScheduleID == scheduleID);
+            if (scheduleToDelete != null)
+            {
+                context.Schedules.Remove(scheduleToDelete);
+                context.SaveChanges();
+            }
+        }
+    }
+}
+

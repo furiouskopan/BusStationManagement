@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dataGridViewBuses = new DataGridView();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             busTypeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -73,6 +73,9 @@
             btnEditRD = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             lblTimer = new Label();
+            label8 = new Label();
+            btnEditSchedules = new Button();
+            dataGridViewSchedules = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -84,6 +87,7 @@
             ((System.ComponentModel.ISupportInitialize)routeBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRouteDetails).BeginInit();
             ((System.ComponentModel.ISupportInitialize)routeDetailBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSchedules).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewBuses
@@ -101,14 +105,14 @@
             dataGridViewBuses.Location = new Point(24, 135);
             dataGridViewBuses.Margin = new Padding(3, 4, 3, 4);
             dataGridViewBuses.Name = "dataGridViewBuses";
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.ControlLight;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewBuses.RowHeadersVisible = false;
             dataGridViewBuses.RowHeadersWidth = 51;
             dataGridViewBuses.RowTemplate.Height = 25;
@@ -493,12 +497,45 @@
             lblTimer.TabIndex = 21;
             lblTimer.Text = "label8";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Microsoft JhengHei", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(1121, 95);
+            label8.Name = "label8";
+            label8.Size = new Size(141, 34);
+            label8.TabIndex = 22;
+            label8.Text = "Schedules";
+            // 
+            // btnEditSchedules
+            // 
+            btnEditSchedules.Location = new Point(1554, 348);
+            btnEditSchedules.Name = "btnEditSchedules";
+            btnEditSchedules.Size = new Size(141, 53);
+            btnEditSchedules.TabIndex = 23;
+            btnEditSchedules.Text = "Edit Schedules";
+            btnEditSchedules.UseVisualStyleBackColor = true;
+            btnEditSchedules.Click += btnEditSchedules_Click;
+            // 
+            // dataGridViewSchedules
+            // 
+            dataGridViewSchedules.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewSchedules.Location = new Point(1112, 142);
+            dataGridViewSchedules.Name = "dataGridViewSchedules";
+            dataGridViewSchedules.RowHeadersWidth = 51;
+            dataGridViewSchedules.RowTemplate.Height = 29;
+            dataGridViewSchedules.Size = new Size(583, 200);
+            dataGridViewSchedules.TabIndex = 24;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
             ClientSize = new Size(1725, 829);
+            Controls.Add(dataGridViewSchedules);
+            Controls.Add(btnEditSchedules);
+            Controls.Add(label8);
             Controls.Add(lblTimer);
             Controls.Add(btnEditRD);
             Controls.Add(label7);
@@ -534,6 +571,7 @@
             ((System.ComponentModel.ISupportInitialize)routeBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRouteDetails).EndInit();
             ((System.ComponentModel.ISupportInitialize)routeDetailBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSchedules).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -584,5 +622,8 @@
         private Button btnEditRD;
         private System.Windows.Forms.Timer timer1;
         private Label lblTimer;
+        private Label label8;
+        private Button btnEditSchedules;
+        private DataGridView dataGridViewSchedules;
     }
 }

@@ -132,6 +132,15 @@ namespace BusStationInterface
                 }
             }
         }
+        private void LoadSchedules()
+        {
+            ScheduleDataAccess scheduleDataAccess = new ScheduleDataAccess();
+            List<Schedule> schedules = scheduleDataAccess.GetSchedules();
+
+            dataGridViewSchedules.DataSource = schedules;
+            dataGridViewSchedules.RowHeadersVisible = false;
+            dataGridViewSchedules.ReadOnly = true;
+        }
         private void btnEditBus_Click(object sender, EventArgs e)
         {
             // Create an instance of BusDataAccess to pass to the edit form
@@ -207,6 +216,13 @@ namespace BusStationInterface
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblTimer.Text = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+        }
+
+        private void btnEditSchedules_Click(object sender, EventArgs e)
+        {
+            ScheduleEditForm schEditForm = new ScheduleEditForm();
+            schEditForm.ShowDialog();
+            LoadSchedules();
         }
     }
 }

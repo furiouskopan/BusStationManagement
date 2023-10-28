@@ -130,3 +130,4 @@ C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStati
 C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.Forms.RDForm.resources
 C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.Forms.RDForm.resources
 C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.Properties.Resources.resources
+C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.Forms.ScheduleEditForm.resources
