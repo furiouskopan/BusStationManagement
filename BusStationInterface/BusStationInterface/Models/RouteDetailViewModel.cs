@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace BusStationInterface.Models
 {
-    public class RouteDetail
+    public class RouteDetailViewModel
     {
         public int RouteDetailID { get; set; }
         public int RouteID { get; set; }
-        public int LocationID { get; set; } 
+        public int LocationID { get; set; }
+        public string LocationName { get; set; }
         public int SequenceNumber { get; set; }
-        public TimeSpan Time { get; set; } 
-        public string? Description { get; set; }
-
-        // Navigation Properties
-        public Route Route { get; set; }
-        public Destination Location { get; set; }
+        public TimeSpan Time { get; set; }
+        public string Description { get; set; }
     }
 }

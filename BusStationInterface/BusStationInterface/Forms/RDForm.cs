@@ -28,7 +28,20 @@ namespace BusStationInterface.Forms
             LoadDestinationsIntoComboBoxes();
 
             // By default, no route is selected, so load an empty route details DataGridView.
-            //dataGridViewRouteDetails.DataSource = null;
+        }
+        private void RDForm_Load(object sender, EventArgs e)
+        {
+            cmbStartDestination.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbStartDestination.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cmbStartDestination.Text = string.Empty;
+            cmbEndDestination.Text = string.Empty;
+            cmbDetailLocation.Text = string.Empty;
+
+            dataGridViewRoutes.RowHeadersVisible = false;
+            dataGridViewRoutes.ReadOnly = false;
+            dataGridViewRouteDetails.RowHeadersVisible = false;
+            dataGridViewRouteDetails.ReadOnly = false;
         }
 
         private void LoadRoutes()
@@ -60,7 +73,6 @@ namespace BusStationInterface.Forms
             // Populate your user interface controls with the route data including destination information.
             dataGridViewRoutes.DataSource = routesWithDestinations;
             dataGridViewRoutes.RowHeadersVisible = false;
-            dataGridViewRoutes.ReadOnly = true;
         }
 
         private void LoadRouteDetails(Route selectedRoute)
@@ -79,15 +91,15 @@ namespace BusStationInterface.Forms
                         .OrderBy(rd => rd.SequenceNumber)
                         .Where(rd => rd.RouteID == selectedRoute.RouteID)
                         .Include(rd => rd.Location)
-                        .Select(rd => new
+                        .Select(rd => new RouteDetailViewModel
                         {
-                            rd.RouteDetailID,
-                            rd.RouteID,
-                            rd.LocationID,
-                            LocationName = rd.Location.Name,
-                            rd.SequenceNumber,
-                            rd.Time,
-                            rd.Description
+                            RouteDetailID = rd.RouteDetailID,
+                            RouteID = rd.RouteID,
+                            LocationID = rd.LocationID,
+                            LocationName = rd.Location.Name,  // Note the change here
+                            SequenceNumber = rd.SequenceNumber,
+                            Time = rd.Time,
+                            Description = rd.Description
                         })
                         .ToList();
 
@@ -96,7 +108,7 @@ namespace BusStationInterface.Forms
 
                     // Format the DataGridView (customize this as needed):
                     dataGridViewRouteDetails.RowHeadersVisible = false;
-                    dataGridViewRouteDetails.ReadOnly = true;
+                    //dataGridViewRouteDetails.ReadOnly = true;
                 }
             }
         }
@@ -209,9 +221,29 @@ namespace BusStationInterface.Forms
         {
             using (var context = new BusManagementContext())
             {
+                foreach (DataGridViewRow row in dataGridViewRouteDetails.Rows)
+                {
+                    if (row.Cells["RouteDetailID"].Value != null) // Ensure the row is not a new row
+                    {
+                        int routeDetailId = Convert.ToInt32(row.Cells["RouteDetailID"].Value);
+                        RouteDetail existingRouteDetail = context.RouteDetails.Find(routeDetailId);
+
+                        if (existingRouteDetail != null)
+                        {
+                            // Update properties. You can add more as needed.
+                            existingRouteDetail.SequenceNumber = Convert.ToInt32(row.Cells["SequenceNumber"].Value);
+                            existingRouteDetail.Time = (TimeSpan)row.Cells["Time"].Value;
+                            existingRouteDetail.Description = row.Cells["Description"].Value.ToString();
+
+                            // For properties that are foreign keys or need further validation, ensure
+                            // you validate before assigning, to prevent invalid data or exceptions.
+                        }
+                    }
+                }
+
+                // Commit changes to the database.
                 context.SaveChanges();
             }
-            LoadRoutes();
         }
         private void btnDeleteRoute_Click(object sender, EventArgs e)
         {
@@ -257,49 +289,6 @@ namespace BusStationInterface.Forms
                 }
                 LoadRouteDetails(selectedItem as Route); // Refresh the DataGridView.
             }
-        }
-
-        private void RDForm_Load(object sender, EventArgs e)
-        {
-            cmbStartDestination.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cmbStartDestination.AutoCompleteSource = AutoCompleteSource.ListItems;
-
-            cmbStartDestination.Text = string.Empty;
-            cmbEndDestination.Text = string.Empty;
-            cmbDetailLocation.Text = string.Empty;
-
-            dataGridViewRoutes.RowHeadersVisible = false;
-            dataGridViewRoutes.ReadOnly = false;
-            dataGridViewRouteDetails.RowHeadersVisible = false;
-            dataGridViewRouteDetails.ReadOnly = false;
-        }
-
-        private void dataGridViewRouteDetails_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            var cell = dataGridViewRouteDetails.Rows[e.RowIndex].Cells[e.ColumnIndex];
-    var columnName = dataGridViewRouteDetails.Columns[e.ColumnIndex].Name;
-
-    // Assuming RouteDetailID is the primary key for your RouteDetails table.
-    var routeDetailId = Convert.ToInt32(dataGridViewRouteDetails.Rows[e.RowIndex].Cells["RouteDetailID"].Value);
-
-    using (var context = new BusManagementContext())
-    {
-        var routeDetail = context.RouteDetails.FirstOrDefault(rd => rd.RouteDetailID == routeDetailId);
-        
-        if (routeDetail != null)
-        {
-            if (columnName == "Time")
-            {
-                routeDetail.Time = TimeSpan.Parse(cell.Value.ToString());
-            }
-            else if (columnName == "Description")
-            {
-                routeDetail.Description = cell.Value.ToString();
-            }
-
-            context.SaveChanges();
-        }
-    }
         }
     }
 }
