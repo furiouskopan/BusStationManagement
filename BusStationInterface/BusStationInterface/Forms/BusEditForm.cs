@@ -49,7 +49,6 @@ namespace BusStationInterface
                     BusID = Convert.ToInt32(row.Cells["busIDDataGridViewTextBoxColumn"].Value),
                     BusType = row.Cells["busTypeDataGridViewTextBoxColumn"].Value.ToString(),
                     TotalSeats = Convert.ToInt32(row.Cells["totalSeatsDataGridViewTextBoxColumn"].Value)
-                    // Add other properties as needed
                 };
 
                 _busDataAccess.UpdateBus(bus);

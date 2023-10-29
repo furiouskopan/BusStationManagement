@@ -42,6 +42,9 @@ namespace BusStationInterface.Forms
             dataGridViewRoutes.ReadOnly = false;
             dataGridViewRouteDetails.RowHeadersVisible = false;
             dataGridViewRouteDetails.ReadOnly = false;
+
+            dataGridViewRouteDetails.Columns["SequenceNumber"].ReadOnly = true;
+            dataGridViewRouteDetails.Columns["Location"].ReadOnly = true;
         }
 
         private void LoadRoutes()
@@ -216,34 +219,39 @@ namespace BusStationInterface.Forms
             }
         }
 
-
         private void btnSaveRoutesEdit_Click(object sender, EventArgs e)
         {
             using (var context = new BusManagementContext())
             {
                 foreach (DataGridViewRow row in dataGridViewRouteDetails.Rows)
                 {
-                    if (row.Cells["RouteDetailID"].Value != null) // Ensure the row is not a new row
+                    if (row.IsNewRow) continue; // Skip the 'new row' placeholder
+
+                    RouteDetail routeDetail = new RouteDetail
                     {
-                        int routeDetailId = Convert.ToInt32(row.Cells["RouteDetailID"].Value);
-                        RouteDetail existingRouteDetail = context.RouteDetails.Find(routeDetailId);
+                        RouteDetailID = Convert.ToInt32(row.Cells["RouteDetailID"].Value),
+                        RouteID = Convert.ToInt32(row.Cells["RouteID"].Value),
+                        LocationID = Convert.ToInt32(row.Cells["LocationID"].Value),
+                        SequenceNumber = Convert.ToInt32(row.Cells["SequenceNumber"].Value),
+                        Time = TimeSpan.Parse(row.Cells["Time"].Value.ToString()),
+                        Description = row.Cells["Description"].Value.ToString()
+                    };
 
-                        if (existingRouteDetail != null)
-                        {
-                            // Update properties. You can add more as needed.
-                            existingRouteDetail.SequenceNumber = Convert.ToInt32(row.Cells["SequenceNumber"].Value);
-                            existingRouteDetail.Time = (TimeSpan)row.Cells["Time"].Value;
-                            existingRouteDetail.Description = row.Cells["Description"].Value.ToString();
-
-                            // For properties that are foreign keys or need further validation, ensure
-                            // you validate before assigning, to prevent invalid data or exceptions.
-                        }
+                    // Check if it's a new entry or an update
+                    var existingRouteDetail = context.RouteDetails.Find(routeDetail.RouteDetailID);
+                    if (existingRouteDetail != null)
+                    {
+                        context.Entry(existingRouteDetail).CurrentValues.SetValues(routeDetail);
+                    }
+                    else
+                    {
+                        context.RouteDetails.Add(routeDetail);
                     }
                 }
-
-                // Commit changes to the database.
+                // Save all changes
                 context.SaveChanges();
             }
+            MessageBox.Show("Changes saved successfully.");
         }
         private void btnDeleteRoute_Click(object sender, EventArgs e)
         {

@@ -57,11 +57,13 @@
             btnDeleteRoute = new Button();
             btnSaveRoutesEdit = new Button();
             btnDeleteRouteDetail = new Button();
-            sequenceNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            SequenceNumber = new DataGridViewTextBoxColumn();
+            RouteID = new DataGridViewTextBoxColumn();
             RouteDetailID = new DataGridViewTextBoxColumn();
             Location = new DataGridViewTextBoxColumn();
-            timeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descriptionDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            LocationID = new DataGridViewTextBoxColumn();
+            Time = new DataGridViewTextBoxColumn();
+            Description = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRoutes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)routeBindingSource).BeginInit();
@@ -191,7 +193,7 @@
             dataGridViewRouteDetails.AllowUserToResizeRows = false;
             dataGridViewRouteDetails.AutoGenerateColumns = false;
             dataGridViewRouteDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { sequenceNumberDataGridViewTextBoxColumn, RouteDetailID, Location, timeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn1 });
+            dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { SequenceNumber, RouteID, RouteDetailID, Location, LocationID, Time, Description });
             dataGridViewRouteDetails.DataSource = routeDetailBindingSource;
             dataGridViewRouteDetails.Location = new Point(12, 232);
             dataGridViewRouteDetails.Name = "dataGridViewRouteDetails";
@@ -201,7 +203,6 @@
             dataGridViewRouteDetails.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewRouteDetails.Size = new Size(403, 217);
             dataGridViewRouteDetails.TabIndex = 8;
-            //dataGridViewRouteDetails.CellEndEdit += dataGridViewRouteDetails_CellEndEdit;
             // 
             // routeDetailBindingSource
             // 
@@ -335,6 +336,7 @@
             btnSaveRoutesEdit.TabIndex = 13;
             btnSaveRoutesEdit.Text = "Save";
             btnSaveRoutesEdit.UseVisualStyleBackColor = false;
+            btnSaveRoutesEdit.Click += btnSaveRoutesEdit_Click;
             // 
             // btnDeleteRouteDetail
             // 
@@ -346,13 +348,20 @@
             btnDeleteRouteDetail.UseVisualStyleBackColor = true;
             btnDeleteRouteDetail.Click += btnDeleteRouteDetail_Click;
             // 
-            // sequenceNumberDataGridViewTextBoxColumn
+            // SequenceNumber
             // 
-            sequenceNumberDataGridViewTextBoxColumn.DataPropertyName = "SequenceNumber";
-            sequenceNumberDataGridViewTextBoxColumn.HeaderText = "SequenceNumber";
-            sequenceNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
-            sequenceNumberDataGridViewTextBoxColumn.Name = "sequenceNumberDataGridViewTextBoxColumn";
-            sequenceNumberDataGridViewTextBoxColumn.Width = 125;
+            SequenceNumber.DataPropertyName = "SequenceNumber";
+            SequenceNumber.HeaderText = "SequenceNumber";
+            SequenceNumber.MinimumWidth = 6;
+            SequenceNumber.Name = "SequenceNumber";
+            SequenceNumber.Width = 125;
+            // 
+            // RouteID
+            // 
+            RouteID.DataPropertyName = "RouteID";
+            RouteID.HeaderText = "RouteID";
+            RouteID.Name = "RouteID";
+            RouteID.Visible = false;
             // 
             // RouteDetailID
             // 
@@ -369,21 +378,28 @@
             Location.Name = "Location";
             Location.Width = 125;
             // 
-            // timeDataGridViewTextBoxColumn
+            // LocationID
             // 
-            timeDataGridViewTextBoxColumn.DataPropertyName = "Time";
-            timeDataGridViewTextBoxColumn.HeaderText = "Time";
-            timeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
-            timeDataGridViewTextBoxColumn.Width = 125;
+            LocationID.DataPropertyName = "LocationID";
+            LocationID.HeaderText = "LocationID";
+            LocationID.Name = "LocationID";
+            LocationID.Visible = false;
             // 
-            // descriptionDataGridViewTextBoxColumn1
+            // Time
             // 
-            descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            descriptionDataGridViewTextBoxColumn1.HeaderText = "Description";
-            descriptionDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
-            descriptionDataGridViewTextBoxColumn1.Width = 125;
+            Time.DataPropertyName = "Time";
+            Time.HeaderText = "Time";
+            Time.MinimumWidth = 6;
+            Time.Name = "Time";
+            Time.Width = 125;
+            // 
+            // Description
+            // 
+            Description.DataPropertyName = "Description";
+            Description.HeaderText = "Description";
+            Description.MinimumWidth = 6;
+            Description.Name = "Description";
+            Description.Width = 125;
             // 
             // RDForm
             // 
@@ -445,9 +461,14 @@
         private ComboBox cmbDetailLocation;
         private Button btnDeleteRouteDetail;
         private DataGridViewTextBoxColumn sequenceNumberDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn RouteID;
         private DataGridViewTextBoxColumn RouteDetailID;
         private DataGridViewTextBoxColumn Location;
+        private DataGridViewTextBoxColumn LocationID;
         private DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn SequenceNumber;
+        private DataGridViewTextBoxColumn Time;
+        private DataGridViewTextBoxColumn Description;
     }
 }
