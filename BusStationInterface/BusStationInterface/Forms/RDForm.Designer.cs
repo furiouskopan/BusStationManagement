@@ -37,11 +37,15 @@
             cmbStartDestination = new ComboBox();
             txtDescription = new TextBox();
             dataGridViewRoutes = new DataGridView();
-            startDestinationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            endDestinationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             routeBindingSource = new BindingSource(components);
             dataGridViewRouteDetails = new DataGridView();
+            SequenceNumber = new DataGridViewTextBoxColumn();
+            RouteID = new DataGridViewTextBoxColumn();
+            RouteDetailID = new DataGridViewTextBoxColumn();
+            Location = new DataGridViewTextBoxColumn();
+            LocationID = new DataGridViewTextBoxColumn();
+            Time = new DataGridViewTextBoxColumn();
+            Description = new DataGridViewTextBoxColumn();
             routeDetailBindingSource = new BindingSource(components);
             groupBox2 = new GroupBox();
             cmbDetailLocation = new ComboBox();
@@ -57,13 +61,9 @@
             btnDeleteRoute = new Button();
             btnSaveRoutesEdit = new Button();
             btnDeleteRouteDetail = new Button();
-            SequenceNumber = new DataGridViewTextBoxColumn();
-            RouteID = new DataGridViewTextBoxColumn();
-            RouteDetailID = new DataGridViewTextBoxColumn();
-            Location = new DataGridViewTextBoxColumn();
-            LocationID = new DataGridViewTextBoxColumn();
-            Time = new DataGridViewTextBoxColumn();
-            Description = new DataGridViewTextBoxColumn();
+            StartDestination = new DataGridViewTextBoxColumn();
+            EndDestination = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRoutes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)routeBindingSource).BeginInit();
@@ -76,9 +76,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(25, 36);
+            label1.Location = new Point(29, 48);
             label1.Name = "label1";
-            label1.Size = new Size(125, 21);
+            label1.Size = new Size(158, 28);
             label1.TabIndex = 0;
             label1.Text = "Start Destination";
             // 
@@ -86,9 +86,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(25, 76);
+            label2.Location = new Point(29, 101);
             label2.Name = "label2";
-            label2.Size = new Size(119, 21);
+            label2.Size = new Size(150, 28);
             label2.TabIndex = 1;
             label2.Text = "End Destination";
             // 
@@ -96,9 +96,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(25, 115);
+            label3.Location = new Point(29, 153);
             label3.Name = "label3";
-            label3.Size = new Size(89, 21);
+            label3.Size = new Size(112, 28);
             label3.TabIndex = 2;
             label3.Text = "Description";
             // 
@@ -111,9 +111,11 @@
             groupBox1.Controls.Add(txtDescription);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.Location = new Point(12, 25);
+            groupBox1.Location = new Point(14, 33);
+            groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(323, 167);
+            groupBox1.Padding = new Padding(3, 4, 3, 4);
+            groupBox1.Size = new Size(369, 223);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Add Route";
@@ -121,24 +123,27 @@
             // cmbEndDestination
             // 
             cmbEndDestination.FormattingEnabled = true;
-            cmbEndDestination.Location = new Point(169, 76);
+            cmbEndDestination.Location = new Point(193, 101);
+            cmbEndDestination.Margin = new Padding(3, 4, 3, 4);
             cmbEndDestination.Name = "cmbEndDestination";
-            cmbEndDestination.Size = new Size(140, 29);
+            cmbEndDestination.Size = new Size(159, 36);
             cmbEndDestination.TabIndex = 7;
             // 
             // cmbStartDestination
             // 
             cmbStartDestination.FormattingEnabled = true;
-            cmbStartDestination.Location = new Point(169, 36);
+            cmbStartDestination.Location = new Point(193, 48);
+            cmbStartDestination.Margin = new Padding(3, 4, 3, 4);
             cmbStartDestination.Name = "cmbStartDestination";
-            cmbStartDestination.Size = new Size(140, 29);
+            cmbStartDestination.Size = new Size(159, 36);
             cmbStartDestination.TabIndex = 6;
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(169, 115);
+            txtDescription.Location = new Point(193, 153);
+            txtDescription.Margin = new Padding(3, 4, 3, 4);
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(140, 29);
+            txtDescription.Size = new Size(159, 34);
             txtDescription.TabIndex = 5;
             // 
             // dataGridViewRoutes
@@ -147,41 +152,18 @@
             dataGridViewRoutes.AllowUserToResizeRows = false;
             dataGridViewRoutes.AutoGenerateColumns = false;
             dataGridViewRoutes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewRoutes.Columns.AddRange(new DataGridViewColumn[] { startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn });
+            dataGridViewRoutes.Columns.AddRange(new DataGridViewColumn[] { StartDestination, EndDestination, descriptionDataGridViewTextBoxColumn });
             dataGridViewRoutes.DataSource = routeBindingSource;
-            dataGridViewRoutes.Location = new Point(473, 38);
+            dataGridViewRoutes.Location = new Point(541, 51);
+            dataGridViewRoutes.Margin = new Padding(3, 4, 3, 4);
             dataGridViewRoutes.Name = "dataGridViewRoutes";
             dataGridViewRoutes.RowHeadersVisible = false;
             dataGridViewRoutes.RowHeadersWidth = 51;
             dataGridViewRoutes.RowTemplate.Height = 25;
             dataGridViewRoutes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewRoutes.Size = new Size(304, 154);
+            dataGridViewRoutes.Size = new Size(347, 205);
             dataGridViewRoutes.TabIndex = 7;
             dataGridViewRoutes.SelectionChanged += dataGridViewRoutes_SelectionChanged;
-            // 
-            // startDestinationDataGridViewTextBoxColumn
-            // 
-            startDestinationDataGridViewTextBoxColumn.DataPropertyName = "StartDestination";
-            startDestinationDataGridViewTextBoxColumn.HeaderText = "StartDestination";
-            startDestinationDataGridViewTextBoxColumn.MinimumWidth = 6;
-            startDestinationDataGridViewTextBoxColumn.Name = "startDestinationDataGridViewTextBoxColumn";
-            startDestinationDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // endDestinationDataGridViewTextBoxColumn
-            // 
-            endDestinationDataGridViewTextBoxColumn.DataPropertyName = "EndDestination";
-            endDestinationDataGridViewTextBoxColumn.HeaderText = "EndDestination";
-            endDestinationDataGridViewTextBoxColumn.MinimumWidth = 6;
-            endDestinationDataGridViewTextBoxColumn.Name = "endDestinationDataGridViewTextBoxColumn";
-            endDestinationDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            descriptionDataGridViewTextBoxColumn.Width = 125;
             // 
             // routeBindingSource
             // 
@@ -195,158 +177,15 @@
             dataGridViewRouteDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { SequenceNumber, RouteID, RouteDetailID, Location, LocationID, Time, Description });
             dataGridViewRouteDetails.DataSource = routeDetailBindingSource;
-            dataGridViewRouteDetails.Location = new Point(12, 232);
+            dataGridViewRouteDetails.Location = new Point(14, 309);
+            dataGridViewRouteDetails.Margin = new Padding(3, 4, 3, 4);
             dataGridViewRouteDetails.Name = "dataGridViewRouteDetails";
             dataGridViewRouteDetails.RowHeadersVisible = false;
             dataGridViewRouteDetails.RowHeadersWidth = 51;
             dataGridViewRouteDetails.RowTemplate.Height = 25;
             dataGridViewRouteDetails.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewRouteDetails.Size = new Size(403, 217);
+            dataGridViewRouteDetails.Size = new Size(461, 289);
             dataGridViewRouteDetails.TabIndex = 8;
-            // 
-            // routeDetailBindingSource
-            // 
-            routeDetailBindingSource.DataSource = typeof(Models.RouteDetail);
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(cmbDetailLocation);
-            groupBox2.Controls.Add(label7);
-            groupBox2.Controls.Add(txtRouteDetailDescription);
-            groupBox2.Controls.Add(txtSequenceNumber);
-            groupBox2.Controls.Add(label4);
-            groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(txtTime);
-            groupBox2.Controls.Add(label6);
-            groupBox2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox2.Location = new Point(446, 232);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(331, 217);
-            groupBox2.TabIndex = 9;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Add Route Detail";
-            // 
-            // cmbDetailLocation
-            // 
-            cmbDetailLocation.FormattingEnabled = true;
-            cmbDetailLocation.Location = new Point(178, 28);
-            cmbDetailLocation.Name = "cmbDetailLocation";
-            cmbDetailLocation.Size = new Size(140, 29);
-            cmbDetailLocation.TabIndex = 8;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(25, 157);
-            label7.Name = "label7";
-            label7.Size = new Size(89, 21);
-            label7.TabIndex = 6;
-            label7.Text = "Description";
-            // 
-            // txtRouteDetailDescription
-            // 
-            txtRouteDetailDescription.Location = new Point(178, 157);
-            txtRouteDetailDescription.Name = "txtRouteDetailDescription";
-            txtRouteDetailDescription.Size = new Size(140, 29);
-            txtRouteDetailDescription.TabIndex = 7;
-            // 
-            // txtSequenceNumber
-            // 
-            txtSequenceNumber.Location = new Point(178, 71);
-            txtSequenceNumber.Name = "txtSequenceNumber";
-            txtSequenceNumber.Size = new Size(140, 29);
-            txtSequenceNumber.TabIndex = 3;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(25, 115);
-            label4.Name = "label4";
-            label4.Size = new Size(44, 21);
-            label4.TabIndex = 2;
-            label4.Text = "Time";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(25, 28);
-            label5.Name = "label5";
-            label5.Size = new Size(69, 21);
-            label5.TabIndex = 1;
-            label5.Text = "Location";
-            // 
-            // txtTime
-            // 
-            txtTime.Location = new Point(178, 115);
-            txtTime.Name = "txtTime";
-            txtTime.Size = new Size(140, 29);
-            txtTime.TabIndex = 5;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(22, 71);
-            label6.Name = "label6";
-            label6.Size = new Size(139, 21);
-            label6.TabIndex = 0;
-            label6.Text = "Sequence Number";
-            // 
-            // btnAddRoute
-            // 
-            btnAddRoute.Location = new Point(357, 61);
-            btnAddRoute.Name = "btnAddRoute";
-            btnAddRoute.Size = new Size(85, 44);
-            btnAddRoute.TabIndex = 10;
-            btnAddRoute.Text = "Add Route";
-            btnAddRoute.UseVisualStyleBackColor = true;
-            btnAddRoute.Click += btnAddRoute_Click;
-            // 
-            // btnAddRouteDetails
-            // 
-            btnAddRouteDetails.Location = new Point(679, 430);
-            btnAddRouteDetails.Name = "btnAddRouteDetails";
-            btnAddRouteDetails.Size = new Size(85, 44);
-            btnAddRouteDetails.TabIndex = 11;
-            btnAddRouteDetails.Text = "Add Details";
-            btnAddRouteDetails.UseVisualStyleBackColor = true;
-            btnAddRouteDetails.Click += btnAddRouteDetails_Click;
-            // 
-            // btnDeleteRoute
-            // 
-            btnDeleteRoute.Location = new Point(357, 117);
-            btnDeleteRoute.Name = "btnDeleteRoute";
-            btnDeleteRoute.Size = new Size(85, 44);
-            btnDeleteRoute.TabIndex = 12;
-            btnDeleteRoute.Text = "Delete Route";
-            btnDeleteRoute.UseVisualStyleBackColor = true;
-            btnDeleteRoute.Click += btnDeleteRoute_Click;
-            // 
-            // btnSaveRoutesEdit
-            // 
-            btnSaveRoutesEdit.BackColor = Color.LimeGreen;
-            btnSaveRoutesEdit.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSaveRoutesEdit.ForeColor = SystemColors.ControlText;
-            btnSaveRoutesEdit.Location = new Point(344, 508);
-            btnSaveRoutesEdit.Name = "btnSaveRoutesEdit";
-            btnSaveRoutesEdit.Size = new Size(126, 44);
-            btnSaveRoutesEdit.TabIndex = 13;
-            btnSaveRoutesEdit.Text = "Save";
-            btnSaveRoutesEdit.UseVisualStyleBackColor = false;
-            btnSaveRoutesEdit.Click += btnSaveRoutesEdit_Click;
-            // 
-            // btnDeleteRouteDetail
-            // 
-            btnDeleteRouteDetail.Location = new Point(472, 430);
-            btnDeleteRouteDetail.Name = "btnDeleteRouteDetail";
-            btnDeleteRouteDetail.Size = new Size(98, 44);
-            btnDeleteRouteDetail.TabIndex = 12;
-            btnDeleteRouteDetail.Text = "Delete Detail";
-            btnDeleteRouteDetail.UseVisualStyleBackColor = true;
-            btnDeleteRouteDetail.Click += btnDeleteRouteDetail_Click;
             // 
             // SequenceNumber
             // 
@@ -360,15 +199,19 @@
             // 
             RouteID.DataPropertyName = "RouteID";
             RouteID.HeaderText = "RouteID";
+            RouteID.MinimumWidth = 6;
             RouteID.Name = "RouteID";
             RouteID.Visible = false;
+            RouteID.Width = 125;
             // 
             // RouteDetailID
             // 
             RouteDetailID.DataPropertyName = "RouteDetailID";
             RouteDetailID.HeaderText = "RouteDetailID";
+            RouteDetailID.MinimumWidth = 6;
             RouteDetailID.Name = "RouteDetailID";
             RouteDetailID.Visible = false;
+            RouteDetailID.Width = 125;
             // 
             // Location
             // 
@@ -382,8 +225,10 @@
             // 
             LocationID.DataPropertyName = "LocationID";
             LocationID.HeaderText = "LocationID";
+            LocationID.MinimumWidth = 6;
             LocationID.Name = "LocationID";
             LocationID.Visible = false;
+            LocationID.Width = 125;
             // 
             // Time
             // 
@@ -401,11 +246,190 @@
             Description.Name = "Description";
             Description.Width = 125;
             // 
+            // routeDetailBindingSource
+            // 
+            routeDetailBindingSource.DataSource = typeof(Models.RouteDetail);
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(cmbDetailLocation);
+            groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(txtRouteDetailDescription);
+            groupBox2.Controls.Add(txtSequenceNumber);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(label5);
+            groupBox2.Controls.Add(txtTime);
+            groupBox2.Controls.Add(label6);
+            groupBox2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox2.Location = new Point(510, 309);
+            groupBox2.Margin = new Padding(3, 4, 3, 4);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new Padding(3, 4, 3, 4);
+            groupBox2.Size = new Size(378, 289);
+            groupBox2.TabIndex = 9;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Add Route Detail";
+            // 
+            // cmbDetailLocation
+            // 
+            cmbDetailLocation.FormattingEnabled = true;
+            cmbDetailLocation.Location = new Point(203, 37);
+            cmbDetailLocation.Margin = new Padding(3, 4, 3, 4);
+            cmbDetailLocation.Name = "cmbDetailLocation";
+            cmbDetailLocation.Size = new Size(159, 36);
+            cmbDetailLocation.TabIndex = 8;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(29, 209);
+            label7.Name = "label7";
+            label7.Size = new Size(112, 28);
+            label7.TabIndex = 6;
+            label7.Text = "Description";
+            // 
+            // txtRouteDetailDescription
+            // 
+            txtRouteDetailDescription.Location = new Point(203, 209);
+            txtRouteDetailDescription.Margin = new Padding(3, 4, 3, 4);
+            txtRouteDetailDescription.Name = "txtRouteDetailDescription";
+            txtRouteDetailDescription.Size = new Size(159, 34);
+            txtRouteDetailDescription.TabIndex = 7;
+            // 
+            // txtSequenceNumber
+            // 
+            txtSequenceNumber.Location = new Point(203, 95);
+            txtSequenceNumber.Margin = new Padding(3, 4, 3, 4);
+            txtSequenceNumber.Name = "txtSequenceNumber";
+            txtSequenceNumber.Size = new Size(159, 34);
+            txtSequenceNumber.TabIndex = 3;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(29, 153);
+            label4.Name = "label4";
+            label4.Size = new Size(54, 28);
+            label4.TabIndex = 2;
+            label4.Text = "Time";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(29, 37);
+            label5.Name = "label5";
+            label5.Size = new Size(87, 28);
+            label5.TabIndex = 1;
+            label5.Text = "Location";
+            // 
+            // txtTime
+            // 
+            txtTime.Location = new Point(203, 153);
+            txtTime.Margin = new Padding(3, 4, 3, 4);
+            txtTime.Name = "txtTime";
+            txtTime.Size = new Size(159, 34);
+            txtTime.TabIndex = 5;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(25, 95);
+            label6.Name = "label6";
+            label6.Size = new Size(173, 28);
+            label6.TabIndex = 0;
+            label6.Text = "Sequence Number";
+            // 
+            // btnAddRoute
+            // 
+            btnAddRoute.Location = new Point(408, 81);
+            btnAddRoute.Margin = new Padding(3, 4, 3, 4);
+            btnAddRoute.Name = "btnAddRoute";
+            btnAddRoute.Size = new Size(97, 59);
+            btnAddRoute.TabIndex = 10;
+            btnAddRoute.Text = "Add Route";
+            btnAddRoute.UseVisualStyleBackColor = true;
+            btnAddRoute.Click += btnAddRoute_Click;
+            // 
+            // btnAddRouteDetails
+            // 
+            btnAddRouteDetails.Location = new Point(776, 573);
+            btnAddRouteDetails.Margin = new Padding(3, 4, 3, 4);
+            btnAddRouteDetails.Name = "btnAddRouteDetails";
+            btnAddRouteDetails.Size = new Size(97, 59);
+            btnAddRouteDetails.TabIndex = 11;
+            btnAddRouteDetails.Text = "Add Details";
+            btnAddRouteDetails.UseVisualStyleBackColor = true;
+            btnAddRouteDetails.Click += btnAddRouteDetails_Click;
+            // 
+            // btnDeleteRoute
+            // 
+            btnDeleteRoute.Location = new Point(408, 156);
+            btnDeleteRoute.Margin = new Padding(3, 4, 3, 4);
+            btnDeleteRoute.Name = "btnDeleteRoute";
+            btnDeleteRoute.Size = new Size(97, 59);
+            btnDeleteRoute.TabIndex = 12;
+            btnDeleteRoute.Text = "Delete Route";
+            btnDeleteRoute.UseVisualStyleBackColor = true;
+            btnDeleteRoute.Click += btnDeleteRoute_Click;
+            // 
+            // btnSaveRoutesEdit
+            // 
+            btnSaveRoutesEdit.BackColor = Color.LimeGreen;
+            btnSaveRoutesEdit.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSaveRoutesEdit.ForeColor = SystemColors.ControlText;
+            btnSaveRoutesEdit.Location = new Point(393, 677);
+            btnSaveRoutesEdit.Margin = new Padding(3, 4, 3, 4);
+            btnSaveRoutesEdit.Name = "btnSaveRoutesEdit";
+            btnSaveRoutesEdit.Size = new Size(144, 59);
+            btnSaveRoutesEdit.TabIndex = 13;
+            btnSaveRoutesEdit.Text = "Save";
+            btnSaveRoutesEdit.UseVisualStyleBackColor = false;
+            btnSaveRoutesEdit.Click += btnSaveRoutesEdit_Click;
+            // 
+            // btnDeleteRouteDetail
+            // 
+            btnDeleteRouteDetail.Location = new Point(539, 573);
+            btnDeleteRouteDetail.Margin = new Padding(3, 4, 3, 4);
+            btnDeleteRouteDetail.Name = "btnDeleteRouteDetail";
+            btnDeleteRouteDetail.Size = new Size(112, 59);
+            btnDeleteRouteDetail.TabIndex = 12;
+            btnDeleteRouteDetail.Text = "Delete Detail";
+            btnDeleteRouteDetail.UseVisualStyleBackColor = true;
+            btnDeleteRouteDetail.Click += btnDeleteRouteDetail_Click;
+            // 
+            // StartDestination
+            // 
+            StartDestination.DataPropertyName = "StartDestination";
+            StartDestination.HeaderText = "StartDestination";
+            StartDestination.MinimumWidth = 6;
+            StartDestination.Name = "StartDestination";
+            StartDestination.Width = 125;
+            // 
+            // EndDestination
+            // 
+            EndDestination.DataPropertyName = "EndDestination";
+            EndDestination.HeaderText = "EndDestination";
+            EndDestination.MinimumWidth = 6;
+            EndDestination.Name = "EndDestination";
+            EndDestination.Width = 125;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.Width = 125;
+            // 
             // RDForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 564);
+            ClientSize = new Size(914, 752);
             Controls.Add(btnDeleteRouteDetail);
             Controls.Add(btnSaveRoutesEdit);
             Controls.Add(btnDeleteRoute);
@@ -415,6 +439,7 @@
             Controls.Add(dataGridViewRouteDetails);
             Controls.Add(dataGridViewRoutes);
             Controls.Add(groupBox1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "RDForm";
             Text = "RDForm";
             Load += RDForm_Load;
@@ -436,9 +461,6 @@
         private Label label3;
         private GroupBox groupBox1;
         private DataGridView dataGridViewRoutes;
-        private DataGridViewTextBoxColumn startDestinationDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn endDestinationDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private BindingSource routeBindingSource;
         private DataGridView dataGridViewRouteDetails;
         private BindingSource routeDetailBindingSource;
@@ -470,5 +492,8 @@
         private DataGridViewTextBoxColumn SequenceNumber;
         private DataGridViewTextBoxColumn Time;
         private DataGridViewTextBoxColumn Description;
+        private DataGridViewTextBoxColumn StartDestination;
+        private DataGridViewTextBoxColumn EndDestination;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
     }
 }

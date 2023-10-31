@@ -28,16 +28,25 @@ namespace BusStationInterface.Forms
         {
             using (var context = new BusManagementContext())
             {
-                cmbRoute.DataSource = _context.Routes.ToList();
-                cmbDriver.DataSource = _context.Drivers.ToList();
-                cmbBus.DataSource = _context.Buses.ToList();
+                cmbRoute.DataSource = context.Routes.ToList();
+                cmbRoute.DisplayMember = "Description";
+                cmbRoute.ValueMember = "RouteID";
+
+                cmbDriver.DataSource = context.Drivers.ToList();
+                cmbDriver.DisplayMember = "Name";
+                cmbDriver.ValueMember = "DriverID";
+
+                cmbBus.DataSource = context.Buses.ToList();
+                cmbBus.DisplayMember = "BusID";
+                cmbBus.ValueMember = "BusID";
+
                 cmbDay.DataSource = Enum.GetValues(typeof(DayOfWeek));
             }
         }
 
+
         private void LoadSchedules()
         {
-            // Assuming you have a DataGridView called dgvSchedules
             dgvSchedules.DataSource = _context.Schedules.ToList();
         }
 

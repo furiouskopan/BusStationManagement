@@ -122,8 +122,6 @@ C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationIn
 C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.pdb
 C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.genruntimeconfig.cache
 C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\ref\BusStationInterface.dll
-C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.Forms.RouteEditForm.resources
-C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.Forms.RouteDetailsEditForm.resources
 C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.Properties.Resources.resources
 C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.Forms.RDForm.resources
 C:\Users\user\source\repos\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.Forms.RDForm.resources

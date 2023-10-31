@@ -22,15 +22,7 @@ namespace BusStationInterface
             LoadSchedules();
             timer1.Start();
             dataGridViewRouteDetails.DataSource = null;
-            //using (var context = new BusManagementContext())
-            //{
-            //    var routes = context.Routes
-            //        .Include(r => r.StartDestination)
-            //        .Include(r => r.EndDestination)
-            //        .Include(r => r.RouteDetails)
-            //            .ThenInclude(rd => rd.Location)
-            //        .ToList();
-            //}
+
             dataGridViewRoutes.ClearSelection();
             dataGridViewBuses.ClearSelection();
             dataGridViewDrivers.ClearSelection();

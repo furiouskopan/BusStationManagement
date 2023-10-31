@@ -43,8 +43,9 @@ namespace BusStationInterface.Forms
             dataGridViewRouteDetails.RowHeadersVisible = false;
             dataGridViewRouteDetails.ReadOnly = false;
 
-            dataGridViewRouteDetails.Columns["SequenceNumber"].ReadOnly = true;
             dataGridViewRouteDetails.Columns["Location"].ReadOnly = true;
+            dataGridViewRoutes.Columns["StartDestination"].ReadOnly = true;
+            dataGridViewRoutes.Columns["EndDestination"].ReadOnly = true;
         }
 
         private void LoadRoutes()
@@ -76,6 +77,7 @@ namespace BusStationInterface.Forms
             // Populate your user interface controls with the route data including destination information.
             dataGridViewRoutes.DataSource = routesWithDestinations;
             dataGridViewRoutes.RowHeadersVisible = false;
+            dataGridViewRoutes.ReadOnly = false;
         }
 
         private void LoadRouteDetails(Route selectedRoute)
@@ -109,9 +111,7 @@ namespace BusStationInterface.Forms
                     // Bind the details with location name to the detail view
                     dataGridViewRouteDetails.DataSource = routeDetailsWithLocation;
 
-                    // Format the DataGridView (customize this as needed):
                     dataGridViewRouteDetails.RowHeadersVisible = false;
-                    //dataGridViewRouteDetails.ReadOnly = true;
                 }
             }
         }
