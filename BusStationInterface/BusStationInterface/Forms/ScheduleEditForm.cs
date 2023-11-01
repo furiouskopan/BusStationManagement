@@ -73,16 +73,28 @@ namespace BusStationInterface.Forms
 
         private void btnAddSchedule_Click(object sender, EventArgs e)
         {
+            // Fetch the selected Route from the context to get associated destinations.
+            var selectedRouteId = (int)cmbRoute.SelectedValue;
+            var selectedRoute = _context.Routes.FirstOrDefault(r => r.RouteID == selectedRouteId);
+
+            if (selectedRoute == null)
+            {
+                // Handle this error condition, perhaps show a message to the user.
+                MessageBox.Show("Selected route not found.");
+                return;
+            }
 
             var schedule = new Schedule
             {
                 BusID = (int)cmbBus.SelectedValue,
-                RouteID = (int)cmbRoute.SelectedValue,
+                RouteID = selectedRouteId,
                 DriverID = (int)cmbDriver.SelectedValue,
                 Day = (DayOfWeek)cmbDay.SelectedValue,
                 Status = txtStatus.Text,
                 DepartureTime = dtpDepartureTime.Value,
                 EstimatedArrivalTime = dtpArrivalTime.Value,
+                StartDestinationId = selectedRoute.StartDestinationID, // Set the StartDestinationId from the Route
+                EndDestinationId = selectedRoute.EndDestinationID     // Set the EndDestinationId from the Route
             };
 
             _context.Schedules.Add(schedule);
@@ -91,21 +103,30 @@ namespace BusStationInterface.Forms
             LoadSchedules();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+
+        private void btnDeleteSchedule_Click(object sender, EventArgs e)
         {
-            if (dgvSchedules.SelectedRows.Count > 0)
+            try
             {
-                var scheduleId = (int)dgvSchedules.SelectedRows[0].Cells["ScheduleID"].Value;
-                var scheduleToDelete = _context.Schedules.Find(scheduleId);
-
-                if (scheduleToDelete != null)
+                if (dgvSchedules.SelectedRows.Count > 0)
                 {
-                    _context.Schedules.Remove(scheduleToDelete);
-                    _context.SaveChanges();
-                }
+                    var scheduleId = (int)dgvSchedules.SelectedRows[0].Cells["ScheduleID"].Value;
+                    var scheduleToDelete = _context.Schedules.Find(scheduleId);
 
-                LoadSchedules();
+                    if (scheduleToDelete != null)
+                    {
+                        _context.Schedules.Remove(scheduleToDelete);
+                        _context.SaveChanges();
+                    }
+
+                    LoadSchedules();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting schedule: " + ex.Message);
+            }
+
         }
 
         private void ScheduleEditForm_Load(object sender, EventArgs e)

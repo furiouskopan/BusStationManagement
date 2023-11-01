@@ -47,10 +47,10 @@
             scheduleBindingSource = new BindingSource(components);
             Day = new Label();
             cmbDay = new ComboBox();
-            btnDelete = new Button();
+            btnDeleteSchedule = new Button();
             label6 = new Label();
             txtStatus = new TextBox();
-            scheduleIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            ScheduleID = new DataGridViewTextBoxColumn();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             departureTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             estimatedArrivalTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -189,7 +189,7 @@
             // 
             dgvSchedules.AutoGenerateColumns = false;
             dgvSchedules.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSchedules.Columns.AddRange(new DataGridViewColumn[] { scheduleIDDataGridViewTextBoxColumn, busIDDataGridViewTextBoxColumn, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, dayDataGridViewTextBoxColumn, Route, Driver });
+            dgvSchedules.Columns.AddRange(new DataGridViewColumn[] { ScheduleID, busIDDataGridViewTextBoxColumn, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, dayDataGridViewTextBoxColumn, Route, Driver });
             dgvSchedules.DataSource = scheduleBindingSource;
             dgvSchedules.Location = new Point(365, 60);
             dgvSchedules.Name = "dgvSchedules";
@@ -219,15 +219,15 @@
             cmbDay.Size = new Size(205, 28);
             cmbDay.TabIndex = 24;
             // 
-            // btnDelete
+            // btnDeleteSchedule
             // 
-            btnDelete.Location = new Point(754, 526);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(94, 45);
-            btnDelete.TabIndex = 26;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnAddSchedule_Click;
+            btnDeleteSchedule.Location = new Point(754, 526);
+            btnDeleteSchedule.Name = "btnDeleteSchedule";
+            btnDeleteSchedule.Size = new Size(94, 45);
+            btnDeleteSchedule.TabIndex = 26;
+            btnDeleteSchedule.Text = "Delete";
+            btnDeleteSchedule.UseVisualStyleBackColor = true;
+            btnDeleteSchedule.Click += btnDeleteSchedule_Click;
             // 
             // label6
             // 
@@ -245,13 +245,13 @@
             txtStatus.Size = new Size(189, 27);
             txtStatus.TabIndex = 29;
             // 
-            // scheduleIDDataGridViewTextBoxColumn
+            // ScheduleID
             // 
-            scheduleIDDataGridViewTextBoxColumn.DataPropertyName = "ScheduleID";
-            scheduleIDDataGridViewTextBoxColumn.HeaderText = "ScheduleID";
-            scheduleIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            scheduleIDDataGridViewTextBoxColumn.Name = "scheduleIDDataGridViewTextBoxColumn";
-            scheduleIDDataGridViewTextBoxColumn.Width = 125;
+            ScheduleID.DataPropertyName = "ScheduleID";
+            ScheduleID.HeaderText = "ScheduleID";
+            ScheduleID.MinimumWidth = 6;
+            ScheduleID.Name = "ScheduleID";
+            ScheduleID.Width = 125;
             // 
             // busIDDataGridViewTextBoxColumn
             // 
@@ -308,7 +308,7 @@
             ClientSize = new Size(1324, 583);
             Controls.Add(txtStatus);
             Controls.Add(label6);
-            Controls.Add(btnDelete);
+            Controls.Add(btnDeleteSchedule);
             Controls.Add(Day);
             Controls.Add(cmbDay);
             Controls.Add(dgvSchedules);
@@ -354,11 +354,11 @@
         private DataGridView dgvSchedules;
         private Label Day;
         private ComboBox cmbDay;
-        private Button btnDelete;
+        private Button btnDeleteSchedule;
         private BindingSource scheduleBindingSource;
         private Label label6;
         private TextBox txtStatus;
-        private DataGridViewTextBoxColumn scheduleIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn ScheduleID;
         private DataGridViewTextBoxColumn busIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn departureTimeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn estimatedArrivalTimeDataGridViewTextBoxColumn;
