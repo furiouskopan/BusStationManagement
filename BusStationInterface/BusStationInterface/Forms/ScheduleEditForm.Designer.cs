@@ -44,22 +44,19 @@
             label7 = new Label();
             label8 = new Label();
             dgvSchedules = new DataGridView();
-            scheduleIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            departureTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            estimatedArrivalTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dayDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            startDestinationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            endDestinationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            busDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            routeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            driverDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             scheduleBindingSource = new BindingSource(components);
             Day = new Label();
             cmbDay = new ComboBox();
             btnDelete = new Button();
             label6 = new Label();
             txtStatus = new TextBox();
+            scheduleIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            departureTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            estimatedArrivalTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dayDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            Route = new DataGridViewTextBoxColumn();
+            Driver = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvSchedules).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).BeginInit();
             SuspendLayout();
@@ -116,6 +113,7 @@
             btnAddSchedule.TabIndex = 13;
             btnAddSchedule.Text = "Add Schedule";
             btnAddSchedule.UseVisualStyleBackColor = true;
+            btnAddSchedule.Click += btnAddSchedule_Click;
             // 
             // btnSave
             // 
@@ -191,7 +189,7 @@
             // 
             dgvSchedules.AutoGenerateColumns = false;
             dgvSchedules.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSchedules.Columns.AddRange(new DataGridViewColumn[] { scheduleIDDataGridViewTextBoxColumn, busIDDataGridViewTextBoxColumn, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, dayDataGridViewTextBoxColumn, startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn, busDataGridViewTextBoxColumn, routeDataGridViewTextBoxColumn, driverDataGridViewTextBoxColumn });
+            dgvSchedules.Columns.AddRange(new DataGridViewColumn[] { scheduleIDDataGridViewTextBoxColumn, busIDDataGridViewTextBoxColumn, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, dayDataGridViewTextBoxColumn, Route, Driver });
             dgvSchedules.DataSource = scheduleBindingSource;
             dgvSchedules.Location = new Point(365, 60);
             dgvSchedules.Name = "dgvSchedules";
@@ -199,86 +197,6 @@
             dgvSchedules.RowTemplate.Height = 29;
             dgvSchedules.Size = new Size(947, 353);
             dgvSchedules.TabIndex = 23;
-            // 
-            // scheduleIDDataGridViewTextBoxColumn
-            // 
-            scheduleIDDataGridViewTextBoxColumn.DataPropertyName = "ScheduleID";
-            scheduleIDDataGridViewTextBoxColumn.HeaderText = "ScheduleID";
-            scheduleIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            scheduleIDDataGridViewTextBoxColumn.Name = "scheduleIDDataGridViewTextBoxColumn";
-            scheduleIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // busIDDataGridViewTextBoxColumn
-            // 
-            busIDDataGridViewTextBoxColumn.DataPropertyName = "BusID";
-            busIDDataGridViewTextBoxColumn.HeaderText = "BusID";
-            busIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            busIDDataGridViewTextBoxColumn.Name = "busIDDataGridViewTextBoxColumn";
-            busIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // departureTimeDataGridViewTextBoxColumn
-            // 
-            departureTimeDataGridViewTextBoxColumn.DataPropertyName = "DepartureTime";
-            departureTimeDataGridViewTextBoxColumn.HeaderText = "DepartureTime";
-            departureTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            departureTimeDataGridViewTextBoxColumn.Name = "departureTimeDataGridViewTextBoxColumn";
-            departureTimeDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // estimatedArrivalTimeDataGridViewTextBoxColumn
-            // 
-            estimatedArrivalTimeDataGridViewTextBoxColumn.DataPropertyName = "EstimatedArrivalTime";
-            estimatedArrivalTimeDataGridViewTextBoxColumn.HeaderText = "EstimatedArrivalTime";
-            estimatedArrivalTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            estimatedArrivalTimeDataGridViewTextBoxColumn.Name = "estimatedArrivalTimeDataGridViewTextBoxColumn";
-            estimatedArrivalTimeDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dayDataGridViewTextBoxColumn
-            // 
-            dayDataGridViewTextBoxColumn.DataPropertyName = "Day";
-            dayDataGridViewTextBoxColumn.HeaderText = "Day";
-            dayDataGridViewTextBoxColumn.MinimumWidth = 6;
-            dayDataGridViewTextBoxColumn.Name = "dayDataGridViewTextBoxColumn";
-            dayDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // startDestinationDataGridViewTextBoxColumn
-            // 
-            startDestinationDataGridViewTextBoxColumn.DataPropertyName = "StartDestination";
-            startDestinationDataGridViewTextBoxColumn.HeaderText = "StartDestination";
-            startDestinationDataGridViewTextBoxColumn.MinimumWidth = 6;
-            startDestinationDataGridViewTextBoxColumn.Name = "startDestinationDataGridViewTextBoxColumn";
-            startDestinationDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // endDestinationDataGridViewTextBoxColumn
-            // 
-            endDestinationDataGridViewTextBoxColumn.DataPropertyName = "EndDestination";
-            endDestinationDataGridViewTextBoxColumn.HeaderText = "EndDestination";
-            endDestinationDataGridViewTextBoxColumn.MinimumWidth = 6;
-            endDestinationDataGridViewTextBoxColumn.Name = "endDestinationDataGridViewTextBoxColumn";
-            endDestinationDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // busDataGridViewTextBoxColumn
-            // 
-            busDataGridViewTextBoxColumn.DataPropertyName = "Bus";
-            busDataGridViewTextBoxColumn.HeaderText = "Bus";
-            busDataGridViewTextBoxColumn.MinimumWidth = 6;
-            busDataGridViewTextBoxColumn.Name = "busDataGridViewTextBoxColumn";
-            busDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // routeDataGridViewTextBoxColumn
-            // 
-            routeDataGridViewTextBoxColumn.DataPropertyName = "Route";
-            routeDataGridViewTextBoxColumn.HeaderText = "Route";
-            routeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            routeDataGridViewTextBoxColumn.Name = "routeDataGridViewTextBoxColumn";
-            routeDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // driverDataGridViewTextBoxColumn
-            // 
-            driverDataGridViewTextBoxColumn.DataPropertyName = "Driver";
-            driverDataGridViewTextBoxColumn.HeaderText = "Driver";
-            driverDataGridViewTextBoxColumn.MinimumWidth = 6;
-            driverDataGridViewTextBoxColumn.Name = "driverDataGridViewTextBoxColumn";
-            driverDataGridViewTextBoxColumn.Width = 125;
             // 
             // scheduleBindingSource
             // 
@@ -326,6 +244,62 @@
             txtStatus.Name = "txtStatus";
             txtStatus.Size = new Size(189, 27);
             txtStatus.TabIndex = 29;
+            // 
+            // scheduleIDDataGridViewTextBoxColumn
+            // 
+            scheduleIDDataGridViewTextBoxColumn.DataPropertyName = "ScheduleID";
+            scheduleIDDataGridViewTextBoxColumn.HeaderText = "ScheduleID";
+            scheduleIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            scheduleIDDataGridViewTextBoxColumn.Name = "scheduleIDDataGridViewTextBoxColumn";
+            scheduleIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // busIDDataGridViewTextBoxColumn
+            // 
+            busIDDataGridViewTextBoxColumn.DataPropertyName = "BusID";
+            busIDDataGridViewTextBoxColumn.HeaderText = "BusID";
+            busIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            busIDDataGridViewTextBoxColumn.Name = "busIDDataGridViewTextBoxColumn";
+            busIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // departureTimeDataGridViewTextBoxColumn
+            // 
+            departureTimeDataGridViewTextBoxColumn.DataPropertyName = "DepartureTime";
+            departureTimeDataGridViewTextBoxColumn.HeaderText = "DepartureTime";
+            departureTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            departureTimeDataGridViewTextBoxColumn.Name = "departureTimeDataGridViewTextBoxColumn";
+            departureTimeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // estimatedArrivalTimeDataGridViewTextBoxColumn
+            // 
+            estimatedArrivalTimeDataGridViewTextBoxColumn.DataPropertyName = "EstimatedArrivalTime";
+            estimatedArrivalTimeDataGridViewTextBoxColumn.HeaderText = "EstimatedArrivalTime";
+            estimatedArrivalTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            estimatedArrivalTimeDataGridViewTextBoxColumn.Name = "estimatedArrivalTimeDataGridViewTextBoxColumn";
+            estimatedArrivalTimeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dayDataGridViewTextBoxColumn
+            // 
+            dayDataGridViewTextBoxColumn.DataPropertyName = "Day";
+            dayDataGridViewTextBoxColumn.HeaderText = "Day";
+            dayDataGridViewTextBoxColumn.MinimumWidth = 6;
+            dayDataGridViewTextBoxColumn.Name = "dayDataGridViewTextBoxColumn";
+            dayDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // Route
+            // 
+            Route.DataPropertyName = "Route";
+            Route.HeaderText = "Route";
+            Route.MinimumWidth = 6;
+            Route.Name = "Route";
+            Route.Width = 125;
+            // 
+            // Driver
+            // 
+            Driver.DataPropertyName = "Driver";
+            Driver.HeaderText = "Driver";
+            Driver.MinimumWidth = 6;
+            Driver.Name = "Driver";
+            Driver.Width = 125;
             // 
             // ScheduleEditForm
             // 
@@ -382,17 +356,14 @@
         private ComboBox cmbDay;
         private Button btnDelete;
         private BindingSource scheduleBindingSource;
+        private Label label6;
+        private TextBox txtStatus;
         private DataGridViewTextBoxColumn scheduleIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn busIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn departureTimeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn estimatedArrivalTimeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn startDestinationDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn endDestinationDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn busDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn routeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn driverDataGridViewTextBoxColumn;
-        private Label label6;
-        private TextBox txtStatus;
+        private DataGridViewTextBoxColumn Route;
+        private DataGridViewTextBoxColumn Driver;
     }
 }

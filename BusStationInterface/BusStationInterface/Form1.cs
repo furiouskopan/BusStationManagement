@@ -130,10 +130,37 @@ namespace BusStationInterface
             ScheduleDataAccess scheduleDataAccess = new ScheduleDataAccess();
             List<Schedule> schedules = scheduleDataAccess.GetSchedules();
 
-            dataGridViewSchedules.DataSource = schedules;
+            var schedulesWithDetails = schedules.Select(s => new
+            {
+                s.ScheduleID,
+                s.BusID,
+                s.RouteID,
+                s.DriverID,
+                s.Status,
+                s.Day,
+                s.DepartureTime,
+                s.EstimatedArrivalTime,
+
+                // Extract names for Start and End Destinations
+                StartDestinationName = s.Route.StartDestination.Name,
+                EndDestinationName = s.Route.EndDestination.Name,
+                DriverName = s.Driver.Name,
+                RouteDescription = s.Route.Description,
+
+            }).ToList();
+
+            dataGridViewSchedules.DataSource = schedulesWithDetails;
+
+            //dataGridViewSchedules.Columns["StartDestination"].DataPropertyName = "StartDestinationName";
+            //dataGridViewSchedules.Columns["EndDestination"].DataPropertyName = "EndDestinationName";
+            dataGridViewSchedules.Columns["Driver"].DataPropertyName = "DriverName";
+            dataGridViewSchedules.Columns["Route"].DataPropertyName = "RouteDescription";
+
+
             dataGridViewSchedules.RowHeadersVisible = false;
             dataGridViewSchedules.ReadOnly = true;
         }
+
         private void btnEditBus_Click(object sender, EventArgs e)
         {
             // Create an instance of BusDataAccess to pass to the edit form

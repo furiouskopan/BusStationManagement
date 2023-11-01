@@ -44,20 +44,43 @@ namespace BusStationInterface.Forms
             }
         }
 
-
         private void LoadSchedules()
         {
-            dgvSchedules.DataSource = _context.Schedules.ToList();
+            var schedulesWithDetails = _context.Schedules.Select(s => new
+            {
+                s.ScheduleID,
+                s.BusID,
+                s.RouteID,
+                s.DriverID,
+                s.Status,
+                s.Day,
+                s.DepartureTime,
+                s.EstimatedArrivalTime,
+
+                // Extract names for Start and End Destinations
+                StartDestinationName = s.Route.StartDestination.Name,
+                EndDestinationName = s.Route.EndDestination.Name,
+                DriverName = s.Driver.Name,
+                RouteDescription = s.Route.Description,
+
+            }).ToList();
+
+            dgvSchedules.DataSource = schedulesWithDetails;
+
+            dgvSchedules.Columns["Driver"].DataPropertyName = "DriverName";
+            dgvSchedules.Columns["Route"].DataPropertyName = "RouteDescription";
         }
 
         private void btnAddSchedule_Click(object sender, EventArgs e)
         {
+
             var schedule = new Schedule
             {
                 BusID = (int)cmbBus.SelectedValue,
                 RouteID = (int)cmbRoute.SelectedValue,
                 DriverID = (int)cmbDriver.SelectedValue,
                 Day = (DayOfWeek)cmbDay.SelectedValue,
+                Status = txtStatus.Text,
                 DepartureTime = dtpDepartureTime.Value,
                 EstimatedArrivalTime = dtpArrivalTime.Value,
             };

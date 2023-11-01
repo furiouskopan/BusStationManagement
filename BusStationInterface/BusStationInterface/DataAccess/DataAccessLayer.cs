@@ -190,14 +190,11 @@ public class ScheduleDataAccess
         using (var context = new BusManagementContext())
         {
             return context.Schedules
-                .Include(s => s.StartDestination)
-                .Include(s => s.EndDestination)
-                .Include(s => s.Bus)
+                .Include(s => s.Driver)
                 .Include(s => s.Route)
                     .ThenInclude(r => r.StartDestination)
                 .Include(s => s.Route)
                     .ThenInclude(r => r.EndDestination)
-                .Include(s => s.Driver)
                 .ToList();
         }
     }
