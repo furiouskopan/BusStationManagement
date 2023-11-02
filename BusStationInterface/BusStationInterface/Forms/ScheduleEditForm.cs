@@ -131,7 +131,12 @@ namespace BusStationInterface.Forms
 
         private void ScheduleEditForm_Load(object sender, EventArgs e)
         {
-
+            dtpArrivalTime.CustomFormat = "HH:mm";
+            dtpDepartureTime.CustomFormat = "HH:mm";
+        }
+        private void dtpArrivalTime_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime selectedTime = dtpArrivalTime.Value;
         }
     }
 

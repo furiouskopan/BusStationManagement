@@ -44,12 +44,6 @@
             label7 = new Label();
             label8 = new Label();
             dgvSchedules = new DataGridView();
-            scheduleBindingSource = new BindingSource(components);
-            Day = new Label();
-            cmbDay = new ComboBox();
-            btnDeleteSchedule = new Button();
-            label6 = new Label();
-            txtStatus = new TextBox();
             ScheduleID = new DataGridViewTextBoxColumn();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             departureTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -57,6 +51,12 @@
             dayDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             Route = new DataGridViewTextBoxColumn();
             Driver = new DataGridViewTextBoxColumn();
+            scheduleBindingSource = new BindingSource(components);
+            Day = new Label();
+            cmbDay = new ComboBox();
+            btnDeleteSchedule = new Button();
+            label6 = new Label();
+            txtStatus = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvSchedules).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).BeginInit();
             SuspendLayout();
@@ -64,10 +64,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Microsoft JhengHei", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(12, 26);
+            label3.Font = new Font("Microsoft JhengHei", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(27, 60);
             label3.Name = "label3";
-            label3.Size = new Size(176, 34);
+            label3.Size = new Size(226, 43);
             label3.TabIndex = 8;
             label3.Text = "Add Shedule";
             // 
@@ -75,7 +75,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft JhengHei", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(376, 23);
+            label1.Location = new Point(376, 52);
             label1.Name = "label1";
             label1.Size = new Size(197, 34);
             label1.TabIndex = 9;
@@ -83,31 +83,34 @@
             // 
             // cmbRoute
             // 
+            cmbRoute.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             cmbRoute.FormattingEnabled = true;
-            cmbRoute.Location = new Point(33, 92);
+            cmbRoute.Location = new Point(31, 147);
             cmbRoute.Name = "cmbRoute";
-            cmbRoute.Size = new Size(205, 28);
+            cmbRoute.Size = new Size(205, 33);
             cmbRoute.TabIndex = 10;
             // 
             // cmbDriver
             // 
+            cmbDriver.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             cmbDriver.FormattingEnabled = true;
-            cmbDriver.Location = new Point(33, 146);
+            cmbDriver.Location = new Point(31, 211);
             cmbDriver.Name = "cmbDriver";
-            cmbDriver.Size = new Size(205, 28);
+            cmbDriver.Size = new Size(205, 33);
             cmbDriver.TabIndex = 11;
             // 
             // cmbBus
             // 
+            cmbBus.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             cmbBus.FormattingEnabled = true;
-            cmbBus.Location = new Point(33, 200);
+            cmbBus.Location = new Point(31, 284);
             cmbBus.Name = "cmbBus";
-            cmbBus.Size = new Size(205, 28);
+            cmbBus.Size = new Size(205, 33);
             cmbBus.TabIndex = 12;
             // 
             // btnAddSchedule
             // 
-            btnAddSchedule.Location = new Point(31, 506);
+            btnAddSchedule.Location = new Point(27, 574);
             btnAddSchedule.Name = "btnAddSchedule";
             btnAddSchedule.Size = new Size(124, 54);
             btnAddSchedule.TabIndex = 13;
@@ -127,61 +130,69 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(33, 69);
+            label2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(32, 119);
             label2.Name = "label2";
-            label2.Size = new Size(48, 20);
+            label2.Size = new Size(58, 25);
             label2.TabIndex = 15;
             label2.Text = "Route";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(32, 177);
+            label4.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(31, 256);
             label4.Name = "label4";
-            label4.Size = new Size(32, 20);
+            label4.Size = new Size(40, 25);
             label4.TabIndex = 16;
             label4.Text = "Bus";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(32, 123);
+            label5.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(31, 183);
             label5.Name = "label5";
-            label5.Size = new Size(49, 20);
+            label5.Size = new Size(59, 25);
             label5.TabIndex = 17;
             label5.Text = "Driver";
             // 
             // dtpArrivalTime
             // 
-            dtpArrivalTime.Format = DateTimePickerFormat.Time;
-            dtpArrivalTime.Location = new Point(34, 386);
+            dtpArrivalTime.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpArrivalTime.Format = DateTimePickerFormat.Custom;
+            dtpArrivalTime.Location = new Point(75, 499);
             dtpArrivalTime.Name = "dtpArrivalTime";
-            dtpArrivalTime.Size = new Size(204, 27);
+            dtpArrivalTime.Size = new Size(99, 38);
             dtpArrivalTime.TabIndex = 19;
             // 
             // dtpDepartureTime
             // 
-            dtpDepartureTime.Format = DateTimePickerFormat.Time;
-            dtpDepartureTime.Location = new Point(33, 321);
+            dtpDepartureTime.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDepartureTime.Format = DateTimePickerFormat.Custom;
+            dtpDepartureTime.ImeMode = ImeMode.NoControl;
+            dtpDepartureTime.Location = new Point(75, 430);
             dtpDepartureTime.Name = "dtpDepartureTime";
-            dtpDepartureTime.Size = new Size(205, 27);
+            dtpDepartureTime.Size = new Size(99, 38);
             dtpDepartureTime.TabIndex = 20;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(41, 298);
+            label7.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(60, 402);
             label7.Name = "label7";
-            label7.Size = new Size(110, 20);
+            label7.Size = new Size(131, 25);
             label7.TabIndex = 21;
             label7.Text = "Departure time";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(41, 363);
+            label8.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(75, 471);
             label8.Name = "label8";
-            label8.Size = new Size(89, 20);
+            label8.Size = new Size(105, 25);
             label8.TabIndex = 22;
             label8.Text = "Arrival Time";
             // 
@@ -191,59 +202,12 @@
             dgvSchedules.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSchedules.Columns.AddRange(new DataGridViewColumn[] { ScheduleID, busIDDataGridViewTextBoxColumn, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, dayDataGridViewTextBoxColumn, Route, Driver });
             dgvSchedules.DataSource = scheduleBindingSource;
-            dgvSchedules.Location = new Point(365, 60);
+            dgvSchedules.Location = new Point(365, 89);
             dgvSchedules.Name = "dgvSchedules";
             dgvSchedules.RowHeadersWidth = 51;
             dgvSchedules.RowTemplate.Height = 29;
             dgvSchedules.Size = new Size(947, 353);
             dgvSchedules.TabIndex = 23;
-            // 
-            // scheduleBindingSource
-            // 
-            scheduleBindingSource.DataSource = typeof(Models.Schedule);
-            // 
-            // Day
-            // 
-            Day.AutoSize = true;
-            Day.Location = new Point(32, 237);
-            Day.Name = "Day";
-            Day.Size = new Size(35, 20);
-            Day.TabIndex = 25;
-            Day.Text = "Day";
-            // 
-            // cmbDay
-            // 
-            cmbDay.FormattingEnabled = true;
-            cmbDay.Location = new Point(33, 260);
-            cmbDay.Name = "cmbDay";
-            cmbDay.Size = new Size(205, 28);
-            cmbDay.TabIndex = 24;
-            // 
-            // btnDeleteSchedule
-            // 
-            btnDeleteSchedule.Location = new Point(754, 526);
-            btnDeleteSchedule.Name = "btnDeleteSchedule";
-            btnDeleteSchedule.Size = new Size(94, 45);
-            btnDeleteSchedule.TabIndex = 26;
-            btnDeleteSchedule.Text = "Delete";
-            btnDeleteSchedule.UseVisualStyleBackColor = true;
-            btnDeleteSchedule.Click += btnDeleteSchedule_Click;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(363, 424);
-            label6.Name = "label6";
-            label6.Size = new Size(49, 20);
-            label6.TabIndex = 28;
-            label6.Text = "Status";
-            // 
-            // txtStatus
-            // 
-            txtStatus.Location = new Point(365, 452);
-            txtStatus.Name = "txtStatus";
-            txtStatus.Size = new Size(189, 27);
-            txtStatus.TabIndex = 29;
             // 
             // ScheduleID
             // 
@@ -301,11 +265,60 @@
             Driver.Name = "Driver";
             Driver.Width = 125;
             // 
+            // scheduleBindingSource
+            // 
+            scheduleBindingSource.DataSource = typeof(Models.Schedule);
+            // 
+            // Day
+            // 
+            Day.AutoSize = true;
+            Day.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            Day.Location = new Point(27, 327);
+            Day.Name = "Day";
+            Day.Size = new Size(43, 25);
+            Day.TabIndex = 25;
+            Day.Text = "Day";
+            // 
+            // cmbDay
+            // 
+            cmbDay.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbDay.FormattingEnabled = true;
+            cmbDay.Location = new Point(29, 355);
+            cmbDay.Name = "cmbDay";
+            cmbDay.Size = new Size(205, 33);
+            cmbDay.TabIndex = 24;
+            // 
+            // btnDeleteSchedule
+            // 
+            btnDeleteSchedule.Location = new Point(754, 526);
+            btnDeleteSchedule.Name = "btnDeleteSchedule";
+            btnDeleteSchedule.Size = new Size(94, 45);
+            btnDeleteSchedule.TabIndex = 26;
+            btnDeleteSchedule.Text = "Delete";
+            btnDeleteSchedule.UseVisualStyleBackColor = true;
+            btnDeleteSchedule.Click += btnDeleteSchedule_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(363, 453);
+            label6.Name = "label6";
+            label6.Size = new Size(49, 20);
+            label6.TabIndex = 28;
+            label6.Text = "Status";
+            // 
+            // txtStatus
+            // 
+            txtStatus.Location = new Point(365, 481);
+            txtStatus.Name = "txtStatus";
+            txtStatus.Size = new Size(189, 27);
+            txtStatus.TabIndex = 29;
+            // 
             // ScheduleEditForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1324, 583);
+            ClientSize = new Size(1324, 640);
             Controls.Add(txtStatus);
             Controls.Add(label6);
             Controls.Add(btnDeleteSchedule);

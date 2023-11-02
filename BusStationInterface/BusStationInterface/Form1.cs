@@ -28,6 +28,7 @@ namespace BusStationInterface
             dataGridViewDrivers.ClearSelection();
             dataGridViewDestinations.ClearSelection();
             dataGridViewRouteDetails.ClearSelection();
+            dataGridViewSchedules.ClearSelection();
         }
         private void LoadDestinations()
         {

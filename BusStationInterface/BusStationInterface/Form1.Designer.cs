@@ -88,6 +88,7 @@
             scheduleBindingSource = new BindingSource(components);
             button1 = new Button();
             textBox2 = new TextBox();
+            contextMenuStrip1 = new ContextMenuStrip(components);
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -493,12 +494,12 @@
             // 
             lblTimer.AutoSize = true;
             lblTimer.Dock = DockStyle.Right;
-            lblTimer.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTimer.Font = new Font("Copperplate Gothic Bold", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             lblTimer.ForeColor = Color.Red;
-            lblTimer.Location = new Point(1629, 0);
+            lblTimer.Location = new Point(1603, 0);
             lblTimer.Margin = new Padding(0, 51, 0, 51);
             lblTimer.Name = "lblTimer";
-            lblTimer.Size = new Size(96, 38);
+            lblTimer.Size = new Size(122, 31);
             lblTimer.TabIndex = 21;
             lblTimer.Text = "label8";
             // 
@@ -528,7 +529,7 @@
             dataGridViewSchedules.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewSchedules.Columns.AddRange(new DataGridViewColumn[] { Status, DriverID, Driver, scheduleIDDataGridViewTextBoxColumn, busIDDataGridViewTextBoxColumn1, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, Route, RouteID, dayDataGridViewTextBoxColumn });
             dataGridViewSchedules.DataSource = scheduleBindingSource;
-            dataGridViewSchedules.Location = new Point(1112, 142);
+            dataGridViewSchedules.Location = new Point(1112, 143);
             dataGridViewSchedules.Name = "dataGridViewSchedules";
             dataGridViewSchedules.RowHeadersWidth = 51;
             dataGridViewSchedules.RowTemplate.Height = 29;
@@ -549,6 +550,7 @@
             DriverID.HeaderText = "DriverID";
             DriverID.MinimumWidth = 6;
             DriverID.Name = "DriverID";
+            DriverID.Visible = false;
             DriverID.Width = 125;
             // 
             // Driver
@@ -557,6 +559,7 @@
             Driver.HeaderText = "Driver";
             Driver.MinimumWidth = 6;
             Driver.Name = "Driver";
+            Driver.Visible = false;
             Driver.Width = 125;
             // 
             // scheduleIDDataGridViewTextBoxColumn
@@ -635,6 +638,12 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(163, 27);
             textBox2.TabIndex = 25;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.ImageScalingSize = new Size(20, 20);
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(61, 4);
             // 
             // Form1
             // 
@@ -749,5 +758,6 @@
         private DataGridViewTextBoxColumn Route;
         private DataGridViewTextBoxColumn RouteID;
         private DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
+        private ContextMenuStrip contextMenuStrip1;
     }
 }
