@@ -76,6 +76,7 @@
             btnEditSchedules = new Button();
             dataGridViewSchedules = new DataGridView();
             Status = new DataGridViewTextBoxColumn();
+            Price = new DataGridViewTextBoxColumn();
             DriverID = new DataGridViewTextBoxColumn();
             Driver = new DataGridViewTextBoxColumn();
             scheduleIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -528,7 +529,7 @@
             // 
             dataGridViewSchedules.AutoGenerateColumns = false;
             dataGridViewSchedules.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewSchedules.Columns.AddRange(new DataGridViewColumn[] { Status, DriverID, Driver, scheduleIDDataGridViewTextBoxColumn, busIDDataGridViewTextBoxColumn1, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, Route, RouteID, dayDataGridViewTextBoxColumn });
+            dataGridViewSchedules.Columns.AddRange(new DataGridViewColumn[] { Status, Price, DriverID, Driver, scheduleIDDataGridViewTextBoxColumn, busIDDataGridViewTextBoxColumn1, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, Route, RouteID, dayDataGridViewTextBoxColumn });
             dataGridViewSchedules.DataSource = scheduleBindingSource;
             dataGridViewSchedules.Location = new Point(1112, 143);
             dataGridViewSchedules.Name = "dataGridViewSchedules";
@@ -544,6 +545,14 @@
             Status.MinimumWidth = 6;
             Status.Name = "Status";
             Status.Width = 125;
+            // 
+            // Price
+            // 
+            Price.DataPropertyName = "Price";
+            Price.HeaderText = "Price";
+            Price.MinimumWidth = 6;
+            Price.Name = "Price";
+            Price.Width = 125;
             // 
             // DriverID
             // 
@@ -760,7 +769,10 @@
         private Button button1;
         private TextBox textBox2;
         private DataGridViewTextBoxColumn DriverColumn;
+        private ContextMenuStrip contextMenuStrip1;
+        private Button btnTicket;
         private DataGridViewTextBoxColumn Status;
+        private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn DriverID;
         private DataGridViewTextBoxColumn Driver;
         private DataGridViewTextBoxColumn scheduleIDDataGridViewTextBoxColumn;
@@ -770,7 +782,5 @@
         private DataGridViewTextBoxColumn Route;
         private DataGridViewTextBoxColumn RouteID;
         private DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
-        private ContextMenuStrip contextMenuStrip1;
-        private Button btnTicket;
     }
 }

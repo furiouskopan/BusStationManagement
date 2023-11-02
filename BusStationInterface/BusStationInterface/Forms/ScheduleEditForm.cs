@@ -54,6 +54,7 @@ namespace BusStationInterface.Forms
                 s.DriverID,
                 s.Status,
                 s.Day,
+                s.Price,
                 s.DepartureTime,
                 s.EstimatedArrivalTime,
 
@@ -69,6 +70,8 @@ namespace BusStationInterface.Forms
 
             dgvSchedules.Columns["Driver"].DataPropertyName = "DriverName";
             dgvSchedules.Columns["Route"].DataPropertyName = "RouteDescription";
+
+
         }
 
         private void btnAddSchedule_Click(object sender, EventArgs e)
@@ -93,6 +96,7 @@ namespace BusStationInterface.Forms
                 Status = txtStatus.Text,
                 DepartureTime = dtpDepartureTime.Value,
                 EstimatedArrivalTime = dtpArrivalTime.Value,
+                Price = Convert.ToInt32(this.txtPrice.Text),
                 StartDestinationId = selectedRoute.StartDestinationID, // Set the StartDestinationId from the Route
                 EndDestinationId = selectedRoute.EndDestinationID     // Set the EndDestinationId from the Route
             };
@@ -137,6 +141,11 @@ namespace BusStationInterface.Forms
         private void dtpArrivalTime_ValueChanged(object sender, EventArgs e)
         {
             DateTime selectedTime = dtpArrivalTime.Value;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

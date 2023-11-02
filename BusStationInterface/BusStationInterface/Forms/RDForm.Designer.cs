@@ -37,15 +37,11 @@
             cmbStartDestination = new ComboBox();
             txtDescription = new TextBox();
             dataGridViewRoutes = new DataGridView();
+            StartDestination = new DataGridViewTextBoxColumn();
+            EndDestination = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             routeBindingSource = new BindingSource(components);
             dataGridViewRouteDetails = new DataGridView();
-            SequenceNumber = new DataGridViewTextBoxColumn();
-            RouteID = new DataGridViewTextBoxColumn();
-            RouteDetailID = new DataGridViewTextBoxColumn();
-            Location = new DataGridViewTextBoxColumn();
-            LocationID = new DataGridViewTextBoxColumn();
-            Time = new DataGridViewTextBoxColumn();
-            Description = new DataGridViewTextBoxColumn();
             routeDetailBindingSource = new BindingSource(components);
             groupBox2 = new GroupBox();
             cmbDetailLocation = new ComboBox();
@@ -61,9 +57,13 @@
             btnDeleteRoute = new Button();
             btnSaveRoutesEdit = new Button();
             btnDeleteRouteDetail = new Button();
-            StartDestination = new DataGridViewTextBoxColumn();
-            EndDestination = new DataGridViewTextBoxColumn();
-            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            SequenceNumber = new DataGridViewTextBoxColumn();
+            RouteID = new DataGridViewTextBoxColumn();
+            RouteDetailID = new DataGridViewTextBoxColumn();
+            Location = new DataGridViewTextBoxColumn();
+            LocationID = new DataGridViewTextBoxColumn();
+            Time = new DataGridViewTextBoxColumn();
+            Description = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRoutes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)routeBindingSource).BeginInit();
@@ -167,6 +167,30 @@
             dataGridViewRoutes.TabIndex = 7;
             dataGridViewRoutes.SelectionChanged += dataGridViewRoutes_SelectionChanged;
             // 
+            // StartDestination
+            // 
+            StartDestination.DataPropertyName = "StartDestination";
+            StartDestination.HeaderText = "StartDestination";
+            StartDestination.MinimumWidth = 6;
+            StartDestination.Name = "StartDestination";
+            StartDestination.Width = 125;
+            // 
+            // EndDestination
+            // 
+            EndDestination.DataPropertyName = "EndDestination";
+            EndDestination.HeaderText = "EndDestination";
+            EndDestination.MinimumWidth = 6;
+            EndDestination.Name = "EndDestination";
+            EndDestination.Width = 125;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.Width = 125;
+            // 
             // routeBindingSource
             // 
             routeBindingSource.DataSource = typeof(Models.Route);
@@ -188,65 +212,6 @@
             dataGridViewRouteDetails.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewRouteDetails.Size = new Size(461, 289);
             dataGridViewRouteDetails.TabIndex = 8;
-            // 
-            // SequenceNumber
-            // 
-            SequenceNumber.DataPropertyName = "SequenceNumber";
-            SequenceNumber.HeaderText = "SequenceNumber";
-            SequenceNumber.MinimumWidth = 6;
-            SequenceNumber.Name = "SequenceNumber";
-            SequenceNumber.Width = 125;
-            // 
-            // RouteID
-            // 
-            RouteID.DataPropertyName = "RouteID";
-            RouteID.HeaderText = "RouteID";
-            RouteID.MinimumWidth = 6;
-            RouteID.Name = "RouteID";
-            RouteID.Visible = false;
-            RouteID.Width = 125;
-            // 
-            // RouteDetailID
-            // 
-            RouteDetailID.DataPropertyName = "RouteDetailID";
-            RouteDetailID.HeaderText = "RouteDetailID";
-            RouteDetailID.MinimumWidth = 6;
-            RouteDetailID.Name = "RouteDetailID";
-            RouteDetailID.Visible = false;
-            RouteDetailID.Width = 125;
-            // 
-            // Location
-            // 
-            Location.DataPropertyName = "LocationName";
-            Location.HeaderText = "Location";
-            Location.MinimumWidth = 6;
-            Location.Name = "Location";
-            Location.Width = 125;
-            // 
-            // LocationID
-            // 
-            LocationID.DataPropertyName = "LocationID";
-            LocationID.HeaderText = "LocationID";
-            LocationID.MinimumWidth = 6;
-            LocationID.Name = "LocationID";
-            LocationID.Visible = false;
-            LocationID.Width = 125;
-            // 
-            // Time
-            // 
-            Time.DataPropertyName = "Time";
-            Time.HeaderText = "Time";
-            Time.MinimumWidth = 6;
-            Time.Name = "Time";
-            Time.Width = 125;
-            // 
-            // Description
-            // 
-            Description.DataPropertyName = "Description";
-            Description.HeaderText = "Description";
-            Description.MinimumWidth = 6;
-            Description.Name = "Description";
-            Description.Width = 125;
             // 
             // routeDetailBindingSource
             // 
@@ -403,29 +368,65 @@
             btnDeleteRouteDetail.UseVisualStyleBackColor = true;
             btnDeleteRouteDetail.Click += btnDeleteRouteDetail_Click;
             // 
-            // StartDestination
+            // SequenceNumber
             // 
-            StartDestination.DataPropertyName = "StartDestination";
-            StartDestination.HeaderText = "StartDestination";
-            StartDestination.MinimumWidth = 6;
-            StartDestination.Name = "StartDestination";
-            StartDestination.Width = 125;
+            SequenceNumber.DataPropertyName = "SequenceNumber";
+            SequenceNumber.HeaderText = "SequenceNumber";
+            SequenceNumber.MinimumWidth = 6;
+            SequenceNumber.Name = "SequenceNumber";
+            SequenceNumber.Width = 125;
             // 
-            // EndDestination
+            // RouteID
             // 
-            EndDestination.DataPropertyName = "EndDestination";
-            EndDestination.HeaderText = "EndDestination";
-            EndDestination.MinimumWidth = 6;
-            EndDestination.Name = "EndDestination";
-            EndDestination.Width = 125;
+            RouteID.DataPropertyName = "RouteID";
+            RouteID.HeaderText = "RouteID";
+            RouteID.MinimumWidth = 6;
+            RouteID.Name = "RouteID";
+            RouteID.Visible = false;
+            RouteID.Width = 125;
             // 
-            // descriptionDataGridViewTextBoxColumn
+            // RouteDetailID
             // 
-            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            descriptionDataGridViewTextBoxColumn.Width = 125;
+            RouteDetailID.DataPropertyName = "RouteDetailID";
+            RouteDetailID.HeaderText = "RouteDetailID";
+            RouteDetailID.MinimumWidth = 6;
+            RouteDetailID.Name = "RouteDetailID";
+            RouteDetailID.Visible = false;
+            RouteDetailID.Width = 125;
+            // 
+            // Location
+            // 
+            Location.DataPropertyName = "LocationName";
+            Location.HeaderText = "Location";
+            Location.MinimumWidth = 6;
+            Location.Name = "Location";
+            Location.ReadOnly = true;
+            Location.Width = 125;
+            // 
+            // LocationID
+            // 
+            LocationID.DataPropertyName = "LocationID";
+            LocationID.HeaderText = "LocationID";
+            LocationID.MinimumWidth = 6;
+            LocationID.Name = "LocationID";
+            LocationID.Visible = false;
+            LocationID.Width = 125;
+            // 
+            // Time
+            // 
+            Time.DataPropertyName = "Time";
+            Time.HeaderText = "Time";
+            Time.MinimumWidth = 6;
+            Time.Name = "Time";
+            Time.Width = 125;
+            // 
+            // Description
+            // 
+            Description.DataPropertyName = "Description";
+            Description.HeaderText = "Description";
+            Description.MinimumWidth = 6;
+            Description.Name = "Description";
+            Description.Width = 125;
             // 
             // RDForm
             // 
@@ -485,18 +486,18 @@
         private ComboBox cmbDetailLocation;
         private Button btnDeleteRouteDetail;
         private DataGridViewTextBoxColumn sequenceNumberDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn RouteID;
-        private DataGridViewTextBoxColumn RouteDetailID;
-        private DataGridViewTextBoxColumn Location;
-        private DataGridViewTextBoxColumn LocationID;
         private DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn SequenceNumber;
-        private DataGridViewTextBoxColumn Time;
-        private DataGridViewTextBoxColumn Description;
         private DataGridViewTextBoxColumn Descriptions;
         private DataGridViewTextBoxColumn StartDestination;
         private DataGridViewTextBoxColumn EndDestination;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn SequenceNumber;
+        private DataGridViewTextBoxColumn RouteID;
+        private DataGridViewTextBoxColumn RouteDetailID;
+        private DataGridViewTextBoxColumn Location;
+        private DataGridViewTextBoxColumn LocationID;
+        private DataGridViewTextBoxColumn Time;
+        private DataGridViewTextBoxColumn Description;
     }
 }
