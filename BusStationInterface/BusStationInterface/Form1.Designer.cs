@@ -89,6 +89,7 @@
             button1 = new Button();
             textBox2 = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
+            btnTicket = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -645,12 +646,23 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
+            // btnTicket
+            // 
+            btnTicket.Location = new Point(1389, 574);
+            btnTicket.Name = "btnTicket";
+            btnTicket.Size = new Size(108, 47);
+            btnTicket.TabIndex = 27;
+            btnTicket.Text = "Ticket";
+            btnTicket.UseVisualStyleBackColor = true;
+            btnTicket.Click += btnTicket_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
             ClientSize = new Size(1725, 829);
+            Controls.Add(btnTicket);
             Controls.Add(button1);
             Controls.Add(textBox2);
             Controls.Add(dataGridViewSchedules);
@@ -759,5 +771,6 @@
         private DataGridViewTextBoxColumn RouteID;
         private DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
         private ContextMenuStrip contextMenuStrip1;
+        private Button btnTicket;
     }
 }

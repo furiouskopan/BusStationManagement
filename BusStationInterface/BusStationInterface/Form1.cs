@@ -245,5 +245,11 @@ namespace BusStationInterface
             schEditForm.ShowDialog();
             LoadSchedules();
         }
+
+        private void btnTicket_Click(object sender, EventArgs e)
+        {
+            TicketForm ticketForm = new TicketForm();
+            ticketForm.ShowDialog();
+        }
     }
 }
