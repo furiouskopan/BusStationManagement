@@ -21,14 +21,6 @@ namespace BusStationInterface.Forms
             LoadData(); // Load data when the form is initialized.
         }
 
-        private void LoadData()
-        {
-            // Load and display routes in the dataGridViewRoutes
-            LoadRoutes();
-            LoadDestinationsIntoComboBoxes();
-
-            // By default, no route is selected, so load an empty route details DataGridView.
-        }
         private void RDForm_Load(object sender, EventArgs e)
         {
             cmbStartDestination.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -43,10 +35,16 @@ namespace BusStationInterface.Forms
             dataGridViewRouteDetails.RowHeadersVisible = false;
             dataGridViewRouteDetails.ReadOnly = false;
 
-            dataGridViewRouteDetails.Columns["Location"].ReadOnly = true;
-            dataGridViewRoutes.Columns["StartDestination"].ReadOnly = true;
-            dataGridViewRoutes.Columns["EndDestination"].ReadOnly = true;
-            dataGridViewRoutes.Columns["Descriptions"].ReadOnly = false;
+            dataGridViewRoutes.AutoGenerateColumns = false;
+
+        }
+        private void LoadData()
+        {
+            // Load and display routes in the dataGridViewRoutes
+            LoadRoutes();
+            LoadDestinationsIntoComboBoxes();
+
+            // By default, no route is selected, so load an empty route details DataGridView.
         }
 
         private void LoadRoutes()
@@ -65,20 +63,24 @@ namespace BusStationInterface.Forms
                         .ToList();
                 }
             }
-            var routesWithDestinations = routes.Select(route => new
+
+            List<RouteWithDestinations> routesWithDestinations = routes.Select(route => new RouteWithDestinations
             {
-                route.RouteID,
+                RouteID = route.RouteID,
                 StartDestinationId = route.StartDestinationID,
                 EndDestinationId = route.EndDestinationID,
-                StartDestination = route.StartDestination.Name, // Assuming Name is the property of the Destination entity.
-                EndDestination = route.EndDestination.Name,     // Assuming Name is the property of the Destination entity.
-                route.Description
+                StartDestination = route.StartDestination.Name,
+                EndDestination = route.EndDestination.Name,
+                Description = route.Description
             }).ToList();
 
-            // Populate your user interface controls with the route data including destination information.
-            dataGridViewRoutes.DataSource = routesWithDestinations;
+            dataGridViewRoutes.DataSource = new BindingList<RouteWithDestinations>(routesWithDestinations);
             dataGridViewRoutes.RowHeadersVisible = false;
+
+            dataGridViewRoutes.Columns[0].ReadOnly = true;
+            dataGridViewRoutes.Columns[1].ReadOnly = true;
         }
+
 
         private void LoadRouteDetails(Route selectedRoute)
         {
@@ -223,6 +225,7 @@ namespace BusStationInterface.Forms
         {
             using (var context = new BusManagementContext())
             {
+                // Update route details
                 foreach (DataGridViewRow row in dataGridViewRouteDetails.Rows)
                 {
                     if (row.IsNewRow) continue; // Skip the 'new row' placeholder
@@ -234,7 +237,7 @@ namespace BusStationInterface.Forms
                         LocationID = Convert.ToInt32(row.Cells["LocationID"].Value),
                         SequenceNumber = Convert.ToInt32(row.Cells["SequenceNumber"].Value),
                         Time = TimeSpan.Parse(row.Cells["Time"].Value.ToString()),
-                        Description = row.Cells["Descriptions"].Value.ToString()
+                        Description = row.Cells["Description"].Value.ToString()
                     };
 
                     // Check if it's a new entry or an update
@@ -248,11 +251,28 @@ namespace BusStationInterface.Forms
                         context.RouteDetails.Add(routeDetail);
                     }
                 }
+
+                // Update routes
+                var routesWithDestinations = dataGridViewRoutes.DataSource as BindingList<RouteWithDestinations>;
+                if (routesWithDestinations != null)
+                {
+                    foreach (var routeWithDestinations in routesWithDestinations)
+                    {
+                        var existingRoute = context.Routes.Find(routeWithDestinations.RouteID);
+                        if (existingRoute != null)
+                        {
+                            // Update route properties (e.g., Description)
+                            existingRoute.Description = routeWithDestinations.Description;
+                        }
+                    }
+                }
+
                 // Save all changes
                 context.SaveChanges();
             }
             MessageBox.Show("Changes saved successfully.");
         }
+
         private void btnDeleteRoute_Click(object sender, EventArgs e)
         {
             if (dataGridViewRoutes.SelectedRows.Count > 0)
