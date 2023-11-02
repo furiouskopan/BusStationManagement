@@ -46,6 +46,7 @@ namespace BusStationInterface.Forms
             dataGridViewRouteDetails.Columns["Location"].ReadOnly = true;
             dataGridViewRoutes.Columns["StartDestination"].ReadOnly = true;
             dataGridViewRoutes.Columns["EndDestination"].ReadOnly = true;
+            dataGridViewRoutes.Columns["Descriptions"].ReadOnly = false;
         }
 
         private void LoadRoutes()
@@ -77,7 +78,6 @@ namespace BusStationInterface.Forms
             // Populate your user interface controls with the route data including destination information.
             dataGridViewRoutes.DataSource = routesWithDestinations;
             dataGridViewRoutes.RowHeadersVisible = false;
-            dataGridViewRoutes.ReadOnly = false;
         }
 
         private void LoadRouteDetails(Route selectedRoute)
@@ -101,7 +101,7 @@ namespace BusStationInterface.Forms
                             RouteDetailID = rd.RouteDetailID,
                             RouteID = rd.RouteID,
                             LocationID = rd.LocationID,
-                            LocationName = rd.Location.Name,  // Note the change here
+                            LocationName = rd.Location.Name,
                             SequenceNumber = rd.SequenceNumber,
                             Time = rd.Time,
                             Description = rd.Description
@@ -186,7 +186,7 @@ namespace BusStationInterface.Forms
                     TimeSpan timeSpanValue;
                     if (!TimeSpan.TryParse(txtTime.Text, out timeSpanValue))
                     {
-                        MessageBox.Show("Please enter a valid time format (e.g., 'hh:mm:ss').");
+                        MessageBox.Show("Please enter a valid time format (e.g., 'hh:mm').");
                         return;
                     }
 
@@ -234,7 +234,7 @@ namespace BusStationInterface.Forms
                         LocationID = Convert.ToInt32(row.Cells["LocationID"].Value),
                         SequenceNumber = Convert.ToInt32(row.Cells["SequenceNumber"].Value),
                         Time = TimeSpan.Parse(row.Cells["Time"].Value.ToString()),
-                        Description = row.Cells["Description"].Value.ToString()
+                        Description = row.Cells["Descriptions"].Value.ToString()
                     };
 
                     // Check if it's a new entry or an update

@@ -63,7 +63,7 @@
             btnDeleteRouteDetail = new Button();
             StartDestination = new DataGridViewTextBoxColumn();
             EndDestination = new DataGridViewTextBoxColumn();
-            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            Descriptions = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRoutes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)routeBindingSource).BeginInit();
@@ -152,7 +152,7 @@
             dataGridViewRoutes.AllowUserToResizeRows = false;
             dataGridViewRoutes.AutoGenerateColumns = false;
             dataGridViewRoutes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewRoutes.Columns.AddRange(new DataGridViewColumn[] { StartDestination, EndDestination, descriptionDataGridViewTextBoxColumn });
+            dataGridViewRoutes.Columns.AddRange(new DataGridViewColumn[] { StartDestination, EndDestination, Descriptions });
             dataGridViewRoutes.DataSource = routeBindingSource;
             dataGridViewRoutes.Location = new Point(541, 51);
             dataGridViewRoutes.Margin = new Padding(3, 4, 3, 4);
@@ -417,13 +417,13 @@
             EndDestination.Name = "EndDestination";
             EndDestination.Width = 125;
             // 
-            // descriptionDataGridViewTextBoxColumn
+            // Descriptions
             // 
-            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            descriptionDataGridViewTextBoxColumn.Width = 125;
+            Descriptions.DataPropertyName = "Descriptions";
+            Descriptions.HeaderText = "Description";
+            Descriptions.MinimumWidth = 6;
+            Descriptions.Name = "Descriptions";
+            Descriptions.Width = 125;
             // 
             // RDForm
             // 
@@ -494,6 +494,6 @@
         private DataGridViewTextBoxColumn Description;
         private DataGridViewTextBoxColumn StartDestination;
         private DataGridViewTextBoxColumn EndDestination;
-        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Descriptions;
     }
 }
