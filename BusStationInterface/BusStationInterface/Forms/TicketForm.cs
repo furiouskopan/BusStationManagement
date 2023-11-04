@@ -39,7 +39,7 @@ namespace BusStationInterface.Forms
             {
                 int scheduleId = Convert.ToInt32(dataGridViewTicketSchedule.CurrentRow.Cells["scheduleIDDataGridViewTextBoxColumn"].Value);
 
-                var availableSeats = _context.Seats.Where(s => s.ScheduleID == scheduleId && s.Ticket == null).ToList();
+                var availableSeats = _context.Seats.Where(s => s.BusID == scheduleId && s.Ticket == null).ToList();
 
                 // Assuming you have a ComboBox named 'comboBoxSeat' for seat selection
                 cmbSeat.DataSource = availableSeats;
@@ -79,6 +79,5 @@ namespace BusStationInterface.Forms
                 MessageBox.Show("Please select a seat.");
             }
         }
-    }
     }
 }

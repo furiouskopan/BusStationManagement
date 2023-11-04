@@ -1,5 +1,6 @@
 ﻿using BusStationInterface.Data;
 using BusStationInterface.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,21 +58,23 @@ namespace BusStationInterface.Forms
                 s.Price,
                 s.DepartureTime,
                 s.EstimatedArrivalTime,
-
-                // Extract names for Start and End Destinations
-                StartDestinationName = s.Route.StartDestination.Name,
-                EndDestinationName = s.Route.EndDestination.Name,
+                StartDestinationName = s.StartDestination.Name,
+                EndDestinationName = s.EndDestination.Name,
                 DriverName = s.Driver.Name,
                 RouteDescription = s.Route.Description,
-
+                TotalSeats = s.Bus.TotalSeats,  // TotalSeats is a property of Bus
+                OccupiedSeats = s.Tickets.Count(),  // Assuming a Ticket is created for each occupied seat
+                AvailableSeats = s.Bus.TotalSeats - s.Tickets.Count()  // AvailableSeats is TotalSeats minus OccupiedSeats
             }).ToList();
 
             dgvSchedules.DataSource = schedulesWithDetails;
+            dgvSchedules.AutoGenerateColumns = true;
 
-            dgvSchedules.Columns["Driver"].DataPropertyName = "DriverName";
-            dgvSchedules.Columns["Route"].DataPropertyName = "RouteDescription";
+            //dgvSchedules.Columns["Driver"].DataPropertyName = "DriverName";
+            //dgvSchedules.Columns["Route"].DataPropertyName = "RouteDescription";
 
-
+            dgvSchedules.Columns["TotalSeats"].DataPropertyName = "TotalSeats";
+            dgvSchedules.Columns["AvailableSeats"].DataPropertyName = "AvailableSeats";
         }
 
         private void btnAddSchedule_Click(object sender, EventArgs e)
@@ -147,6 +150,46 @@ namespace BusStationInterface.Forms
         {
 
         }
-    }
+        // Method to get the number of free seats for a schedule
+        public int GetNumberOfFreeSeatsForSchedule(int scheduleId)
+        {
+            var schedule = _context.Schedules
+                .Include(s => s.Bus)
+                .ThenInclude(b => b.Seats)
+                .Include(s => s.Tickets)
+                .FirstOrDefault(s => s.ScheduleID == scheduleId);
 
+            if (schedule == null) return 0;
+
+            int totalSeats = schedule.Bus.Seats.Count;
+            int occupiedSeats = schedule.Tickets.Count(t => t.ScheduleID == scheduleId);
+
+            return totalSeats - occupiedSeats;
+        }
+
+        // Method to get all seats and their status for a schedule
+        public List<SeatStatus> GetSeatStatusForSchedule(int scheduleId)
+        {
+            var schedule = _context.Schedules
+                .Include(s => s.Bus)
+                .ThenInclude(b => b.Seats)
+                .Include(s => s.Tickets)
+                .FirstOrDefault(s => s.ScheduleID == scheduleId);
+
+            if (schedule == null) return new List<SeatStatus>();
+
+            var seatStatuses = schedule.Bus.Seats.Select(seat => new SeatStatus
+            {
+                SeatID = seat.SeatID,
+                IsOccupied = schedule.Tickets.Any(ticket => ticket.SeatID == seat.SeatID && ticket.ScheduleID == scheduleId)
+            }).ToList();
+
+            return seatStatuses;
+        }
+    }
+    public class SeatStatus
+    {
+        public int SeatID { get; set; }
+        public bool IsOccupied { get; set; }
+    }
 }
