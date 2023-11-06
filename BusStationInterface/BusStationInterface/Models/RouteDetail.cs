@@ -14,6 +14,7 @@ namespace BusStationInterface.Models
         public int SequenceNumber { get; set; }
         public TimeSpan Time { get; set; } 
         public string? Description { get; set; }
+        public decimal PriceToNextStop { get; set; }
 
         // Navigation Properties
         public Route Route { get; set; }
