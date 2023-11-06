@@ -30,6 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             dataGridViewTicketSchedule = new DataGridView();
+            scheduleBindingSource = new BindingSource(components);
+            btnTicket = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            cmbSeat = new ComboBox();
+            seatBindingSource = new BindingSource(components);
             scheduleIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             routeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -47,13 +53,9 @@
             routeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             driverDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ticketsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            scheduleBindingSource = new BindingSource(components);
-            btnTicket = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            cmbSeat = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTicketSchedule).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)seatBindingSource).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewTicketSchedule
@@ -74,6 +76,52 @@
             dataGridViewTicketSchedule.TabIndex = 0;
             dataGridViewTicketSchedule.SelectionChanged += dataGridViewTicketSchedule_SelectionChanged;
             // 
+            // scheduleBindingSource
+            // 
+            scheduleBindingSource.DataSource = typeof(Models.Schedule);
+            // 
+            // btnTicket
+            // 
+            btnTicket.Location = new Point(480, 536);
+            btnTicket.Name = "btnTicket";
+            btnTicket.Size = new Size(130, 48);
+            btnTicket.TabIndex = 1;
+            btnTicket.Text = "Print Ticket";
+            btnTicket.UseVisualStyleBackColor = true;
+            btnTicket.Click += btnTicket_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(489, 18);
+            label1.Name = "label1";
+            label1.Size = new Size(159, 28);
+            label1.TabIndex = 2;
+            label1.Text = "Pick a Schedule";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 414);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 20);
+            label2.TabIndex = 4;
+            label2.Text = "Seat";
+            // 
+            // cmbSeat
+            // 
+            cmbSeat.DataSource = seatBindingSource;
+            cmbSeat.FormattingEnabled = true;
+            cmbSeat.Location = new Point(12, 437);
+            cmbSeat.Name = "cmbSeat";
+            cmbSeat.Size = new Size(73, 28);
+            cmbSeat.TabIndex = 5;
+            // 
+            // seatBindingSource
+            // 
+            seatBindingSource.DataSource = typeof(Models.Seat);
+            // 
             // scheduleIDDataGridViewTextBoxColumn
             // 
             scheduleIDDataGridViewTextBoxColumn.DataPropertyName = "ScheduleID";
@@ -81,6 +129,7 @@
             scheduleIDDataGridViewTextBoxColumn.MinimumWidth = 6;
             scheduleIDDataGridViewTextBoxColumn.Name = "scheduleIDDataGridViewTextBoxColumn";
             scheduleIDDataGridViewTextBoxColumn.ReadOnly = true;
+            scheduleIDDataGridViewTextBoxColumn.Visible = false;
             scheduleIDDataGridViewTextBoxColumn.Width = 125;
             // 
             // busIDDataGridViewTextBoxColumn
@@ -99,6 +148,7 @@
             routeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
             routeIDDataGridViewTextBoxColumn.Name = "routeIDDataGridViewTextBoxColumn";
             routeIDDataGridViewTextBoxColumn.ReadOnly = true;
+            routeIDDataGridViewTextBoxColumn.Visible = false;
             routeIDDataGridViewTextBoxColumn.Width = 125;
             // 
             // driverIDDataGridViewTextBoxColumn
@@ -108,6 +158,7 @@
             driverIDDataGridViewTextBoxColumn.MinimumWidth = 6;
             driverIDDataGridViewTextBoxColumn.Name = "driverIDDataGridViewTextBoxColumn";
             driverIDDataGridViewTextBoxColumn.ReadOnly = true;
+            driverIDDataGridViewTextBoxColumn.Visible = false;
             driverIDDataGridViewTextBoxColumn.Width = 125;
             // 
             // departureTimeDataGridViewTextBoxColumn
@@ -162,6 +213,7 @@
             startDestinationIdDataGridViewTextBoxColumn.MinimumWidth = 6;
             startDestinationIdDataGridViewTextBoxColumn.Name = "startDestinationIdDataGridViewTextBoxColumn";
             startDestinationIdDataGridViewTextBoxColumn.ReadOnly = true;
+            startDestinationIdDataGridViewTextBoxColumn.Visible = false;
             startDestinationIdDataGridViewTextBoxColumn.Width = 125;
             // 
             // endDestinationIdDataGridViewTextBoxColumn
@@ -171,6 +223,7 @@
             endDestinationIdDataGridViewTextBoxColumn.MinimumWidth = 6;
             endDestinationIdDataGridViewTextBoxColumn.Name = "endDestinationIdDataGridViewTextBoxColumn";
             endDestinationIdDataGridViewTextBoxColumn.ReadOnly = true;
+            endDestinationIdDataGridViewTextBoxColumn.Visible = false;
             endDestinationIdDataGridViewTextBoxColumn.Width = 125;
             // 
             // startDestinationDataGridViewTextBoxColumn
@@ -198,6 +251,7 @@
             busDataGridViewTextBoxColumn.MinimumWidth = 6;
             busDataGridViewTextBoxColumn.Name = "busDataGridViewTextBoxColumn";
             busDataGridViewTextBoxColumn.ReadOnly = true;
+            busDataGridViewTextBoxColumn.Visible = false;
             busDataGridViewTextBoxColumn.Width = 125;
             // 
             // routeDataGridViewTextBoxColumn
@@ -225,48 +279,8 @@
             ticketsDataGridViewTextBoxColumn.MinimumWidth = 6;
             ticketsDataGridViewTextBoxColumn.Name = "ticketsDataGridViewTextBoxColumn";
             ticketsDataGridViewTextBoxColumn.ReadOnly = true;
+            ticketsDataGridViewTextBoxColumn.Visible = false;
             ticketsDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // scheduleBindingSource
-            // 
-            scheduleBindingSource.DataSource = typeof(Models.Schedule);
-            // 
-            // btnTicket
-            // 
-            btnTicket.Location = new Point(480, 536);
-            btnTicket.Name = "btnTicket";
-            btnTicket.Size = new Size(130, 48);
-            btnTicket.TabIndex = 1;
-            btnTicket.Text = "Print Ticket";
-            btnTicket.UseVisualStyleBackColor = true;
-            btnTicket.Click += btnTicket_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(489, 18);
-            label1.Name = "label1";
-            label1.Size = new Size(159, 28);
-            label1.TabIndex = 2;
-            label1.Text = "Pick a Schedule";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 414);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 20);
-            label2.TabIndex = 4;
-            label2.Text = "Seat";
-            // 
-            // cmbSeat
-            // 
-            cmbSeat.FormattingEnabled = true;
-            cmbSeat.Location = new Point(12, 437);
-            cmbSeat.Name = "cmbSeat";
-            cmbSeat.Size = new Size(73, 28);
-            cmbSeat.TabIndex = 5;
             // 
             // TicketForm
             // 
@@ -283,6 +297,7 @@
             Load += TicketForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewTicketSchedule).EndInit();
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)seatBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -290,6 +305,12 @@
         #endregion
 
         private DataGridView dataGridViewTicketSchedule;
+        private BindingSource scheduleBindingSource;
+        private Button btnTicket;
+        private Label label1;
+        private Label label2;
+        private ComboBox cmbSeat;
+        private BindingSource seatBindingSource;
         private DataGridViewTextBoxColumn scheduleIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn busIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn routeIDDataGridViewTextBoxColumn;
@@ -307,10 +328,5 @@
         private DataGridViewTextBoxColumn routeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn driverDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn ticketsDataGridViewTextBoxColumn;
-        private BindingSource scheduleBindingSource;
-        private Button btnTicket;
-        private Label label1;
-        private Label label2;
-        private ComboBox cmbSeat;
     }
 }

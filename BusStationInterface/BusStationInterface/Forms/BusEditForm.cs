@@ -62,7 +62,6 @@ namespace BusStationInterface
 
         private void btnAddBus_Click(object sender, EventArgs e)
         {
-            // 1. Gather input from the textboxes
             string newBusType = txtBusType.Text; // Assuming you have a textbox named txtBusType
             int newTotalSeats;
             if (!int.TryParse(txtTotalSeats.Text, out newTotalSeats)) // Assuming you have a textbox named txtTotalSeats
@@ -71,7 +70,7 @@ namespace BusStationInterface
                 return;
             }
 
-            // 2. Create a new Bus object
+            // Create a new Bus object
             Bus newBus = new Bus
             {
                 BusType = newBusType,
@@ -79,11 +78,14 @@ namespace BusStationInterface
                 // Add other properties as needed
             };
 
-            // 3. Add the new Bus object to the database
+            // Add the new Bus object to the database
             _busDataAccess.AddBus(newBus);
 
-            // Optionally:
-            // 4. Refresh the data on your DataGridView
+            // After the bus is added, the seats need to be generated
+            // This method needs to be implemented in the BusDataAccess class
+            _busDataAccess.AddSeatsForBus(newBus.BusID, newTotalSeats);
+
+            // Refresh the data on your DataGridView
             RefreshBusData();
 
             // Clear the textboxes after adding

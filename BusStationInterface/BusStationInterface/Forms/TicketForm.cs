@@ -17,6 +17,7 @@ namespace BusStationInterface.Forms
     public partial class TicketForm : Form
     {
         private BusManagementContext _context = new BusManagementContext();
+
         public TicketForm()
         {
             InitializeComponent();
@@ -25,26 +26,75 @@ namespace BusStationInterface.Forms
         private void TicketForm_Load(object sender, EventArgs e)
         {
             LoadSchedules();
+            // Optionally, you may want to call the selection changed event here to load seats for the initial selection
+            //dataGridViewTicketSchedule_SelectionChanged(this, EventArgs.Empty);
         }
 
         private void LoadSchedules()
         {
-            var schedules = _context.Schedules.ToList();
-            dataGridViewTicketSchedule.DataSource = schedules;
+            var schedulesWithDetails = _context.Schedules.Select(s => new
+            {
+                s.ScheduleID,
+                s.BusID,
+                s.RouteID,
+                s.DriverID,
+                s.Status,
+                s.Day,
+                s.Price,
+                s.DepartureTime,
+                s.EstimatedArrivalTime,
+                StartDestinationName = s.StartDestination.Name,
+                EndDestinationName = s.EndDestination.Name,
+                DriverName = s.Driver.Name,
+                RouteDescription = s.Route.Description,
+                TotalSeats = s.Bus.TotalSeats,
+                OccupiedSeats = s.Tickets.Count(),
+                AvailableSeats = s.Bus.TotalSeats - s.Tickets.Count()
+            }).ToList();
+
+            dataGridViewTicketSchedule.DataSource = schedulesWithDetails;
+            // Setting AutoGenerateColumns to false is important to manually set which columns to display
+            dataGridViewTicketSchedule.AutoGenerateColumns = false;
+
+            // Assuming you've added columns manually in the designer or elsewhere
+            // Ensure the Name of the columns corresponds to properties of the anonymous type projected above
+            dataGridViewTicketSchedule.Columns["startDestinationDataGridViewTextBoxColumn"].DataPropertyName = "StartDestinationName";
+            dataGridViewTicketSchedule.Columns["endDestinationDataGridViewTextBoxColumn"].DataPropertyName = "EndDestinationName";
+            dataGridViewTicketSchedule.Columns["driverDataGridViewTextBoxColumn"].DataPropertyName = "DriverName";
+            dataGridViewTicketSchedule.Columns["routeDataGridViewTextBoxColumn"].DataPropertyName = "RouteDescription";
         }
+
 
         private void dataGridViewTicketSchedule_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridViewTicketSchedule.CurrentRow != null)
             {
                 int scheduleId = Convert.ToInt32(dataGridViewTicketSchedule.CurrentRow.Cells["scheduleIDDataGridViewTextBoxColumn"].Value);
+                RefreshAvailableSeats(scheduleId);
+            }
+        }
 
-                var availableSeats = _context.Seats.Where(s => s.BusID == scheduleId && s.Ticket == null).ToList();
+        private void RefreshAvailableSeats(int scheduleId)
+        {
+            var schedule = _context.Schedules
+                .Include(s => s.Bus)
+                .FirstOrDefault(s => s.ScheduleID == scheduleId);
 
-                // Assuming you have a ComboBox named 'comboBoxSeat' for seat selection
+
+            if (schedule != null)
+            {
+                var availableSeats = _context.Seats
+                                             .Include(s => s.Bus)
+                                             .Where(s => s.BusID == schedule.BusID && !s.IsOccupied)
+                                             .ToList();
+
                 cmbSeat.DataSource = availableSeats;
-                cmbSeat.DisplayMember = "SeatNumber"; // Assuming Seat has a property named 'SeatNumber'
+                cmbSeat.DisplayMember = "SeatNumber";
                 cmbSeat.ValueMember = "SeatID";
+            }
+            else
+            {
+                MessageBox.Show("Shemata e null.");
             }
         }
 
@@ -52,20 +102,30 @@ namespace BusStationInterface.Forms
         {
             if (cmbSeat.SelectedItem != null)
             {
+                int scheduleId = Convert.ToInt32(dataGridViewTicketSchedule.CurrentRow.Cells["scheduleIDDataGridViewTextBoxColumn"].Value);
+                int seatId = Convert.ToInt32(cmbSeat.SelectedValue);
+
                 var ticket = new Ticket
                 {
-                    ScheduleID = Convert.ToInt32(dataGridViewTicketSchedule.CurrentRow.Cells["scheduleIDDataGridViewTextBoxColumn"].Value),
-                    SeatID = Convert.ToInt32(cmbSeat.SelectedValue)
+                    ScheduleID = scheduleId,
+                    SeatID = seatId
                 };
 
                 _context.Tickets.Add(ticket);
+
+                // Mark the seat as occupied
+                var seat = _context.Seats.FirstOrDefault(s => s.SeatID == seatId);
+                if (seat != null)
+                {
+                    seat.IsOccupied = true;
+                }
+
                 _context.SaveChanges();
 
                 // Optionally, add to TicketingLog as well
                 var ticketingLog = new TicketingLog
                 {
                     TicketID = ticket.TicketID,
-                    EmployeeID = 1, // You'll need a mechanism to get the current employee's ID
                     Timestamp = DateTime.Now
                 };
 
@@ -73,6 +133,9 @@ namespace BusStationInterface.Forms
                 _context.SaveChanges();
 
                 MessageBox.Show("Ticket issued successfully!");
+
+                // Refresh the ComboBox to update the available seats
+                RefreshAvailableSeats(scheduleId);
             }
             else
             {

@@ -42,6 +42,47 @@ public class BusDataAccess
             }
         }
     }
+    public void AddSeatsForBus(int busId, int totalSeats)
+    {
+        using (var context = new BusManagementContext())
+        {
+            using (var transaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    var bus = context.Buses.Find(busId);
+                    if (bus == null || context.Seats.Any(s => s.BusID == busId))
+                    {
+                        // Either the bus does not exist, or seats are already initialized.
+                        transaction.Rollback();
+                        return;
+                    }
+
+                    var seatsToAdd = new List<Seat>();
+                    for (int i = 1; i <= totalSeats; i++)
+                    {
+                        seatsToAdd.Add(new Seat
+                        {
+                            BusID = busId,
+                            SeatNumber = $"Seat {i}",
+                            IsOccupied = false
+                        });
+                    }
+                    context.Seats.AddRange(seatsToAdd);
+                    context.SaveChanges();
+
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    // Handle exception
+                    transaction.Rollback();
+                    // Depending on your error handling policy, you may want to rethrow, log the exception, or handle it in another way.
+                }
+            }
+        }
+    }
+
 }
 public class DriverDataAccess
 {
@@ -230,4 +271,70 @@ public class ScheduleDataAccess
         }
     }
 }
+public class SeatDataAccess
+{
+    public List<Seat> GetSeatsForBus(int busId)
+    {
+        using (var context = new BusManagementContext())
+        {
+            return context.Seats
+                          .Where(seat => seat.BusID == busId)
+                          .ToList();
+        }
+    }
+
+    public void AddSeatsForBus(int busId, int totalSeats)
+    {
+        using (var context = new BusManagementContext())
+        {
+            var bus = context.Buses.Find(busId);
+            if (bus == null)
+            {
+                // Handle the case when the bus is not found.
+                // Depending on your application's needs, this might throw an exception or handle it gracefully.
+                return;
+            }
+
+            // Add seats only if they do not exist.
+            if (!context.Seats.Any(seat => seat.BusID == busId))
+            {
+                for (int i = 1; i <= totalSeats; i++)
+                {
+                    var seat = new Seat
+                    {
+                        BusID = busId,
+                        SeatNumber = $"Seat {i}",
+                        IsOccupied = false
+                    };
+                    context.Seats.Add(seat);
+                }
+                context.SaveChanges();
+            }
+        }
+    }
+
+    public void UpdateSeat(Seat updatedSeat)
+    {
+        using (var context = new BusManagementContext())
+        {
+            context.Seats.Update(updatedSeat);
+            context.SaveChanges();
+        }
+    }
+
+    public void DeleteSeat(int seatId)
+    {
+        using (var context = new BusManagementContext())
+        {
+            var seatToDelete = context.Seats.Find(seatId);
+            if (seatToDelete != null)
+            {
+                context.Seats.Remove(seatToDelete);
+                context.SaveChanges();
+            }
+        }
+    }
+}
+
+
 

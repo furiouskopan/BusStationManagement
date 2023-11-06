@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dataGridViewBuses = new DataGridView();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             busTypeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -75,6 +75,11 @@
             label8 = new Label();
             btnEditSchedules = new Button();
             dataGridViewSchedules = new DataGridView();
+            scheduleBindingSource = new BindingSource(components);
+            button1 = new Button();
+            textBox2 = new TextBox();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            btnTicket = new Button();
             Status = new DataGridViewTextBoxColumn();
             Price = new DataGridViewTextBoxColumn();
             DriverID = new DataGridViewTextBoxColumn();
@@ -86,11 +91,6 @@
             Route = new DataGridViewTextBoxColumn();
             RouteID = new DataGridViewTextBoxColumn();
             dayDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            scheduleBindingSource = new BindingSource(components);
-            button1 = new Button();
-            textBox2 = new TextBox();
-            contextMenuStrip1 = new ContextMenuStrip(components);
-            btnTicket = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -121,14 +121,14 @@
             dataGridViewBuses.Location = new Point(24, 135);
             dataGridViewBuses.Margin = new Padding(3, 4, 3, 4);
             dataGridViewBuses.Name = "dataGridViewBuses";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.ControlLight;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewBuses.RowHeadersVisible = false;
             dataGridViewBuses.RowHeadersWidth = 51;
             dataGridViewBuses.RowTemplate.Height = 25;
@@ -538,6 +538,42 @@
             dataGridViewSchedules.Size = new Size(583, 200);
             dataGridViewSchedules.TabIndex = 24;
             // 
+            // scheduleBindingSource
+            // 
+            scheduleBindingSource.DataSource = typeof(Models.Schedule);
+            // 
+            // button1
+            // 
+            button1.Location = new Point(1601, 104);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 33);
+            button1.TabIndex = 26;
+            button1.Text = "Search";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(1430, 107);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(163, 27);
+            textBox2.TabIndex = 25;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.ImageScalingSize = new Size(20, 20);
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(61, 4);
+            // 
+            // btnTicket
+            // 
+            btnTicket.Location = new Point(1359, 588);
+            btnTicket.Name = "btnTicket";
+            btnTicket.Size = new Size(108, 47);
+            btnTicket.TabIndex = 27;
+            btnTicket.Text = "Ticket";
+            btnTicket.UseVisualStyleBackColor = true;
+            btnTicket.Click += btnTicket_Click;
+            // 
             // Status
             // 
             Status.DataPropertyName = "Status";
@@ -578,6 +614,7 @@
             scheduleIDDataGridViewTextBoxColumn.HeaderText = "ScheduleID";
             scheduleIDDataGridViewTextBoxColumn.MinimumWidth = 6;
             scheduleIDDataGridViewTextBoxColumn.Name = "scheduleIDDataGridViewTextBoxColumn";
+            scheduleIDDataGridViewTextBoxColumn.Visible = false;
             scheduleIDDataGridViewTextBoxColumn.Width = 125;
             // 
             // busIDDataGridViewTextBoxColumn1
@@ -628,42 +665,6 @@
             dayDataGridViewTextBoxColumn.MinimumWidth = 6;
             dayDataGridViewTextBoxColumn.Name = "dayDataGridViewTextBoxColumn";
             dayDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // scheduleBindingSource
-            // 
-            scheduleBindingSource.DataSource = typeof(Models.Schedule);
-            // 
-            // button1
-            // 
-            button1.Location = new Point(1601, 104);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 33);
-            button1.TabIndex = 26;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(1430, 107);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(163, 27);
-            textBox2.TabIndex = 25;
-            // 
-            // contextMenuStrip1
-            // 
-            contextMenuStrip1.ImageScalingSize = new Size(20, 20);
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(61, 4);
-            // 
-            // btnTicket
-            // 
-            btnTicket.Location = new Point(1359, 588);
-            btnTicket.Name = "btnTicket";
-            btnTicket.Size = new Size(108, 47);
-            btnTicket.TabIndex = 27;
-            btnTicket.Text = "Ticket";
-            btnTicket.UseVisualStyleBackColor = true;
-            btnTicket.Click += btnTicket_Click;
             // 
             // Form1
             // 
