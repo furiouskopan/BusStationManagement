@@ -30,12 +30,6 @@
         {
             components = new System.ComponentModel.Container();
             dataGridViewTicketSchedule = new DataGridView();
-            scheduleBindingSource = new BindingSource(components);
-            btnTicket = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            cmbSeat = new ComboBox();
-            seatBindingSource = new BindingSource(components);
             scheduleIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             routeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -53,6 +47,14 @@
             routeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             driverDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ticketsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            scheduleBindingSource = new BindingSource(components);
+            btnTicket = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            cmbSeat = new ComboBox();
+            seatBindingSource = new BindingSource(components);
+            cmbStartDestination = new ComboBox();
+            cmbEndDestination = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTicketSchedule).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)seatBindingSource).BeginInit();
@@ -66,61 +68,16 @@
             dataGridViewTicketSchedule.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewTicketSchedule.Columns.AddRange(new DataGridViewColumn[] { scheduleIDDataGridViewTextBoxColumn, busIDDataGridViewTextBoxColumn, routeIDDataGridViewTextBoxColumn, driverIDDataGridViewTextBoxColumn, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, dayDataGridViewTextBoxColumn, statusDataGridViewTextBoxColumn, priceDataGridViewTextBoxColumn, startDestinationIdDataGridViewTextBoxColumn, endDestinationIdDataGridViewTextBoxColumn, startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn, busDataGridViewTextBoxColumn, routeDataGridViewTextBoxColumn, driverDataGridViewTextBoxColumn, ticketsDataGridViewTextBoxColumn });
             dataGridViewTicketSchedule.DataSource = scheduleBindingSource;
-            dataGridViewTicketSchedule.Location = new Point(12, 49);
+            dataGridViewTicketSchedule.Location = new Point(10, 37);
+            dataGridViewTicketSchedule.Margin = new Padding(3, 2, 3, 2);
             dataGridViewTicketSchedule.Name = "dataGridViewTicketSchedule";
             dataGridViewTicketSchedule.ReadOnly = true;
             dataGridViewTicketSchedule.RowHeadersWidth = 51;
             dataGridViewTicketSchedule.RowTemplate.Height = 29;
             dataGridViewTicketSchedule.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTicketSchedule.Size = new Size(1071, 358);
+            dataGridViewTicketSchedule.Size = new Size(937, 268);
             dataGridViewTicketSchedule.TabIndex = 0;
             dataGridViewTicketSchedule.SelectionChanged += dataGridViewTicketSchedule_SelectionChanged;
-            // 
-            // scheduleBindingSource
-            // 
-            scheduleBindingSource.DataSource = typeof(Models.Schedule);
-            // 
-            // btnTicket
-            // 
-            btnTicket.Location = new Point(480, 536);
-            btnTicket.Name = "btnTicket";
-            btnTicket.Size = new Size(130, 48);
-            btnTicket.TabIndex = 1;
-            btnTicket.Text = "Print Ticket";
-            btnTicket.UseVisualStyleBackColor = true;
-            btnTicket.Click += btnTicket_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(489, 18);
-            label1.Name = "label1";
-            label1.Size = new Size(159, 28);
-            label1.TabIndex = 2;
-            label1.Text = "Pick a Schedule";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 414);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 20);
-            label2.TabIndex = 4;
-            label2.Text = "Seat";
-            // 
-            // cmbSeat
-            // 
-            cmbSeat.DataSource = seatBindingSource;
-            cmbSeat.FormattingEnabled = true;
-            cmbSeat.Location = new Point(12, 437);
-            cmbSeat.Name = "cmbSeat";
-            cmbSeat.Size = new Size(73, 28);
-            cmbSeat.TabIndex = 5;
-            // 
-            // seatBindingSource
-            // 
-            seatBindingSource.DataSource = typeof(Models.Seat);
             // 
             // scheduleIDDataGridViewTextBoxColumn
             // 
@@ -282,16 +239,87 @@
             ticketsDataGridViewTextBoxColumn.Visible = false;
             ticketsDataGridViewTextBoxColumn.Width = 125;
             // 
+            // scheduleBindingSource
+            // 
+            scheduleBindingSource.DataSource = typeof(Models.Schedule);
+            // 
+            // btnTicket
+            // 
+            btnTicket.Location = new Point(420, 402);
+            btnTicket.Margin = new Padding(3, 2, 3, 2);
+            btnTicket.Name = "btnTicket";
+            btnTicket.Size = new Size(114, 36);
+            btnTicket.TabIndex = 1;
+            btnTicket.Text = "Print Ticket";
+            btnTicket.UseVisualStyleBackColor = true;
+            btnTicket.Click += btnTicket_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(428, 14);
+            label1.Name = "label1";
+            label1.Size = new Size(129, 21);
+            label1.TabIndex = 2;
+            label1.Text = "Pick a Schedule";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(10, 310);
+            label2.Name = "label2";
+            label2.Size = new Size(29, 15);
+            label2.TabIndex = 4;
+            label2.Text = "Seat";
+            // 
+            // cmbSeat
+            // 
+            cmbSeat.DataSource = seatBindingSource;
+            cmbSeat.FormattingEnabled = true;
+            cmbSeat.Location = new Point(10, 328);
+            cmbSeat.Margin = new Padding(3, 2, 3, 2);
+            cmbSeat.Name = "cmbSeat";
+            cmbSeat.Size = new Size(64, 23);
+            cmbSeat.TabIndex = 5;
+            // 
+            // seatBindingSource
+            // 
+            seatBindingSource.DataSource = typeof(Models.Seat);
+            // 
+            // cmbStartDestination
+            // 
+            cmbStartDestination.DataSource = seatBindingSource;
+            cmbStartDestination.FormattingEnabled = true;
+            cmbStartDestination.Location = new Point(326, 328);
+            cmbStartDestination.Margin = new Padding(3, 2, 3, 2);
+            cmbStartDestination.Name = "cmbStartDestination";
+            cmbStartDestination.Size = new Size(64, 23);
+            cmbStartDestination.TabIndex = 6;
+            // 
+            // cmbEndDestination
+            // 
+            cmbEndDestination.DataSource = seatBindingSource;
+            cmbEndDestination.FormattingEnabled = true;
+            cmbEndDestination.Location = new Point(531, 328);
+            cmbEndDestination.Margin = new Padding(3, 2, 3, 2);
+            cmbEndDestination.Name = "cmbEndDestination";
+            cmbEndDestination.Size = new Size(64, 23);
+            cmbEndDestination.TabIndex = 7;
+            // 
             // TicketForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1095, 596);
+            ClientSize = new Size(958, 447);
+            Controls.Add(cmbEndDestination);
+            Controls.Add(cmbStartDestination);
             Controls.Add(cmbSeat);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnTicket);
             Controls.Add(dataGridViewTicketSchedule);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "TicketForm";
             Text = "Ticket";
             Load += TicketForm_Load;
@@ -328,5 +356,7 @@
         private DataGridViewTextBoxColumn routeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn driverDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn ticketsDataGridViewTextBoxColumn;
+        private ComboBox cmbStartDestination;
+        private ComboBox cmbEndDestination;
     }
 }

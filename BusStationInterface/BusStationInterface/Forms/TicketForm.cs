@@ -65,12 +65,34 @@ namespace BusStationInterface.Forms
         }
 
 
+        private void LoadRouteDetails(int routeId)
+        {
+            var routeDetails = _context.RouteDetails
+                                       .Where(rd => rd.RouteID == routeId)
+                                       .OrderBy(rd => rd.SequenceNumber)
+                                       .ToList();
+
+            cmbStartDestination.DataSource = routeDetails;
+            cmbStartDestination.DisplayMember = "Name";
+            cmbStartDestination.ValueMember = "RouteDetailID";
+
+            cmbEndDestination.DataSource = routeDetails;
+            cmbEndDestination.DisplayMember = "Name";
+            cmbEndDestination.ValueMember = "RouteDetailID";
+        }
+
+        // Call this method when a schedule is selected
         private void dataGridViewTicketSchedule_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridViewTicketSchedule.CurrentRow != null)
             {
                 int scheduleId = Convert.ToInt32(dataGridViewTicketSchedule.CurrentRow.Cells["scheduleIDDataGridViewTextBoxColumn"].Value);
-                RefreshAvailableSeats(scheduleId);
+                var schedule = _context.Schedules.FirstOrDefault(s => s.ScheduleID == scheduleId);
+                if (schedule != null)
+                {
+                    RefreshAvailableSeats(scheduleId);
+                    LoadRouteDetails(schedule.RouteID);
+                }
             }
         }
 
@@ -97,18 +119,34 @@ namespace BusStationInterface.Forms
                 MessageBox.Show("Shemata e null.");
             }
         }
+        public decimal CalculatePrice(int startDetailId, int endDetailId)
+        {
+            // Assuming RouteDetails are ordered by SequenceNumber
+            var price = _context.RouteDetails
+                                .Where(rd => rd.RouteDetailID >= startDetailId
+                                             && rd.RouteDetailID < endDetailId)
+                                .Sum(rd => rd.PriceToNextStop);
 
+            return price;
+        }
         private void btnTicket_Click(object sender, EventArgs e)
         {
-            if (cmbSeat.SelectedItem != null)
+            if (cmbSeat.SelectedItem != null && cmbStartDestination.SelectedItem != null && cmbEndDestination.SelectedItem != null)
             {
                 int scheduleId = Convert.ToInt32(dataGridViewTicketSchedule.CurrentRow.Cells["scheduleIDDataGridViewTextBoxColumn"].Value);
                 int seatId = Convert.ToInt32(cmbSeat.SelectedValue);
+                int startDetailId = Convert.ToInt32(cmbStartDestination.SelectedValue);
+                int endDetailId = Convert.ToInt32(cmbEndDestination.SelectedValue);
+
+                var price = CalculatePrice(startDetailId, endDetailId);
 
                 var ticket = new Ticket
                 {
                     ScheduleID = scheduleId,
-                    SeatID = seatId
+                    SeatID = seatId,
+                    StartRouteDetailID = startDetailId,
+                    EndRouteDetailID = endDetailId,
+                    Price = price
                 };
 
                 _context.Tickets.Add(ticket);

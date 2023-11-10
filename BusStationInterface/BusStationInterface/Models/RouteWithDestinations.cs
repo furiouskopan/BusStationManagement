@@ -15,5 +15,4 @@ namespace BusStationInterface.Models
         public string EndDestination { get; set; }
         public string Description { get; set; }
     }
-
 }

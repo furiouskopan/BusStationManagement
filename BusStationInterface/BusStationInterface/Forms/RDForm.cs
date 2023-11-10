@@ -106,7 +106,8 @@ namespace BusStationInterface.Forms
                             LocationName = rd.Location.Name,
                             SequenceNumber = rd.SequenceNumber,
                             Time = rd.Time,
-                            Description = rd.Description
+                            Description = rd.Description,
+                            PriceToNextStop = rd.PriceToNextStop
                         })
                         .ToList();
 
@@ -192,6 +193,13 @@ namespace BusStationInterface.Forms
                         return;
                     }
 
+                    decimal priceToNextStop;
+                    if (!decimal.TryParse(txtPriceToNextStop.Text, out priceToNextStop)) // Assuming you have a textbox named txtPriceToNextStop
+                    {
+                        MessageBox.Show("Please enter a valid price.");
+                        return;
+                    }
+
                     int desiredSequenceNumber = Convert.ToInt32(txtSequenceNumber.Text);
 
                     var existingDetail = context.RouteDetails.FirstOrDefault(rd => rd.SequenceNumber == desiredSequenceNumber && rd.RouteID == selectedRouteId);
@@ -212,7 +220,8 @@ namespace BusStationInterface.Forms
                         SequenceNumber = desiredSequenceNumber,
                         LocationID = Convert.ToInt32(cmbDetailLocation.SelectedValue),
                         Time = timeSpanValue,
-                        Description = txtRouteDetailDescription.Text
+                        Description = txtRouteDetailDescription.Text,
+                        PriceToNextStop = priceToNextStop // Save the price to the next stop
                     };
                     context.RouteDetails.Add(newRouteDetail);
                     context.SaveChanges();
@@ -220,6 +229,7 @@ namespace BusStationInterface.Forms
                 LoadRouteDetails(selectedItem as Route);
             }
         }
+
 
         private void btnSaveRoutesEdit_Click(object sender, EventArgs e)
         {
@@ -237,7 +247,8 @@ namespace BusStationInterface.Forms
                         LocationID = Convert.ToInt32(row.Cells["LocationID"].Value),
                         SequenceNumber = Convert.ToInt32(row.Cells["SequenceNumber"].Value),
                         Time = TimeSpan.Parse(row.Cells["Time"].Value.ToString()),
-                        Description = row.Cells["Description"].Value.ToString()
+                        Description = row.Cells["Description"].Value.ToString(),
+                        PriceToNextStop = Convert.ToInt32(row.Cells["PriceToNextStop"].Value)
                     };
 
                     // Check if it's a new entry or an update

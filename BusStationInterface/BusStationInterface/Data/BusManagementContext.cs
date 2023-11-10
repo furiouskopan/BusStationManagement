@@ -66,25 +66,37 @@ namespace BusStationInterface.Data
                 .HasForeignKey<Ticket>(t => t.SeatID)
                 .IsRequired(true);
 
+            modelBuilder.Entity<Ticket>()
+                .HasOne(t => t.StartRouteDetail)
+                .WithMany()
+                .HasForeignKey(t => t.StartRouteDetailID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Ticket>()
+                .HasOne(t => t.EndRouteDetail)
+                .WithMany()
+                .HasForeignKey(t => t.EndRouteDetailID)
+                .OnDelete(DeleteBehavior.Restrict);
+
             modelBuilder.Entity<Seat>()
                 .HasOne(s => s.Ticket)
                 .WithOne(t => t.Seat)
                 .HasForeignKey<Ticket>(t => t.SeatID)
-                .IsRequired(true); 
+                .IsRequired(true);
 
             // Configure the Tickets -> Seats relationship with DeleteBehavior.NoAction
             modelBuilder.Entity<Ticket>()
                 .HasOne(t => t.Seat)
                 .WithOne(s => s.Ticket)
                 .HasForeignKey<Ticket>(t => t.SeatID)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Restrict);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-SJ17PE6\\SQLEXPRESS;Initial Catalog=BusStation;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-S5ULU19\\SQLEXPRESS;Initial Catalog=BusStation;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
             }
         }
     }

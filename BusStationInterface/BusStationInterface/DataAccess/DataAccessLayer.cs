@@ -335,6 +335,3 @@ public class SeatDataAccess
         }
     }
 }
-
-
-
