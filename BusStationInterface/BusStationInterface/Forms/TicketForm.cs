@@ -64,20 +64,27 @@ namespace BusStationInterface.Forms
             dataGridViewTicketSchedule.Columns["routeDataGridViewTextBoxColumn"].DataPropertyName = "RouteDescription";
         }
 
-
         private void LoadRouteDetails(int routeId)
         {
-            var routeDetails = _context.RouteDetails
-                                       .Where(rd => rd.RouteID == routeId)
-                                       .OrderBy(rd => rd.SequenceNumber)
-                                       .ToList();
+            var routeDetailsViewModel = _context.RouteDetails
+                                                .Where(rd => rd.RouteID == routeId)
+                                                .OrderBy(rd => rd.SequenceNumber)
+                                                .Include(rd => rd.Location) 
+                                                .Select(rd => new RouteDetailViewModel
+                                                {
+                                                    RouteDetailID = rd.RouteDetailID,
+                                                    SequenceNumber = rd.SequenceNumber,
+                                                    LocationName = rd.Location.Name, 
+                                                    PriceToNextStop = rd.PriceToNextStop
+                                                })
+                                                .ToList();
 
-            cmbStartDestination.DataSource = routeDetails;
-            cmbStartDestination.DisplayMember = "Name";
+            cmbStartDestination.DataSource = new BindingList<RouteDetailViewModel>(routeDetailsViewModel);
+            cmbStartDestination.DisplayMember = "LocationName";
             cmbStartDestination.ValueMember = "RouteDetailID";
 
-            cmbEndDestination.DataSource = routeDetails;
-            cmbEndDestination.DisplayMember = "Name";
+            cmbEndDestination.DataSource = new BindingList<RouteDetailViewModel>(routeDetailsViewModel.Skip(1).ToList());
+            cmbEndDestination.DisplayMember = "LocationName";
             cmbEndDestination.ValueMember = "RouteDetailID";
         }
 
@@ -102,7 +109,6 @@ namespace BusStationInterface.Forms
                 .Include(s => s.Bus)
                 .FirstOrDefault(s => s.ScheduleID == scheduleId);
 
-
             if (schedule != null)
             {
                 var availableSeats = _context.Seats
@@ -126,9 +132,9 @@ namespace BusStationInterface.Forms
                                 .Where(rd => rd.RouteDetailID >= startDetailId
                                              && rd.RouteDetailID < endDetailId)
                                 .Sum(rd => rd.PriceToNextStop);
-
             return price;
         }
+
         private void btnTicket_Click(object sender, EventArgs e)
         {
             if (cmbSeat.SelectedItem != null && cmbStartDestination.SelectedItem != null && cmbEndDestination.SelectedItem != null)
@@ -174,6 +180,7 @@ namespace BusStationInterface.Forms
 
                 // Refresh the ComboBox to update the available seats
                 RefreshAvailableSeats(scheduleId);
+
             }
             else
             {

@@ -55,6 +55,8 @@
             seatBindingSource = new BindingSource(components);
             cmbStartDestination = new ComboBox();
             cmbEndDestination = new ComboBox();
+            label3 = new Label();
+            lblPrice = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTicketSchedule).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)seatBindingSource).BeginInit();
@@ -291,27 +293,51 @@
             // 
             cmbStartDestination.DataSource = seatBindingSource;
             cmbStartDestination.FormattingEnabled = true;
-            cmbStartDestination.Location = new Point(326, 328);
+            cmbStartDestination.Location = new Point(301, 328);
             cmbStartDestination.Margin = new Padding(3, 2, 3, 2);
             cmbStartDestination.Name = "cmbStartDestination";
-            cmbStartDestination.Size = new Size(64, 23);
+            cmbStartDestination.Size = new Size(117, 23);
             cmbStartDestination.TabIndex = 6;
+            //cmbStartDestination.SelectedIndexChanged += DestinationComboBox_SelectedIndexChanged;
             // 
             // cmbEndDestination
             // 
             cmbEndDestination.DataSource = seatBindingSource;
             cmbEndDestination.FormattingEnabled = true;
-            cmbEndDestination.Location = new Point(531, 328);
+            cmbEndDestination.Location = new Point(519, 328);
             cmbEndDestination.Margin = new Padding(3, 2, 3, 2);
             cmbEndDestination.Name = "cmbEndDestination";
-            cmbEndDestination.Size = new Size(64, 23);
+            cmbEndDestination.Size = new Size(112, 23);
             cmbEndDestination.TabIndex = 7;
+            //cmbEndDestination.SelectedIndexChanged += DestinationComboBox_SelectedIndexChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(698, 336);
+            label3.Name = "label3";
+            label3.Size = new Size(44, 20);
+            label3.TabIndex = 8;
+            label3.Text = "Price:";
+            // 
+            // lblPrice
+            // 
+            lblPrice.AutoSize = true;
+            lblPrice.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPrice.Location = new Point(738, 336);
+            lblPrice.Name = "lblPrice";
+            lblPrice.Size = new Size(50, 20);
+            lblPrice.TabIndex = 9;
+            lblPrice.Text = "label4";
             // 
             // TicketForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(958, 447);
+            Controls.Add(lblPrice);
+            Controls.Add(label3);
             Controls.Add(cmbEndDestination);
             Controls.Add(cmbStartDestination);
             Controls.Add(cmbSeat);
@@ -358,5 +384,7 @@
         private DataGridViewTextBoxColumn ticketsDataGridViewTextBoxColumn;
         private ComboBox cmbStartDestination;
         private ComboBox cmbEndDestination;
+        private Label label3;
+        private Label lblPrice;
     }
 }
