@@ -69,12 +69,12 @@ namespace BusStationInterface.Forms
             var routeDetailsViewModel = _context.RouteDetails
                                                 .Where(rd => rd.RouteID == routeId)
                                                 .OrderBy(rd => rd.SequenceNumber)
-                                                .Include(rd => rd.Location) 
+                                                .Include(rd => rd.Location)
                                                 .Select(rd => new RouteDetailViewModel
                                                 {
                                                     RouteDetailID = rd.RouteDetailID,
                                                     SequenceNumber = rd.SequenceNumber,
-                                                    LocationName = rd.Location.Name, 
+                                                    LocationName = rd.Location.Name,
                                                     PriceToNextStop = rd.PriceToNextStop
                                                 })
                                                 .ToList();
@@ -83,10 +83,12 @@ namespace BusStationInterface.Forms
             cmbStartDestination.DisplayMember = "LocationName";
             cmbStartDestination.ValueMember = "RouteDetailID";
 
-            cmbEndDestination.DataSource = new BindingList<RouteDetailViewModel>(routeDetailsViewModel.Skip(1).ToList());
+            // Create a new list for end destination to avoid sharing the same instance
+            cmbEndDestination.DataSource = new BindingList<RouteDetailViewModel>(routeDetailsViewModel.ToList());
             cmbEndDestination.DisplayMember = "LocationName";
             cmbEndDestination.ValueMember = "RouteDetailID";
         }
+
 
         // Call this method when a schedule is selected
         private void dataGridViewTicketSchedule_SelectionChanged(object sender, EventArgs e)
@@ -134,15 +136,33 @@ namespace BusStationInterface.Forms
                                 .Sum(rd => rd.PriceToNextStop);
             return price;
         }
-
+        // Attach this event handler to the SelectedIndexChanged event of both cmbStartDestination and cmbEndDestination.
+        private void DestinationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbStartDestination.SelectedItem is RouteDetailViewModel startDetail &&
+                cmbEndDestination.SelectedItem is RouteDetailViewModel endDetail)
+            {
+                // You may want to add additional validation to ensure startDetailId is less than endDetailId
+                if (startDetail.RouteDetailID < endDetail.RouteDetailID)
+                {
+                    var price = CalculatePrice(startDetail.RouteDetailID, endDetail.RouteDetailID);
+                    lblPrice.Text = price.ToString() + "MKD";
+                }
+                else
+                {
+                    lblPrice.Text = "N/A";
+                }
+            }
+        }
         private void btnTicket_Click(object sender, EventArgs e)
         {
-            if (cmbSeat.SelectedItem != null && cmbStartDestination.SelectedItem != null && cmbEndDestination.SelectedItem != null)
+            if (cmbSeat.SelectedItem != null && cmbStartDestination.SelectedItem is RouteDetailViewModel startDetailViewModel && cmbEndDestination.SelectedItem is RouteDetailViewModel endDetailViewModel)
             {
                 int scheduleId = Convert.ToInt32(dataGridViewTicketSchedule.CurrentRow.Cells["scheduleIDDataGridViewTextBoxColumn"].Value);
                 int seatId = Convert.ToInt32(cmbSeat.SelectedValue);
-                int startDetailId = Convert.ToInt32(cmbStartDestination.SelectedValue);
-                int endDetailId = Convert.ToInt32(cmbEndDestination.SelectedValue);
+
+                int startDetailId = startDetailViewModel.RouteDetailID;
+                int endDetailId = endDetailViewModel.RouteDetailID;
 
                 var price = CalculatePrice(startDetailId, endDetailId);
 

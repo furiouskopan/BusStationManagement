@@ -298,7 +298,7 @@
             cmbStartDestination.Name = "cmbStartDestination";
             cmbStartDestination.Size = new Size(117, 23);
             cmbStartDestination.TabIndex = 6;
-            //cmbStartDestination.SelectedIndexChanged += DestinationComboBox_SelectedIndexChanged;
+            cmbStartDestination.SelectedIndexChanged += DestinationComboBox_SelectedIndexChanged;
             // 
             // cmbEndDestination
             // 
@@ -309,7 +309,7 @@
             cmbEndDestination.Name = "cmbEndDestination";
             cmbEndDestination.Size = new Size(112, 23);
             cmbEndDestination.TabIndex = 7;
-            //cmbEndDestination.SelectedIndexChanged += DestinationComboBox_SelectedIndexChanged;
+            cmbEndDestination.SelectedIndexChanged += DestinationComboBox_SelectedIndexChanged;
             // 
             // label3
             // 
