@@ -87,6 +87,11 @@ namespace BusStationInterface.Forms
             cmbEndDestination.DataSource = new BindingList<RouteDetailViewModel>(routeDetailsViewModel.ToList());
             cmbEndDestination.DisplayMember = "LocationName";
             cmbEndDestination.ValueMember = "RouteDetailID";
+
+            if (routeDetailsViewModel.Any())
+            {
+                cmbEndDestination.SelectedIndex = routeDetailsViewModel.Count - 1;
+            }
         }
 
 
