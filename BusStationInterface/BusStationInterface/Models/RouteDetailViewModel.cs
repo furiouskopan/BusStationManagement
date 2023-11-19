@@ -14,6 +14,7 @@ namespace BusStationInterface.Models
         public string LocationName { get; set; }
         public int SequenceNumber { get; set; }
         public TimeSpan Time { get; set; }
+        public string FormattedTime => Time.ToString(@"hh\:mm");
         public string Description { get; set; }
         public decimal PriceToNextStop { get; set; }
     }

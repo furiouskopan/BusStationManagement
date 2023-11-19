@@ -115,6 +115,7 @@ namespace BusStationInterface.Forms
                     dataGridViewRouteDetails.DataSource = routeDetailsWithLocation;
 
                     dataGridViewRouteDetails.RowHeadersVisible = false;
+            dataGridViewRouteDetails.Columns["Time"].DataPropertyName = "Time";
                 }
             }
         }
@@ -327,6 +328,15 @@ namespace BusStationInterface.Forms
                     }
                 }
                 LoadRouteDetails(selectedItem as Route); // Refresh the DataGridView.
+            }
+        }
+        private void dataGridViewRouteDetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridViewRouteDetails.Columns[e.ColumnIndex].Name == "Time" && e.Value is TimeSpan)
+            {
+                TimeSpan time = (TimeSpan)e.Value;
+                e.Value = time.ToString(@"hh\:mm");
+                e.FormattingApplied = true;
             }
         }
     }

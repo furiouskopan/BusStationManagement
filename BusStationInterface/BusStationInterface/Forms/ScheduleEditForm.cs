@@ -117,7 +117,7 @@ namespace BusStationInterface.Forms
             {
                 if (dgvSchedules.SelectedRows.Count > 0)
                 {
-                    var scheduleId = (int)dgvSchedules.SelectedRows[0].Cells["ScheduleID"].Value;
+                    var scheduleId = (int)dgvSchedules.SelectedRows[0].Cells["scheduleIDDataGridViewTextBoxColumn"].Value;
                     var scheduleToDelete = _context.Schedules.Find(scheduleId);
 
                     if (scheduleToDelete != null)
@@ -140,6 +140,9 @@ namespace BusStationInterface.Forms
         {
             dtpArrivalTime.CustomFormat = "HH:mm";
             dtpDepartureTime.CustomFormat = "HH:mm";
+
+            dgvSchedules.Columns["estimatedArrivalTimeDataGridViewTextBoxColumn"].DefaultCellStyle.Format = "HH:mm";
+            dgvSchedules.Columns["departureTimeDataGridViewTextBoxColumn"].DefaultCellStyle.Format = "HH:mm";
         }
         private void dtpArrivalTime_ValueChanged(object sender, EventArgs e)
         {

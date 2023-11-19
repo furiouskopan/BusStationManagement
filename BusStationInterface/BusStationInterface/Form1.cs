@@ -116,7 +116,7 @@ namespace BusStationInterface
                             rd.LocationID,
                             LocationName = rd.Location.Name,  // This will now work because Location is loaded
                             rd.SequenceNumber,
-                            rd.Time,
+                            Time = rd.Time.ToString(@"hh\:mm"),
                             rd.Description
                         })
                         .ToList();
@@ -124,6 +124,7 @@ namespace BusStationInterface
                     // Bind the details with location name to the detail view
                     dataGridViewRouteDetails.DataSource = routeDetailsWithLocation;
                 }
+                dataGridViewRouteDetails.Columns["timeDataGridViewTextBoxColumn"].DefaultCellStyle.Format = "HH:mm";
             }
         }
         private void LoadSchedules()
@@ -157,6 +158,9 @@ namespace BusStationInterface
             //dataGridViewSchedules.Columns["EndDestination"].DataPropertyName = "EndDestinationName";
             dataGridViewSchedules.Columns["Driver"].DataPropertyName = "DriverName";
             dataGridViewSchedules.Columns["Route"].DataPropertyName = "RouteDescription";
+
+            dataGridViewSchedules.Columns["estimatedArrivalTimeDataGridViewTextBoxColumn"].DefaultCellStyle.Format = "HH:mm";
+            dataGridViewSchedules.Columns["departureTimeDataGridViewTextBoxColumn"].DefaultCellStyle.Format = "HH:mm";
 
 
             dataGridViewSchedules.RowHeadersVisible = false;
