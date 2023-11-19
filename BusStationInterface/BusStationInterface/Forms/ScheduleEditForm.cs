@@ -55,7 +55,6 @@ namespace BusStationInterface.Forms
                 s.DriverID,
                 s.Status,
                 s.Day,
-                s.Price,
                 s.DepartureTime,
                 s.EstimatedArrivalTime,
                 StartDestinationName = s.StartDestination.Name,
@@ -99,7 +98,6 @@ namespace BusStationInterface.Forms
                 Status = txtStatus.Text,
                 DepartureTime = dtpDepartureTime.Value,
                 EstimatedArrivalTime = dtpArrivalTime.Value,
-                Price = Convert.ToInt32(this.txtPrice.Text),
                 StartDestinationId = selectedRoute.StartDestinationID, // Set the StartDestinationId from the Route
                 EndDestinationId = selectedRoute.EndDestinationID     // Set the EndDestinationId from the Route
             };

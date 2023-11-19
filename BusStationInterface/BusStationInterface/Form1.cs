@@ -140,7 +140,6 @@ namespace BusStationInterface
                 s.DriverID,
                 s.Status,
                 s.Day,
-                s.Price,
                 s.DepartureTime,
                 s.EstimatedArrivalTime,
 

@@ -62,8 +62,6 @@
             btnDeleteSchedule = new Button();
             label6 = new Label();
             txtStatus = new TextBox();
-            label9 = new Label();
-            txtPrice = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvSchedules).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).BeginInit();
             SuspendLayout();
@@ -174,7 +172,7 @@
             // 
             dtpArrivalTime.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             dtpArrivalTime.Format = DateTimePickerFormat.Custom;
-            dtpArrivalTime.Location = new Point(66, 438);
+            dtpArrivalTime.Location = new Point(49, 409);
             dtpArrivalTime.Margin = new Padding(3, 2, 3, 2);
             dtpArrivalTime.Name = "dtpArrivalTime";
             dtpArrivalTime.Size = new Size(87, 32);
@@ -185,7 +183,7 @@
             dtpDepartureTime.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             dtpDepartureTime.Format = DateTimePickerFormat.Custom;
             dtpDepartureTime.ImeMode = ImeMode.NoControl;
-            dtpDepartureTime.Location = new Point(66, 381);
+            dtpDepartureTime.Location = new Point(49, 352);
             dtpDepartureTime.Margin = new Padding(3, 2, 3, 2);
             dtpDepartureTime.Name = "dtpDepartureTime";
             dtpDepartureTime.Size = new Size(87, 32);
@@ -195,7 +193,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(52, 360);
+            label7.Location = new Point(35, 331);
             label7.Name = "label7";
             label7.Size = new Size(110, 20);
             label7.TabIndex = 21;
@@ -205,7 +203,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(66, 417);
+            label8.Location = new Point(49, 388);
             label8.Name = "label8";
             label8.Size = new Size(89, 20);
             label8.TabIndex = 22;
@@ -378,32 +376,11 @@
             txtStatus.Size = new Size(166, 23);
             txtStatus.TabIndex = 29;
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(22, 302);
-            label9.Name = "label9";
-            label9.Size = new Size(41, 20);
-            label9.TabIndex = 31;
-            label9.Text = "Price";
-            // 
-            // txtPrice
-            // 
-            txtPrice.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPrice.Location = new Point(25, 321);
-            txtPrice.Margin = new Padding(3, 2, 3, 2);
-            txtPrice.Name = "txtPrice";
-            txtPrice.Size = new Size(86, 27);
-            txtPrice.TabIndex = 32;
-            // 
             // ScheduleEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1158, 516);
-            Controls.Add(txtPrice);
-            Controls.Add(label9);
             Controls.Add(txtStatus);
             Controls.Add(label6);
             Controls.Add(btnDeleteSchedule);
@@ -457,8 +434,6 @@
         private BindingSource scheduleBindingSource;
         private Label label6;
         private TextBox txtStatus;
-        private Label label9;
-        private TextBox txtPrice;
         private DataGridViewTextBoxColumn busIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn scheduleIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn routeIDDataGridViewTextBoxColumn;

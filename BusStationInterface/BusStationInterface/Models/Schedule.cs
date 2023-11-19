@@ -16,7 +16,6 @@ namespace BusStationInterface.Models
         public DateTime EstimatedArrivalTime { get; set; }
         public DayOfWeek Day { get; set; }
         public string Status { get; set; }
-        public int Price { get; set; }
         public int StartDestinationId { get; set; } // Foreign Key
         public int EndDestinationId { get; set; }   // Foreign Key
 
