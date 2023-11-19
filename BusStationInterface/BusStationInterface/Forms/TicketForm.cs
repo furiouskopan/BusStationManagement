@@ -116,14 +116,26 @@ namespace BusStationInterface.Forms
         {
             var schedule = _context.Schedules
                 .Include(s => s.Bus)
+                .Include(s => s.Tickets) // Include tickets to check occupancy for this specific schedule
                 .FirstOrDefault(s => s.ScheduleID == scheduleId);
 
             if (schedule != null)
             {
-                var availableSeats = _context.Seats
-                                             .Include(s => s.Bus)
-                                             .Where(s => s.BusID == schedule.BusID && !s.IsOccupied)
-                                             .ToList();
+                // Get all seats for this bus
+                var allSeats = _context.Seats
+                                       .Where(s => s.BusID == schedule.BusID)
+                                       .ToList();
+
+                // Get IDs of seats occupied for this schedule
+                var occupiedSeatIds = schedule.Tickets
+                                              .Where(t => t.ScheduleID == scheduleId)
+                                              .Select(t => t.SeatID)
+                                              .ToList();
+
+                // Filter out the occupied seats
+                var availableSeats = allSeats
+                                     .Where(s => !occupiedSeatIds.Contains(s.SeatID))
+                                     .ToList();
 
                 cmbSeat.DataSource = availableSeats;
                 cmbSeat.DisplayMember = "SeatNumber";
@@ -131,9 +143,11 @@ namespace BusStationInterface.Forms
             }
             else
             {
-                MessageBox.Show("Shemata e null.");
+                MessageBox.Show("The selected schedule is not available.");
+                cmbSeat.DataSource = null;
             }
         }
+
         public decimal CalculatePrice(int startDetailId, int endDetailId)
         {
             // Assuming RouteDetails are ordered by SequenceNumber
