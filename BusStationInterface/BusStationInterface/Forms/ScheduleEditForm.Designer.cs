@@ -44,6 +44,12 @@
             label7 = new Label();
             label8 = new Label();
             dgvSchedules = new DataGridView();
+            scheduleBindingSource = new BindingSource(components);
+            Day = new Label();
+            cmbDay = new ComboBox();
+            btnDeleteSchedule = new Button();
+            label6 = new Label();
+            txtStatus = new TextBox();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             scheduleIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             routeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -52,16 +58,9 @@
             estimatedArrivalTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             dayDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             statusDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            priceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             startDestinationIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             endDestinationIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ticketsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            scheduleBindingSource = new BindingSource(components);
-            Day = new Label();
-            cmbDay = new ComboBox();
-            btnDeleteSchedule = new Button();
-            label6 = new Label();
-            txtStatus = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvSchedules).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).BeginInit();
             SuspendLayout();
@@ -213,7 +212,7 @@
             // 
             dgvSchedules.AutoGenerateColumns = false;
             dgvSchedules.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSchedules.Columns.AddRange(new DataGridViewColumn[] { busIDDataGridViewTextBoxColumn, scheduleIDDataGridViewTextBoxColumn, routeIDDataGridViewTextBoxColumn, driverIDDataGridViewTextBoxColumn, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, dayDataGridViewTextBoxColumn, statusDataGridViewTextBoxColumn, priceDataGridViewTextBoxColumn, startDestinationIdDataGridViewTextBoxColumn, endDestinationIdDataGridViewTextBoxColumn, ticketsDataGridViewTextBoxColumn });
+            dgvSchedules.Columns.AddRange(new DataGridViewColumn[] { busIDDataGridViewTextBoxColumn, scheduleIDDataGridViewTextBoxColumn, routeIDDataGridViewTextBoxColumn, driverIDDataGridViewTextBoxColumn, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, dayDataGridViewTextBoxColumn, statusDataGridViewTextBoxColumn, startDestinationIdDataGridViewTextBoxColumn, endDestinationIdDataGridViewTextBoxColumn, ticketsDataGridViewTextBoxColumn });
             dgvSchedules.DataSource = scheduleBindingSource;
             dgvSchedules.Location = new Point(319, 67);
             dgvSchedules.Margin = new Padding(3, 2, 3, 2);
@@ -222,6 +221,58 @@
             dgvSchedules.RowTemplate.Height = 29;
             dgvSchedules.Size = new Size(829, 265);
             dgvSchedules.TabIndex = 23;
+            // 
+            // scheduleBindingSource
+            // 
+            scheduleBindingSource.DataSource = typeof(Models.Schedule);
+            // 
+            // Day
+            // 
+            Day.AutoSize = true;
+            Day.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            Day.Location = new Point(24, 245);
+            Day.Name = "Day";
+            Day.Size = new Size(35, 20);
+            Day.TabIndex = 25;
+            Day.Text = "Day";
+            // 
+            // cmbDay
+            // 
+            cmbDay.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbDay.FormattingEnabled = true;
+            cmbDay.Location = new Point(25, 266);
+            cmbDay.Margin = new Padding(3, 2, 3, 2);
+            cmbDay.Name = "cmbDay";
+            cmbDay.Size = new Size(180, 27);
+            cmbDay.TabIndex = 24;
+            // 
+            // btnDeleteSchedule
+            // 
+            btnDeleteSchedule.Location = new Point(660, 394);
+            btnDeleteSchedule.Margin = new Padding(3, 2, 3, 2);
+            btnDeleteSchedule.Name = "btnDeleteSchedule";
+            btnDeleteSchedule.Size = new Size(82, 34);
+            btnDeleteSchedule.TabIndex = 26;
+            btnDeleteSchedule.Text = "Delete";
+            btnDeleteSchedule.UseVisualStyleBackColor = true;
+            btnDeleteSchedule.Click += btnDeleteSchedule_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(318, 340);
+            label6.Name = "label6";
+            label6.Size = new Size(39, 15);
+            label6.TabIndex = 28;
+            label6.Text = "Status";
+            // 
+            // txtStatus
+            // 
+            txtStatus.Location = new Point(319, 361);
+            txtStatus.Margin = new Padding(3, 2, 3, 2);
+            txtStatus.Name = "txtStatus";
+            txtStatus.Size = new Size(166, 23);
+            txtStatus.TabIndex = 29;
             // 
             // busIDDataGridViewTextBoxColumn
             // 
@@ -290,14 +341,6 @@
             statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
             statusDataGridViewTextBoxColumn.Width = 125;
             // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            priceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            priceDataGridViewTextBoxColumn.Width = 125;
-            // 
             // startDestinationIdDataGridViewTextBoxColumn
             // 
             startDestinationIdDataGridViewTextBoxColumn.DataPropertyName = "StartDestinationId";
@@ -322,59 +365,8 @@
             ticketsDataGridViewTextBoxColumn.HeaderText = "Tickets";
             ticketsDataGridViewTextBoxColumn.MinimumWidth = 6;
             ticketsDataGridViewTextBoxColumn.Name = "ticketsDataGridViewTextBoxColumn";
+            ticketsDataGridViewTextBoxColumn.Visible = false;
             ticketsDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // scheduleBindingSource
-            // 
-            scheduleBindingSource.DataSource = typeof(Models.Schedule);
-            // 
-            // Day
-            // 
-            Day.AutoSize = true;
-            Day.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            Day.Location = new Point(24, 245);
-            Day.Name = "Day";
-            Day.Size = new Size(35, 20);
-            Day.TabIndex = 25;
-            Day.Text = "Day";
-            // 
-            // cmbDay
-            // 
-            cmbDay.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            cmbDay.FormattingEnabled = true;
-            cmbDay.Location = new Point(25, 266);
-            cmbDay.Margin = new Padding(3, 2, 3, 2);
-            cmbDay.Name = "cmbDay";
-            cmbDay.Size = new Size(180, 27);
-            cmbDay.TabIndex = 24;
-            // 
-            // btnDeleteSchedule
-            // 
-            btnDeleteSchedule.Location = new Point(660, 394);
-            btnDeleteSchedule.Margin = new Padding(3, 2, 3, 2);
-            btnDeleteSchedule.Name = "btnDeleteSchedule";
-            btnDeleteSchedule.Size = new Size(82, 34);
-            btnDeleteSchedule.TabIndex = 26;
-            btnDeleteSchedule.Text = "Delete";
-            btnDeleteSchedule.UseVisualStyleBackColor = true;
-            btnDeleteSchedule.Click += btnDeleteSchedule_Click;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(318, 340);
-            label6.Name = "label6";
-            label6.Size = new Size(39, 15);
-            label6.TabIndex = 28;
-            label6.Text = "Status";
-            // 
-            // txtStatus
-            // 
-            txtStatus.Location = new Point(319, 361);
-            txtStatus.Margin = new Padding(3, 2, 3, 2);
-            txtStatus.Name = "txtStatus";
-            txtStatus.Size = new Size(166, 23);
-            txtStatus.TabIndex = 29;
             // 
             // ScheduleEditForm
             // 
@@ -434,6 +426,7 @@
         private BindingSource scheduleBindingSource;
         private Label label6;
         private TextBox txtStatus;
+        private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn busIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn scheduleIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn routeIDDataGridViewTextBoxColumn;
@@ -442,7 +435,6 @@
         private DataGridViewTextBoxColumn estimatedArrivalTimeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn startDestinationIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn endDestinationIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn ticketsDataGridViewTextBoxColumn;

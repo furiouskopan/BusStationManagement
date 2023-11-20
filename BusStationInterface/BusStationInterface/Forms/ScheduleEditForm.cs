@@ -74,6 +74,11 @@ namespace BusStationInterface.Forms
 
             dgvSchedules.Columns["TotalSeats"].DataPropertyName = "TotalSeats";
             dgvSchedules.Columns["AvailableSeats"].DataPropertyName = "AvailableSeats";
+
+            //if (dgvSchedules.Columns["Price"] != null)
+            //{
+            //    dgvSchedules.Columns.Remove("Price");
+            //}
         }
 
         private void btnAddSchedule_Click(object sender, EventArgs e)
@@ -141,6 +146,8 @@ namespace BusStationInterface.Forms
 
             dgvSchedules.Columns["estimatedArrivalTimeDataGridViewTextBoxColumn"].DefaultCellStyle.Format = "HH:mm";
             dgvSchedules.Columns["departureTimeDataGridViewTextBoxColumn"].DefaultCellStyle.Format = "HH:mm";
+
+            dgvSchedules.AutoGenerateColumns = false;
         }
         private void dtpArrivalTime_ValueChanged(object sender, EventArgs e)
         {

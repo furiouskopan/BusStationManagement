@@ -12,6 +12,9 @@ namespace BusStationInterface.Models
         public string Name { get; set; }
         public string ContactInformation { get; set; }
         public int StationID { get; set; }
+        public string Username { get; set; }
+        public string PasswordHash { get; set; }
+        public string Role { get; set; }
 
         // Navigation Properties
         public Destination Station { get; set; }
