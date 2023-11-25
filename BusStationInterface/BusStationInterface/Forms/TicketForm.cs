@@ -95,7 +95,6 @@ namespace BusStationInterface.Forms
             }
         }
 
-
         // Call this method when a schedule is selected
         private void dataGridViewTicketSchedule_SelectionChanged(object sender, EventArgs e)
         {
@@ -210,7 +209,8 @@ namespace BusStationInterface.Forms
                 var ticketingLog = new TicketingLog
                 {
                     TicketID = ticket.TicketID,
-                    Timestamp = DateTime.Now
+                    Timestamp = DateTime.Now,
+                    EmployeeID = 4
                 };
 
                 _context.TicketingLogs.Add(ticketingLog);
