@@ -130,6 +130,7 @@
             dataGridViewBuses.RowHeadersVisible = false;
             dataGridViewBuses.RowHeadersWidth = 51;
             dataGridViewBuses.RowTemplate.Height = 25;
+            dataGridViewBuses.ScrollBars = ScrollBars.Vertical;
             dataGridViewBuses.Size = new Size(151, 150);
             dataGridViewBuses.TabIndex = 0;
             // 
@@ -165,6 +166,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(21, 72);
             label1.Name = "label1";
@@ -175,6 +177,8 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(225, 74);
             label2.Name = "label2";
@@ -256,11 +260,14 @@
             dataGridViewDestinations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDestinations.Columns.AddRange(new DataGridViewColumn[] { destinationIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn1, descriptionDataGridViewTextBoxColumn });
             dataGridViewDestinations.DataSource = destinationBindingSource;
+            dataGridViewDestinations.GridColor = SystemColors.ButtonHighlight;
             dataGridViewDestinations.Location = new Point(548, 105);
             dataGridViewDestinations.Name = "dataGridViewDestinations";
             dataGridViewDestinations.ReadOnly = true;
+            dataGridViewDestinations.RightToLeft = RightToLeft.No;
             dataGridViewDestinations.RowHeadersWidth = 51;
             dataGridViewDestinations.RowTemplate.Height = 25;
+            dataGridViewDestinations.ScrollBars = ScrollBars.Vertical;
             dataGridViewDestinations.Size = new Size(373, 150);
             dataGridViewDestinations.TabIndex = 6;
             // 
@@ -298,6 +305,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
             label3.Font = new Font("Microsoft JhengHei", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(548, 75);
             label3.Name = "label3";
@@ -318,6 +326,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
             label4.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(25, 318);
             label4.Name = "label4";
@@ -447,6 +456,7 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
             label5.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             label5.Location = new Point(498, 336);
             label5.Name = "label5";
@@ -457,6 +467,7 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
             label6.Font = new Font("Copperplate Gothic Bold", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
             label6.Location = new Point(20, 28);
             label6.Name = "label6";
@@ -467,9 +478,10 @@
             // label7
             // 
             label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
             label7.Font = new Font("Copperplate Gothic Bold", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.ForeColor = Color.Red;
-            label7.Location = new Point(117, 28);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(99, 28);
             label7.Name = "label7";
             label7.Size = new Size(168, 33);
             label7.TabIndex = 19;
@@ -493,6 +505,7 @@
             // lblTimer
             // 
             lblTimer.AutoSize = true;
+            lblTimer.BackColor = Color.Transparent;
             lblTimer.Dock = DockStyle.Right;
             lblTimer.Font = new Font("Copperplate Gothic Bold", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             lblTimer.ForeColor = Color.Red;
@@ -506,6 +519,7 @@
             // label8
             // 
             label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
             label8.Font = new Font("Microsoft JhengHei", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label8.Location = new Point(973, 75);
             label8.Name = "label8";
@@ -666,6 +680,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
+            BackgroundImage = Properties.Resources.bgbgbg;
             ClientSize = new Size(1509, 622);
             Controls.Add(btnTicket);
             Controls.Add(button1);

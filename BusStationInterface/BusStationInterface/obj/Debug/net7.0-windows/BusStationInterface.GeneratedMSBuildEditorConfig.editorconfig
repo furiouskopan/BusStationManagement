@@ -15,3 +15,5 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BusStationInterface
 build_property.ProjectDir = C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

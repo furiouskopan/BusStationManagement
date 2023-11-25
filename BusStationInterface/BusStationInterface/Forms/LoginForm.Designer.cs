@@ -34,6 +34,7 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            button1 = new Button();
             label5 = new Label();
             btnLogin = new Button();
             panel4 = new Panel();
@@ -44,7 +45,6 @@
             pictureBox2 = new PictureBox();
             label4 = new Label();
             btnClose = new Button();
-            button1 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -125,6 +125,16 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(384, 411);
             panel2.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(16, 296);
+            button1.Name = "button1";
+            button1.Size = new Size(96, 43);
+            button1.TabIndex = 10;
+            button1.Text = "seme";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label5
             // 
@@ -239,18 +249,9 @@
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
             // 
-            // button1
-            // 
-            button1.Location = new Point(16, 296);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 43);
-            button1.TabIndex = 10;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // LoginForm
             // 
+            AcceptButton = btnLogin;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(634, 411);
