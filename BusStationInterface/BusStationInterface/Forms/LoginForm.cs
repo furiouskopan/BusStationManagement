@@ -1,5 +1,6 @@
 ﻿using BusStationInterface.Data;
 using BusStationInterface.Models;
+using BusStationInterface.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -105,6 +106,8 @@ namespace BusStationInterface.Forms
                     {
                         // Login success
                         MessageBox.Show("Login successful!");
+
+                        UserSession.StartSession(employee.EmployeeID, employee.Role, employee.Name);
 
                         // Optionally, open the main form and close the login form
                         //var mainForm = new Form1(employee);  // Pass employee info as needed

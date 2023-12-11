@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dataGridViewBuses = new DataGridView();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             busTypeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -120,14 +120,14 @@
             dataGridViewBuses.DataSource = busBindingSource;
             dataGridViewBuses.Location = new Point(21, 101);
             dataGridViewBuses.Name = "dataGridViewBuses";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.ControlLight;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewBuses.RowHeadersVisible = false;
             dataGridViewBuses.RowHeadersWidth = 51;
             dataGridViewBuses.RowTemplate.Height = 25;
@@ -470,7 +470,7 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Copperplate Gothic Bold", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(20, 28);
+            label6.Location = new Point(37, 31);
             label6.Name = "label6";
             label6.Size = new Size(83, 33);
             label6.TabIndex = 18;
@@ -482,7 +482,7 @@
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Copperplate Gothic Bold", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(99, 28);
+            label7.Location = new Point(116, 31);
             label7.Name = "label7";
             label7.Size = new Size(168, 33);
             label7.TabIndex = 19;
@@ -679,9 +679,12 @@
             // label9
             // 
             label9.AutoSize = true;
+            label9.BackColor = Color.Transparent;
+            label9.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.ForeColor = Color.White;
             label9.Location = new Point(8, 6);
             label9.Name = "label9";
-            label9.Size = new Size(38, 15);
+            label9.Size = new Size(63, 25);
             label9.TabIndex = 28;
             label9.Text = "label9";
             // 
