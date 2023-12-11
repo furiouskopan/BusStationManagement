@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dataGridViewBuses = new DataGridView();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             busTypeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -90,6 +90,7 @@
             textBox2 = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
             btnTicket = new Button();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -119,14 +120,14 @@
             dataGridViewBuses.DataSource = busBindingSource;
             dataGridViewBuses.Location = new Point(21, 101);
             dataGridViewBuses.Name = "dataGridViewBuses";
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.ControlLight;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewBuses.RowHeadersVisible = false;
             dataGridViewBuses.RowHeadersWidth = 51;
             dataGridViewBuses.RowTemplate.Height = 25;
@@ -675,6 +676,15 @@
             btnTicket.UseVisualStyleBackColor = true;
             btnTicket.Click += btnTicket_Click;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(8, 6);
+            label9.Name = "label9";
+            label9.Size = new Size(38, 15);
+            label9.TabIndex = 28;
+            label9.Text = "label9";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -682,6 +692,7 @@
             BackColor = SystemColors.Menu;
             BackgroundImage = Properties.Resources.bgbgbg;
             ClientSize = new Size(1509, 622);
+            Controls.Add(label9);
             Controls.Add(btnTicket);
             Controls.Add(button1);
             Controls.Add(textBox2);
@@ -791,5 +802,6 @@
         private DataGridViewTextBoxColumn Route;
         private DataGridViewTextBoxColumn RouteID;
         private DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
+        private Label label9;
     }
 }

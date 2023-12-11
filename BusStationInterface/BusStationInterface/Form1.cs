@@ -1,8 +1,8 @@
 using BusStationInterface.Data;
 using BusStationInterface.Forms;
 using BusStationInterface.Models;
+using BusStationInterface.Utilities;
 using Microsoft.EntityFrameworkCore;
-using System.Windows.Forms;
 
 namespace BusStationInterface
 {
@@ -22,6 +22,7 @@ namespace BusStationInterface
             LoadSchedules();
             timer1.Start();
             dataGridViewRouteDetails.DataSource = null;
+            label9.Text = UserSession.CurrentEmployeeName;
 
             dataGridViewRoutes.ClearSelection();
             dataGridViewBuses.ClearSelection();
