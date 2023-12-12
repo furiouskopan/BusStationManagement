@@ -20,37 +20,37 @@ namespace BusStationInterface.Forms
             InitializeComponent();
         }
 
-        private void InsertEmployees()
-        {
-            using (var context = new BusManagementContext())
-            {
-                var employees = new List<Employee>
-                {
-                    new Employee
-                    {
-                        Name = "John Doe",
-                        ContactInformation = "john.doe@example.com",
-                        StationID = 2, // Assuming a valid StationID
-                        Username = "john_doe",
-                        PasswordHash = BCrypt.Net.BCrypt.HashPassword("johnsPassword123"),
-                        Role = "Administrator" // Example role
-                    },
-                    new Employee
-                    {
-                        Name = "Jane Smith",
-                        ContactInformation = "jane.smith@example.com",
-                        StationID = 2, // Assuming a valid StationID
-                        Username = "jane_smith",
-                        PasswordHash = BCrypt.Net.BCrypt.HashPassword("janesPassword456"),
-                        Role = "User" // Example role
-                    }
-                    // Add more employees as needed
-                };
+        //private void InsertEmployees()
+        //{
+        //    using (var context = new BusManagementContext())
+        //    {
+        //        var employees = new List<Employee>
+        //        {
+        //            new Employee
+        //            {
+        //                Name = "John Doe",
+        //                ContactInformation = "john.doe@example.com",
+        //                StationID = 2, // Assuming a valid StationID
+        //                Username = "john_doe",
+        //                PasswordHash = BCrypt.Net.BCrypt.HashPassword("johnsPassword123"),
+        //                Role = "Administrator" // Example role
+        //            },
+        //            new Employee
+        //            {
+        //                Name = "Jane Smith",
+        //                ContactInformation = "jane.smith@example.com",
+        //                StationID = 2, // Assuming a valid StationID
+        //                Username = "jane_smith",
+        //                PasswordHash = BCrypt.Net.BCrypt.HashPassword("janesPassword456"),
+        //                Role = "User" // Example role
+        //            }
+        //            // Add more employees as needed
+        //        };
 
-                context.Employees.AddRange(employees);
-                context.SaveChanges();
-            }
-        }
+        //        context.Employees.AddRange(employees);
+        //        context.SaveChanges();
+        //    }
+        //}
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -145,9 +145,9 @@ namespace BusStationInterface.Forms
             txtPassword.UseSystemPasswordChar = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            InsertEmployees();
-        }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    InsertEmployees();
+        //}
     }
 }
