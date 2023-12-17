@@ -105,7 +105,7 @@ namespace BusStationInterface.Forms
                     if (VerifyPassword(password, employee.PasswordHash))
                     {
                         // Login success
-                        MessageBox.Show("Login successful!");
+                        //MessageBox.Show("Login successful!");
 
                         UserSession.StartSession(employee.EmployeeID, employee.Role, employee.Name);
 

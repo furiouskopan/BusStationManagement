@@ -210,6 +210,13 @@ namespace BusStationInterface.Forms
 
                 _context.SaveChanges();
 
+                _context.Entry(ticket).Reference(t => t.Schedule).Load();
+                _context.Entry(ticket).Reference(t => t.Seat).Load();
+                _context.Entry(ticket).Reference(t => t.StartRouteDetail)
+                    .Query().Include(rd => rd.Location).Load();
+                _context.Entry(ticket).Reference(t => t.EndRouteDetail)
+                    .Query().Include(rd => rd.Location).Load();
+
                 // Optionally, add to TicketingLog as well
                 var ticketingLog = new TicketingLog
                 {
@@ -246,8 +253,8 @@ namespace BusStationInterface.Forms
         {
             public static void CreateTicketPDF(string fileName, Ticket ticket)
             {
-                float customWidth = 200; 
-                float customHeight = 500;
+                float customWidth = 300; 
+                float customHeight = 600;
 
                 iTextSharp.text.Rectangle pageSize = new iTextSharp.text.Rectangle(customWidth, customHeight);
 
@@ -257,15 +264,18 @@ namespace BusStationInterface.Forms
 
                 var departureTime = ticket.Schedule.DepartureTime;
                 var arrivalTime = ticket.Schedule.EstimatedArrivalTime;
-                
+
+                var startDestinationName = ticket.StartRouteDetail?.Location?.Name ?? "Unknown";
+                var endDestinationName = ticket.EndRouteDetail?.Location?.Name ?? "Unknown";
+
                 // Add ticket information to the PDF
                 document.Add(new Paragraph($"Ticket ID: {ticket.TicketID}"));
-                document.Add(new Paragraph($"{ticket.Seat.SeatNumber}")); 
-                document.Add(new Paragraph($"Start Destination: {ticket.Schedule.StartDestinationId}"));
-                document.Add(new Paragraph($"End Destination: {ticket.Schedule.EndDestination.Name}"));
-                document.Add(new Paragraph($"Departure Time: {ticket.Schedule.DepartureTime}"));
-                document.Add(new Paragraph($"Estimated Arrival Time: {ticket.Schedule.EstimatedArrivalTime}"));
-                document.Add(new Paragraph($"Price: {ticket.Price}"));
+                document.Add(new Paragraph($"Seat Number: {ticket.Seat?.SeatNumber ?? "N/A"}"));
+                document.Add(new Paragraph($"Start Destination: {startDestinationName}"));
+                document.Add(new Paragraph($"End Destination: {endDestinationName}"));
+                document.Add(new Paragraph($"Departure Time: {departureTime.ToString("g")}"));
+                document.Add(new Paragraph($"Estimated Arrival Time: {arrivalTime.ToString("g")}"));
+                document.Add(new Paragraph($"Price: {ticket.Price}MKD"));
 
                 document.Close();
             }
