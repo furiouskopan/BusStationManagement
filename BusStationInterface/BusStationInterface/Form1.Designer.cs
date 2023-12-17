@@ -512,12 +512,12 @@
             lblTimer.AutoSize = true;
             lblTimer.BackColor = Color.Transparent;
             lblTimer.Dock = DockStyle.Right;
-            lblTimer.Font = new Font("Copperplate Gothic Bold", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTimer.Font = new Font("Verdana", 17.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblTimer.ForeColor = Color.Red;
-            lblTimer.Location = new Point(1409, 0);
+            lblTimer.Location = new Point(1424, 0);
             lblTimer.Margin = new Padding(0, 38, 0, 38);
             lblTimer.Name = "lblTimer";
-            lblTimer.Size = new Size(96, 24);
+            lblTimer.Size = new Size(81, 28);
             lblTimer.TabIndex = 21;
             lblTimer.Text = "label8";
             // 
@@ -746,6 +746,7 @@
             MaximumSize = new Size(1521, 652);
             MinimumSize = new Size(960, 652);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Bus Station";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).EndInit();

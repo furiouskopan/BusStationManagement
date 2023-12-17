@@ -2,15 +2,20 @@
 using BusStationInterface.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Diagnostics;
 
 namespace BusStationInterface.Forms
 {
@@ -216,15 +221,53 @@ namespace BusStationInterface.Forms
                 _context.TicketingLogs.Add(ticketingLog);
                 _context.SaveChanges();
 
-                MessageBox.Show("Ticket issued successfully!");
+                // Generate and save the PDF
+                string pdfFileName = $"Ticket_{ticket.TicketID}.pdf";
+                TicketPDFGenerator.CreateTicketPDF(pdfFileName, ticket);
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = pdfFileName,
+                    UseShellExecute = true
+                });
+
+                MessageBox.Show("Ticket issued successfully! PDF created at: " + pdfFileName);
 
                 // Refresh the ComboBox to update the available seats
                 RefreshAvailableSeats(scheduleId);
-
             }
             else
             {
                 MessageBox.Show("Please select a seat.");
+            }
+        }
+
+        public class TicketPDFGenerator
+        {
+            public static void CreateTicketPDF(string fileName, Ticket ticket)
+            {
+                float customWidth = 200; 
+                float customHeight = 500;
+
+                iTextSharp.text.Rectangle pageSize = new iTextSharp.text.Rectangle(customWidth, customHeight);
+
+                Document document = new Document(pageSize);
+                PdfWriter.GetInstance(document, new FileStream(fileName, FileMode.Create));
+                document.Open();
+
+                var departureTime = ticket.Schedule.DepartureTime;
+                var arrivalTime = ticket.Schedule.EstimatedArrivalTime;
+                
+                // Add ticket information to the PDF
+                document.Add(new Paragraph($"Ticket ID: {ticket.TicketID}"));
+                document.Add(new Paragraph($"{ticket.Seat.SeatNumber}")); 
+                document.Add(new Paragraph($"Start Destination: {ticket.Schedule.StartDestinationId}"));
+                document.Add(new Paragraph($"End Destination: {ticket.Schedule.EndDestination.Name}"));
+                document.Add(new Paragraph($"Departure Time: {ticket.Schedule.DepartureTime}"));
+                document.Add(new Paragraph($"Estimated Arrival Time: {ticket.Schedule.EstimatedArrivalTime}"));
+                document.Add(new Paragraph($"Price: {ticket.Price}"));
+
+                document.Close();
             }
         }
     }
