@@ -115,7 +115,7 @@ namespace BusStationInterface.Forms
                     dataGridViewRouteDetails.DataSource = routeDetailsWithLocation;
 
                     dataGridViewRouteDetails.RowHeadersVisible = false;
-            dataGridViewRouteDetails.Columns["Time"].DataPropertyName = "Time";
+                    dataGridViewRouteDetails.Columns["Time"].DataPropertyName = "Time";
                 }
             }
         }

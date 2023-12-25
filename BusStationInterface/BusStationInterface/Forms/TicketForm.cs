@@ -270,12 +270,13 @@ namespace BusStationInterface.Forms
 
                 // Add ticket information to the PDF
                 document.Add(new Paragraph($"Ticket ID: {ticket.TicketID}"));
-                document.Add(new Paragraph($"Seat Number: {ticket.Seat?.SeatNumber ?? "N/A"}"));
+                document.Add(new Paragraph($"{ticket.Seat?.SeatNumber ?? "N/A"}"));
                 document.Add(new Paragraph($"Start Destination: {startDestinationName}"));
                 document.Add(new Paragraph($"End Destination: {endDestinationName}"));
                 document.Add(new Paragraph($"Departure Time: {departureTime.ToString("g")}"));
                 document.Add(new Paragraph($"Estimated Arrival Time: {arrivalTime.ToString("g")}"));
                 document.Add(new Paragraph($"Price: {ticket.Price}MKD"));
+                document.Add(new Paragraph($"Safe travels!"));
 
                 document.Close();
             }
