@@ -24,16 +24,16 @@ namespace BusStationInterface
             dataGridViewRouteDetails.DataSource = null;
             label9.Text = UserSession.CurrentEmployeeName;
             // Check if the user is not an admin
-            if (UserSession.CurrentUserRole != "Administrator")
-            {
-                adminPanel.Visible = false;
-                schedulesPanel.Location = new Point(20, 67);
-                schedulesPanel.Size = new Size(840, 230);
-                dataGridViewSchedules.Size = new Size(800, 200);
-                btnTicket.Location = new Point(827, 326);
-                Size = new Size(934, 652);
-                lblTimer.ForeColor = Color.White;
-            }
+            //if (UserSession.CurrentUserRole != "Administrator")
+            //{
+            //    adminPanel.Visible = false;
+            //    schedulesPanel.Location = new Point(20, 67);
+            //    schedulesPanel.Size = new Size(840, 230);
+            //    dataGridViewSchedules.Size = new Size(800, 200);
+            //    btnTicket.Location = new Point(827, 326);
+            //    Size = new Size(934, 652);
+            //    lblTimer.ForeColor = Color.White;
+            //}
 
             dataGridViewRoutes.ClearSelection();
             dataGridViewBuses.ClearSelection();

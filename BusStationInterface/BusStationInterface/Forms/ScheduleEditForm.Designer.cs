@@ -61,18 +61,22 @@
             btnDeleteSchedule = new Button();
             label6 = new Label();
             txtStatus = new TextBox();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            comboBox3 = new ComboBox();
+            cmbDriverEdit = new ComboBox();
+            driverBindingSource = new BindingSource(components);
+            cmbBusEdit = new ComboBox();
+            cmbDayEdit = new ComboBox();
             label9 = new Label();
             label10 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
+            dtpDepartureEdit = new DateTimePicker();
+            dtpArrivalEdit = new DateTimePicker();
             label11 = new Label();
             label12 = new Label();
             label13 = new Label();
+            txtStatusEdit = new TextBox();
+            label14 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvSchedules).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
             SuspendLayout();
             // 
             // label3
@@ -138,7 +142,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(318, 578);
+            btnSave.Location = new Point(665, 402);
             btnSave.Margin = new Padding(3, 2, 3, 2);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(82, 34);
@@ -231,6 +235,7 @@
             dgvSchedules.RowTemplate.Height = 29;
             dgvSchedules.Size = new Size(829, 265);
             dgvSchedules.TabIndex = 23;
+            dgvSchedules.SelectionChanged += dataGridViewSchedules_SelectionChanged;
             // 
             // busIDDataGridViewTextBoxColumn
             // 
@@ -352,7 +357,7 @@
             // 
             // btnDeleteSchedule
             // 
-            btnDeleteSchedule.Location = new Point(415, 578);
+            btnDeleteSchedule.Location = new Point(762, 402);
             btnDeleteSchedule.Margin = new Padding(3, 2, 3, 2);
             btnDeleteSchedule.Name = "btnDeleteSchedule";
             btnDeleteSchedule.Size = new Size(82, 34);
@@ -378,35 +383,39 @@
             txtStatus.Size = new Size(181, 23);
             txtStatus.TabIndex = 29;
             // 
-            // comboBox1
+            // cmbDriverEdit
             // 
-            comboBox1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(281, 406);
-            comboBox1.Margin = new Padding(3, 2, 3, 2);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(180, 27);
-            comboBox1.TabIndex = 30;
+            cmbDriverEdit.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbDriverEdit.FormattingEnabled = true;
+            cmbDriverEdit.Location = new Point(281, 406);
+            cmbDriverEdit.Margin = new Padding(3, 2, 3, 2);
+            cmbDriverEdit.Name = "cmbDriverEdit";
+            cmbDriverEdit.Size = new Size(180, 27);
+            cmbDriverEdit.TabIndex = 30;
             // 
-            // comboBox2
+            // driverBindingSource
             // 
-            comboBox2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(281, 459);
-            comboBox2.Margin = new Padding(3, 2, 3, 2);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(180, 27);
-            comboBox2.TabIndex = 31;
+            driverBindingSource.DataSource = typeof(Models.Driver);
             // 
-            // comboBox3
+            // cmbBusEdit
             // 
-            comboBox3.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(281, 510);
-            comboBox3.Margin = new Padding(3, 2, 3, 2);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(180, 27);
-            comboBox3.TabIndex = 32;
+            cmbBusEdit.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbBusEdit.FormattingEnabled = true;
+            cmbBusEdit.Location = new Point(281, 459);
+            cmbBusEdit.Margin = new Padding(3, 2, 3, 2);
+            cmbBusEdit.Name = "cmbBusEdit";
+            cmbBusEdit.Size = new Size(180, 27);
+            cmbBusEdit.TabIndex = 31;
+            // 
+            // cmbDayEdit
+            // 
+            cmbDayEdit.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbDayEdit.FormattingEnabled = true;
+            cmbDayEdit.Location = new Point(281, 510);
+            cmbDayEdit.Margin = new Padding(3, 2, 3, 2);
+            cmbDayEdit.Name = "cmbDayEdit";
+            cmbDayEdit.Size = new Size(180, 27);
+            cmbDayEdit.TabIndex = 32;
             // 
             // label9
             // 
@@ -428,26 +437,26 @@
             label10.TabIndex = 35;
             label10.Text = "Departure time";
             // 
-            // dateTimePicker1
+            // dtpDepartureEdit
             // 
-            dateTimePicker1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.ImeMode = ImeMode.NoControl;
-            dateTimePicker1.Location = new Point(536, 430);
-            dateTimePicker1.Margin = new Padding(3, 2, 3, 2);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(87, 32);
-            dateTimePicker1.TabIndex = 34;
+            dtpDepartureEdit.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDepartureEdit.Format = DateTimePickerFormat.Custom;
+            dtpDepartureEdit.ImeMode = ImeMode.NoControl;
+            dtpDepartureEdit.Location = new Point(536, 430);
+            dtpDepartureEdit.Margin = new Padding(3, 2, 3, 2);
+            dtpDepartureEdit.Name = "dtpDepartureEdit";
+            dtpDepartureEdit.Size = new Size(87, 32);
+            dtpDepartureEdit.TabIndex = 34;
             // 
-            // dateTimePicker2
+            // dtpArrivalEdit
             // 
-            dateTimePicker2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker2.Format = DateTimePickerFormat.Custom;
-            dateTimePicker2.Location = new Point(536, 487);
-            dateTimePicker2.Margin = new Padding(3, 2, 3, 2);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(87, 32);
-            dateTimePicker2.TabIndex = 33;
+            dtpArrivalEdit.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpArrivalEdit.Format = DateTimePickerFormat.Custom;
+            dtpArrivalEdit.Location = new Point(536, 487);
+            dtpArrivalEdit.Margin = new Padding(3, 2, 3, 2);
+            dtpArrivalEdit.Name = "dtpArrivalEdit";
+            dtpArrivalEdit.Size = new Size(87, 32);
+            dtpArrivalEdit.TabIndex = 33;
             // 
             // label11
             // 
@@ -479,21 +488,40 @@
             label13.TabIndex = 39;
             label13.Text = "Day";
             // 
+            // txtStatusEdit
+            // 
+            txtStatusEdit.Location = new Point(282, 559);
+            txtStatusEdit.Margin = new Padding(3, 2, 3, 2);
+            txtStatusEdit.Name = "txtStatusEdit";
+            txtStatusEdit.Size = new Size(181, 23);
+            txtStatusEdit.TabIndex = 41;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(281, 538);
+            label14.Name = "label14";
+            label14.Size = new Size(39, 15);
+            label14.TabIndex = 40;
+            label14.Text = "Status";
+            // 
             // ScheduleEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1282, 623);
+            Controls.Add(txtStatusEdit);
+            Controls.Add(label14);
             Controls.Add(label13);
             Controls.Add(label12);
             Controls.Add(label11);
             Controls.Add(label9);
             Controls.Add(label10);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(comboBox3);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(dtpDepartureEdit);
+            Controls.Add(dtpArrivalEdit);
+            Controls.Add(cmbDayEdit);
+            Controls.Add(cmbBusEdit);
+            Controls.Add(cmbDriverEdit);
             Controls.Add(txtStatus);
             Controls.Add(label6);
             Controls.Add(btnDeleteSchedule);
@@ -520,6 +548,7 @@
             Load += ScheduleEditForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvSchedules).EndInit();
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)driverBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -559,15 +588,18 @@
         private DataGridViewTextBoxColumn startDestinationIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn endDestinationIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn ticketsDataGridViewTextBoxColumn;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private ComboBox comboBox3;
+        private ComboBox cmbDriverEdit;
+        private ComboBox cmbBusEdit;
+        private ComboBox cmbDayEdit;
         private Label label9;
         private Label label10;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dtpDepartureEdit;
+        private DateTimePicker dtpArrivalEdit;
         private Label label11;
         private Label label12;
         private Label label13;
+        private TextBox txtStatusEdit;
+        private Label label14;
+        private BindingSource driverBindingSource;
     }
 }
