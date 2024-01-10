@@ -173,7 +173,6 @@ namespace BusStationInterface.Forms
                 // Assuming you have fields for ID, BusID, RouteID, etc.
                 cmbBusEdit.SelectedValue = Convert.ToInt32(dgvSchedules.CurrentRow.Cells["busIDDataGridViewTextBoxColumn"].Value);
                 cmbDriverEdit.SelectedValue = Convert.ToInt32(dgvSchedules.CurrentRow.Cells["driverIDDataGridViewTextBoxColumn"].Value);
-                cmbDayEdit.SelectedValue = Convert.ToInt32(dgvSchedules.CurrentRow.Cells["dayDataGridViewTextBoxColumn"].Value);
                 txtStatusEdit.Text = dgvSchedules.CurrentRow.Cells["statusDataGridViewTextBoxColumn"].Value.ToString();
                 dtpDepartureEdit.Value = (DateTime)dgvSchedules.CurrentRow.Cells["departureTimeDataGridViewTextBoxColumn"].Value;
                 dtpArrivalEdit.Value = (DateTime)dgvSchedules.CurrentRow.Cells["estimatedArrivalTimeDataGridViewTextBoxColumn"].Value;
