@@ -186,35 +186,38 @@ namespace BusStationInterface.Forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //// Validate input first (check if the entered IDs exist, etc.)
+            // Validate input first (check if the entered IDs exist, etc.)
 
-            //// Then, if using Entity Framework
-            //using (var context = new BusManagementContext())
-            //{
-            //    int scheduleId = int.Parse(txtScheduleID.Text);
-            //    Schedule schedule = context.Schedules.FirstOrDefault(s => s.ScheduleID == scheduleId);
+            // Then, if using Entity Framework
+            using (var context = new BusManagementContext())
+            {
+                int scheduleId = Convert.ToInt32(dgvSchedules.CurrentRow.Cells["scheduleIDDataGridViewTextBoxColumn"].Value);
+                Schedule schedule = context.Schedules.FirstOrDefault(s => s.ScheduleID == scheduleId);
 
-            //    if (schedule != null)
-            //    {
-            //        // Update fields
-            //        schedule.BusID = Convert.ToInt32(cmbBusEdit.SelectedValue);
-            //        schedule.DriverID = Convert.ToInt32(cmbDriverEdit.SelectedValue);
-            //        schedule.Day = cmbDayEdit.SelectedItem.ToString();
-            //        schedule.Status = txtStatusEdit.Text;
-            //        schedule.DepartureTime = dtpDepartureEdit.Value;
-            //        schedule.EstimatedArrivalTime = dtpArrivalEdit.Value;
+                if (schedule != null)
+                {
+                    // Update fields
+                    schedule.BusID = Convert.ToInt32(cmbBusEdit.SelectedValue);
+                    schedule.DriverID = Convert.ToInt32(cmbDriverEdit.SelectedValue);
+                    schedule.Status = txtStatusEdit.Text;
+                    schedule.DepartureTime = dtpDepartureEdit.Value;
+                    schedule.EstimatedArrivalTime = dtpArrivalEdit.Value;
+                    if (Enum.TryParse(cmbDayEdit.SelectedItem.ToString(), out DayOfWeek selectedDay))
+                    {
+                        schedule.Day = selectedDay;
+                    }
 
-            //        context.SaveChanges();
-            //        MessageBox.Show("Schedule updated successfully.");
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Schedule not found.");
-            //    }
-            //}
+                    context.SaveChanges();
+                    MessageBox.Show("Schedule updated successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Schedule not found.");
+                }
+            }
 
-            //// Refresh your DataGridView to show the updated data
-            //LoadSchedules();
+            // Refresh your DataGridView to show the updated data
+            LoadSchedules();
         }
 
         // Method to get the number of free seats for a schedule
