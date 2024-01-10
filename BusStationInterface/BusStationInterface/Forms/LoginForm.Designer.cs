@@ -134,7 +134,7 @@
             button1.TabIndex = 10;
             button1.Text = "seme";
             button1.UseVisualStyleBackColor = true;
-            //button1.Click += button1_Click;
+            button1.Visible = false;
             // 
             // label5
             // 

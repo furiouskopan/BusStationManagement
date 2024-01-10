@@ -265,7 +265,6 @@
             dataGridViewDestinations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDestinations.Columns.AddRange(new DataGridViewColumn[] { destinationIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn1, descriptionDataGridViewTextBoxColumn });
             dataGridViewDestinations.DataSource = destinationBindingSource;
-            dataGridViewDestinations.GridColor = SystemColors.ButtonHighlight;
             dataGridViewDestinations.Location = new Point(544, 40);
             dataGridViewDestinations.Name = "dataGridViewDestinations";
             dataGridViewDestinations.ReadOnly = true;
