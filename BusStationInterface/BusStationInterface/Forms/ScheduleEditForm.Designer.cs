@@ -74,6 +74,8 @@
             label13 = new Label();
             txtStatusEdit = new TextBox();
             label14 = new Label();
+            cmbDayFilter = new ComboBox();
+            txtLocationFilter = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvSchedules).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -93,7 +95,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft JhengHei", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(282, 354);
+            label1.Location = new Point(284, 404);
             label1.Name = "label1";
             label1.Size = new Size(154, 27);
             label1.TabIndex = 9;
@@ -142,7 +144,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(665, 402);
+            btnSave.Location = new Point(667, 452);
             btnSave.Margin = new Padding(3, 2, 3, 2);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(82, 34);
@@ -228,7 +230,7 @@
             dgvSchedules.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSchedules.Columns.AddRange(new DataGridViewColumn[] { busIDDataGridViewTextBoxColumn, scheduleIDDataGridViewTextBoxColumn, routeIDDataGridViewTextBoxColumn, driverIDDataGridViewTextBoxColumn, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, dayDataGridViewTextBoxColumn, statusDataGridViewTextBoxColumn, startDestinationIdDataGridViewTextBoxColumn, endDestinationIdDataGridViewTextBoxColumn, ticketsDataGridViewTextBoxColumn });
             dgvSchedules.DataSource = scheduleBindingSource;
-            dgvSchedules.Location = new Point(268, 75);
+            dgvSchedules.Location = new Point(283, 128);
             dgvSchedules.Margin = new Padding(3, 2, 3, 2);
             dgvSchedules.Name = "dgvSchedules";
             dgvSchedules.RowHeadersWidth = 51;
@@ -357,7 +359,7 @@
             // 
             // btnDeleteSchedule
             // 
-            btnDeleteSchedule.Location = new Point(762, 402);
+            btnDeleteSchedule.Location = new Point(764, 452);
             btnDeleteSchedule.Margin = new Padding(3, 2, 3, 2);
             btnDeleteSchedule.Name = "btnDeleteSchedule";
             btnDeleteSchedule.Size = new Size(82, 34);
@@ -387,7 +389,7 @@
             // 
             cmbDriverEdit.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             cmbDriverEdit.FormattingEnabled = true;
-            cmbDriverEdit.Location = new Point(281, 406);
+            cmbDriverEdit.Location = new Point(283, 456);
             cmbDriverEdit.Margin = new Padding(3, 2, 3, 2);
             cmbDriverEdit.Name = "cmbDriverEdit";
             cmbDriverEdit.Size = new Size(180, 27);
@@ -401,7 +403,7 @@
             // 
             cmbBusEdit.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             cmbBusEdit.FormattingEnabled = true;
-            cmbBusEdit.Location = new Point(281, 459);
+            cmbBusEdit.Location = new Point(283, 509);
             cmbBusEdit.Margin = new Padding(3, 2, 3, 2);
             cmbBusEdit.Name = "cmbBusEdit";
             cmbBusEdit.Size = new Size(180, 27);
@@ -411,7 +413,7 @@
             // 
             cmbDayEdit.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             cmbDayEdit.FormattingEnabled = true;
-            cmbDayEdit.Location = new Point(281, 510);
+            cmbDayEdit.Location = new Point(283, 560);
             cmbDayEdit.Margin = new Padding(3, 2, 3, 2);
             cmbDayEdit.Name = "cmbDayEdit";
             cmbDayEdit.Size = new Size(180, 27);
@@ -421,7 +423,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(536, 466);
+            label9.Location = new Point(538, 516);
             label9.Name = "label9";
             label9.Size = new Size(89, 20);
             label9.TabIndex = 36;
@@ -431,7 +433,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(522, 409);
+            label10.Location = new Point(524, 459);
             label10.Name = "label10";
             label10.Size = new Size(110, 20);
             label10.TabIndex = 35;
@@ -442,7 +444,7 @@
             dtpDepartureEdit.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             dtpDepartureEdit.Format = DateTimePickerFormat.Custom;
             dtpDepartureEdit.ImeMode = ImeMode.NoControl;
-            dtpDepartureEdit.Location = new Point(536, 430);
+            dtpDepartureEdit.Location = new Point(538, 480);
             dtpDepartureEdit.Margin = new Padding(3, 2, 3, 2);
             dtpDepartureEdit.Name = "dtpDepartureEdit";
             dtpDepartureEdit.Size = new Size(87, 32);
@@ -452,7 +454,7 @@
             // 
             dtpArrivalEdit.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             dtpArrivalEdit.Format = DateTimePickerFormat.Custom;
-            dtpArrivalEdit.Location = new Point(536, 487);
+            dtpArrivalEdit.Location = new Point(538, 537);
             dtpArrivalEdit.Margin = new Padding(3, 2, 3, 2);
             dtpArrivalEdit.Name = "dtpArrivalEdit";
             dtpArrivalEdit.Size = new Size(87, 32);
@@ -462,7 +464,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(282, 385);
+            label11.Location = new Point(284, 435);
             label11.Name = "label11";
             label11.Size = new Size(49, 20);
             label11.TabIndex = 37;
@@ -472,7 +474,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(281, 437);
+            label12.Location = new Point(283, 487);
             label12.Name = "label12";
             label12.Size = new Size(32, 20);
             label12.TabIndex = 38;
@@ -482,7 +484,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label13.Location = new Point(282, 488);
+            label13.Location = new Point(284, 538);
             label13.Name = "label13";
             label13.Size = new Size(35, 20);
             label13.TabIndex = 39;
@@ -490,7 +492,7 @@
             // 
             // txtStatusEdit
             // 
-            txtStatusEdit.Location = new Point(282, 559);
+            txtStatusEdit.Location = new Point(284, 609);
             txtStatusEdit.Margin = new Padding(3, 2, 3, 2);
             txtStatusEdit.Name = "txtStatusEdit";
             txtStatusEdit.Size = new Size(181, 23);
@@ -499,17 +501,36 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(281, 538);
+            label14.Location = new Point(283, 588);
             label14.Name = "label14";
             label14.Size = new Size(39, 15);
             label14.TabIndex = 40;
             label14.Text = "Status";
             // 
+            // cmbDayFilter
+            // 
+            cmbDayFilter.FormattingEnabled = true;
+            cmbDayFilter.Location = new Point(295, 89);
+            cmbDayFilter.Name = "cmbDayFilter";
+            cmbDayFilter.Size = new Size(121, 23);
+            cmbDayFilter.TabIndex = 42;
+            cmbDayFilter.SelectedIndexChanged += cmbDayFilter_SelectedIndexChanged;
+            // 
+            // txtLocationFilter
+            // 
+            txtLocationFilter.Location = new Point(440, 89);
+            txtLocationFilter.Name = "txtLocationFilter";
+            txtLocationFilter.Size = new Size(128, 23);
+            txtLocationFilter.TabIndex = 43;
+            txtLocationFilter.TextChanged += txtLocationFilter_TextChanged;
+            // 
             // ScheduleEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1282, 623);
+            ClientSize = new Size(1282, 658);
+            Controls.Add(txtLocationFilter);
+            Controls.Add(cmbDayFilter);
             Controls.Add(txtStatusEdit);
             Controls.Add(label14);
             Controls.Add(label13);
@@ -601,5 +622,7 @@
         private TextBox txtStatusEdit;
         private Label label14;
         private BindingSource driverBindingSource;
+        private ComboBox cmbDayFilter;
+        private TextBox txtLocationFilter;
     }
 }
