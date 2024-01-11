@@ -144,26 +144,34 @@ namespace BusStationInterface
             ScheduleDataAccess scheduleDataAccess = new ScheduleDataAccess();
             List<Schedule> schedules = scheduleDataAccess.GetSchedules();
 
-            var schedulesWithDetails = schedules.Select(s => new
-            {
-                s.ScheduleID,
-                s.BusID,
-                s.RouteID,
-                s.DriverID,
-                s.Status,
-                s.Day,
-                s.DepartureTime,
-                s.EstimatedArrivalTime,
+            // Get today's day
+            DayOfWeek today = DateTime.Today.DayOfWeek;
 
-                // Extract names for Start and End Destinations
-                StartDestinationName = s.Route.StartDestination.Name,
-                EndDestinationName = s.Route.EndDestination.Name,
-                DriverName = s.Driver.Name,
-                RouteDescription = s.Route.Description,
+            // Get the location filter from the textbox (assuming the textbox is named txtLocationFilter)
+            string locationFilter = txtLocationFilter.Text.Trim();
 
-            }).ToList();
+            var filteredSchedules = schedules.Where(s => s.Day == today &&
+                                                         (s.Route.StartDestination.Name.Contains(locationFilter) ||
+                                                          s.Route.EndDestination.Name.Contains(locationFilter) ||
+                                                          s.Route.RouteDetails.Any(rd => rd.Location.Name.ToLower().Contains(locationFilter.ToLower()) == true)))   
 
-            dataGridViewSchedules.DataSource = schedulesWithDetails;
+                                             .Select(s => new
+                                             {
+                                                 s.ScheduleID,
+                                                 s.BusID,
+                                                 s.RouteID,
+                                                 s.DriverID,    
+                                                 s.Status,
+                                                 s.Day,
+                                                 s.DepartureTime,
+                                                 s.EstimatedArrivalTime,
+                                                 StartDestinationName = s.Route.StartDestination.Name,
+                                                 EndDestinationName = s.Route.EndDestination.Name,
+                                                 DriverName = s.Driver.Name,
+                                                 RouteDescription = s.Route.Description,
+                                             }).ToList();
+
+            dataGridViewSchedules.DataSource = filteredSchedules;
 
             //dataGridViewSchedules.Columns["StartDestination"].DataPropertyName = "StartDestinationName";
             //dataGridViewSchedules.Columns["EndDestination"].DataPropertyName = "EndDestinationName";
@@ -266,6 +274,11 @@ namespace BusStationInterface
         {
             TicketForm ticketForm = new TicketForm();
             ticketForm.ShowDialog();
+        }
+
+        private void txtLocationFilter_TextChanged(object sender, EventArgs e)
+        {
+            LoadSchedules();
         }
     }
 }

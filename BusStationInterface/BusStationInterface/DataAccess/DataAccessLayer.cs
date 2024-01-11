@@ -236,6 +236,9 @@ public class ScheduleDataAccess
                     .ThenInclude(r => r.StartDestination)
                 .Include(s => s.Route)
                     .ThenInclude(r => r.EndDestination)
+                 .Include(s => s.Route)
+                    .ThenInclude(r => r.RouteDetails)
+                    .ThenInclude(r => r.Location)
                 .ToList();
         }
     }

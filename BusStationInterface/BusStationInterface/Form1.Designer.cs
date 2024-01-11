@@ -86,8 +86,7 @@
             RouteID = new DataGridViewTextBoxColumn();
             dayDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             scheduleBindingSource = new BindingSource(components);
-            button1 = new Button();
-            textBox2 = new TextBox();
+            txtLocationFilter = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
             btnTicket = new Button();
             label9 = new Label();
@@ -644,23 +643,14 @@
             // 
             scheduleBindingSource.DataSource = typeof(Models.Schedule);
             // 
-            // button1
+            // txtLocationFilter
             // 
-            button1.Location = new Point(442, 23);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(82, 25);
-            button1.TabIndex = 26;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(292, 25);
-            textBox2.Margin = new Padding(3, 2, 3, 2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(143, 23);
-            textBox2.TabIndex = 25;
+            txtLocationFilter.Location = new Point(381, 26);
+            txtLocationFilter.Margin = new Padding(3, 2, 3, 2);
+            txtLocationFilter.Name = "txtLocationFilter";
+            txtLocationFilter.Size = new Size(143, 23);
+            txtLocationFilter.TabIndex = 25;
+            txtLocationFilter.TextChanged += txtLocationFilter_TextChanged;
             // 
             // contextMenuStrip1
             // 
@@ -714,8 +704,7 @@
             schedulesPanel.Controls.Add(dataGridViewSchedules);
             schedulesPanel.Controls.Add(label8);
             schedulesPanel.Controls.Add(btnEditSchedules);
-            schedulesPanel.Controls.Add(textBox2);
-            schedulesPanel.Controls.Add(button1);
+            schedulesPanel.Controls.Add(txtLocationFilter);
             schedulesPanel.Location = new Point(957, 65);
             schedulesPanel.Name = "schedulesPanel";
             schedulesPanel.Size = new Size(536, 254);
@@ -814,8 +803,7 @@
         private Button btnEditSchedules;
         private DataGridView dataGridViewSchedules;
         private BindingSource scheduleBindingSource;
-        private Button button1;
-        private TextBox textBox2;
+        private TextBox txtLocationFilter;
         private DataGridViewTextBoxColumn DriverColumn;
         private ContextMenuStrip contextMenuStrip1;
         private Button btnTicket;
