@@ -38,7 +38,7 @@
             estimatedArrivalTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             dayDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             statusDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            priceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            //priceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             startDestinationIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             endDestinationIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             startDestinationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -68,7 +68,7 @@
             dataGridViewTicketSchedule.AllowUserToDeleteRows = false;
             dataGridViewTicketSchedule.AutoGenerateColumns = false;
             dataGridViewTicketSchedule.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTicketSchedule.Columns.AddRange(new DataGridViewColumn[] { scheduleIDDataGridViewTextBoxColumn, busIDDataGridViewTextBoxColumn, routeIDDataGridViewTextBoxColumn, driverIDDataGridViewTextBoxColumn, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, dayDataGridViewTextBoxColumn, statusDataGridViewTextBoxColumn, priceDataGridViewTextBoxColumn, startDestinationIdDataGridViewTextBoxColumn, endDestinationIdDataGridViewTextBoxColumn, startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn, busDataGridViewTextBoxColumn, routeDataGridViewTextBoxColumn, driverDataGridViewTextBoxColumn, ticketsDataGridViewTextBoxColumn });
+            dataGridViewTicketSchedule.Columns.AddRange(new DataGridViewColumn[] { scheduleIDDataGridViewTextBoxColumn, busIDDataGridViewTextBoxColumn, routeIDDataGridViewTextBoxColumn, driverIDDataGridViewTextBoxColumn, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, dayDataGridViewTextBoxColumn, statusDataGridViewTextBoxColumn, startDestinationIdDataGridViewTextBoxColumn, endDestinationIdDataGridViewTextBoxColumn, startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn, busDataGridViewTextBoxColumn, routeDataGridViewTextBoxColumn, driverDataGridViewTextBoxColumn, ticketsDataGridViewTextBoxColumn });
             dataGridViewTicketSchedule.DataSource = scheduleBindingSource;
             dataGridViewTicketSchedule.Location = new Point(10, 37);
             dataGridViewTicketSchedule.Margin = new Padding(3, 2, 3, 2);
@@ -158,12 +158,12 @@
             // 
             // priceDataGridViewTextBoxColumn
             // 
-            priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            priceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            priceDataGridViewTextBoxColumn.ReadOnly = true;
-            priceDataGridViewTextBoxColumn.Width = 125;
+            //priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            //priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            //priceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            //priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            //priceDataGridViewTextBoxColumn.ReadOnly = true;
+            //priceDataGridViewTextBoxColumn.Width = 125;
             // 
             // startDestinationIdDataGridViewTextBoxColumn
             // 
