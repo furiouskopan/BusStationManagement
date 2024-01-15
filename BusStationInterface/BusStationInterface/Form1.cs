@@ -126,9 +126,9 @@ namespace BusStationInterface
                             rd.RouteDetailID,
                             rd.RouteID,
                             rd.LocationID,
-                            LocationName = rd.Location.Name,  // This will now work because Location is loaded
+                            LocationName = rd.Location.Name,
                             rd.SequenceNumber,
-                            Time = rd.Time.ToString(@"hh\:mm"),
+                            rd.Time,
                             rd.Description
                         })
                         .ToList();
@@ -136,7 +136,7 @@ namespace BusStationInterface
                     // Bind the details with location name to the detail view
                     dataGridViewRouteDetails.DataSource = routeDetailsWithLocation;
                 }
-                dataGridViewRouteDetails.Columns["timeDataGridViewTextBoxColumn"].DefaultCellStyle.Format = "HH:mm";
+                //dataGridViewRouteDetails.Columns["timeDataGridViewTextBoxColumn"].DefaultCellStyle.Format = "HH:mm";
             }
         }
         private void LoadSchedules()
@@ -153,14 +153,14 @@ namespace BusStationInterface
             var filteredSchedules = schedules.Where(s => s.Day == today &&
                                                          (s.Route.StartDestination.Name.Contains(locationFilter) ||
                                                           s.Route.EndDestination.Name.Contains(locationFilter) ||
-                                                          s.Route.RouteDetails.Any(rd => rd.Location.Name.ToLower().Contains(locationFilter.ToLower()) == true)))   
+                                                          s.Route.RouteDetails.Any(rd => rd.Location.Name.ToLower().Contains(locationFilter.ToLower()) == true)))
 
                                              .Select(s => new
                                              {
                                                  s.ScheduleID,
                                                  s.BusID,
                                                  s.RouteID,
-                                                 s.DriverID,    
+                                                 s.DriverID,
                                                  s.Status,
                                                  s.Day,
                                                  s.DepartureTime,
@@ -279,6 +279,15 @@ namespace BusStationInterface
         private void txtLocationFilter_TextChanged(object sender, EventArgs e)
         {
             LoadSchedules();
+        }
+
+        private void dataGridViewRouteDetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridViewRouteDetails.Columns[e.ColumnIndex].Name == "timeDataGridViewTextBoxColumn" && e.Value != null)
+            {
+                e.Value = e.Value.ToString() + " min";
+                e.FormattingApplied = true;
+            }
         }
     }
 }

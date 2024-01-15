@@ -90,6 +90,15 @@ namespace BusStationInterface.Data
                 .WithOne(s => s.Ticket)
                 .HasForeignKey<Ticket>(t => t.SeatID)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<RouteDetail>()
+                .Property(rd => rd.PriceToNextStop)
+                .HasColumnType("decimal(10, 0)"); // Sets the precision to 10 and scale to 0
+
+            // Configure decimal precision for Price in Ticket
+            modelBuilder.Entity<Ticket>()
+                .Property(t => t.Price)
+                .HasColumnType("decimal(10, 0)");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

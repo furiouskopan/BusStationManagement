@@ -187,10 +187,9 @@ namespace BusStationInterface.Forms
 
                 using (var context = new BusManagementContext())
                 {
-                    TimeSpan timeSpanValue;
-                    if (!TimeSpan.TryParse(txtTime.Text, out timeSpanValue))
+                    if (!int.TryParse(txtTime.Text, out int minutes))
                     {
-                        MessageBox.Show("Please enter a valid time format (e.g., 'hh:mm').");
+                        MessageBox.Show("Please enter a valid number of minutes.");
                         return;
                     }
 
@@ -220,7 +219,7 @@ namespace BusStationInterface.Forms
                         RouteID = selectedRouteId,
                         SequenceNumber = desiredSequenceNumber,
                         LocationID = Convert.ToInt32(cmbDetailLocation.SelectedValue),
-                        Time = timeSpanValue,
+                        Time = minutes,
                         Description = txtRouteDetailDescription.Text,
                         PriceToNextStop = priceToNextStop // Save the price to the next stop
                     };
@@ -247,7 +246,7 @@ namespace BusStationInterface.Forms
                         RouteID = Convert.ToInt32(row.Cells["RouteID"].Value),
                         LocationID = Convert.ToInt32(row.Cells["LocationID"].Value),
                         SequenceNumber = Convert.ToInt32(row.Cells["SequenceNumber"].Value),
-                        Time = TimeSpan.Parse(row.Cells["Time"].Value.ToString()),
+                        Time = Convert.ToInt32(row.Cells["Time"].Value),
                         Description = row.Cells["Description"].Value.ToString(),
                         PriceToNextStop = Convert.ToInt32(row.Cells["PriceToNextStop"].Value)
                     };
@@ -330,14 +329,23 @@ namespace BusStationInterface.Forms
                 LoadRouteDetails(selectedItem as Route); // Refresh the DataGridView.
             }
         }
+
         private void dataGridViewRouteDetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dataGridViewRouteDetails.Columns[e.ColumnIndex].Name == "Time" && e.Value is TimeSpan)
+            if (dataGridViewRouteDetails.Columns[e.ColumnIndex].Name == "Time" && e.Value != null)
             {
-                TimeSpan time = (TimeSpan)e.Value;
-                e.Value = time.ToString(@"hh\:mm");
+                e.Value = e.Value.ToString() + " min";
                 e.FormattingApplied = true;
             }
         }
+        //private void dataGridViewRouteDetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        //{
+        //    if (dataGridViewRouteDetails.Columns[e.ColumnIndex].Name == "Time" && e.Value is TimeSpan)
+        //    {
+        //        TimeSpan time = (TimeSpan)e.Value;
+        //        e.Value = time.ToString(@"hh\:mm");
+        //        e.FormattingApplied = true;
+        //    }
+        //}
     }
 }

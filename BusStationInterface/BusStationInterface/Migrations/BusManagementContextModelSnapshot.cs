@@ -195,7 +195,7 @@ namespace BusStationInterface.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("PriceToNextStop")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(10, 0)");
 
                     b.Property<int>("RouteID")
                         .HasColumnType("int");
@@ -203,8 +203,8 @@ namespace BusStationInterface.Migrations
                     b.Property<int>("SequenceNumber")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan>("Time")
-                        .HasColumnType("time");
+                    b.Property<int>("Time")
+                        .HasColumnType("int");
 
                     b.HasKey("RouteDetailID");
 
@@ -303,7 +303,7 @@ namespace BusStationInterface.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(10, 0)");
 
                     b.Property<int>("ScheduleID")
                         .HasColumnType("int");

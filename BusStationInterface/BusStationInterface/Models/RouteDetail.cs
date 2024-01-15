@@ -12,7 +12,7 @@ namespace BusStationInterface.Models
         public int RouteID { get; set; }
         public int LocationID { get; set; } 
         public int SequenceNumber { get; set; }
-        public TimeSpan Time { get; set; } 
+        public int Time { get; set; } 
         public string? Description { get; set; }
         public decimal PriceToNextStop { get; set; }
 

@@ -419,6 +419,7 @@
             dataGridViewRouteDetails.RowTemplate.Height = 29;
             dataGridViewRouteDetails.Size = new Size(428, 189);
             dataGridViewRouteDetails.TabIndex = 15;
+            dataGridViewRouteDetails.CellFormatting += dataGridViewRouteDetails_CellFormatting;
             // 
             // sequenceNumberDataGridViewTextBoxColumn
             // 
