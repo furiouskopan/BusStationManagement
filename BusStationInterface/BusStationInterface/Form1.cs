@@ -3,10 +3,11 @@ using BusStationInterface.Forms;
 using BusStationInterface.Models;
 using BusStationInterface.Utilities;
 using Microsoft.EntityFrameworkCore;
+using MaterialSkin.Controls;
 
 namespace BusStationInterface
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MaterialForm
     {
         public Form1()
         {
