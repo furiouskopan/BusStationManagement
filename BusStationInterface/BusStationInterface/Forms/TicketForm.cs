@@ -190,6 +190,8 @@ namespace BusStationInterface.Forms
 
                 var price = CalculatePrice(startDetailId, endDetailId);
 
+
+
                 var ticket = new Ticket
                 {
                     ScheduleID = scheduleId,
@@ -198,6 +200,10 @@ namespace BusStationInterface.Forms
                     EndRouteDetailID = endDetailId,
                     Price = price
                 };
+
+                // Calculate the departure and arrival times for the ticket segment
+                DateTime segmentDepartureTime = CalculateDepartureTimeForStop(ticket.Schedule, ticket.StartRouteDetailID);
+                DateTime segmentArrivalTime = CalculateArrivalTimeForStop(ticket.Schedule, ticket.EndRouteDetailID);
 
                 _context.Tickets.Add(ticket);
 
@@ -230,7 +236,7 @@ namespace BusStationInterface.Forms
 
                 // Generate and save the PDF
                 string pdfFileName = $"Ticket_{ticket.TicketID}.pdf";
-                TicketPDFGenerator.CreateTicketPDF(pdfFileName, ticket);
+                TicketPDFGenerator.CreateTicketPDF(pdfFileName, ticket, segmentDepartureTime, segmentArrivalTime);
 
                 Process.Start(new ProcessStartInfo
                 {
@@ -251,7 +257,7 @@ namespace BusStationInterface.Forms
 
         public class TicketPDFGenerator
         {
-            public static void CreateTicketPDF(string fileName, Ticket ticket)
+            public static void CreateTicketPDF(string fileName, Ticket ticket, DateTime segmentDepartureTime, DateTime segmentArrivalTime)
             {
                 float customWidth = 300; 
                 float customHeight = 600;
@@ -273,13 +279,43 @@ namespace BusStationInterface.Forms
                 document.Add(new Paragraph($"{ticket.Seat?.SeatNumber ?? "N/A"}"));
                 document.Add(new Paragraph($"Start Destination: {startDestinationName}"));
                 document.Add(new Paragraph($"End Destination: {endDestinationName}"));
-                document.Add(new Paragraph($"Departure Time: {departureTime.ToString("g")}"));
-                document.Add(new Paragraph($"Estimated Arrival Time: {arrivalTime.ToString("g")}"));
+                document.Add(new Paragraph($"Departure Time: {segmentDepartureTime.ToString("g")}"));
+                document.Add(new Paragraph($"Estimated Arrival Time: {segmentArrivalTime.ToString("g")}"));
                 document.Add(new Paragraph($"Price: {ticket.Price}MKD"));
                 document.Add(new Paragraph($"Safe travels!"));
 
                 document.Close();
             }
+        }
+        public DateTime CalculateDepartureTimeForStop(Schedule schedule, int startStopId)
+        {
+            DateTime departureTime = schedule.DepartureTime;
+            int cumulativeTime = 0;
+
+            foreach (var detail in schedule.Route.RouteDetails.OrderBy(rd => rd.SequenceNumber))
+            {
+                if (detail.RouteDetailID == startStopId)
+                    break;
+
+                cumulativeTime += detail.Time;
+            }
+
+            return departureTime.AddMinutes(cumulativeTime);
+        }
+
+        public DateTime CalculateArrivalTimeForStop(Schedule schedule, int endStopId)
+        {
+            DateTime departureTime = schedule.DepartureTime;
+            int cumulativeTime = 0;
+
+            foreach (var detail in schedule.Route.RouteDetails.OrderBy(rd => rd.SequenceNumber))
+            {
+                cumulativeTime += detail.Time;
+                if (detail.RouteDetailID == endStopId)
+                    break;
+            }
+
+            return departureTime.AddMinutes(cumulativeTime);
         }
     }
 }
