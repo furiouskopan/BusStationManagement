@@ -96,7 +96,7 @@ public class DriverDataAccess
     public void UpdateDriver(Driver updatedDriver)
     {
         using (var context = new BusManagementContext())
-        {
+        {   
             context.Drivers.Update(updatedDriver);
             context.SaveChanges();
         }

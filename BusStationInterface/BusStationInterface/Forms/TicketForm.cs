@@ -213,7 +213,7 @@ namespace BusStationInterface.Forms
                     return;
                 }
 
-                // Mark the seat as occupied
+                // Mark the seat as occupied    
                 var seat = _context.Seats.FirstOrDefault(s => s.SeatID == seatId);
                 if (seat != null)
                 {
@@ -236,6 +236,9 @@ namespace BusStationInterface.Forms
 
                 _context.TicketingLogs.Add(ticketingLog);
                 _context.SaveChanges();
+
+                _context.Entry(ticket).Reference(t => t.StartRouteDetail).Query().Include(rd => rd.Location).Load();
+                _context.Entry(ticket).Reference(t => t.EndRouteDetail).Query().Include(rd => rd.Location).Load();
 
                 // Generate and save the PDF with segment-specific times
                 string pdfFileName = $"Ticket_{ticket.TicketID}.pdf";
@@ -277,7 +280,7 @@ namespace BusStationInterface.Forms
                 document.Add(new Paragraph($"Start Destination: {startDestinationName}"));
                 document.Add(new Paragraph($"End Destination: {endDestinationName}"));
                 document.Add(new Paragraph($"Departure Time: {segmentDepartureTime.ToString("g")}"));
-                document.Add(new Paragraph($"Estimated Arrival Time: {segmentArrivalTime.ToString("g")}"));
+                document.Add(new Paragraph($"Arrival Time: {segmentArrivalTime.ToString("g")}"));
                 document.Add(new Paragraph($"Price: {ticket.Price}MKD"));
                 document.Add(new Paragraph($"Safe travels!"));
 
