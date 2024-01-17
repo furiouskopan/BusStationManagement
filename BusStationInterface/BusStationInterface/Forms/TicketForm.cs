@@ -16,6 +16,7 @@ using System.Windows.Forms.VisualStyles;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.Diagnostics;
+using BusStationInterface.Utilities;
 
 namespace BusStationInterface.Forms
 {
@@ -188,9 +189,9 @@ namespace BusStationInterface.Forms
                 int startDetailId = startDetailViewModel.RouteDetailID;
                 int endDetailId = endDetailViewModel.RouteDetailID;
 
+                int employeeId = UserSession.CurrentEmployeeId;
+
                 var price = CalculatePrice(startDetailId, endDetailId);
-
-
 
                 var ticket = new Ticket
                 {
@@ -198,14 +199,19 @@ namespace BusStationInterface.Forms
                     SeatID = seatId,
                     StartRouteDetailID = startDetailId,
                     EndRouteDetailID = endDetailId,
-                    Price = price
+                    Price = price,
                 };
 
-                // Calculate the departure and arrival times for the ticket segment
-                DateTime segmentDepartureTime = CalculateDepartureTimeForStop(ticket.Schedule, ticket.StartRouteDetailID);
-                DateTime segmentArrivalTime = CalculateArrivalTimeForStop(ticket.Schedule, ticket.EndRouteDetailID);
-
                 _context.Tickets.Add(ticket);
+
+                // Ensure the schedule is loaded correctly
+                var schedule = _context.Schedules.Include(s => s.Route).ThenInclude(r => r.RouteDetails)
+                                  .FirstOrDefault(s => s.ScheduleID == scheduleId);
+                if (schedule == null)
+                {
+                    MessageBox.Show("Schedule not found.");
+                    return;
+                }
 
                 // Mark the seat as occupied
                 var seat = _context.Seats.FirstOrDefault(s => s.SeatID == seatId);
@@ -216,33 +222,24 @@ namespace BusStationInterface.Forms
 
                 _context.SaveChanges();
 
-                _context.Entry(ticket).Reference(t => t.Schedule).Load();
-                _context.Entry(ticket).Reference(t => t.Seat).Load();
-                _context.Entry(ticket).Reference(t => t.StartRouteDetail)
-                    .Query().Include(rd => rd.Location).Load();
-                _context.Entry(ticket).Reference(t => t.EndRouteDetail)
-                    .Query().Include(rd => rd.Location).Load();
+                // Calculate the departure and arrival times for the ticket segment
+                DateTime segmentDepartureTime = CalculateDepartureTimeForStop(schedule, startDetailId);
+                DateTime segmentArrivalTime = CalculateArrivalTimeForStop(schedule, endDetailId);
 
                 // Optionally, add to TicketingLog as well
                 var ticketingLog = new TicketingLog
                 {
                     TicketID = ticket.TicketID,
                     Timestamp = DateTime.Now,
-                    EmployeeID = 4
+                    EmployeeID = employeeId
                 };
 
                 _context.TicketingLogs.Add(ticketingLog);
                 _context.SaveChanges();
 
-                // Generate and save the PDF
+                // Generate and save the PDF with segment-specific times
                 string pdfFileName = $"Ticket_{ticket.TicketID}.pdf";
                 TicketPDFGenerator.CreateTicketPDF(pdfFileName, ticket, segmentDepartureTime, segmentArrivalTime);
-
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = pdfFileName,
-                    UseShellExecute = true
-                });
 
                 MessageBox.Show("Ticket issued successfully! PDF created at: " + pdfFileName);
 
@@ -268,8 +265,8 @@ namespace BusStationInterface.Forms
                 PdfWriter.GetInstance(document, new FileStream(fileName, FileMode.Create));
                 document.Open();
 
-                var departureTime = ticket.Schedule.DepartureTime;
-                var arrivalTime = ticket.Schedule.EstimatedArrivalTime;
+                //var departureTime = ticket.Schedule.DepartureTime;
+                //var arrivalTime = ticket.Schedule.EstimatedArrivalTime;
 
                 var startDestinationName = ticket.StartRouteDetail?.Location?.Name ?? "Unknown";
                 var endDestinationName = ticket.EndRouteDetail?.Location?.Name ?? "Unknown";
