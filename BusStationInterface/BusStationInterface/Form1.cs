@@ -290,5 +290,34 @@ namespace BusStationInterface
                 e.FormattingApplied = true;
             }
         }
+
+        private void dataGridViewBuses_MouseClick(object sender, MouseEventArgs e)
+        {
+            Point relativePoint = dataGridViewBuses.PointToClient(Cursor.Position);
+
+            // Check if the click is outside of the DataGridView
+            if (!dataGridViewBuses.ClientRectangle.Contains(relativePoint))
+            {
+                // Clear the selection
+                dataGridViewBuses.ClearSelection();
+            }
+        }
+
+        private void dataGridViewRouteDetails_SelectionChanged(object sender, EventArgs e)
+        {
+            dataGridViewRouteDetails.ClearSelection();
+        }
+        private void dataGridViewBuses_SelectionChanged(object sender, EventArgs e)
+        {
+            dataGridViewBuses.ClearSelection();
+        }
+        private void dataGridViewDestinations_SelectionChanged(object sender, EventArgs e)
+        {
+            dataGridViewDestinations.ClearSelection();
+        }
+        private void dataGridViewDrivers_SelectionChanged(object sender, EventArgs e)
+        {
+            dataGridViewDrivers.ClearSelection();
+        }
     }
 }

@@ -30,6 +30,15 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             dataGridViewBuses = new DataGridView();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             busTypeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -117,26 +126,49 @@
             dataGridViewBuses.AllowUserToDeleteRows = false;
             dataGridViewBuses.AllowUserToResizeColumns = false;
             dataGridViewBuses.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = SystemColors.ControlLight;
+            dataGridViewBuses.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewBuses.AutoGenerateColumns = false;
+            dataGridViewBuses.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewBuses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewBuses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewBuses.Columns.AddRange(new DataGridViewColumn[] { busIDDataGridViewTextBoxColumn, busTypeDataGridViewTextBoxColumn, totalSeatsDataGridViewTextBoxColumn });
             dataGridViewBuses.DataSource = busBindingSource;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.IndianRed;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewBuses.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewBuses.EnableHeadersVisualStyles = false;
             dataGridViewBuses.Location = new Point(17, 36);
             dataGridViewBuses.Name = "dataGridViewBuses";
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.ControlLight;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridViewBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewBuses.RowHeadersVisible = false;
             dataGridViewBuses.RowHeadersWidth = 51;
             dataGridViewBuses.RowTemplate.Height = 25;
             dataGridViewBuses.ScrollBars = ScrollBars.Vertical;
+            dataGridViewBuses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewBuses.Size = new Size(151, 150);
             dataGridViewBuses.TabIndex = 0;
+            dataGridViewBuses.SelectionChanged += dataGridViewBuses_SelectionChanged;
+            dataGridViewBuses.MouseClick += dataGridViewBuses_MouseClick;
             // 
             // busIDDataGridViewTextBoxColumn
             // 
@@ -198,17 +230,31 @@
             // 
             dataGridViewDrivers.AllowUserToResizeColumns = false;
             dataGridViewDrivers.AllowUserToResizeRows = false;
+            dataGridViewDrivers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewDrivers.AutoGenerateColumns = false;
+            dataGridViewDrivers.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewDrivers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewDrivers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDrivers.Columns.AddRange(new DataGridViewColumn[] { driverIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, contactInformationDataGridViewTextBoxColumn });
             dataGridViewDrivers.DataSource = driverBindingSource;
+            dataGridViewDrivers.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewDrivers.EnableHeadersVisualStyles = false;
             dataGridViewDrivers.Location = new Point(221, 37);
             dataGridViewDrivers.Name = "dataGridViewDrivers";
             dataGridViewDrivers.RowHeadersWidth = 51;
             dataGridViewDrivers.RowTemplate.Height = 25;
             dataGridViewDrivers.ScrollBars = ScrollBars.Vertical;
+            dataGridViewDrivers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewDrivers.Size = new Size(273, 149);
             dataGridViewDrivers.TabIndex = 3;
+            dataGridViewDrivers.SelectionChanged += dataGridViewDrivers_SelectionChanged;
             // 
             // driverIDDataGridViewTextBoxColumn
             // 
@@ -260,10 +306,23 @@
             dataGridViewDestinations.AllowUserToDeleteRows = false;
             dataGridViewDestinations.AllowUserToResizeColumns = false;
             dataGridViewDestinations.AllowUserToResizeRows = false;
+            dataGridViewDestinations.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewDestinations.AutoGenerateColumns = false;
+            dataGridViewDestinations.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewDestinations.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridViewDestinations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewDestinations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDestinations.Columns.AddRange(new DataGridViewColumn[] { destinationIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn1, descriptionDataGridViewTextBoxColumn });
             dataGridViewDestinations.DataSource = destinationBindingSource;
+            dataGridViewDestinations.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewDestinations.EnableHeadersVisualStyles = false;
             dataGridViewDestinations.Location = new Point(544, 40);
             dataGridViewDestinations.Name = "dataGridViewDestinations";
             dataGridViewDestinations.ReadOnly = true;
@@ -271,8 +330,10 @@
             dataGridViewDestinations.RowHeadersWidth = 51;
             dataGridViewDestinations.RowTemplate.Height = 25;
             dataGridViewDestinations.ScrollBars = ScrollBars.Vertical;
+            dataGridViewDestinations.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewDestinations.Size = new Size(373, 150);
             dataGridViewDestinations.TabIndex = 6;
+            dataGridViewDestinations.SelectionChanged += dataGridViewDestinations_SelectionChanged;
             // 
             // destinationIDDataGridViewTextBoxColumn
             // 
@@ -340,10 +401,22 @@
             // dataGridViewRoutes
             // 
             dataGridViewRoutes.AllowUserToResizeRows = false;
+            dataGridViewRoutes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewRoutes.AutoGenerateColumns = false;
+            dataGridViewRoutes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridViewRoutes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewRoutes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewRoutes.Columns.AddRange(new DataGridViewColumn[] { descriptionDataGridViewTextBoxColumn1, startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn });
             dataGridViewRoutes.DataSource = routeBindingSource1;
+            dataGridViewRoutes.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewRoutes.EnableHeadersVisualStyles = false;
             dataGridViewRoutes.Location = new Point(17, 370);
             dataGridViewRoutes.Margin = new Padding(3, 2, 3, 2);
             dataGridViewRoutes.Name = "dataGridViewRoutes";
@@ -407,19 +480,40 @@
             // dataGridViewRouteDetails
             // 
             dataGridViewRouteDetails.AllowUserToResizeRows = false;
+            dataGridViewRouteDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewRouteDetails.AutoGenerateColumns = false;
+            dataGridViewRouteDetails.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.Window;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGridViewRouteDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridViewRouteDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { sequenceNumberDataGridViewTextBoxColumn, LocationName, timeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn2 });
             dataGridViewRouteDetails.DataSource = routeDetailBindingSource;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Window;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dataGridViewRouteDetails.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewRouteDetails.EnableHeadersVisualStyles = false;
             dataGridViewRouteDetails.Location = new Point(493, 370);
             dataGridViewRouteDetails.Margin = new Padding(3, 2, 3, 2);
             dataGridViewRouteDetails.Name = "dataGridViewRouteDetails";
             dataGridViewRouteDetails.RowHeadersVisible = false;
             dataGridViewRouteDetails.RowHeadersWidth = 51;
             dataGridViewRouteDetails.RowTemplate.Height = 29;
+            dataGridViewRouteDetails.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewRouteDetails.Size = new Size(428, 189);
             dataGridViewRouteDetails.TabIndex = 15;
             dataGridViewRouteDetails.CellFormatting += dataGridViewRouteDetails_CellFormatting;
+            dataGridViewRouteDetails.SelectionChanged += dataGridViewRouteDetails_SelectionChanged;
             // 
             // sequenceNumberDataGridViewTextBoxColumn
             // 
@@ -544,15 +638,28 @@
             // 
             // dataGridViewSchedules
             // 
+            dataGridViewSchedules.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewSchedules.AutoGenerateColumns = false;
+            dataGridViewSchedules.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dataGridViewSchedules.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dataGridViewSchedules.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewSchedules.Columns.AddRange(new DataGridViewColumn[] { Status, DriverID, Driver, scheduleIDDataGridViewTextBoxColumn, busIDDataGridViewTextBoxColumn1, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, Route, RouteID, dayDataGridViewTextBoxColumn });
             dataGridViewSchedules.DataSource = scheduleBindingSource;
+            dataGridViewSchedules.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewSchedules.EnableHeadersVisualStyles = false;
             dataGridViewSchedules.Location = new Point(14, 52);
             dataGridViewSchedules.Margin = new Padding(3, 2, 3, 2);
             dataGridViewSchedules.Name = "dataGridViewSchedules";
             dataGridViewSchedules.RowHeadersWidth = 51;
             dataGridViewSchedules.RowTemplate.Height = 29;
+            dataGridViewSchedules.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewSchedules.Size = new Size(510, 150);
             dataGridViewSchedules.TabIndex = 24;
             // 
