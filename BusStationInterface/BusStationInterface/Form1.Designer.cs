@@ -204,6 +204,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
             label1.Location = new Point(17, 8);
             label1.Name = "label1";
             label1.Size = new Size(94, 25);
@@ -216,6 +217,7 @@
             label2.BackColor = Color.Transparent;
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = Color.White;
             label2.Location = new Point(221, 9);
             label2.Name = "label2";
             label2.Size = new Size(105, 25);
@@ -371,6 +373,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Microsoft JhengHei", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
             label3.Location = new Point(544, 10);
             label3.Name = "label3";
             label3.Size = new Size(167, 27);
@@ -392,7 +395,8 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(25, 318);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(24, 379);
             label4.Name = "label4";
             label4.Size = new Size(106, 25);
             label4.TabIndex = 9;
@@ -417,7 +421,7 @@
             dataGridViewRoutes.DataSource = routeBindingSource1;
             dataGridViewRoutes.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewRoutes.EnableHeadersVisualStyles = false;
-            dataGridViewRoutes.Location = new Point(17, 370);
+            dataGridViewRoutes.Location = new Point(16, 431);
             dataGridViewRoutes.Margin = new Padding(3, 2, 3, 2);
             dataGridViewRoutes.Name = "dataGridViewRoutes";
             dataGridViewRoutes.RowHeadersWidth = 51;
@@ -461,7 +465,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(17, 345);
+            textBox1.Location = new Point(16, 406);
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(143, 23);
@@ -469,7 +473,7 @@
             // 
             // btnSearchRoute
             // 
-            btnSearchRoute.Location = new Point(166, 343);
+            btnSearchRoute.Location = new Point(165, 404);
             btnSearchRoute.Margin = new Padding(3, 2, 3, 2);
             btnSearchRoute.Name = "btnSearchRoute";
             btnSearchRoute.Size = new Size(82, 25);
@@ -503,7 +507,7 @@
             dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
             dataGridViewRouteDetails.DefaultCellStyle = dataGridViewCellStyle9;
             dataGridViewRouteDetails.EnableHeadersVisualStyles = false;
-            dataGridViewRouteDetails.Location = new Point(493, 370);
+            dataGridViewRouteDetails.Location = new Point(492, 431);
             dataGridViewRouteDetails.Margin = new Padding(3, 2, 3, 2);
             dataGridViewRouteDetails.Name = "dataGridViewRouteDetails";
             dataGridViewRouteDetails.RowHeadersVisible = false;
@@ -556,7 +560,8 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(498, 336);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(497, 397);
             label5.Name = "label5";
             label5.Size = new Size(220, 25);
             label5.TabIndex = 17;
@@ -567,7 +572,7 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Copperplate Gothic Bold", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(37, 31);
+            label6.Location = new Point(36, 92);
             label6.Name = "label6";
             label6.Size = new Size(83, 33);
             label6.TabIndex = 18;
@@ -578,8 +583,8 @@
             label7.AutoSize = true;
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Copperplate Gothic Bold", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(116, 31);
+            label7.ForeColor = Color.Brown;
+            label7.Location = new Point(111, 92);
             label7.Name = "label7";
             label7.Size = new Size(168, 33);
             label7.TabIndex = 19;
@@ -587,7 +592,7 @@
             // 
             // btnEditRD
             // 
-            btnEditRD.Location = new Point(422, 563);
+            btnEditRD.Location = new Point(421, 624);
             btnEditRD.Margin = new Padding(3, 2, 3, 2);
             btnEditRD.Name = "btnEditRD";
             btnEditRD.Size = new Size(94, 42);
@@ -604,10 +609,9 @@
             // 
             lblTimer.AutoSize = true;
             lblTimer.BackColor = Color.Transparent;
-            lblTimer.Dock = DockStyle.Right;
             lblTimer.Font = new Font("Verdana", 17.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTimer.ForeColor = Color.Red;
-            lblTimer.Location = new Point(1424, 0);
+            lblTimer.ForeColor = Color.Brown;
+            lblTimer.Location = new Point(1220, 83);
             lblTimer.Margin = new Padding(0, 38, 0, 38);
             lblTimer.Name = "lblTimer";
             lblTimer.Size = new Size(81, 28);
@@ -619,7 +623,8 @@
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Microsoft JhengHei", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(14, 20);
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(14, 12);
             label8.Name = "label8";
             label8.Size = new Size(193, 27);
             label8.TabIndex = 22;
@@ -654,13 +659,13 @@
             dataGridViewSchedules.DataSource = scheduleBindingSource;
             dataGridViewSchedules.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewSchedules.EnableHeadersVisualStyles = false;
-            dataGridViewSchedules.Location = new Point(14, 52);
+            dataGridViewSchedules.Location = new Point(14, 42);
             dataGridViewSchedules.Margin = new Padding(3, 2, 3, 2);
             dataGridViewSchedules.Name = "dataGridViewSchedules";
             dataGridViewSchedules.RowHeadersWidth = 51;
             dataGridViewSchedules.RowTemplate.Height = 29;
             dataGridViewSchedules.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewSchedules.Size = new Size(510, 150);
+            dataGridViewSchedules.Size = new Size(510, 161);
             dataGridViewSchedules.TabIndex = 24;
             // 
             // Status
@@ -753,7 +758,7 @@
             // 
             // txtLocationFilter
             // 
-            txtLocationFilter.Location = new Point(381, 26);
+            txtLocationFilter.Location = new Point(381, 18);
             txtLocationFilter.Margin = new Padding(3, 2, 3, 2);
             txtLocationFilter.Name = "txtLocationFilter";
             txtLocationFilter.Size = new Size(143, 23);
@@ -768,7 +773,7 @@
             // 
             // btnTicket
             // 
-            btnTicket.Location = new Point(827, 326);
+            btnTicket.Location = new Point(826, 387);
             btnTicket.Margin = new Padding(3, 2, 3, 2);
             btnTicket.Name = "btnTicket";
             btnTicket.Size = new Size(94, 35);
@@ -783,7 +788,7 @@
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(8, 6);
+            label9.Location = new Point(7, 67);
             label9.Name = "label9";
             label9.Size = new Size(63, 25);
             label9.TabIndex = 28;
@@ -801,7 +806,7 @@
             adminPanel.Controls.Add(btnEditDriver);
             adminPanel.Controls.Add(label3);
             adminPanel.Controls.Add(btnEditDestinations);
-            adminPanel.Location = new Point(17, 67);
+            adminPanel.Location = new Point(16, 128);
             adminPanel.Name = "adminPanel";
             adminPanel.Size = new Size(934, 248);
             adminPanel.TabIndex = 29;
@@ -813,7 +818,7 @@
             schedulesPanel.Controls.Add(label8);
             schedulesPanel.Controls.Add(btnEditSchedules);
             schedulesPanel.Controls.Add(txtLocationFilter);
-            schedulesPanel.Location = new Point(957, 65);
+            schedulesPanel.Location = new Point(956, 126);
             schedulesPanel.Name = "schedulesPanel";
             schedulesPanel.Size = new Size(536, 254);
             schedulesPanel.TabIndex = 30;
@@ -823,8 +828,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
-            BackgroundImage = Properties.Resources.bgbgbg;
-            ClientSize = new Size(1505, 613);
+            ClientSize = new Size(1505, 700);
             Controls.Add(schedulesPanel);
             Controls.Add(adminPanel);
             Controls.Add(label9);
@@ -839,11 +843,11 @@
             Controls.Add(textBox1);
             Controls.Add(dataGridViewRoutes);
             Controls.Add(label4);
-            MaximumSize = new Size(1521, 652);
+            MaximumSize = new Size(1521, 700);
             MinimumSize = new Size(960, 652);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Bus Station";
+            Text = "Strumica Bus Station";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).EndInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).EndInit();
