@@ -76,8 +76,6 @@
             descriptionDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             routeDetailBindingSource = new BindingSource(components);
             label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
             btnEditRD = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             lblTimer = new Label();
@@ -101,6 +99,11 @@
             label9 = new Label();
             adminPanel = new Panel();
             schedulesPanel = new Panel();
+            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -116,6 +119,7 @@
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).BeginInit();
             adminPanel.SuspendLayout();
             schedulesPanel.SuspendLayout();
+            materialTabControl1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridViewBuses
@@ -248,7 +252,7 @@
             dataGridViewDrivers.DataSource = driverBindingSource;
             dataGridViewDrivers.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewDrivers.EnableHeadersVisualStyles = false;
-            dataGridViewDrivers.Location = new Point(221, 37);
+            dataGridViewDrivers.Location = new Point(208, 37);
             dataGridViewDrivers.Name = "dataGridViewDrivers";
             dataGridViewDrivers.RowHeadersWidth = 51;
             dataGridViewDrivers.RowTemplate.Height = 25;
@@ -396,7 +400,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(24, 379);
+            label4.Location = new Point(105, 395);
             label4.Name = "label4";
             label4.Size = new Size(106, 25);
             label4.TabIndex = 9;
@@ -421,7 +425,7 @@
             dataGridViewRoutes.DataSource = routeBindingSource1;
             dataGridViewRoutes.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewRoutes.EnableHeadersVisualStyles = false;
-            dataGridViewRoutes.Location = new Point(16, 431);
+            dataGridViewRoutes.Location = new Point(97, 447);
             dataGridViewRoutes.Margin = new Padding(3, 2, 3, 2);
             dataGridViewRoutes.Name = "dataGridViewRoutes";
             dataGridViewRoutes.RowHeadersWidth = 51;
@@ -465,7 +469,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(16, 406);
+            textBox1.Location = new Point(97, 422);
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(143, 23);
@@ -473,7 +477,7 @@
             // 
             // btnSearchRoute
             // 
-            btnSearchRoute.Location = new Point(165, 404);
+            btnSearchRoute.Location = new Point(246, 420);
             btnSearchRoute.Margin = new Padding(3, 2, 3, 2);
             btnSearchRoute.Name = "btnSearchRoute";
             btnSearchRoute.Size = new Size(82, 25);
@@ -507,7 +511,7 @@
             dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
             dataGridViewRouteDetails.DefaultCellStyle = dataGridViewCellStyle9;
             dataGridViewRouteDetails.EnableHeadersVisualStyles = false;
-            dataGridViewRouteDetails.Location = new Point(492, 431);
+            dataGridViewRouteDetails.Location = new Point(573, 447);
             dataGridViewRouteDetails.Margin = new Padding(3, 2, 3, 2);
             dataGridViewRouteDetails.Name = "dataGridViewRouteDetails";
             dataGridViewRouteDetails.RowHeadersVisible = false;
@@ -561,38 +565,15 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(497, 397);
+            label5.Location = new Point(578, 413);
             label5.Name = "label5";
             label5.Size = new Size(220, 25);
             label5.TabIndex = 17;
             label5.Text = "Selected Route Details";
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.BackColor = Color.Transparent;
-            label6.Font = new Font("Copperplate Gothic Bold", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(36, 92);
-            label6.Name = "label6";
-            label6.Size = new Size(83, 33);
-            label6.TabIndex = 18;
-            label6.Text = "BUS";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.Transparent;
-            label7.Font = new Font("Copperplate Gothic Bold", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.ForeColor = Color.Brown;
-            label7.Location = new Point(111, 92);
-            label7.Name = "label7";
-            label7.Size = new Size(168, 33);
-            label7.TabIndex = 19;
-            label7.Text = "EXPRESS";
-            // 
             // btnEditRD
             // 
-            btnEditRD.Location = new Point(421, 624);
+            btnEditRD.Location = new Point(497, 653);
             btnEditRD.Margin = new Padding(3, 2, 3, 2);
             btnEditRD.Name = "btnEditRD";
             btnEditRD.Size = new Size(94, 42);
@@ -611,7 +592,7 @@
             lblTimer.BackColor = Color.Transparent;
             lblTimer.Font = new Font("Verdana", 17.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblTimer.ForeColor = Color.Brown;
-            lblTimer.Location = new Point(1220, 83);
+            lblTimer.Location = new Point(1301, 99);
             lblTimer.Margin = new Padding(0, 38, 0, 38);
             lblTimer.Name = "lblTimer";
             lblTimer.Size = new Size(81, 28);
@@ -773,7 +754,7 @@
             // 
             // btnTicket
             // 
-            btnTicket.Location = new Point(826, 387);
+            btnTicket.Location = new Point(907, 403);
             btnTicket.Margin = new Padding(3, 2, 3, 2);
             btnTicket.Name = "btnTicket";
             btnTicket.Size = new Size(94, 35);
@@ -788,7 +769,7 @@
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(7, 67);
+            label9.Location = new Point(88, 83);
             label9.Name = "label9";
             label9.Size = new Size(63, 25);
             label9.TabIndex = 28;
@@ -806,7 +787,7 @@
             adminPanel.Controls.Add(btnEditDriver);
             adminPanel.Controls.Add(label3);
             adminPanel.Controls.Add(btnEditDestinations);
-            adminPanel.Location = new Point(16, 128);
+            adminPanel.Location = new Point(97, 144);
             adminPanel.Name = "adminPanel";
             adminPanel.Size = new Size(934, 248);
             adminPanel.TabIndex = 29;
@@ -818,33 +799,94 @@
             schedulesPanel.Controls.Add(label8);
             schedulesPanel.Controls.Add(btnEditSchedules);
             schedulesPanel.Controls.Add(txtLocationFilter);
-            schedulesPanel.Location = new Point(956, 126);
+            schedulesPanel.Location = new Point(1037, 142);
             schedulesPanel.Name = "schedulesPanel";
             schedulesPanel.Size = new Size(536, 254);
             schedulesPanel.TabIndex = 30;
+            // 
+            // materialLabel1
+            // 
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel1.Location = new Point(205, 107);
+            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(31, 19);
+            materialLabel1.TabIndex = 31;
+            materialLabel1.Text = "BUS";
+            // 
+            // materialLabel2
+            // 
+            materialLabel2.AutoSize = true;
+            materialLabel2.BackColor = SystemColors.HotTrack;
+            materialLabel2.Depth = 0;
+            materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel2.ForeColor = Color.Brown;
+            materialLabel2.Location = new Point(242, 107);
+            materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel2.Name = "materialLabel2";
+            materialLabel2.Size = new Size(69, 19);
+            materialLabel2.TabIndex = 32;
+            materialLabel2.Text = "EXPRESS";
+            // 
+            // materialTabControl1
+            // 
+            materialTabControl1.Controls.Add(tabPage1);
+            materialTabControl1.Controls.Add(tabPage2);
+            materialTabControl1.Depth = 0;
+            materialTabControl1.Dock = DockStyle.Left;
+            materialTabControl1.Location = new Point(3, 64);
+            materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialTabControl1.Multiline = true;
+            materialTabControl1.Name = "materialTabControl1";
+            materialTabControl1.SelectedIndex = 0;
+            materialTabControl1.Size = new Size(200, 633);
+            materialTabControl1.TabIndex = 33;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(192, 605);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(192, 72);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
-            ClientSize = new Size(1505, 700);
+            ClientSize = new Size(1600, 700);
+            Controls.Add(materialTabControl1);
+            Controls.Add(materialLabel2);
+            Controls.Add(materialLabel1);
             Controls.Add(schedulesPanel);
             Controls.Add(adminPanel);
             Controls.Add(label9);
             Controls.Add(btnTicket);
             Controls.Add(lblTimer);
             Controls.Add(btnEditRD);
-            Controls.Add(label7);
-            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(dataGridViewRouteDetails);
             Controls.Add(btnSearchRoute);
             Controls.Add(textBox1);
             Controls.Add(dataGridViewRoutes);
             Controls.Add(label4);
-            MaximumSize = new Size(1521, 700);
-            MinimumSize = new Size(960, 652);
+            MaximumSize = new Size(1600, 700);
+            MinimumSize = new Size(1600, 700);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Strumica Bus Station";
@@ -866,6 +908,7 @@
             adminPanel.PerformLayout();
             schedulesPanel.ResumeLayout(false);
             schedulesPanel.PerformLayout();
+            materialTabControl1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -906,8 +949,6 @@
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn startDestinationDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn endDestinationDataGridViewTextBoxColumn;
-        private Label label6;
-        private Label label7;
         private Button btnEditRD;
         private System.Windows.Forms.Timer timer1;
         private Label lblTimer;
@@ -936,5 +977,10 @@
         private Label label9;
         private Panel adminPanel;
         private Panel schedulesPanel;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
     }
 }
