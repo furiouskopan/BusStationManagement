@@ -18,10 +18,22 @@ namespace BusStationInterface
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             //materialSkinManager.ColorScheme = new ColorScheme(Primary.Red800, Primary.Red900, Primary.Red500, Accent.DeepOrange200, TextShade.WHITE);
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.BLACK);
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
             lblTimer.ForeColor = Color.Brown;
         }
+        private void EmbedFormInTab(Form formToEmbed, TabPage tabPage)
+        {
+            formToEmbed.TopLevel = false;
+            formToEmbed.FormBorderStyle = FormBorderStyle.None;
+            formToEmbed.Dock = DockStyle.Fill;
+
+            tabPage.Controls.Add(formToEmbed);
+            tabPage.Tag = formToEmbed;
+            formToEmbed.BringToFront();
+            formToEmbed.Show();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadBuses();
@@ -50,6 +62,8 @@ namespace BusStationInterface
             dataGridViewDestinations.ClearSelection();
             dataGridViewRouteDetails.ClearSelection();
             dataGridViewSchedules.ClearSelection();
+
+            materialTabControl1.SendToBack();
         }
         private void LoadDestinations()
         {
@@ -60,6 +74,8 @@ namespace BusStationInterface
             dataGridViewDestinations.DataSource = destinations;
             dataGridViewDestinations.RowHeadersVisible = false;
             dataGridViewDestinations.ReadOnly = true;  // Make it read-only
+
+            EmbedFormInTab(new DestinationEditForm(destinationDataAccess), tabPageLocations);
         }
 
         private void LoadBuses()
@@ -71,6 +87,9 @@ namespace BusStationInterface
             dataGridViewBuses.DataSource = buses;
             dataGridViewBuses.RowHeadersVisible = false;
             dataGridViewBuses.ReadOnly = true;  // Make it read-only
+
+
+            EmbedFormInTab(new BusEditForm(busDataAccess), tabPageBuses);
         }
         private void LoadDrivers()
         {
@@ -81,7 +100,10 @@ namespace BusStationInterface
             dataGridViewDrivers.DataSource = drivers;
             dataGridViewDrivers.RowHeadersVisible = false;
             dataGridViewDrivers.ReadOnly = true;  // Make it read-only
+
+            EmbedFormInTab(new DriverEditForm(driverDataAccess), tabPageDrivers);
         }
+
         private void LoadRoutes()
         {
             RouteDataAccess routeDataAccess = new RouteDataAccess();
@@ -112,6 +134,8 @@ namespace BusStationInterface
             dataGridViewRoutes.DataSource = routesWithDestinations;
             dataGridViewRoutes.RowHeadersVisible = false;
             dataGridViewRoutes.ReadOnly = true;
+
+            EmbedFormInTab(new RDForm(), tabPageRoutes);
         }
         private void LoadRouteDetails(Route selectedRoute)
         {
@@ -193,7 +217,10 @@ namespace BusStationInterface
 
             dataGridViewSchedules.RowHeadersVisible = false;
             dataGridViewSchedules.ReadOnly = true;
+
+            EmbedFormInTab(new ScheduleEditForm(), tabPageSchedules);
         }
+
 
         private void btnEditBus_Click(object sender, EventArgs e)
         {
@@ -202,6 +229,8 @@ namespace BusStationInterface
 
             // Create an instance of the edit window and pass the bus data access
             BusEditForm editForm = new BusEditForm(busDataAccess);
+
+
 
             // Show the edit window
             if (editForm.ShowDialog() == DialogResult.OK)
