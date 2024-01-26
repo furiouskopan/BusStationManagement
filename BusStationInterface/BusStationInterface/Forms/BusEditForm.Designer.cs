@@ -42,6 +42,7 @@
             groupBox1 = new GroupBox();
             btnAddBus = new Button();
             txtTotalSeats = new TextBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBusesOnEditForm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             groupBox1.SuspendLayout();
@@ -51,10 +52,9 @@
             // 
             btnSaveBusEdit.BackColor = Color.LimeGreen;
             btnSaveBusEdit.Font = new Font("Microsoft JhengHei", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSaveBusEdit.Location = new Point(161, 508);
-            btnSaveBusEdit.Margin = new Padding(3, 4, 3, 4);
+            btnSaveBusEdit.Location = new Point(174, 437);
             btnSaveBusEdit.Name = "btnSaveBusEdit";
-            btnSaveBusEdit.Size = new Size(144, 59);
+            btnSaveBusEdit.Size = new Size(126, 44);
             btnSaveBusEdit.TabIndex = 6;
             btnSaveBusEdit.Text = "Save";
             btnSaveBusEdit.UseVisualStyleBackColor = false;
@@ -68,15 +68,14 @@
             dataGridViewBusesOnEditForm.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewBusesOnEditForm.Columns.AddRange(new DataGridViewColumn[] { busIDDataGridViewTextBoxColumn, busTypeDataGridViewTextBoxColumn, totalSeatsDataGridViewTextBoxColumn });
             dataGridViewBusesOnEditForm.DataSource = busBindingSource;
-            dataGridViewBusesOnEditForm.Location = new Point(14, 16);
-            dataGridViewBusesOnEditForm.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewBusesOnEditForm.Location = new Point(45, 68);
             dataGridViewBusesOnEditForm.MultiSelect = false;
             dataGridViewBusesOnEditForm.Name = "dataGridViewBusesOnEditForm";
             dataGridViewBusesOnEditForm.RowHeadersWidth = 51;
             dataGridViewBusesOnEditForm.RowTemplate.Height = 25;
             dataGridViewBusesOnEditForm.ScrollBars = ScrollBars.Vertical;
             dataGridViewBusesOnEditForm.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewBusesOnEditForm.Size = new Size(442, 275);
+            dataGridViewBusesOnEditForm.Size = new Size(387, 206);
             dataGridViewBusesOnEditForm.TabIndex = 7;
             // 
             // busIDDataGridViewTextBoxColumn
@@ -110,37 +109,35 @@
             // lblSeats
             // 
             lblSeats.AutoSize = true;
-            lblSeats.Location = new Point(147, 31);
+            lblSeats.Location = new Point(129, 23);
             lblSeats.Name = "lblSeats";
-            lblSeats.Size = new Size(44, 20);
+            lblSeats.Size = new Size(34, 15);
             lblSeats.TabIndex = 11;
             lblSeats.Text = "Seats";
             // 
             // lblType
             // 
             lblType.AutoSize = true;
-            lblType.Location = new Point(16, 31);
+            lblType.Location = new Point(14, 23);
             lblType.Name = "lblType";
-            lblType.Size = new Size(40, 20);
+            lblType.Size = new Size(31, 15);
             lblType.TabIndex = 10;
             lblType.Text = "Type";
             // 
             // txtBusType
             // 
-            txtBusType.Location = new Point(16, 55);
-            txtBusType.Margin = new Padding(3, 4, 3, 4);
+            txtBusType.Location = new Point(14, 41);
             txtBusType.Name = "txtBusType";
-            txtBusType.Size = new Size(114, 27);
+            txtBusType.Size = new Size(100, 23);
             txtBusType.TabIndex = 9;
             // 
             // btnDeleteBus
             // 
             btnDeleteBus.BackColor = Color.Firebrick;
             btnDeleteBus.ForeColor = Color.White;
-            btnDeleteBus.Location = new Point(297, 430);
-            btnDeleteBus.Margin = new Padding(3, 4, 3, 4);
+            btnDeleteBus.Location = new Point(293, 378);
             btnDeleteBus.Name = "btnDeleteBus";
-            btnDeleteBus.Size = new Size(141, 57);
+            btnDeleteBus.Size = new Size(123, 43);
             btnDeleteBus.TabIndex = 13;
             btnDeleteBus.Text = "Delete Selected Bus";
             btnDeleteBus.UseVisualStyleBackColor = false;
@@ -153,21 +150,18 @@
             groupBox1.Controls.Add(txtBusType);
             groupBox1.Controls.Add(lblSeats);
             groupBox1.Controls.Add(lblType);
-            groupBox1.Location = new Point(14, 311);
-            groupBox1.Margin = new Padding(3, 4, 3, 4);
+            groupBox1.Location = new Point(45, 289);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(442, 121);
+            groupBox1.Size = new Size(387, 91);
             groupBox1.TabIndex = 14;
             groupBox1.TabStop = false;
             groupBox1.Text = "Insert";
             // 
             // btnAddBus
             // 
-            btnAddBus.Location = new Point(283, 43);
-            btnAddBus.Margin = new Padding(3, 4, 3, 4);
+            btnAddBus.Location = new Point(248, 32);
             btnAddBus.Name = "btnAddBus";
-            btnAddBus.Size = new Size(141, 51);
+            btnAddBus.Size = new Size(123, 38);
             btnAddBus.TabIndex = 12;
             btnAddBus.Text = "Add Bus";
             btnAddBus.UseVisualStyleBackColor = true;
@@ -175,22 +169,31 @@
             // 
             // txtTotalSeats
             // 
-            txtTotalSeats.Location = new Point(147, 55);
-            txtTotalSeats.Margin = new Padding(3, 4, 3, 4);
+            txtTotalSeats.Location = new Point(129, 41);
             txtTotalSeats.Name = "txtTotalSeats";
-            txtTotalSeats.Size = new Size(114, 27);
+            txtTotalSeats.Size = new Size(100, 23);
             txtTotalSeats.TabIndex = 8;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(36, 21);
+            label1.Name = "label1";
+            label1.Size = new Size(107, 30);
+            label1.TabIndex = 15;
+            label1.Text = "Edit Buses";
             // 
             // BusEditForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(470, 583);
+            ClientSize = new Size(708, 514);
+            Controls.Add(label1);
             Controls.Add(groupBox1);
             Controls.Add(btnDeleteBus);
             Controls.Add(dataGridViewBusesOnEditForm);
             Controls.Add(btnSaveBusEdit);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "BusEditForm";
             Text = "BusEditForm";
             Load += BusEditForm_Load;
@@ -199,6 +202,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -215,5 +219,6 @@
         private GroupBox groupBox1;
         private Button btnAddBus;
         private TextBox txtTotalSeats;
+        private Label label1;
     }
 }

@@ -42,6 +42,7 @@
             descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             destinationBindingSource = new BindingSource(components);
             groupboxAddDest = new GroupBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDestinationsOnEditForm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)destinationBindingSource).BeginInit();
             groupboxAddDest.SuspendLayout();
@@ -51,7 +52,7 @@
             // 
             btnDeleteDestination.BackColor = Color.Firebrick;
             btnDeleteDestination.ForeColor = Color.White;
-            btnDeleteDestination.Location = new Point(204, 331);
+            btnDeleteDestination.Location = new Point(224, 392);
             btnDeleteDestination.Name = "btnDeleteDestination";
             btnDeleteDestination.Size = new Size(159, 35);
             btnDeleteDestination.TabIndex = 22;
@@ -106,7 +107,7 @@
             btnSaveDestinationEdit.BackColor = Color.LimeGreen;
             btnSaveDestinationEdit.Font = new Font("Microsoft JhengHei", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnSaveDestinationEdit.ForeColor = SystemColors.ControlText;
-            btnSaveDestinationEdit.Location = new Point(130, 394);
+            btnSaveDestinationEdit.Location = new Point(150, 455);
             btnSaveDestinationEdit.Name = "btnSaveDestinationEdit";
             btnSaveDestinationEdit.Size = new Size(126, 44);
             btnSaveDestinationEdit.TabIndex = 16;
@@ -122,7 +123,7 @@
             dataGridViewDestinationsOnEditForm.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDestinationsOnEditForm.Columns.AddRange(new DataGridViewColumn[] { destinationIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn });
             dataGridViewDestinationsOnEditForm.DataSource = destinationBindingSource;
-            dataGridViewDestinationsOnEditForm.Location = new Point(12, 12);
+            dataGridViewDestinationsOnEditForm.Location = new Point(32, 73);
             dataGridViewDestinationsOnEditForm.Name = "dataGridViewDestinationsOnEditForm";
             dataGridViewDestinationsOnEditForm.RowTemplate.Height = 25;
             dataGridViewDestinationsOnEditForm.ScrollBars = ScrollBars.Vertical;
@@ -161,18 +162,29 @@
             groupboxAddDest.Controls.Add(txtDestinationName);
             groupboxAddDest.Controls.Add(lblDescription);
             groupboxAddDest.Controls.Add(lblName);
-            groupboxAddDest.Location = new Point(12, 233);
+            groupboxAddDest.Location = new Point(32, 294);
             groupboxAddDest.Name = "groupboxAddDest";
             groupboxAddDest.Size = new Size(367, 92);
             groupboxAddDest.TabIndex = 23;
             groupboxAddDest.TabStop = false;
             groupboxAddDest.Text = "Insert";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(32, 18);
+            label1.Name = "label1";
+            label1.Size = new Size(169, 30);
+            label1.TabIndex = 24;
+            label1.Text = "Edit Destinations";
+            // 
             // DestinationEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(391, 450);
+            ClientSize = new Size(657, 530);
+            Controls.Add(label1);
             Controls.Add(groupboxAddDest);
             Controls.Add(btnDeleteDestination);
             Controls.Add(btnSaveDestinationEdit);
@@ -184,6 +196,7 @@
             groupboxAddDest.ResumeLayout(false);
             groupboxAddDest.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -201,5 +214,6 @@
         private DataGridViewTextBoxColumn destinationIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private Label label1;
     }
 }
