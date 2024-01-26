@@ -34,8 +34,6 @@
             cmbRoute = new ComboBox();
             cmbDriver = new ComboBox();
             cmbBus = new ComboBox();
-            btnAddSchedule = new Button();
-            btnSave = new Button();
             label2 = new Label();
             label4 = new Label();
             label5 = new Label();
@@ -58,7 +56,6 @@
             scheduleBindingSource = new BindingSource(components);
             Day = new Label();
             cmbDay = new ComboBox();
-            btnDeleteSchedule = new Button();
             label6 = new Label();
             txtStatus = new TextBox();
             cmbDriverEdit = new ComboBox();
@@ -76,6 +73,9 @@
             label14 = new Label();
             cmbDayFilter = new ComboBox();
             txtLocationFilter = new TextBox();
+            btnSave = new MaterialSkin.Controls.MaterialButton();
+            btnDeleteSchedule = new MaterialSkin.Controls.MaterialButton();
+            btnAddSchedule = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)dgvSchedules).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -130,28 +130,6 @@
             cmbBus.Name = "cmbBus";
             cmbBus.Size = new Size(180, 27);
             cmbBus.TabIndex = 12;
-            // 
-            // btnAddSchedule
-            // 
-            btnAddSchedule.Location = new Point(54, 463);
-            btnAddSchedule.Margin = new Padding(3, 2, 3, 2);
-            btnAddSchedule.Name = "btnAddSchedule";
-            btnAddSchedule.Size = new Size(108, 40);
-            btnAddSchedule.TabIndex = 13;
-            btnAddSchedule.Text = "Add Schedule";
-            btnAddSchedule.UseVisualStyleBackColor = true;
-            btnAddSchedule.Click += btnAddSchedule_Click;
-            // 
-            // btnSave
-            // 
-            btnSave.Location = new Point(667, 427);
-            btnSave.Margin = new Padding(3, 2, 3, 2);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(82, 34);
-            btnSave.TabIndex = 14;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
             // 
             // label2
             // 
@@ -357,17 +335,6 @@
             cmbDay.Size = new Size(180, 27);
             cmbDay.TabIndex = 24;
             // 
-            // btnDeleteSchedule
-            // 
-            btnDeleteSchedule.Location = new Point(764, 427);
-            btnDeleteSchedule.Margin = new Padding(3, 2, 3, 2);
-            btnDeleteSchedule.Name = "btnDeleteSchedule";
-            btnDeleteSchedule.Size = new Size(82, 34);
-            btnDeleteSchedule.TabIndex = 26;
-            btnDeleteSchedule.Text = "Delete";
-            btnDeleteSchedule.UseVisualStyleBackColor = true;
-            btnDeleteSchedule.Click += btnDeleteSchedule_Click;
-            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -524,11 +491,74 @@
             txtLocationFilter.TabIndex = 43;
             txtLocationFilter.TextChanged += txtLocationFilter_TextChanged;
             // 
+            // btnSave
+            // 
+            btnSave.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSave.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnSave.Depth = 0;
+            btnSave.HighEmphasis = true;
+            btnSave.Icon = null;
+            btnSave.Location = new Point(713, 475);
+            btnSave.Margin = new Padding(4, 6, 4, 6);
+            btnSave.MouseState = MaterialSkin.MouseState.HOVER;
+            btnSave.Name = "btnSave";
+            btnSave.NoAccentTextColor = Color.Empty;
+            btnSave.Size = new Size(64, 36);
+            btnSave.TabIndex = 44;
+            btnSave.Text = "Save";
+            btnSave.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnSave.UseAccentColor = false;
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
+            // btnDeleteSchedule
+            // 
+            btnDeleteSchedule.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDeleteSchedule.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnDeleteSchedule.Depth = 0;
+            btnDeleteSchedule.HighEmphasis = true;
+            btnDeleteSchedule.Icon = null;
+            btnDeleteSchedule.Location = new Point(809, 475);
+            btnDeleteSchedule.Margin = new Padding(4, 6, 4, 6);
+            btnDeleteSchedule.MouseState = MaterialSkin.MouseState.HOVER;
+            btnDeleteSchedule.Name = "btnDeleteSchedule";
+            btnDeleteSchedule.NoAccentTextColor = Color.Empty;
+            btnDeleteSchedule.Size = new Size(73, 36);
+            btnDeleteSchedule.TabIndex = 45;
+            btnDeleteSchedule.Text = "Delete";
+            btnDeleteSchedule.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnDeleteSchedule.UseAccentColor = false;
+            btnDeleteSchedule.UseVisualStyleBackColor = true;
+            btnDeleteSchedule.Click += btnDeleteSchedule_Click;
+            // 
+            // btnAddSchedule
+            // 
+            btnAddSchedule.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAddSchedule.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAddSchedule.Depth = 0;
+            btnAddSchedule.HighEmphasis = true;
+            btnAddSchedule.Icon = null;
+            btnAddSchedule.Location = new Point(42, 458);
+            btnAddSchedule.Margin = new Padding(4, 6, 4, 6);
+            btnAddSchedule.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAddSchedule.Name = "btnAddSchedule";
+            btnAddSchedule.NoAccentTextColor = Color.Empty;
+            btnAddSchedule.Size = new Size(127, 36);
+            btnAddSchedule.TabIndex = 46;
+            btnAddSchedule.Text = "Add Schedule";
+            btnAddSchedule.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAddSchedule.UseAccentColor = false;
+            btnAddSchedule.UseVisualStyleBackColor = true;
+            btnAddSchedule.Click += btnAddSchedule_Click;
+            // 
             // ScheduleEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1282, 658);
+            Controls.Add(btnAddSchedule);
+            Controls.Add(btnDeleteSchedule);
+            Controls.Add(btnSave);
             Controls.Add(txtLocationFilter);
             Controls.Add(cmbDayFilter);
             Controls.Add(txtStatusEdit);
@@ -545,7 +575,6 @@
             Controls.Add(cmbDriverEdit);
             Controls.Add(txtStatus);
             Controls.Add(label6);
-            Controls.Add(btnDeleteSchedule);
             Controls.Add(Day);
             Controls.Add(cmbDay);
             Controls.Add(dgvSchedules);
@@ -556,8 +585,6 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label2);
-            Controls.Add(btnSave);
-            Controls.Add(btnAddSchedule);
             Controls.Add(cmbBus);
             Controls.Add(cmbDriver);
             Controls.Add(cmbRoute);
@@ -581,8 +608,6 @@
         private ComboBox cmbRoute;
         private ComboBox cmbDriver;
         private ComboBox cmbBus;
-        private Button btnAddSchedule;
-        private Button btnSave;
         private Label label2;
         private Label label4;
         private Label label5;
@@ -593,7 +618,6 @@
         private DataGridView dgvSchedules;
         private Label Day;
         private ComboBox cmbDay;
-        private Button btnDeleteSchedule;
         private BindingSource scheduleBindingSource;
         private Label label6;
         private TextBox txtStatus;
@@ -624,5 +648,8 @@
         private BindingSource driverBindingSource;
         private ComboBox cmbDayFilter;
         private TextBox txtLocationFilter;
+        private MaterialSkin.Controls.MaterialButton btnSave;
+        private MaterialSkin.Controls.MaterialButton btnDeleteSchedule;
+        private MaterialSkin.Controls.MaterialButton btnAddSchedule;
     }
 }

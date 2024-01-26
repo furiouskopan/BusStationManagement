@@ -52,15 +52,12 @@
             driverIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             contactInformationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            btnEditBus = new Button();
-            btnEditDriver = new Button();
             dataGridViewDestinations = new DataGridView();
             destinationIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             destinationBindingSource = new BindingSource(components);
             label3 = new Label();
-            btnEditDestinations = new Button();
             dataGridViewRoutes = new DataGridView();
             descriptionDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             startDestinationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -68,7 +65,6 @@
             routeBindingSource1 = new BindingSource(components);
             routeBindingSource = new BindingSource(components);
             textBox1 = new TextBox();
-            btnSearchRoute = new Button();
             dataGridViewRouteDetails = new DataGridView();
             sequenceNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             LocationName = new DataGridViewTextBoxColumn();
@@ -76,11 +72,9 @@
             descriptionDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             routeDetailBindingSource = new BindingSource(components);
             label5 = new Label();
-            btnEditRD = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             lblTimer = new Label();
             label8 = new Label();
-            btnEditSchedules = new Button();
             dataGridViewSchedules = new DataGridView();
             Status = new DataGridViewTextBoxColumn();
             DriverID = new DataGridViewTextBoxColumn();
@@ -95,7 +89,6 @@
             scheduleBindingSource = new BindingSource(components);
             txtLocationFilter = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            btnTicket = new Button();
             label9 = new Label();
             adminPanel = new Panel();
             schedulesPanel = new Panel();
@@ -103,6 +96,8 @@
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             tabPageHome = new TabPage();
+            btnSearchRoute = new MaterialSkin.Controls.MaterialButton();
+            btnTicket = new MaterialSkin.Controls.MaterialButton();
             tabPageBuses = new TabPage();
             tabPageDrivers = new TabPage();
             tabPageLocations = new TabPage();
@@ -293,26 +288,6 @@
             contactInformationDataGridViewTextBoxColumn.Name = "contactInformationDataGridViewTextBoxColumn";
             contactInformationDataGridViewTextBoxColumn.Width = 125;
             // 
-            // btnEditBus
-            // 
-            btnEditBus.Location = new Point(17, 192);
-            btnEditBus.Name = "btnEditBus";
-            btnEditBus.Size = new Size(90, 40);
-            btnEditBus.TabIndex = 4;
-            btnEditBus.Text = "Edit Buses";
-            btnEditBus.UseVisualStyleBackColor = true;
-            btnEditBus.Click += btnEditBus_Click;
-            // 
-            // btnEditDriver
-            // 
-            btnEditDriver.Location = new Point(221, 192);
-            btnEditDriver.Name = "btnEditDriver";
-            btnEditDriver.Size = new Size(90, 40);
-            btnEditDriver.TabIndex = 5;
-            btnEditDriver.Text = "Edit Drivers";
-            btnEditDriver.UseVisualStyleBackColor = true;
-            btnEditDriver.Click += btnEditDriver_Click;
-            // 
             // dataGridViewDestinations
             // 
             dataGridViewDestinations.AllowUserToAddRows = false;
@@ -391,16 +366,6 @@
             label3.TabIndex = 7;
             label3.Text = "All Destinations";
             // 
-            // btnEditDestinations
-            // 
-            btnEditDestinations.Location = new Point(783, 196);
-            btnEditDestinations.Name = "btnEditDestinations";
-            btnEditDestinations.Size = new Size(134, 40);
-            btnEditDestinations.TabIndex = 8;
-            btnEditDestinations.Text = "Edit Destinations";
-            btnEditDestinations.UseVisualStyleBackColor = true;
-            btnEditDestinations.Click += btnEditDestinations_Click;
-            // 
             // dataGridViewRoutes
             // 
             dataGridViewRoutes.AllowUserToResizeRows = false;
@@ -469,16 +434,6 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(143, 23);
             textBox1.TabIndex = 12;
-            // 
-            // btnSearchRoute
-            // 
-            btnSearchRoute.Location = new Point(164, 305);
-            btnSearchRoute.Margin = new Padding(3, 2, 3, 2);
-            btnSearchRoute.Name = "btnSearchRoute";
-            btnSearchRoute.Size = new Size(82, 25);
-            btnSearchRoute.TabIndex = 13;
-            btnSearchRoute.Text = "Search";
-            btnSearchRoute.UseVisualStyleBackColor = true;
             // 
             // dataGridViewRouteDetails
             // 
@@ -566,17 +521,6 @@
             label5.TabIndex = 17;
             label5.Text = "Selected Route Details";
             // 
-            // btnEditRD
-            // 
-            btnEditRD.Location = new Point(415, 538);
-            btnEditRD.Margin = new Padding(3, 2, 3, 2);
-            btnEditRD.Name = "btnEditRD";
-            btnEditRD.Size = new Size(94, 42);
-            btnEditRD.TabIndex = 20;
-            btnEditRD.Text = "Edit RD";
-            btnEditRD.UseVisualStyleBackColor = true;
-            btnEditRD.Click += btnEditRD_Click;
-            // 
             // timer1
             // 
             timer1.Tick += timer1_Tick;
@@ -605,17 +549,6 @@
             label8.Size = new Size(193, 27);
             label8.TabIndex = 22;
             label8.Text = "Today's Schedules";
-            // 
-            // btnEditSchedules
-            // 
-            btnEditSchedules.Location = new Point(401, 206);
-            btnEditSchedules.Margin = new Padding(3, 2, 3, 2);
-            btnEditSchedules.Name = "btnEditSchedules";
-            btnEditSchedules.Size = new Size(123, 40);
-            btnEditSchedules.TabIndex = 23;
-            btnEditSchedules.Text = "Edit Schedules";
-            btnEditSchedules.UseVisualStyleBackColor = true;
-            btnEditSchedules.Click += btnEditSchedules_Click;
             // 
             // dataGridViewSchedules
             // 
@@ -747,17 +680,6 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
-            // btnTicket
-            // 
-            btnTicket.Location = new Point(825, 288);
-            btnTicket.Margin = new Padding(3, 2, 3, 2);
-            btnTicket.Name = "btnTicket";
-            btnTicket.Size = new Size(94, 35);
-            btnTicket.TabIndex = 27;
-            btnTicket.Text = "Ticket";
-            btnTicket.UseVisualStyleBackColor = true;
-            btnTicket.Click += btnTicket_Click;
-            // 
             // label9
             // 
             label9.AutoSize = true;
@@ -778,13 +700,10 @@
             adminPanel.Controls.Add(label1);
             adminPanel.Controls.Add(label2);
             adminPanel.Controls.Add(dataGridViewDrivers);
-            adminPanel.Controls.Add(btnEditBus);
-            adminPanel.Controls.Add(btnEditDriver);
             adminPanel.Controls.Add(label3);
-            adminPanel.Controls.Add(btnEditDestinations);
             adminPanel.Location = new Point(15, 29);
             adminPanel.Name = "adminPanel";
-            adminPanel.Size = new Size(934, 248);
+            adminPanel.Size = new Size(934, 224);
             adminPanel.TabIndex = 29;
             // 
             // schedulesPanel
@@ -792,11 +711,10 @@
             schedulesPanel.BackColor = Color.Transparent;
             schedulesPanel.Controls.Add(dataGridViewSchedules);
             schedulesPanel.Controls.Add(label8);
-            schedulesPanel.Controls.Add(btnEditSchedules);
             schedulesPanel.Controls.Add(txtLocationFilter);
             schedulesPanel.Location = new Point(955, 27);
             schedulesPanel.Name = "schedulesPanel";
-            schedulesPanel.Size = new Size(536, 254);
+            schedulesPanel.Size = new Size(536, 226);
             schedulesPanel.TabIndex = 30;
             // 
             // materialLabel1
@@ -847,17 +765,16 @@
             // 
             // tabPageHome
             // 
+            tabPageHome.Controls.Add(btnSearchRoute);
+            tabPageHome.Controls.Add(btnTicket);
             tabPageHome.Controls.Add(adminPanel);
             tabPageHome.Controls.Add(dataGridViewRoutes);
             tabPageHome.Controls.Add(materialLabel2);
             tabPageHome.Controls.Add(textBox1);
             tabPageHome.Controls.Add(materialLabel1);
-            tabPageHome.Controls.Add(btnSearchRoute);
             tabPageHome.Controls.Add(schedulesPanel);
             tabPageHome.Controls.Add(dataGridViewRouteDetails);
             tabPageHome.Controls.Add(label5);
-            tabPageHome.Controls.Add(btnEditRD);
-            tabPageHome.Controls.Add(btnTicket);
             tabPageHome.Controls.Add(lblTimer);
             tabPageHome.ImageKey = "icons8-home-52.png";
             tabPageHome.Location = new Point(4, 39);
@@ -867,6 +784,45 @@
             tabPageHome.TabIndex = 0;
             tabPageHome.Text = "Home";
             tabPageHome.UseVisualStyleBackColor = true;
+            // 
+            // btnSearchRoute
+            // 
+            btnSearchRoute.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSearchRoute.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnSearchRoute.Depth = 0;
+            btnSearchRoute.HighEmphasis = true;
+            btnSearchRoute.Icon = null;
+            btnSearchRoute.Location = new Point(317, 294);
+            btnSearchRoute.Margin = new Padding(4, 6, 4, 6);
+            btnSearchRoute.MouseState = MaterialSkin.MouseState.HOVER;
+            btnSearchRoute.Name = "btnSearchRoute";
+            btnSearchRoute.NoAccentTextColor = Color.Empty;
+            btnSearchRoute.Size = new Size(128, 36);
+            btnSearchRoute.TabIndex = 34;
+            btnSearchRoute.Text = "Search route";
+            btnSearchRoute.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnSearchRoute.UseAccentColor = false;
+            btnSearchRoute.UseVisualStyleBackColor = true;
+            // 
+            // btnTicket
+            // 
+            btnTicket.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnTicket.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnTicket.Depth = 0;
+            btnTicket.HighEmphasis = true;
+            btnTicket.Icon = null;
+            btnTicket.Location = new Point(848, 299);
+            btnTicket.Margin = new Padding(4, 6, 4, 6);
+            btnTicket.MouseState = MaterialSkin.MouseState.HOVER;
+            btnTicket.Name = "btnTicket";
+            btnTicket.NoAccentTextColor = Color.Empty;
+            btnTicket.Size = new Size(71, 36);
+            btnTicket.TabIndex = 33;
+            btnTicket.Text = "Ticket";
+            btnTicket.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnTicket.UseAccentColor = false;
+            btnTicket.UseVisualStyleBackColor = true;
+            btnTicket.Click += btnTicket_Click;
             // 
             // tabPageBuses
             // 
@@ -992,18 +948,14 @@
         private DataGridViewTextBoxColumn driverIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn contactInformationDataGridViewTextBoxColumn;
-        private Button btnEditBus;
-        private Button btnEditDriver;
         private DataGridView dataGridViewDestinations;
         private DataGridViewTextBoxColumn destinationIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private BindingSource destinationBindingSource;
         private Label label3;
-        private Button btnEditDestinations;
         private DataGridView dataGridViewRoutes;
         private TextBox textBox1;
-        private Button btnSearchRoute;
         private BindingSource routeBindingSource;
         private BindingSource routeBindingSource1;
         private DataGridView dataGridViewRouteDetails;
@@ -1016,17 +968,14 @@
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn startDestinationDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn endDestinationDataGridViewTextBoxColumn;
-        private Button btnEditRD;
         private System.Windows.Forms.Timer timer1;
         private Label lblTimer;
         private Label label8;
-        private Button btnEditSchedules;
         private DataGridView dataGridViewSchedules;
         private BindingSource scheduleBindingSource;
         private TextBox txtLocationFilter;
         private DataGridViewTextBoxColumn DriverColumn;
         private ContextMenuStrip contextMenuStrip1;
-        private Button btnTicket;
         private DataGridViewTextBoxColumn sequenceNumberDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn LocationName;
         private DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
@@ -1055,5 +1004,7 @@
         private TabPage tabPageRoutes;
         private TabPage tabPageSchedules;
         private TabPage tabPageLogout;
+        private MaterialSkin.Controls.MaterialButton btnSearchRoute;
+        private MaterialSkin.Controls.MaterialButton btnTicket;
     }
 }

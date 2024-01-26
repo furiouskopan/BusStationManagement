@@ -29,13 +29,10 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            btnDeleteDestination = new Button();
-            btnAddDestination = new Button();
             lblDescription = new Label();
             lblName = new Label();
             txtDestinationName = new TextBox();
             txtDestinationDescription = new TextBox();
-            btnSaveDestinationEdit = new Button();
             dataGridViewDestinationsOnEditForm = new DataGridView();
             destinationIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -43,37 +40,18 @@
             destinationBindingSource = new BindingSource(components);
             groupboxAddDest = new GroupBox();
             label1 = new Label();
+            btnSaveDestinationEdit = new MaterialSkin.Controls.MaterialButton();
+            btnAddDestination = new MaterialSkin.Controls.MaterialButton();
+            btnDeleteDestination = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDestinationsOnEditForm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)destinationBindingSource).BeginInit();
             groupboxAddDest.SuspendLayout();
             SuspendLayout();
             // 
-            // btnDeleteDestination
-            // 
-            btnDeleteDestination.BackColor = Color.Firebrick;
-            btnDeleteDestination.ForeColor = Color.White;
-            btnDeleteDestination.Location = new Point(224, 392);
-            btnDeleteDestination.Name = "btnDeleteDestination";
-            btnDeleteDestination.Size = new Size(159, 35);
-            btnDeleteDestination.TabIndex = 22;
-            btnDeleteDestination.Text = "Delete Selected Destination";
-            btnDeleteDestination.UseVisualStyleBackColor = false;
-            btnDeleteDestination.Click += btnDeleteDestination_Click;
-            // 
-            // btnAddDestination
-            // 
-            btnAddDestination.Location = new Point(250, 35);
-            btnAddDestination.Name = "btnAddDestination";
-            btnAddDestination.Size = new Size(101, 38);
-            btnAddDestination.TabIndex = 21;
-            btnAddDestination.Text = "Add Destination";
-            btnAddDestination.UseVisualStyleBackColor = true;
-            btnAddDestination.Click += btnAddDestination_Click;
-            // 
             // lblDescription
             // 
             lblDescription.AutoSize = true;
-            lblDescription.Location = new Point(131, 26);
+            lblDescription.Location = new Point(172, 26);
             lblDescription.Name = "lblDescription";
             lblDescription.Size = new Size(67, 15);
             lblDescription.TabIndex = 20;
@@ -92,28 +70,15 @@
             // 
             txtDestinationName.Location = new Point(21, 44);
             txtDestinationName.Name = "txtDestinationName";
-            txtDestinationName.Size = new Size(100, 23);
+            txtDestinationName.Size = new Size(145, 23);
             txtDestinationName.TabIndex = 18;
             // 
             // txtDestinationDescription
             // 
-            txtDestinationDescription.Location = new Point(131, 44);
+            txtDestinationDescription.Location = new Point(172, 44);
             txtDestinationDescription.Name = "txtDestinationDescription";
-            txtDestinationDescription.Size = new Size(100, 23);
+            txtDestinationDescription.Size = new Size(145, 23);
             txtDestinationDescription.TabIndex = 17;
-            // 
-            // btnSaveDestinationEdit
-            // 
-            btnSaveDestinationEdit.BackColor = Color.LimeGreen;
-            btnSaveDestinationEdit.Font = new Font("Microsoft JhengHei", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSaveDestinationEdit.ForeColor = SystemColors.ControlText;
-            btnSaveDestinationEdit.Location = new Point(150, 455);
-            btnSaveDestinationEdit.Name = "btnSaveDestinationEdit";
-            btnSaveDestinationEdit.Size = new Size(126, 44);
-            btnSaveDestinationEdit.TabIndex = 16;
-            btnSaveDestinationEdit.Text = "Save";
-            btnSaveDestinationEdit.UseVisualStyleBackColor = false;
-            btnSaveDestinationEdit.Click += btnSaveDestinationEdit_Click;
             // 
             // dataGridViewDestinationsOnEditForm
             // 
@@ -157,14 +122,14 @@
             // 
             // groupboxAddDest
             // 
-            groupboxAddDest.Controls.Add(btnAddDestination);
             groupboxAddDest.Controls.Add(txtDestinationDescription);
+            groupboxAddDest.Controls.Add(btnAddDestination);
             groupboxAddDest.Controls.Add(txtDestinationName);
             groupboxAddDest.Controls.Add(lblDescription);
             groupboxAddDest.Controls.Add(lblName);
             groupboxAddDest.Location = new Point(32, 294);
             groupboxAddDest.Name = "groupboxAddDest";
-            groupboxAddDest.Size = new Size(367, 92);
+            groupboxAddDest.Size = new Size(504, 92);
             groupboxAddDest.TabIndex = 23;
             groupboxAddDest.TabStop = false;
             groupboxAddDest.Text = "Insert";
@@ -179,15 +144,75 @@
             label1.TabIndex = 24;
             label1.Text = "Edit Destinations";
             // 
+            // btnSaveDestinationEdit
+            // 
+            btnSaveDestinationEdit.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSaveDestinationEdit.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnSaveDestinationEdit.Depth = 0;
+            btnSaveDestinationEdit.HighEmphasis = true;
+            btnSaveDestinationEdit.Icon = null;
+            btnSaveDestinationEdit.Location = new Point(164, 449);
+            btnSaveDestinationEdit.Margin = new Padding(4, 6, 4, 6);
+            btnSaveDestinationEdit.MouseState = MaterialSkin.MouseState.HOVER;
+            btnSaveDestinationEdit.Name = "btnSaveDestinationEdit";
+            btnSaveDestinationEdit.NoAccentTextColor = Color.Empty;
+            btnSaveDestinationEdit.Size = new Size(64, 36);
+            btnSaveDestinationEdit.TabIndex = 25;
+            btnSaveDestinationEdit.Text = "Save";
+            btnSaveDestinationEdit.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnSaveDestinationEdit.UseAccentColor = false;
+            btnSaveDestinationEdit.UseVisualStyleBackColor = true;
+            btnSaveDestinationEdit.Click += btnSaveDestinationEdit_Click;
+            // 
+            // btnAddDestination
+            // 
+            btnAddDestination.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAddDestination.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAddDestination.Depth = 0;
+            btnAddDestination.HighEmphasis = true;
+            btnAddDestination.Icon = null;
+            btnAddDestination.Location = new Point(338, 36);
+            btnAddDestination.Margin = new Padding(4, 6, 4, 6);
+            btnAddDestination.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAddDestination.Name = "btnAddDestination";
+            btnAddDestination.NoAccentTextColor = Color.Empty;
+            btnAddDestination.Size = new Size(148, 36);
+            btnAddDestination.TabIndex = 26;
+            btnAddDestination.Text = "Add Destination";
+            btnAddDestination.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAddDestination.UseAccentColor = false;
+            btnAddDestination.UseVisualStyleBackColor = true;
+            btnAddDestination.Click += btnAddDestination_Click;
+            // 
+            // btnDeleteDestination
+            // 
+            btnDeleteDestination.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDeleteDestination.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnDeleteDestination.Depth = 0;
+            btnDeleteDestination.HighEmphasis = true;
+            btnDeleteDestination.Icon = null;
+            btnDeleteDestination.Location = new Point(243, 395);
+            btnDeleteDestination.Margin = new Padding(4, 6, 4, 6);
+            btnDeleteDestination.MouseState = MaterialSkin.MouseState.HOVER;
+            btnDeleteDestination.Name = "btnDeleteDestination";
+            btnDeleteDestination.NoAccentTextColor = Color.Empty;
+            btnDeleteDestination.Size = new Size(171, 36);
+            btnDeleteDestination.TabIndex = 27;
+            btnDeleteDestination.Text = "Delete Destination";
+            btnDeleteDestination.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnDeleteDestination.UseAccentColor = false;
+            btnDeleteDestination.UseVisualStyleBackColor = true;
+            btnDeleteDestination.Click += btnDeleteDestination_Click;
+            // 
             // DestinationEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(657, 530);
-            Controls.Add(label1);
-            Controls.Add(groupboxAddDest);
             Controls.Add(btnDeleteDestination);
             Controls.Add(btnSaveDestinationEdit);
+            Controls.Add(label1);
+            Controls.Add(groupboxAddDest);
             Controls.Add(dataGridViewDestinationsOnEditForm);
             Name = "DestinationEditForm";
             Text = "DestinationEditForm";
@@ -200,14 +225,10 @@
         }
 
         #endregion
-
-        private Button btnDeleteDestination;
-        private Button btnAddDestination;
         private Label lblDescription;
         private Label lblName;
         private TextBox txtDestinationName;
         private TextBox txtDestinationDescription;
-        private Button btnSaveDestinationEdit;
         private DataGridView dataGridViewDestinationsOnEditForm;
         private BindingSource destinationBindingSource;
         private GroupBox groupboxAddDest;
@@ -215,5 +236,8 @@
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private Label label1;
+        private MaterialSkin.Controls.MaterialButton btnAddDestination;
+        private MaterialSkin.Controls.MaterialButton btnSaveDestinationEdit;
+        private MaterialSkin.Controls.MaterialButton btnDeleteDestination;
     }
 }

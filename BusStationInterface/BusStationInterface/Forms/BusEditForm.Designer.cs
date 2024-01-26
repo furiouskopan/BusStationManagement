@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            btnSaveBusEdit = new Button();
             dataGridViewBusesOnEditForm = new DataGridView();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             busTypeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -38,27 +37,16 @@
             lblSeats = new Label();
             lblType = new Label();
             txtBusType = new TextBox();
-            btnDeleteBus = new Button();
             groupBox1 = new GroupBox();
-            btnAddBus = new Button();
             txtTotalSeats = new TextBox();
             label1 = new Label();
+            btnAddBus = new MaterialSkin.Controls.MaterialButton();
+            btnDeleteBus = new MaterialSkin.Controls.MaterialButton();
+            btnSaveBusEdit = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBusesOnEditForm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
-            // 
-            // btnSaveBusEdit
-            // 
-            btnSaveBusEdit.BackColor = Color.LimeGreen;
-            btnSaveBusEdit.Font = new Font("Microsoft JhengHei", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSaveBusEdit.Location = new Point(174, 437);
-            btnSaveBusEdit.Name = "btnSaveBusEdit";
-            btnSaveBusEdit.Size = new Size(126, 44);
-            btnSaveBusEdit.TabIndex = 6;
-            btnSaveBusEdit.Text = "Save";
-            btnSaveBusEdit.UseVisualStyleBackColor = false;
-            btnSaveBusEdit.Click += btnSaveBusEdit_Click;
             // 
             // dataGridViewBusesOnEditForm
             // 
@@ -131,23 +119,11 @@
             txtBusType.Size = new Size(100, 23);
             txtBusType.TabIndex = 9;
             // 
-            // btnDeleteBus
-            // 
-            btnDeleteBus.BackColor = Color.Firebrick;
-            btnDeleteBus.ForeColor = Color.White;
-            btnDeleteBus.Location = new Point(293, 378);
-            btnDeleteBus.Name = "btnDeleteBus";
-            btnDeleteBus.Size = new Size(123, 43);
-            btnDeleteBus.TabIndex = 13;
-            btnDeleteBus.Text = "Delete Selected Bus";
-            btnDeleteBus.UseVisualStyleBackColor = false;
-            btnDeleteBus.Click += btnDeleteBus_Click;
-            // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btnAddBus);
             groupBox1.Controls.Add(txtTotalSeats);
             groupBox1.Controls.Add(txtBusType);
+            groupBox1.Controls.Add(btnAddBus);
             groupBox1.Controls.Add(lblSeats);
             groupBox1.Controls.Add(lblType);
             groupBox1.Location = new Point(45, 289);
@@ -156,16 +132,6 @@
             groupBox1.TabIndex = 14;
             groupBox1.TabStop = false;
             groupBox1.Text = "Insert";
-            // 
-            // btnAddBus
-            // 
-            btnAddBus.Location = new Point(248, 32);
-            btnAddBus.Name = "btnAddBus";
-            btnAddBus.Size = new Size(123, 38);
-            btnAddBus.TabIndex = 12;
-            btnAddBus.Text = "Add Bus";
-            btnAddBus.UseVisualStyleBackColor = true;
-            btnAddBus.Click += btnAddBus_Click;
             // 
             // txtTotalSeats
             // 
@@ -184,16 +150,76 @@
             label1.TabIndex = 15;
             label1.Text = "Edit Buses";
             // 
+            // btnAddBus
+            // 
+            btnAddBus.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAddBus.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAddBus.Depth = 0;
+            btnAddBus.HighEmphasis = true;
+            btnAddBus.Icon = null;
+            btnAddBus.Location = new Point(266, 33);
+            btnAddBus.Margin = new Padding(4, 6, 4, 6);
+            btnAddBus.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAddBus.Name = "btnAddBus";
+            btnAddBus.NoAccentTextColor = Color.Empty;
+            btnAddBus.Size = new Size(82, 36);
+            btnAddBus.TabIndex = 16;
+            btnAddBus.Text = "Add Bus";
+            btnAddBus.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAddBus.UseAccentColor = false;
+            btnAddBus.UseVisualStyleBackColor = true;
+            btnAddBus.Click += btnAddBus_Click;
+            // 
+            // btnDeleteBus
+            // 
+            btnDeleteBus.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDeleteBus.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnDeleteBus.Depth = 0;
+            btnDeleteBus.HighEmphasis = true;
+            btnDeleteBus.Icon = null;
+            btnDeleteBus.Location = new Point(401, 322);
+            btnDeleteBus.Margin = new Padding(4, 6, 4, 6);
+            btnDeleteBus.MouseState = MaterialSkin.MouseState.HOVER;
+            btnDeleteBus.Name = "btnDeleteBus";
+            btnDeleteBus.NoAccentTextColor = Color.Empty;
+            btnDeleteBus.Size = new Size(105, 36);
+            btnDeleteBus.TabIndex = 17;
+            btnDeleteBus.Text = "Delete Bus";
+            btnDeleteBus.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnDeleteBus.UseAccentColor = false;
+            btnDeleteBus.UseVisualStyleBackColor = true;
+            btnDeleteBus.Click += btnDeleteBus_Click;
+            // 
+            // btnSaveBusEdit
+            // 
+            btnSaveBusEdit.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSaveBusEdit.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnSaveBusEdit.Depth = 0;
+            btnSaveBusEdit.HighEmphasis = true;
+            btnSaveBusEdit.Icon = null;
+            btnSaveBusEdit.Location = new Point(222, 389);
+            btnSaveBusEdit.Margin = new Padding(4, 6, 4, 6);
+            btnSaveBusEdit.MouseState = MaterialSkin.MouseState.HOVER;
+            btnSaveBusEdit.Name = "btnSaveBusEdit";
+            btnSaveBusEdit.NoAccentTextColor = Color.Empty;
+            btnSaveBusEdit.Size = new Size(64, 36);
+            btnSaveBusEdit.TabIndex = 18;
+            btnSaveBusEdit.Text = "Save";
+            btnSaveBusEdit.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnSaveBusEdit.UseAccentColor = false;
+            btnSaveBusEdit.UseVisualStyleBackColor = true;
+            btnSaveBusEdit.Click += this.btnSaveBusEdit_Click;
+            // 
             // BusEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(708, 514);
+            Controls.Add(btnSaveBusEdit);
+            Controls.Add(btnDeleteBus);
             Controls.Add(label1);
             Controls.Add(groupBox1);
-            Controls.Add(btnDeleteBus);
             Controls.Add(dataGridViewBusesOnEditForm);
-            Controls.Add(btnSaveBusEdit);
             Name = "BusEditForm";
             Text = "BusEditForm";
             Load += BusEditForm_Load;
@@ -206,7 +232,6 @@
         }
 
         #endregion
-        private Button btnSaveBusEdit;
         private DataGridView dataGridViewBusesOnEditForm;
         private BindingSource busBindingSource;
         private DataGridViewTextBoxColumn busIDDataGridViewTextBoxColumn;
@@ -215,10 +240,11 @@
         private Label lblSeats;
         private Label lblType;
         private TextBox txtBusType;
-        private Button btnDeleteBus;
         private GroupBox groupBox1;
-        private Button btnAddBus;
         private TextBox txtTotalSeats;
         private Label label1;
+        private MaterialSkin.Controls.MaterialButton btnAddBus;
+        private MaterialSkin.Controls.MaterialButton btnDeleteBus;
+        private MaterialSkin.Controls.MaterialButton btnSaveBusEdit;
     }
 }

@@ -62,11 +62,11 @@
             label5 = new Label();
             txtTime = new TextBox();
             label6 = new Label();
-            btnAddRoute = new Button();
-            btnAddRouteDetails = new Button();
-            btnDeleteRoute = new Button();
-            btnSaveRoutesEdit = new Button();
-            btnDeleteRouteDetail = new Button();
+            btnDeleteRouteDetail = new MaterialSkin.Controls.MaterialButton();
+            btnAddRouteDetails = new MaterialSkin.Controls.MaterialButton();
+            btnSaveRoutesEdit = new MaterialSkin.Controls.MaterialButton();
+            btnAddRoute = new MaterialSkin.Controls.MaterialButton();
+            btnDeleteRoute = new MaterialSkin.Controls.MaterialButton();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRoutes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)routeBindingSource).BeginInit();
@@ -386,69 +386,116 @@
             label6.TabIndex = 0;
             label6.Text = "Sequence Number";
             // 
-            // btnAddRoute
+            // btnDeleteRouteDetail
             // 
-            btnAddRoute.Location = new Point(357, 61);
-            btnAddRoute.Name = "btnAddRoute";
-            btnAddRoute.Size = new Size(85, 44);
-            btnAddRoute.TabIndex = 10;
-            btnAddRoute.Text = "Add Route";
-            btnAddRoute.UseVisualStyleBackColor = true;
-            btnAddRoute.Click += btnAddRoute_Click;
+            btnDeleteRouteDetail.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDeleteRouteDetail.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnDeleteRouteDetail.Depth = 0;
+            btnDeleteRouteDetail.HighEmphasis = true;
+            btnDeleteRouteDetail.Icon = null;
+            btnDeleteRouteDetail.Location = new Point(834, 473);
+            btnDeleteRouteDetail.Margin = new Padding(4, 6, 4, 6);
+            btnDeleteRouteDetail.MouseState = MaterialSkin.MouseState.HOVER;
+            btnDeleteRouteDetail.Name = "btnDeleteRouteDetail";
+            btnDeleteRouteDetail.NoAccentTextColor = Color.Empty;
+            btnDeleteRouteDetail.Size = new Size(126, 36);
+            btnDeleteRouteDetail.TabIndex = 13;
+            btnDeleteRouteDetail.Text = "Delete detail";
+            btnDeleteRouteDetail.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnDeleteRouteDetail.UseAccentColor = false;
+            btnDeleteRouteDetail.UseVisualStyleBackColor = true;
+            btnDeleteRouteDetail.Click += btnDeleteRouteDetail_Click;
             // 
             // btnAddRouteDetails
             // 
-            btnAddRouteDetails.Location = new Point(875, 468);
+            btnAddRouteDetails.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAddRouteDetails.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAddRouteDetails.Depth = 0;
+            btnAddRouteDetails.HighEmphasis = true;
+            btnAddRouteDetails.Icon = null;
+            btnAddRouteDetails.Location = new Point(653, 473);
+            btnAddRouteDetails.Margin = new Padding(4, 6, 4, 6);
+            btnAddRouteDetails.MouseState = MaterialSkin.MouseState.HOVER;
             btnAddRouteDetails.Name = "btnAddRouteDetails";
-            btnAddRouteDetails.Size = new Size(85, 44);
-            btnAddRouteDetails.TabIndex = 11;
-            btnAddRouteDetails.Text = "Add Details";
+            btnAddRouteDetails.NoAccentTextColor = Color.Empty;
+            btnAddRouteDetails.Size = new Size(103, 36);
+            btnAddRouteDetails.TabIndex = 14;
+            btnAddRouteDetails.Text = "Add detail";
+            btnAddRouteDetails.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAddRouteDetails.UseAccentColor = false;
             btnAddRouteDetails.UseVisualStyleBackColor = true;
-            btnAddRouteDetails.Click += btnAddRouteDetails_Click;
-            // 
-            // btnDeleteRoute
-            // 
-            btnDeleteRoute.Location = new Point(357, 117);
-            btnDeleteRoute.Name = "btnDeleteRoute";
-            btnDeleteRoute.Size = new Size(85, 44);
-            btnDeleteRoute.TabIndex = 12;
-            btnDeleteRoute.Text = "Delete Route";
-            btnDeleteRoute.UseVisualStyleBackColor = true;
-            btnDeleteRoute.Click += btnDeleteRoute_Click;
+            btnAddRouteDetails.Click += this.btnAddRouteDetails_Click;
             // 
             // btnSaveRoutesEdit
             // 
-            btnSaveRoutesEdit.BackColor = Color.LimeGreen;
-            btnSaveRoutesEdit.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSaveRoutesEdit.ForeColor = SystemColors.ControlText;
-            btnSaveRoutesEdit.Location = new Point(433, 533);
+            btnSaveRoutesEdit.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSaveRoutesEdit.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnSaveRoutesEdit.Depth = 0;
+            btnSaveRoutesEdit.HighEmphasis = true;
+            btnSaveRoutesEdit.Icon = null;
+            btnSaveRoutesEdit.Location = new Point(409, 522);
+            btnSaveRoutesEdit.Margin = new Padding(4, 6, 4, 6);
+            btnSaveRoutesEdit.MouseState = MaterialSkin.MouseState.HOVER;
             btnSaveRoutesEdit.Name = "btnSaveRoutesEdit";
-            btnSaveRoutesEdit.Size = new Size(126, 44);
-            btnSaveRoutesEdit.TabIndex = 13;
+            btnSaveRoutesEdit.NoAccentTextColor = Color.Empty;
+            btnSaveRoutesEdit.Size = new Size(64, 36);
+            btnSaveRoutesEdit.TabIndex = 15;
             btnSaveRoutesEdit.Text = "Save";
-            btnSaveRoutesEdit.UseVisualStyleBackColor = false;
+            btnSaveRoutesEdit.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnSaveRoutesEdit.UseAccentColor = false;
+            btnSaveRoutesEdit.UseVisualStyleBackColor = true;
             btnSaveRoutesEdit.Click += btnSaveRoutesEdit_Click;
             // 
-            // btnDeleteRouteDetail
+            // btnAddRoute
             // 
-            btnDeleteRouteDetail.Location = new Point(648, 468);
-            btnDeleteRouteDetail.Name = "btnDeleteRouteDetail";
-            btnDeleteRouteDetail.Size = new Size(98, 44);
-            btnDeleteRouteDetail.TabIndex = 12;
-            btnDeleteRouteDetail.Text = "Delete Detail";
-            btnDeleteRouteDetail.UseVisualStyleBackColor = true;
-            btnDeleteRouteDetail.Click += btnDeleteRouteDetail_Click;
+            btnAddRoute.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAddRoute.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAddRoute.Depth = 0;
+            btnAddRoute.HighEmphasis = true;
+            btnAddRoute.Icon = null;
+            btnAddRoute.Location = new Point(357, 61);
+            btnAddRoute.Margin = new Padding(4, 8, 4, 8);
+            btnAddRoute.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAddRoute.Name = "btnAddRoute";
+            btnAddRoute.NoAccentTextColor = Color.Empty;
+            btnAddRoute.Size = new Size(100, 36);
+            btnAddRoute.TabIndex = 16;
+            btnAddRoute.Text = "Add route";
+            btnAddRoute.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAddRoute.UseAccentColor = false;
+            btnAddRoute.UseVisualStyleBackColor = true;
+            btnAddRoute.Click += this.btnDeleteRoute_Click;
+            // 
+            // btnDeleteRoute
+            // 
+            btnDeleteRoute.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDeleteRoute.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnDeleteRoute.Depth = 0;
+            btnDeleteRoute.HighEmphasis = true;
+            btnDeleteRoute.Icon = null;
+            btnDeleteRoute.Location = new Point(342, 125);
+            btnDeleteRoute.Margin = new Padding(4, 6, 4, 6);
+            btnDeleteRoute.MouseState = MaterialSkin.MouseState.HOVER;
+            btnDeleteRoute.Name = "btnDeleteRoute";
+            btnDeleteRoute.NoAccentTextColor = Color.Empty;
+            btnDeleteRoute.Size = new Size(123, 36);
+            btnDeleteRoute.TabIndex = 17;
+            btnDeleteRoute.Text = "Delete route";
+            btnDeleteRoute.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnDeleteRoute.UseAccentColor = false;
+            btnDeleteRoute.UseVisualStyleBackColor = true;
+            btnDeleteRoute.Click += this.btnDeleteRoute_Click;
             // 
             // RDForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(997, 589);
-            Controls.Add(btnDeleteRouteDetail);
-            Controls.Add(btnSaveRoutesEdit);
             Controls.Add(btnDeleteRoute);
-            Controls.Add(btnAddRouteDetails);
             Controls.Add(btnAddRoute);
+            Controls.Add(btnSaveRoutesEdit);
+            Controls.Add(btnAddRouteDetails);
+            Controls.Add(btnDeleteRouteDetail);
             Controls.Add(groupBox2);
             Controls.Add(dataGridViewRouteDetails);
             Controls.Add(dataGridViewRoutes);
@@ -465,6 +512,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -485,16 +533,11 @@
         private Label label5;
         private TextBox txtTime;
         private Label label6;
-        private Button btnAddRoute;
-        private Button btnAddRouteDetails;
         private DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
-        private Button btnDeleteRoute;
-        private Button btnSaveRoutesEdit;
         private ComboBox cmbEndDestination;
         private ComboBox cmbStartDestination;
         private TextBox txtDescription;
         private ComboBox cmbDetailLocation;
-        private Button btnDeleteRouteDetail;
         private DataGridViewTextBoxColumn sequenceNumberDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
@@ -512,5 +555,10 @@
         private DataGridViewTextBoxColumn Time;
         private DataGridViewTextBoxColumn Description;
         private DataGridViewTextBoxColumn PriceToNextStop;
+        private MaterialSkin.Controls.MaterialButton btnDeleteRouteDetail;
+        private MaterialSkin.Controls.MaterialButton btnAddRouteDetails;
+        private MaterialSkin.Controls.MaterialButton btnSaveRoutesEdit;
+        private MaterialSkin.Controls.MaterialButton btnAddRoute;
+        private MaterialSkin.Controls.MaterialButton btnDeleteRoute;
     }
 }
