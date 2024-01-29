@@ -370,5 +370,9 @@ internal class TicketDataAccess
             IssuedByEmployeeName = t.TicketingLog.Employee.Name
         }).ToList();
     }
+    public List<Route> GetRoutes()
+    {
+        return _context.Routes.ToList();
+    }
 }
 

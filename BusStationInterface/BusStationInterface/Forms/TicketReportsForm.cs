@@ -52,10 +52,8 @@ namespace BusStationInterface.Forms
 
         private void GenerateAndDisplayReport(DateTime fromDate, DateTime toDate, int routeId)
         {
-            // Implement logic to query the database based on the selected filters
-            // This might involve calling a method in your data access layer
-            // For example:
-            var reportData = _dataAccessLayer.GetTicketReportData(date, route);
+            var reportData = _dataAccessLayer.GetTicketReport(fromDate, toDate);
+            dataGridViewReports.DataSource = reportData;
 
             // Bind the report data to the DataGridView
             dataGridViewReports.DataSource = reportData;

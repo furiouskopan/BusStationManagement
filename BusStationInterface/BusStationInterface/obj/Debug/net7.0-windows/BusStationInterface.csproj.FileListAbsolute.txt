@@ -136,3 +136,16 @@ C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStati
 C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.genruntimeconfig.cache
 C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\ref\BusStationInterface.dll
 C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\MaterialSkin.dll
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\EPPlus.dll
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\EPPlus.Interfaces.dll
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\EPPlus.System.Drawing.dll
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\Microsoft.Extensions.Configuration.dll
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\System.Security.Cryptography.Pkcs.dll
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.Forms.TicketReportsForm.resources
