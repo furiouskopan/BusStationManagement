@@ -77,8 +77,10 @@
             // 
             // label1
             // 
+            label1.AutoEllipsis = true;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlText;
             label1.Location = new Point(25, 36);
             label1.Name = "label1";
             label1.Size = new Size(125, 21);
@@ -393,7 +395,7 @@
             btnDeleteRouteDetail.Depth = 0;
             btnDeleteRouteDetail.HighEmphasis = true;
             btnDeleteRouteDetail.Icon = null;
-            btnDeleteRouteDetail.Location = new Point(834, 473);
+            btnDeleteRouteDetail.Location = new Point(820, 471);
             btnDeleteRouteDetail.Margin = new Padding(4, 6, 4, 6);
             btnDeleteRouteDetail.MouseState = MaterialSkin.MouseState.HOVER;
             btnDeleteRouteDetail.Name = "btnDeleteRouteDetail";
@@ -408,37 +410,40 @@
             // 
             // btnAddRouteDetails
             // 
+            btnAddRouteDetails.AutoSize = false;
             btnAddRouteDetails.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnAddRouteDetails.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             btnAddRouteDetails.Depth = 0;
             btnAddRouteDetails.HighEmphasis = true;
             btnAddRouteDetails.Icon = null;
-            btnAddRouteDetails.Location = new Point(653, 473);
+            btnAddRouteDetails.Location = new Point(664, 473);
             btnAddRouteDetails.Margin = new Padding(4, 6, 4, 6);
             btnAddRouteDetails.MouseState = MaterialSkin.MouseState.HOVER;
             btnAddRouteDetails.Name = "btnAddRouteDetails";
             btnAddRouteDetails.NoAccentTextColor = Color.Empty;
-            btnAddRouteDetails.Size = new Size(103, 36);
+            btnAddRouteDetails.Size = new Size(117, 36);
             btnAddRouteDetails.TabIndex = 14;
             btnAddRouteDetails.Text = "Add detail";
             btnAddRouteDetails.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnAddRouteDetails.UseAccentColor = false;
             btnAddRouteDetails.UseVisualStyleBackColor = true;
-            btnAddRouteDetails.Click += this.btnAddRouteDetails_Click;
+            btnAddRouteDetails.Click += btnAddRouteDetails_Click;
             // 
             // btnSaveRoutesEdit
             // 
+            btnSaveRoutesEdit.AutoSize = false;
             btnSaveRoutesEdit.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSaveRoutesEdit.Cursor = Cursors.Hand;
             btnSaveRoutesEdit.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             btnSaveRoutesEdit.Depth = 0;
             btnSaveRoutesEdit.HighEmphasis = true;
             btnSaveRoutesEdit.Icon = null;
-            btnSaveRoutesEdit.Location = new Point(409, 522);
+            btnSaveRoutesEdit.Location = new Point(388, 521);
             btnSaveRoutesEdit.Margin = new Padding(4, 6, 4, 6);
             btnSaveRoutesEdit.MouseState = MaterialSkin.MouseState.HOVER;
             btnSaveRoutesEdit.Name = "btnSaveRoutesEdit";
             btnSaveRoutesEdit.NoAccentTextColor = Color.Empty;
-            btnSaveRoutesEdit.Size = new Size(64, 36);
+            btnSaveRoutesEdit.Size = new Size(210, 36);
             btnSaveRoutesEdit.TabIndex = 15;
             btnSaveRoutesEdit.Text = "Save";
             btnSaveRoutesEdit.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -448,23 +453,25 @@
             // 
             // btnAddRoute
             // 
+            btnAddRoute.AutoSize = false;
             btnAddRoute.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnAddRoute.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             btnAddRoute.Depth = 0;
+            btnAddRoute.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddRoute.HighEmphasis = true;
             btnAddRoute.Icon = null;
-            btnAddRoute.Location = new Point(357, 61);
+            btnAddRoute.Location = new Point(342, 61);
             btnAddRoute.Margin = new Padding(4, 8, 4, 8);
             btnAddRoute.MouseState = MaterialSkin.MouseState.HOVER;
             btnAddRoute.Name = "btnAddRoute";
             btnAddRoute.NoAccentTextColor = Color.Empty;
-            btnAddRoute.Size = new Size(100, 36);
+            btnAddRoute.Size = new Size(123, 36);
             btnAddRoute.TabIndex = 16;
             btnAddRoute.Text = "Add route";
             btnAddRoute.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnAddRoute.UseAccentColor = false;
             btnAddRoute.UseVisualStyleBackColor = true;
-            btnAddRoute.Click += this.btnDeleteRoute_Click;
+            btnAddRoute.Click += btnDeleteRoute_Click;
             // 
             // btnDeleteRoute
             // 
@@ -484,7 +491,7 @@
             btnDeleteRoute.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnDeleteRoute.UseAccentColor = false;
             btnDeleteRoute.UseVisualStyleBackColor = true;
-            btnDeleteRoute.Click += this.btnDeleteRoute_Click;
+            btnDeleteRoute.Click += btnDeleteRoute_Click;
             // 
             // RDForm
             // 

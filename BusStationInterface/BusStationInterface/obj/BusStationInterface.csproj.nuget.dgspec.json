@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
             "MaterialSkin.2": {
               "target": "Package",
               "version": "[2.3.1, )"

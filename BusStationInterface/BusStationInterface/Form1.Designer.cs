@@ -531,7 +531,7 @@
             lblTimer.BackColor = Color.Transparent;
             lblTimer.Font = new Font("Verdana", 17.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblTimer.ForeColor = Color.Brown;
-            lblTimer.Location = new Point(1244, -1);
+            lblTimer.Location = new Point(1336, -1);
             lblTimer.Margin = new Padding(0, 38, 0, 38);
             lblTimer.Name = "lblTimer";
             lblTimer.Size = new Size(81, 28);
@@ -701,7 +701,7 @@
             adminPanel.Controls.Add(label2);
             adminPanel.Controls.Add(dataGridViewDrivers);
             adminPanel.Controls.Add(label3);
-            adminPanel.Location = new Point(15, 29);
+            adminPanel.Location = new Point(16, 52);
             adminPanel.Name = "adminPanel";
             adminPanel.Size = new Size(934, 224);
             adminPanel.TabIndex = 29;
@@ -712,7 +712,7 @@
             schedulesPanel.Controls.Add(dataGridViewSchedules);
             schedulesPanel.Controls.Add(label8);
             schedulesPanel.Controls.Add(txtLocationFilter);
-            schedulesPanel.Location = new Point(955, 27);
+            schedulesPanel.Location = new Point(956, 50);
             schedulesPanel.Name = "schedulesPanel";
             schedulesPanel.Size = new Size(536, 226);
             schedulesPanel.TabIndex = 30;
@@ -787,17 +787,19 @@
             // 
             // btnSearchRoute
             // 
+            btnSearchRoute.AutoSize = false;
             btnSearchRoute.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnSearchRoute.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             btnSearchRoute.Depth = 0;
+            btnSearchRoute.Font = new Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point);
             btnSearchRoute.HighEmphasis = true;
             btnSearchRoute.Icon = null;
-            btnSearchRoute.Location = new Point(317, 294);
+            btnSearchRoute.Location = new Point(317, 298);
             btnSearchRoute.Margin = new Padding(4, 6, 4, 6);
             btnSearchRoute.MouseState = MaterialSkin.MouseState.HOVER;
             btnSearchRoute.Name = "btnSearchRoute";
             btnSearchRoute.NoAccentTextColor = Color.Empty;
-            btnSearchRoute.Size = new Size(128, 36);
+            btnSearchRoute.Size = new Size(128, 32);
             btnSearchRoute.TabIndex = 34;
             btnSearchRoute.Text = "Search route";
             btnSearchRoute.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -811,7 +813,7 @@
             btnTicket.Depth = 0;
             btnTicket.HighEmphasis = true;
             btnTicket.Icon = null;
-            btnTicket.Location = new Point(848, 299);
+            btnTicket.Location = new Point(848, 287);
             btnTicket.Margin = new Padding(4, 6, 4, 6);
             btnTicket.MouseState = MaterialSkin.MouseState.HOVER;
             btnTicket.Name = "btnTicket";

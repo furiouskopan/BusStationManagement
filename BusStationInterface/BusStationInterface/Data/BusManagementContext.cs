@@ -21,6 +21,7 @@ namespace BusStationInterface.Data
         public DbSet<RouteDetail> RouteDetails { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<TicketingLog> TicketingLogs { get; set; }
+        public DbSet<TicketReportItem> TicketReportItem { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Configuration for Schedule -> Destination relationships

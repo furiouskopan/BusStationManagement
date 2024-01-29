@@ -82,7 +82,6 @@ public class BusDataAccess
             }
         }
     }
-
 }
 public class DriverDataAccess
 {
@@ -338,3 +337,38 @@ public class SeatDataAccess
         }
     }
 }
+internal class TicketDataAccess
+{
+    private readonly BusManagementContext _context;
+
+    public TicketDataAccess(BusManagementContext context)
+    {
+        _context = context;
+    }
+
+    public List<TicketReportItem> GetTicketReport(DateTime startDate, DateTime endDate)
+    {
+        var query = _context.Tickets
+                            .Include(t => t.Schedule)
+                                .ThenInclude(s => s.Bus)
+                            .Include(t => t.StartRouteDetail)
+                                .ThenInclude(rd => rd.Location)
+                            .Include(t => t.EndRouteDetail)
+                                .ThenInclude(rd => rd.Location)
+                            .Include(t => t.TicketingLog)
+                                .ThenInclude(tl => tl.Employee)
+                            .Where(t => t.Schedule.DepartureTime >= startDate && t.Schedule.DepartureTime < endDate.AddDays(1));
+
+        return query.Select(t => new TicketReportItem
+        {
+            TicketID = t.TicketID,
+            BusID = t.Schedule.BusID,
+            IssueDate = t.TicketingLog.Timestamp, // Assuming the ticket issue date is the timestamp of TicketingLog
+            StartDestinationName = t.StartRouteDetail.Location.Name,
+            EndDestinationName = t.EndRouteDetail.Location.Name,
+            Price = t.Price,
+            IssuedByEmployeeName = t.TicketingLog.Employee.Name
+        }).ToList();
+    }
+}
+

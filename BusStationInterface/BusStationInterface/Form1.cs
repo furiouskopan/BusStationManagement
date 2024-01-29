@@ -19,8 +19,6 @@ namespace BusStationInterface
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             //materialSkinManager.ColorScheme = new ColorScheme(Primary.Red800, Primary.Red900, Primary.Red500, Accent.DeepOrange200, TextShade.WHITE);
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-
-            lblTimer.ForeColor = Color.Brown;
         }
         private void EmbedFormInTab(Form formToEmbed, TabPage tabPage)
         {
@@ -41,6 +39,7 @@ namespace BusStationInterface
             LoadDestinations();
             LoadRoutes();
             LoadSchedules();
+            ApplyStyles(this.Controls);
             timer1.Start();
             dataGridViewRouteDetails.DataSource = null;
             label9.Text = UserSession.CurrentEmployeeName;
@@ -355,6 +354,27 @@ namespace BusStationInterface
         private void dataGridViewDrivers_SelectionChanged(object sender, EventArgs e)
         {
             dataGridViewDrivers.ClearSelection();
+        }
+
+        private void ApplyStyles(Control.ControlCollection controls)
+        {
+            foreach (Control control in controls)
+            {
+                if (control is Label && control.Name != "lblTimer")
+                {
+                    Label label = (Label)control;
+                    label.ForeColor = Color.Black;
+                    label.Font = new Font("Arial", 13);
+                }
+
+                // Recursively apply styles to child controls if the control has children
+                if (control.HasChildren)
+                {
+                    ApplyStyles(control.Controls);
+                }
+            }
+            lblTimer.ForeColor = Color.Brown;
+            lblTimer.Font = new Font("Arial", 15, FontStyle.Bold);
         }
     }
 }
