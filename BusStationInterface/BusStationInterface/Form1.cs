@@ -376,5 +376,12 @@ namespace BusStationInterface
             lblTimer.ForeColor = Color.Brown;
             lblTimer.Font = new Font("Arial", 15, FontStyle.Bold);
         }
+
+        private void btnTicketReport_Click(object sender, EventArgs e)
+        {
+            var dataAccessLayer = new TicketDataAccess(new BusManagementContext());
+            TicketReportsForm ticketReportsForm = new TicketReportsForm(dataAccessLayer);
+            ticketReportsForm.Show();
+        }
     }
 }

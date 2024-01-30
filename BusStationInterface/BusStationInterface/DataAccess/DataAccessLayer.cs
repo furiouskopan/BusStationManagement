@@ -362,13 +362,17 @@ internal class TicketDataAccess
         return query.Select(t => new TicketReportItem
         {
             TicketID = t.TicketID,
-            BusID = t.Schedule.BusID,
-            IssueDate = t.TicketingLog.Timestamp, // Assuming the ticket issue date is the timestamp of TicketingLog
-            StartDestinationName = t.StartRouteDetail.Location.Name,
-            EndDestinationName = t.EndRouteDetail.Location.Name,
+            BusID = t.Schedule != null ? t.Schedule.BusID : 0,
+            IssueDate = t.TicketingLog != null ? t.TicketingLog.Timestamp : DateTime.MinValue,
+            StartDestinationName = t.StartRouteDetail != null && t.StartRouteDetail.Location != null
+                                   ? t.StartRouteDetail.Location.Name : "Unknown",
+            EndDestinationName = t.EndRouteDetail != null && t.EndRouteDetail.Location != null
+                                 ? t.EndRouteDetail.Location.Name : "Unknown",
             Price = t.Price,
-            IssuedByEmployeeName = t.TicketingLog.Employee.Name
+            IssuedByEmployeeName = t.TicketingLog != null && t.TicketingLog.Employee != null
+                                   ? t.TicketingLog.Employee.Name : "Unknown"
         }).ToList();
+
     }
     public List<Route> GetRoutes()
     {

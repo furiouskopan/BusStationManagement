@@ -24,6 +24,7 @@ namespace BusStationInterface
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             //Application.Run(new Forms.LoginForm());
+            //Application.Run(new Forms.TicketReportsForm());
             Application.Run(new Form1());
         }
     }

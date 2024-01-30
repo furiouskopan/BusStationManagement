@@ -105,6 +105,7 @@
             tabPageSchedules = new TabPage();
             tabPageLogout = new TabPage();
             imageList1 = new ImageList(components);
+            btnTicketReport = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -765,6 +766,7 @@
             // 
             // tabPageHome
             // 
+            tabPageHome.Controls.Add(btnTicketReport);
             tabPageHome.Controls.Add(btnSearchRoute);
             tabPageHome.Controls.Add(btnTicket);
             tabPageHome.Controls.Add(adminPanel);
@@ -899,6 +901,26 @@
             imageList1.Images.SetKeyName(4, "icons8-route-52.png");
             imageList1.Images.SetKeyName(5, "icons8-schedule-52.png");
             // 
+            // btnTicketReport
+            // 
+            btnTicketReport.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnTicketReport.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnTicketReport.Depth = 0;
+            btnTicketReport.HighEmphasis = true;
+            btnTicketReport.Icon = null;
+            btnTicketReport.Location = new Point(939, 299);
+            btnTicketReport.Margin = new Padding(4, 6, 4, 6);
+            btnTicketReport.MouseState = MaterialSkin.MouseState.HOVER;
+            btnTicketReport.Name = "btnTicketReport";
+            btnTicketReport.NoAccentTextColor = Color.Empty;
+            btnTicketReport.Size = new Size(71, 36);
+            btnTicketReport.TabIndex = 35;
+            btnTicketReport.Text = "Ticket";
+            btnTicketReport.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnTicketReport.UseAccentColor = false;
+            btnTicketReport.UseVisualStyleBackColor = true;
+            btnTicketReport.Click += btnTicketReport_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1008,5 +1030,6 @@
         private TabPage tabPageLogout;
         private MaterialSkin.Controls.MaterialButton btnSearchRoute;
         private MaterialSkin.Controls.MaterialButton btnTicket;
+        private MaterialSkin.Controls.MaterialButton btnTicketReport;
     }
 }

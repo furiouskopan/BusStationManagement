@@ -328,6 +328,35 @@ namespace BusStationInterface.Migrations
                     b.ToTable("Tickets");
                 });
 
+            modelBuilder.Entity("BusStationInterface.Models.TicketReportItem", b =>
+                {
+                    b.Property<int>("BusID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EndDestinationName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("IssueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IssuedByEmployeeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("StartDestinationName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TicketID")
+                        .HasColumnType("int");
+
+                    b.ToTable("TicketReportItem");
+                });
+
             modelBuilder.Entity("BusStationInterface.Models.TicketingLog", b =>
                 {
                     b.Property<int>("TicketingLogID")

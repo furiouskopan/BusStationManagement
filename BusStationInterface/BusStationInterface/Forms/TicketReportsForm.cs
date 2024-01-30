@@ -20,6 +20,10 @@ namespace BusStationInterface.Forms
             InitializeComponent();
             _dataAccessLayer = dataAccessLayer;
         }
+        //public TicketReportsForm()
+        //{
+        //    InitializeComponent();
+        //}
 
         private void TicketReportsForm_Load(object sender, EventArgs e)
         {
@@ -77,7 +81,8 @@ namespace BusStationInterface.Forms
 
         private void ExportToExcel(string filePath)
         {
-            using (var package = new ExcelPackage())
+            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+            using (var package = new ExcelPackage(new FileInfo("MyWorkbook.xlsx")))
             {
                 var worksheet = package.Workbook.Worksheets.Add("Ticket Report");
 

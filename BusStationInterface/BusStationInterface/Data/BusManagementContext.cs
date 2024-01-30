@@ -100,6 +100,8 @@ namespace BusStationInterface.Data
             modelBuilder.Entity<Ticket>()
                 .Property(t => t.Price)
                 .HasColumnType("decimal(10, 0)");
+
+            modelBuilder.Entity<TicketReportItem>().HasNoKey();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
