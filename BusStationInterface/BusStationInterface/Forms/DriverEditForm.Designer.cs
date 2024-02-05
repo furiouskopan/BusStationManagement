@@ -39,10 +39,10 @@
             lblName = new Label();
             lblContact = new Label();
             groupBox1 = new GroupBox();
+            btnAddDriver = new MaterialSkin.Controls.MaterialButton();
             label1 = new Label();
             btnSaveDriverEdit = new MaterialSkin.Controls.MaterialButton();
             btnDeleteDriver = new MaterialSkin.Controls.MaterialButton();
-            btnAddDriver = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDriversOnEditForm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
             groupBox1.SuspendLayout();
@@ -109,19 +109,19 @@
             // 
             // lblName
             // 
-            lblName.AutoSize = true;
-            lblName.Location = new Point(14, 21);
+            lblName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblName.Location = new Point(14, 19);
             lblName.Name = "lblName";
-            lblName.Size = new Size(39, 15);
+            lblName.Size = new Size(60, 23);
             lblName.TabIndex = 4;
             lblName.Text = "Name";
             // 
             // lblContact
             // 
-            lblContact.AutoSize = true;
-            lblContact.Location = new Point(156, 21);
+            lblContact.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblContact.Location = new Point(156, 19);
             lblContact.Name = "lblContact";
-            lblContact.Size = new Size(49, 15);
+            lblContact.Size = new Size(92, 23);
             lblContact.TabIndex = 5;
             lblContact.Text = "Contact";
             // 
@@ -138,6 +138,26 @@
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             groupBox1.Text = "Insert";
+            // 
+            // btnAddDriver
+            // 
+            btnAddDriver.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAddDriver.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAddDriver.Depth = 0;
+            btnAddDriver.HighEmphasis = true;
+            btnAddDriver.Icon = null;
+            btnAddDriver.Location = new Point(315, 31);
+            btnAddDriver.Margin = new Padding(4, 6, 4, 6);
+            btnAddDriver.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAddDriver.Name = "btnAddDriver";
+            btnAddDriver.NoAccentTextColor = Color.Empty;
+            btnAddDriver.Size = new Size(104, 36);
+            btnAddDriver.TabIndex = 19;
+            btnAddDriver.Text = "Add Driver";
+            btnAddDriver.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAddDriver.UseAccentColor = false;
+            btnAddDriver.UseVisualStyleBackColor = true;
+            btnAddDriver.Click += btnAddDriver_Click;
             // 
             // label1
             // 
@@ -188,26 +208,6 @@
             btnDeleteDriver.UseAccentColor = false;
             btnDeleteDriver.UseVisualStyleBackColor = true;
             btnDeleteDriver.Click += btnDeleteDriver_Click;
-            // 
-            // btnAddDriver
-            // 
-            btnAddDriver.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnAddDriver.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnAddDriver.Depth = 0;
-            btnAddDriver.HighEmphasis = true;
-            btnAddDriver.Icon = null;
-            btnAddDriver.Location = new Point(315, 31);
-            btnAddDriver.Margin = new Padding(4, 6, 4, 6);
-            btnAddDriver.MouseState = MaterialSkin.MouseState.HOVER;
-            btnAddDriver.Name = "btnAddDriver";
-            btnAddDriver.NoAccentTextColor = Color.Empty;
-            btnAddDriver.Size = new Size(104, 36);
-            btnAddDriver.TabIndex = 19;
-            btnAddDriver.Text = "Add Driver";
-            btnAddDriver.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnAddDriver.UseAccentColor = false;
-            btnAddDriver.UseVisualStyleBackColor = true;
-            btnAddDriver.Click += btnAddDriver_Click;
             // 
             // DriverEditForm
             // 

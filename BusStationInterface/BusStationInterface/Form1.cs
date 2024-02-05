@@ -63,6 +63,12 @@ namespace BusStationInterface
             dataGridViewSchedules.ClearSelection();
 
             materialTabControl1.SendToBack();
+
+            var ticketReportDataAccessLayer = new TicketDataAccess(new BusManagementContext());
+            TicketReportsForm ticketReportsForm = new TicketReportsForm(ticketReportDataAccessLayer);
+            EmbedFormInTab(new TicketReportsForm(ticketReportDataAccessLayer), tabPageTicketReports);
+
+            EmbedFormInTab(new TicketForm(), tabPageTicket);
         }
         private void LoadDestinations()
         {
@@ -220,7 +226,6 @@ namespace BusStationInterface
             EmbedFormInTab(new ScheduleEditForm(), tabPageSchedules);
         }
 
-
         private void btnEditBus_Click(object sender, EventArgs e)
         {
             // Create an instance of BusDataAccess to pass to the edit form
@@ -358,23 +363,23 @@ namespace BusStationInterface
 
         private void ApplyStyles(Control.ControlCollection controls)
         {
-            foreach (Control control in controls)
-            {
-                if (control is Label && control.Name != "lblTimer")
-                {
-                    Label label = (Label)control;
-                    label.ForeColor = Color.Black;
-                    label.Font = new Font("Arial", 13);
-                }
+            //foreach (Control control in controls)
+            //{
+            //    if (control is Label && control.Name != "lblTimer")
+            //    {
+            //        Label label = (Label)control;
+            //        label.ForeColor = Color.Black;
+            //        label.Font = new Font("Arial", 13);
+            //    }
 
-                // Recursively apply styles to child controls if the control has children
-                if (control.HasChildren)
-                {
-                    ApplyStyles(control.Controls);
-                }
-            }
-            lblTimer.ForeColor = Color.Brown;
-            lblTimer.Font = new Font("Arial", 15, FontStyle.Bold);
+            //    // Recursively apply styles to child controls if the control has children
+            //    if (control.HasChildren)
+            //    {
+            //        ApplyStyles(control.Controls);
+            //    }
+            //}
+            //lblTimer.ForeColor = Color.Brown;
+            //lblTimer.Font = new Font("Arial", 15, FontStyle.Bold);
         }
 
         private void btnTicketReport_Click(object sender, EventArgs e)
@@ -382,6 +387,15 @@ namespace BusStationInterface
             var dataAccessLayer = new TicketDataAccess(new BusManagementContext());
             TicketReportsForm ticketReportsForm = new TicketReportsForm(dataAccessLayer);
             ticketReportsForm.Show();
+        }
+
+        private void materialTabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (materialTabControl1.SelectedIndex == 8)
+            {
+                MessageBox.Show("Are you sure you want to log out?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            }
         }
     }
 }

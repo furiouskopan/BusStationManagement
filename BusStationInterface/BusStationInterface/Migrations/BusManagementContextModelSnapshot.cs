@@ -347,6 +347,10 @@ namespace BusStationInterface.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("RouteName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("StartDestinationName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

@@ -15,5 +15,6 @@ namespace BusStationInterface.Models
         public string EndDestinationName { get; set; }
         public decimal Price { get; set; }
         public string IssuedByEmployeeName { get; set; }
+        public string RouteName { get; set; }
     }
 }

@@ -67,9 +67,9 @@
             textBox1 = new TextBox();
             dataGridViewRouteDetails = new DataGridView();
             sequenceNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            LocationName = new DataGridViewTextBoxColumn();
             timeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descriptionDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            LocationName = new DataGridViewTextBoxColumn();
             routeDetailBindingSource = new BindingSource(components);
             label5 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
@@ -96,6 +96,7 @@
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             tabPageHome = new TabPage();
+            btnTicketReport = new MaterialSkin.Controls.MaterialButton();
             btnSearchRoute = new MaterialSkin.Controls.MaterialButton();
             btnTicket = new MaterialSkin.Controls.MaterialButton();
             tabPageBuses = new TabPage();
@@ -103,9 +104,10 @@
             tabPageLocations = new TabPage();
             tabPageRoutes = new TabPage();
             tabPageSchedules = new TabPage();
+            tabPageTicket = new TabPage();
+            tabPageTicketReports = new TabPage();
             tabPageLogout = new TabPage();
             imageList1 = new ImageList(components);
-            btnTicketReport = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -451,7 +453,7 @@
             dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
             dataGridViewRouteDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridViewRouteDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { sequenceNumberDataGridViewTextBoxColumn, LocationName, timeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn2 });
+            dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { sequenceNumberDataGridViewTextBoxColumn, timeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn2, LocationName });
             dataGridViewRouteDetails.DataSource = routeDetailBindingSource;
             dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = SystemColors.Window;
@@ -482,14 +484,6 @@
             sequenceNumberDataGridViewTextBoxColumn.Name = "sequenceNumberDataGridViewTextBoxColumn";
             sequenceNumberDataGridViewTextBoxColumn.Width = 80;
             // 
-            // LocationName
-            // 
-            LocationName.DataPropertyName = "LocationName";
-            LocationName.HeaderText = "Location";
-            LocationName.MinimumWidth = 6;
-            LocationName.Name = "LocationName";
-            LocationName.Width = 125;
-            // 
             // timeDataGridViewTextBoxColumn
             // 
             timeDataGridViewTextBoxColumn.DataPropertyName = "Time";
@@ -505,6 +499,14 @@
             descriptionDataGridViewTextBoxColumn2.MinimumWidth = 6;
             descriptionDataGridViewTextBoxColumn2.Name = "descriptionDataGridViewTextBoxColumn2";
             descriptionDataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // LocationName
+            // 
+            LocationName.DataPropertyName = "LocationName";
+            LocationName.HeaderText = "Location";
+            LocationName.MinimumWidth = 6;
+            LocationName.Name = "LocationName";
+            LocationName.Width = 125;
             // 
             // routeDetailBindingSource
             // 
@@ -541,7 +543,6 @@
             // 
             // label8
             // 
-            label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Microsoft JhengHei", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = Color.White;
@@ -752,6 +753,8 @@
             materialTabControl1.Controls.Add(tabPageLocations);
             materialTabControl1.Controls.Add(tabPageRoutes);
             materialTabControl1.Controls.Add(tabPageSchedules);
+            materialTabControl1.Controls.Add(tabPageTicket);
+            materialTabControl1.Controls.Add(tabPageTicketReports);
             materialTabControl1.Controls.Add(tabPageLogout);
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
@@ -763,6 +766,7 @@
             materialTabControl1.SelectedIndex = 0;
             materialTabControl1.Size = new Size(1594, 633);
             materialTabControl1.TabIndex = 33;
+            materialTabControl1.SelectedIndexChanged += materialTabControl1_SelectedIndexChanged;
             // 
             // tabPageHome
             // 
@@ -786,6 +790,26 @@
             tabPageHome.TabIndex = 0;
             tabPageHome.Text = "Home";
             tabPageHome.UseVisualStyleBackColor = true;
+            // 
+            // btnTicketReport
+            // 
+            btnTicketReport.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnTicketReport.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnTicketReport.Depth = 0;
+            btnTicketReport.HighEmphasis = true;
+            btnTicketReport.Icon = null;
+            btnTicketReport.Location = new Point(939, 299);
+            btnTicketReport.Margin = new Padding(4, 6, 4, 6);
+            btnTicketReport.MouseState = MaterialSkin.MouseState.HOVER;
+            btnTicketReport.Name = "btnTicketReport";
+            btnTicketReport.NoAccentTextColor = Color.Empty;
+            btnTicketReport.Size = new Size(71, 36);
+            btnTicketReport.TabIndex = 35;
+            btnTicketReport.Text = "Ticket";
+            btnTicketReport.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnTicketReport.UseAccentColor = false;
+            btnTicketReport.UseVisualStyleBackColor = true;
+            btnTicketReport.Click += btnTicketReport_Click;
             // 
             // btnSearchRoute
             // 
@@ -879,8 +903,29 @@
             tabPageSchedules.Text = "Schedules";
             tabPageSchedules.UseVisualStyleBackColor = true;
             // 
+            // tabPageTicket
+            // 
+            tabPageTicket.ImageKey = "tickets.png";
+            tabPageTicket.Location = new Point(4, 39);
+            tabPageTicket.Name = "tabPageTicket";
+            tabPageTicket.Size = new Size(1586, 590);
+            tabPageTicket.TabIndex = 8;
+            tabPageTicket.Text = "Ticket";
+            tabPageTicket.UseVisualStyleBackColor = true;
+            // 
+            // tabPageTicketReports
+            // 
+            tabPageTicketReports.ImageKey = "icons8-document-52.png";
+            tabPageTicketReports.Location = new Point(4, 39);
+            tabPageTicketReports.Name = "tabPageTicketReports";
+            tabPageTicketReports.Size = new Size(1586, 590);
+            tabPageTicketReports.TabIndex = 7;
+            tabPageTicketReports.Text = "Ticket Reports";
+            tabPageTicketReports.UseVisualStyleBackColor = true;
+            // 
             // tabPageLogout
             // 
+            tabPageLogout.ImageKey = "icons8-logout-48.png";
             tabPageLogout.Location = new Point(4, 39);
             tabPageLogout.Name = "tabPageLogout";
             tabPageLogout.Padding = new Padding(3);
@@ -900,26 +945,9 @@
             imageList1.Images.SetKeyName(3, "icons8-location-52.png");
             imageList1.Images.SetKeyName(4, "icons8-route-52.png");
             imageList1.Images.SetKeyName(5, "icons8-schedule-52.png");
-            // 
-            // btnTicketReport
-            // 
-            btnTicketReport.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnTicketReport.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnTicketReport.Depth = 0;
-            btnTicketReport.HighEmphasis = true;
-            btnTicketReport.Icon = null;
-            btnTicketReport.Location = new Point(939, 299);
-            btnTicketReport.Margin = new Padding(4, 6, 4, 6);
-            btnTicketReport.MouseState = MaterialSkin.MouseState.HOVER;
-            btnTicketReport.Name = "btnTicketReport";
-            btnTicketReport.NoAccentTextColor = Color.Empty;
-            btnTicketReport.Size = new Size(71, 36);
-            btnTicketReport.TabIndex = 35;
-            btnTicketReport.Text = "Ticket";
-            btnTicketReport.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnTicketReport.UseAccentColor = false;
-            btnTicketReport.UseVisualStyleBackColor = true;
-            btnTicketReport.Click += btnTicketReport_Click;
+            imageList1.Images.SetKeyName(6, "icons8-document-52.png");
+            imageList1.Images.SetKeyName(7, "icons8-logout-48.png");
+            imageList1.Images.SetKeyName(8, "tickets.png");
             // 
             // Form1
             // 
@@ -931,6 +959,7 @@
             Controls.Add(label9);
             DrawerShowIconsWhenHidden = true;
             DrawerTabControl = materialTabControl1;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1600, 700);
             MinimumSize = new Size(1600, 700);
             Name = "Form1";
@@ -1031,5 +1060,7 @@
         private MaterialSkin.Controls.MaterialButton btnSearchRoute;
         private MaterialSkin.Controls.MaterialButton btnTicket;
         private MaterialSkin.Controls.MaterialButton btnTicketReport;
+        private TabPage tabPageTicketReports;
+        private TabPage tabPageTicket;
     }
 }

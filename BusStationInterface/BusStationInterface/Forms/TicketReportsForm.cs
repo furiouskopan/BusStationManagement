@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusStationInterface.Models;
 using OfficeOpenXml;
 
 namespace BusStationInterface.Forms
@@ -35,8 +36,15 @@ namespace BusStationInterface.Forms
         {
             // Fetch routes and bind them to the ComboBox
             var routes = _dataAccessLayer.GetRoutes();
+
+            // Create a 'Select All' option
+            var allRoutesOption = new Route { RouteID = -1, Description = "All Routes" };
+
+            // Add 'Select All' option to the beginning of the list
+
+            routes.Insert(0, allRoutesOption);
             cmbRoute.DataSource = routes;
-            cmbRoute.DisplayMember = "RouteName";
+            cmbRoute.DisplayMember = "Description";
             cmbRoute.ValueMember = "RouteID";
         }
         private void btnGenerateReport_Click(object sender, EventArgs e)
@@ -56,13 +64,22 @@ namespace BusStationInterface.Forms
 
         private void GenerateAndDisplayReport(DateTime fromDate, DateTime toDate, int routeId)
         {
-            var reportData = _dataAccessLayer.GetTicketReport(fromDate, toDate);
-            dataGridViewReports.DataSource = reportData;
+            List<TicketReportItem> reportData;
+
+            // Check if 'All Routes' is selected
+            if (routeId == -1)
+            {
+                // Fetch report data for all routes
+                reportData = _dataAccessLayer.GetTicketReport(fromDate, toDate);
+            }
+            else
+            {
+                // Fetch report data for a specific route
+                reportData = _dataAccessLayer.GetTicketReport(fromDate, toDate, routeId);
+            }
 
             // Bind the report data to the DataGridView
             dataGridViewReports.DataSource = reportData;
-
-            // Format the DataGridView as needed (e.g., setting column headers)
         }
 
         private void btnExportToExcel_Click(object sender, EventArgs e)

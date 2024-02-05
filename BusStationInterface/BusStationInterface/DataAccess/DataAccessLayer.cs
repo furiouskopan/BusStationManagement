@@ -346,18 +346,25 @@ internal class TicketDataAccess
         _context = context;
     }
 
-    public List<TicketReportItem> GetTicketReport(DateTime startDate, DateTime endDate)
+    public List<TicketReportItem> GetTicketReport(DateTime startDate, DateTime endDate, int? routeId = null)
     {
         var query = _context.Tickets
                             .Include(t => t.Schedule)
-                                .ThenInclude(s => s.Bus)
+                                .ThenInclude(s => s.Route)
                             .Include(t => t.StartRouteDetail)
                                 .ThenInclude(rd => rd.Location)
                             .Include(t => t.EndRouteDetail)
                                 .ThenInclude(rd => rd.Location)
                             .Include(t => t.TicketingLog)
                                 .ThenInclude(tl => tl.Employee)
-                            .Where(t => t.Schedule.DepartureTime >= startDate && t.Schedule.DepartureTime < endDate.AddDays(1));
+                            .Where(t => t.Schedule.DepartureTime >= startDate &&
+                                        t.Schedule.DepartureTime < endDate.AddDays(1) &&
+                                        (routeId == 0 || t.Schedule.RouteID == routeId));
+
+        if (routeId.HasValue && routeId.Value != -1)
+        {
+            query = query.Where(t => t.Schedule.RouteID == routeId.Value);
+        }
 
         return query.Select(t => new TicketReportItem
         {
@@ -370,7 +377,8 @@ internal class TicketDataAccess
                                  ? t.EndRouteDetail.Location.Name : "Unknown",
             Price = t.Price,
             IssuedByEmployeeName = t.TicketingLog != null && t.TicketingLog.Employee != null
-                                   ? t.TicketingLog.Employee.Name : "Unknown"
+                                   ? t.TicketingLog.Employee.Name : "Unknown",
+            RouteName = t.Schedule.Route.Description
         }).ToList();
 
     }
