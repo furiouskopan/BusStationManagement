@@ -358,8 +358,7 @@ internal class TicketDataAccess
                             .Include(t => t.TicketingLog)
                                 .ThenInclude(tl => tl.Employee)
                             .Where(t => t.Schedule.DepartureTime >= startDate &&
-                                        t.Schedule.DepartureTime < endDate.AddDays(1) &&
-                                        (routeId == 0 || t.Schedule.RouteID == routeId));
+                                        t.Schedule.DepartureTime < endDate.AddDays(1));
 
         if (routeId.HasValue && routeId.Value != -1)
         {
