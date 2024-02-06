@@ -19,7 +19,7 @@ namespace BusStationInterface.Utilities
             _updateStatusAction = updateStatusAction;
         }
 
-        public void SimulateBusRoute(int scheduleId)
+        public void SimulateBusRoute(int scheduleId, CancellationToken cancellationToken)
         {
             // Fetch the schedule including related data
             var schedule = _context.Schedules
@@ -39,6 +39,8 @@ namespace BusStationInterface.Utilities
 
             foreach (var routeDetail in sortedRouteDetails)
             {
+                cancellationToken.ThrowIfCancellationRequested();
+
                 // Simulate arrival at each stop
                 Console.WriteLine($"Arriving at {routeDetail.Location.Name}.");
 
@@ -63,8 +65,8 @@ namespace BusStationInterface.Utilities
                 // For simplicity, we'll just use a delay here, but in a real application,
                 // you might have more complex logic or real-time integration
                 int timeToNextStopInMinutes = routeDetail.Time; // Assuming 'Time' is now an int representing minutes
-                Thread.Sleep(timeToNextStopInMinutes * 1000); // Convert minutes to milliseconds
-            }
+                    Thread.Sleep(timeToNextStopInMinutes * 1000); // Convert minutes to milliseconds
+                }
 
             Console.WriteLine("Route simulation complete.");
         }
