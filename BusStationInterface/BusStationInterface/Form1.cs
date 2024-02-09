@@ -39,7 +39,6 @@ namespace BusStationInterface
             LoadDestinations();
             LoadRoutes();
             LoadSchedules();
-            ApplyStyles(this.Controls);
             timer1.Start();
             dataGridViewRouteDetails.DataSource = null;
             label9.Text = UserSession.CurrentEmployeeName;
