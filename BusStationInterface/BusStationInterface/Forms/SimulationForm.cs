@@ -41,12 +41,16 @@ namespace BusStationInterface.Forms
             // Start the simulation
             int selectedScheduleId = (int)cmbRoutes.SelectedValue;
             Task.Run(() => _simulationService.SimulateBusRoute(selectedScheduleId, _cancellationTokenSource.Token));
+            progressBar.Value = 0;
+            elapsedTime = 0;
+            timer1.Start();
         }
 
         private void btnStopSimulation_Click(object sender, EventArgs e)
         {
             // Stop the simulation
             _cancellationTokenSource.Cancel();
+            timer1.Stop();
         }
         private void UpdateSimulationLog(string message)
         {
@@ -64,6 +68,21 @@ namespace BusStationInterface.Forms
             // Update ProgressBar
             progressBar.Value = progressPercentage;
         }
+
+        private int elapsedTime = 0; // Keeps track of the elapsed time in seconds
+        private int totalDuration = 60; // Total duration of the task in seconds
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            elapsedTime++;
+            progressBar.Value = (int)((double)elapsedTime / totalDuration * 100); // Calculate the progress percentage
+
+            if (elapsedTime >= totalDuration)
+            {
+                timer1.Stop(); // Stop the timer when the task is complete
+                MessageBox.Show("Task completed!");
+            }
+        }
+
         private void PopulateRoutesComboBox()
         {
             var routes = _context.Routes

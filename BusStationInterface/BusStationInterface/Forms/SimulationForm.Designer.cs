@@ -78,6 +78,10 @@
             progressBar.Size = new Size(343, 23);
             progressBar.TabIndex = 4;
             // 
+            // timer1
+            // 
+            timer1.Tick += timer_Tick;
+            // 
             // label1
             // 
             label1.AutoSize = true;
