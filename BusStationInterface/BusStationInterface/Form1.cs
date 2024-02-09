@@ -397,5 +397,9 @@ namespace BusStationInterface
 
             }
         }
+        private void btnSimulation_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

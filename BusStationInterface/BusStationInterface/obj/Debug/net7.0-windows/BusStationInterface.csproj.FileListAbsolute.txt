@@ -149,3 +149,4 @@ C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStati
 C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\System.Security.Cryptography.Pkcs.dll
 C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\bin\Debug\net7.0-windows\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.Forms.TicketReportsForm.resources
+C:\Users\user\Desktop\Projects\BusStationManagement\BusStationInterface\BusStationInterface\obj\Debug\net7.0-windows\BusStationInterface.Forms.SimulationForm.resources

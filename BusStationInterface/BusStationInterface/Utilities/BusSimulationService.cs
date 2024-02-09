@@ -11,12 +11,11 @@ namespace BusStationInterface.Utilities
     public class BusSimulationService
     {
         private readonly BusManagementContext _context;
-        private readonly Action<string> _updateStatusAction;
+        public event Action<string> OnUpdateStatus;
 
-        internal BusSimulationService(BusManagementContext context, Action<string> updateStatusAction)
+        internal BusSimulationService(BusManagementContext context)
         {
             _context = context;
-            _updateStatusAction = updateStatusAction;
         }
 
         public void SimulateBusRoute(int scheduleId, CancellationToken cancellationToken)
@@ -25,8 +24,10 @@ namespace BusStationInterface.Utilities
             var schedule = _context.Schedules
                 .Include(s => s.Route)
                     .ThenInclude(r => r.RouteDetails)
+                        .ThenInclude(rd => rd.Location) // Ensure Location is included
                 .Include(s => s.Tickets)
                 .FirstOrDefault(s => s.ScheduleID == scheduleId);
+
 
             if (schedule == null)
             {
@@ -42,7 +43,8 @@ namespace BusStationInterface.Utilities
                 cancellationToken.ThrowIfCancellationRequested();
 
                 // Simulate arrival at each stop
-                Console.WriteLine($"Arriving at {routeDetail.Location.Name}.");
+                OnUpdateStatus.Invoke($"Arriving in {routeDetail.Location.Name}.");
+
 
                 // Find tickets where this stop is the end destination
                 var ticketsToEndHere = schedule.Tickets

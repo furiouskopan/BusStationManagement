@@ -8,10 +8,10 @@ namespace BusStationInterface.Utilities
 {
     public class BusSimulationController
     {
-        private readonly BusSimulationService _simulationService;
         private Task _simulationTask;
-        private CancellationTokenSource _cancellationTokenSource;
         private Action<string> _onStatusUpdate;
+        private readonly BusSimulationService _simulationService;
+        private CancellationTokenSource _cancellationTokenSource;
 
         public BusSimulationController(BusSimulationService simulationService, Action<string> onStatusUpdate)
         {

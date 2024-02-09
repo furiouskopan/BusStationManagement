@@ -108,6 +108,7 @@
             tabPageTicketReports = new TabPage();
             tabPageLogout = new TabPage();
             imageList1 = new ImageList(components);
+            btnSimulation = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -770,6 +771,7 @@
             // 
             // tabPageHome
             // 
+            tabPageHome.Controls.Add(btnSimulation);
             tabPageHome.Controls.Add(btnTicketReport);
             tabPageHome.Controls.Add(btnSearchRoute);
             tabPageHome.Controls.Add(btnTicket);
@@ -949,6 +951,27 @@
             imageList1.Images.SetKeyName(7, "icons8-logout-48.png");
             imageList1.Images.SetKeyName(8, "tickets.png");
             // 
+            // btnSimulation
+            // 
+            btnSimulation.AutoSize = false;
+            btnSimulation.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSimulation.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnSimulation.Depth = 0;
+            btnSimulation.HighEmphasis = true;
+            btnSimulation.Icon = null;
+            btnSimulation.Location = new Point(939, 390);
+            btnSimulation.Margin = new Padding(4, 6, 4, 6);
+            btnSimulation.MouseState = MaterialSkin.MouseState.HOVER;
+            btnSimulation.Name = "btnSimulation";
+            btnSimulation.NoAccentTextColor = Color.Empty;
+            btnSimulation.Size = new Size(117, 36);
+            btnSimulation.TabIndex = 36;
+            btnSimulation.Text = "Simulation";
+            btnSimulation.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnSimulation.UseAccentColor = false;
+            btnSimulation.UseVisualStyleBackColor = true;
+            btnSimulation.Click += btnSimulation_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1062,5 +1085,6 @@
         private MaterialSkin.Controls.MaterialButton btnTicketReport;
         private TabPage tabPageTicketReports;
         private TabPage tabPageTicket;
+        private MaterialSkin.Controls.MaterialButton btnSimulation;
     }
 }
