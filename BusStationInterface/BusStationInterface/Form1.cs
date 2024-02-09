@@ -399,7 +399,10 @@ namespace BusStationInterface
         }
         private void btnSimulation_Click(object sender, EventArgs e)
         {
-
+            BusManagementContext context = new BusManagementContext(); // Ensure this is how you manage contexts across your app
+            BusSimulationService simulationService = new BusSimulationService(context);
+            SimulationForm simulationForm = new SimulationForm(simulationService, context); // Pass context here
+            simulationForm.Show();
         }
     }
 }
