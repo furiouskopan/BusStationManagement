@@ -34,6 +34,7 @@ namespace BusStationInterface.Forms
         private void SimulationForm_Load(object sender, EventArgs e)
         {
             PopulateRoutesComboBox();
+            InitializeDataGridView();
         }
 
         private void btnStartSimulation_Click(object sender, EventArgs e)
@@ -110,6 +111,48 @@ namespace BusStationInterface.Forms
             cmbSchedules.ValueMember = "ScheduleID";
             cmbSchedules.DataSource = schedules;
         }
+        private void InitializeDataGridView()
+        {
+            // Assuming dataGridViewSeats is your DataGridView control
+            dataGridView1.Columns.Clear();
+
+            dataGridView1.Columns.Add("SeatNumber", "Seat Number");
+            dataGridView1.Columns.Add("IsOccupied", "Occupied Status");
+                        
+            // Optionall1t properties for better visual representation
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+        private void PopulateSeats(int busId)
+        {
+            var seats = _context.Seats.Where(s => s.BusID == busId).ToList();
+
+            dataGridView1.Rows.Clear();
+
+            foreach (var seat in seats)
+            {
+                dataGridView1.Rows.Add(seat.SeatNumber, seat.IsOccupied ? "Occupied" : "Free");
+            }
+        }
+        private void UpdateSeatStatus(int seatId, bool isOccupied)
+        {
+            var seat = _context.Seats.FirstOrDefault(s => s.SeatID == seatId);
+            if (seat != null)
+            {
+                seat.IsOccupied = isOccupied;
+                _context.SaveChanges();
+
+                // Update the DataGridView to reflect the change
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.Cells["SeatNumber"].Value.ToString() == seat.SeatNumber)
+                    {
+                        row.Cells["IsOccupied"].Value = isOccupied ? "Occupied" : "Free";
+                        break;
+                    }
+                }
+            }
+        }
+
 
         private void cmbRoutes_SelectedIndexChanged(object sender, EventArgs e)
         {

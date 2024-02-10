@@ -64,8 +64,7 @@ namespace BusStationInterface.Utilities
                 _context.SaveChanges();
 
                 // Simulate time spent until reaching the next stop
-                // For simplicity, we'll just use a delay here, but in a real application,
-                // you might have more complex logic or real-time integration
+
                 int timeToNextStopInMinutes = routeDetail.Time; // Assuming 'Time' is now an int representing minutes
                     Thread.Sleep(timeToNextStopInMinutes * 1000); // Convert minutes to milliseconds
                 }
