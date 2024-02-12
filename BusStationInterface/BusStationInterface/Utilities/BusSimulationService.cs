@@ -66,7 +66,7 @@ namespace BusStationInterface.Utilities
                 // Simulate time spent until reaching the next stop
 
                 int timeToNextStopInMinutes = routeDetail.Time; // Assuming 'Time' is now an int representing minutes
-                    Thread.Sleep(timeToNextStopInMinutes * 1000); // Convert minutes to milliseconds
+                    Thread.Sleep(timeToNextStopInMinutes * 100); // Convert minutes to milliseconds
                 }
 
             Console.WriteLine("Route simulation complete.");

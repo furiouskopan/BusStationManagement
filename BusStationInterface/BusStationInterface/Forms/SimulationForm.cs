@@ -35,6 +35,7 @@ namespace BusStationInterface.Forms
         {
             PopulateRoutesComboBox();
             InitializeDataGridView();
+            PopulateSeats(2);
         }
 
         private void btnStartSimulation_Click(object sender, EventArgs e)
@@ -133,27 +134,44 @@ namespace BusStationInterface.Forms
                 dataGridView1.Rows.Add(seat.SeatNumber, seat.IsOccupied ? "Occupied" : "Free");
             }
         }
-        private void UpdateSeatStatus(int seatId, bool isOccupied)
-        {
-            var seat = _context.Seats.FirstOrDefault(s => s.SeatID == seatId);
-            if (seat != null)
-            {
-                seat.IsOccupied = isOccupied;
-                _context.SaveChanges();
+        //private void UpdateSeatStatus(int seatId, bool isOccupied)
+        //{
+        //    var seat = _context.Seats.FirstOrDefault(s => s.SeatID == seatId);
+        //    if (seat != null)
+        //    {
+        //        seat.IsOccupied = isOccupied;
+        //        _context.SaveChanges();
 
-                // Update the DataGridView to reflect the change
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+        //        // Update the DataGridView to reflect the change
+        //        foreach (DataGridViewRow row in dataGridView1.Rows)
+        //        {
+        //            if (row.Cells["SeatNumber"].Value.ToString() == seat.SeatNumber)
+        //            {
+        //                row.Cells["IsOccupied"].Value = isOccupied ? "Occupied" : "Free";
+        //                break;
+        //            }
+        //        }
+        //    }
+        //}
+        public void ProcessStop(int stopId)
+        {
+            var departingTickets = _context.Tickets
+                .Where(t => t.EndRouteDetail.LocationID == stopId)
+                .ToList();
+
+            foreach (var ticket in departingTickets)
+            {
+                var seat = _context.Seats.Find(ticket.SeatID);
+                if (seat != null)
                 {
-                    if (row.Cells["SeatNumber"].Value.ToString() == seat.SeatNumber)
-                    {
-                        row.Cells["IsOccupied"].Value = isOccupied ? "Occupied" : "Free";
-                        break;
-                    }
+                    seat.IsOccupied = false;
+                    UpdateSimulationLog($"Seat {seat.SeatNumber} freed up at {ticket.EndRouteDetail.Location.Name}");
                 }
             }
+
+            _context.SaveChanges();
+            // Trigger UI update to reflect changes
         }
-
-
         private void cmbRoutes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbRoutes.SelectedValue is int selectedRouteId)

@@ -178,6 +178,7 @@ namespace BusStationInterface.Forms
                     lblPrice.Text = "N/A";
                 }
             }
+            OnDestinationSelectionChanged();
         }
         private void btnTicket_Click(object sender, EventArgs e)
         {
@@ -259,7 +260,7 @@ namespace BusStationInterface.Forms
         {
             public static void CreateTicketPDF(string fileName, Ticket ticket, DateTime segmentDepartureTime, DateTime segmentArrivalTime)
             {
-                float customWidth = 300; 
+                float customWidth = 300;
                 float customHeight = 600;
 
                 iTextSharp.text.Rectangle pageSize = new iTextSharp.text.Rectangle(customWidth, customHeight);
@@ -316,6 +317,45 @@ namespace BusStationInterface.Forms
             }
 
             return departureTime.AddMinutes(cumulativeTime);
+        }
+        public List<Seat> GetAvailableSeatsForSubroute(int scheduleId, int startDetailId, int endDetailId)
+        {
+            var schedule = _context.Schedules
+                                   .Include(s => s.Tickets)
+                                   .ThenInclude(t => t.Seat)
+                                   .FirstOrDefault(s => s.ScheduleID == scheduleId);
+
+            if (schedule == null) return new List<Seat>();
+
+            // Assuming RouteDetails are ordered by SequenceNumber
+            var allSeats = _context.Seats.Where(s => s.BusID == schedule.BusID).ToList();
+            var unavailableSeatIds = new HashSet<int>();
+
+            foreach (var ticket in schedule.Tickets)
+            {
+                if ((ticket.StartRouteDetailID <= startDetailId && ticket.EndRouteDetailID > startDetailId) ||
+                    (ticket.StartRouteDetailID < endDetailId && ticket.EndRouteDetailID >= endDetailId))
+                {
+                    unavailableSeatIds.Add(ticket.SeatID);
+                }
+            }
+
+            return allSeats.Where(s => !unavailableSeatIds.Contains(s.SeatID)).ToList();
+        }
+        private void OnDestinationSelectionChanged()
+        {
+            if (dataGridViewTicketSchedule.CurrentRow != null)
+            {
+                int scheduleId = Convert.ToInt32(dataGridViewTicketSchedule.CurrentRow.Cells["scheduleIDDataGridViewTextBoxColumn"].Value);
+                if (cmbStartDestination.SelectedItem is RouteDetailViewModel startDetailViewModel &&
+                    cmbEndDestination.SelectedItem is RouteDetailViewModel endDetailViewModel)
+                {
+                    var availableSeats = GetAvailableSeatsForSubroute(scheduleId, startDetailViewModel.RouteDetailID, endDetailViewModel.RouteDetailID);
+                    cmbSeat.DataSource = availableSeats;
+                    cmbSeat.DisplayMember = "SeatNumber";
+                    cmbSeat.ValueMember = "SeatID";
+                }
+            }
         }
     }
 }
