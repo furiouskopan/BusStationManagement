@@ -96,6 +96,7 @@
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             tabPageHome = new TabPage();
+            btnSimulation = new MaterialSkin.Controls.MaterialButton();
             btnTicketReport = new MaterialSkin.Controls.MaterialButton();
             btnSearchRoute = new MaterialSkin.Controls.MaterialButton();
             btnTicket = new MaterialSkin.Controls.MaterialButton();
@@ -108,7 +109,7 @@
             tabPageTicketReports = new TabPage();
             tabPageLogout = new TabPage();
             imageList1 = new ImageList(components);
-            btnSimulation = new MaterialSkin.Controls.MaterialButton();
+            btnUpdateScheduleDates = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -771,6 +772,7 @@
             // 
             // tabPageHome
             // 
+            tabPageHome.Controls.Add(btnUpdateScheduleDates);
             tabPageHome.Controls.Add(btnSimulation);
             tabPageHome.Controls.Add(btnTicketReport);
             tabPageHome.Controls.Add(btnSearchRoute);
@@ -792,6 +794,27 @@
             tabPageHome.TabIndex = 0;
             tabPageHome.Text = "Home";
             tabPageHome.UseVisualStyleBackColor = true;
+            // 
+            // btnSimulation
+            // 
+            btnSimulation.AutoSize = false;
+            btnSimulation.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSimulation.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnSimulation.Depth = 0;
+            btnSimulation.HighEmphasis = true;
+            btnSimulation.Icon = null;
+            btnSimulation.Location = new Point(939, 390);
+            btnSimulation.Margin = new Padding(4, 6, 4, 6);
+            btnSimulation.MouseState = MaterialSkin.MouseState.HOVER;
+            btnSimulation.Name = "btnSimulation";
+            btnSimulation.NoAccentTextColor = Color.Empty;
+            btnSimulation.Size = new Size(117, 36);
+            btnSimulation.TabIndex = 36;
+            btnSimulation.Text = "Simulation";
+            btnSimulation.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnSimulation.UseAccentColor = false;
+            btnSimulation.UseVisualStyleBackColor = true;
+            btnSimulation.Click += btnSimulation_Click;
             // 
             // btnTicketReport
             // 
@@ -951,26 +974,26 @@
             imageList1.Images.SetKeyName(7, "icons8-logout-48.png");
             imageList1.Images.SetKeyName(8, "tickets.png");
             // 
-            // btnSimulation
+            // btnUpdateScheduleDates
             // 
-            btnSimulation.AutoSize = false;
-            btnSimulation.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnSimulation.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnSimulation.Depth = 0;
-            btnSimulation.HighEmphasis = true;
-            btnSimulation.Icon = null;
-            btnSimulation.Location = new Point(939, 390);
-            btnSimulation.Margin = new Padding(4, 6, 4, 6);
-            btnSimulation.MouseState = MaterialSkin.MouseState.HOVER;
-            btnSimulation.Name = "btnSimulation";
-            btnSimulation.NoAccentTextColor = Color.Empty;
-            btnSimulation.Size = new Size(117, 36);
-            btnSimulation.TabIndex = 36;
-            btnSimulation.Text = "Simulation";
-            btnSimulation.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnSimulation.UseAccentColor = false;
-            btnSimulation.UseVisualStyleBackColor = true;
-            btnSimulation.Click += btnSimulation_Click;
+            btnUpdateScheduleDates.AutoSize = false;
+            btnUpdateScheduleDates.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnUpdateScheduleDates.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnUpdateScheduleDates.Depth = 0;
+            btnUpdateScheduleDates.HighEmphasis = true;
+            btnUpdateScheduleDates.Icon = null;
+            btnUpdateScheduleDates.Location = new Point(1286, 527);
+            btnUpdateScheduleDates.Margin = new Padding(4, 6, 4, 6);
+            btnUpdateScheduleDates.MouseState = MaterialSkin.MouseState.HOVER;
+            btnUpdateScheduleDates.Name = "btnUpdateScheduleDates";
+            btnUpdateScheduleDates.NoAccentTextColor = Color.Empty;
+            btnUpdateScheduleDates.Size = new Size(177, 36);
+            btnUpdateScheduleDates.TabIndex = 37;
+            btnUpdateScheduleDates.Text = "Update Schedules";
+            btnUpdateScheduleDates.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnUpdateScheduleDates.UseAccentColor = false;
+            btnUpdateScheduleDates.UseVisualStyleBackColor = true;
+            btnUpdateScheduleDates.Click += btnUpdateScheduleDates_Click;
             // 
             // Form1
             // 
@@ -1086,5 +1109,6 @@
         private TabPage tabPageTicketReports;
         private TabPage tabPageTicket;
         private MaterialSkin.Controls.MaterialButton btnSimulation;
+        private MaterialSkin.Controls.MaterialButton btnUpdateScheduleDates;
     }
 }

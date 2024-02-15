@@ -16,7 +16,7 @@ namespace BusStationInterface.Forms
     {
         private TicketDataAccess _dataAccessLayer;
 
-        internal TicketReportsForm(TicketDataAccess dataAccessLayer)
+        public TicketReportsForm(TicketDataAccess dataAccessLayer)
         {
             InitializeComponent();
             _dataAccessLayer = dataAccessLayer;
@@ -58,7 +58,6 @@ namespace BusStationInterface.Forms
                 MessageBox.Show("The 'From' date must be earlier than the 'To' date.");
                 return;
             }
-
             GenerateAndDisplayReport(fromDate, toDate, selectedRouteId);
         }
 
@@ -81,7 +80,6 @@ namespace BusStationInterface.Forms
             // Bind the report data to the DataGridView
             dataGridViewReports.DataSource = reportData;
         }
-
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog

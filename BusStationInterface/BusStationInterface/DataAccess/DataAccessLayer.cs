@@ -337,7 +337,7 @@ public class SeatDataAccess
         }
     }
 }
-internal class TicketDataAccess
+public class TicketDataAccess
 {
     private readonly BusManagementContext _context;
 
@@ -357,8 +357,7 @@ internal class TicketDataAccess
                                 .ThenInclude(rd => rd.Location)
                             .Include(t => t.TicketingLog)
                                 .ThenInclude(tl => tl.Employee)
-                            .Where(t => t.Schedule.DepartureTime >= startDate &&
-                                        t.Schedule.DepartureTime < endDate.AddDays(1));
+                            .Where(t => t.Schedule.NextOccurrenceDate >= startDate && t.Schedule.NextOccurrenceDate <= endDate);
 
         if (routeId.HasValue && routeId.Value != -1)
         {

@@ -18,6 +18,7 @@ namespace BusStationInterface.Models
         public string Status { get; set; }
         public int StartDestinationId { get; set; } // Foreign Key
         public int EndDestinationId { get; set; }   // Foreign Key
+        public DateTime NextOccurrenceDate { get; set; } // The next date when the schedule will be active
 
         // Navigation Properties
         public Destination StartDestination { get; set; } 

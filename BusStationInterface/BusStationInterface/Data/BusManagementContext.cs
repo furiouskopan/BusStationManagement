@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BusStationInterface.Data 
 {
-    internal class BusManagementContext : DbContext
+    public class BusManagementContext : DbContext
     {
         public DbSet<Bus> Buses { get; set; }
         public DbSet<BusLocationLog> BusLocationLogs { get; set; }

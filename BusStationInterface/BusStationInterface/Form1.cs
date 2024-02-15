@@ -382,5 +382,14 @@ namespace BusStationInterface
             SimulationForm simulationForm = new SimulationForm(simulationService, context); // Pass context here
             simulationForm.Show();
         }
+
+        private void btnUpdateScheduleDates_Click(object sender, EventArgs e)
+        {
+            using (var context = new BusManagementContext())
+            {
+                ScheduleService scheduleService = new ScheduleService(context);
+                scheduleService.UpdateScheduleDatesForNextWeek();
+            }
+        }
     }
 }
