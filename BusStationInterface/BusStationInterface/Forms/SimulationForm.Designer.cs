@@ -34,9 +34,7 @@
             lstSimulationLog = new ListBox();
             progressBar = new ProgressBar();
             timer1 = new System.Windows.Forms.Timer(components);
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
+            remainingLabel = new Label();
             dataGridView1 = new DataGridView();
             btnStopSimulation = new Button();
             cmbSchedules = new ComboBox();
@@ -45,7 +43,7 @@
             // 
             // btnStartSimulation
             // 
-            btnStartSimulation.Location = new Point(27, 305);
+            btnStartSimulation.Location = new Point(349, 214);
             btnStartSimulation.Name = "btnStartSimulation";
             btnStartSimulation.Size = new Size(75, 23);
             btnStartSimulation.TabIndex = 0;
@@ -73,7 +71,7 @@
             // 
             // progressBar
             // 
-            progressBar.Location = new Point(206, 415);
+            progressBar.Location = new Point(230, 495);
             progressBar.Name = "progressBar";
             progressBar.Size = new Size(343, 23);
             progressBar.TabIndex = 4;
@@ -82,32 +80,14 @@
             // 
             timer1.Tick += timer_Tick;
             // 
-            // label1
+            // remainingLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(351, 179);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 5;
-            label1.Text = "label1";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(74, 9);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 6;
-            label2.Text = "label2";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(146, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(38, 15);
-            label3.TabIndex = 7;
-            label3.Text = "label3";
+            remainingLabel.AutoSize = true;
+            remainingLabel.Location = new Point(64, 36);
+            remainingLabel.Name = "remainingLabel";
+            remainingLabel.Size = new Size(38, 15);
+            remainingLabel.TabIndex = 7;
+            remainingLabel.Text = "label3";
             // 
             // dataGridView1
             // 
@@ -115,12 +95,12 @@
             dataGridView1.Location = new Point(12, 87);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(292, 150);
+            dataGridView1.Size = new Size(292, 379);
             dataGridView1.TabIndex = 8;
             // 
             // btnStopSimulation
             // 
-            btnStopSimulation.Location = new Point(126, 305);
+            btnStopSimulation.Location = new Point(448, 214);
             btnStopSimulation.Name = "btnStopSimulation";
             btnStopSimulation.Size = new Size(75, 23);
             btnStopSimulation.TabIndex = 9;
@@ -135,18 +115,17 @@
             cmbSchedules.Name = "cmbSchedules";
             cmbSchedules.Size = new Size(141, 23);
             cmbSchedules.TabIndex = 10;
+            cmbSchedules.SelectedIndexChanged += cmbSchedules_SelectedIndexChanged;
             // 
             // SimulationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 530);
             Controls.Add(cmbSchedules);
             Controls.Add(btnStopSimulation);
             Controls.Add(dataGridView1);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(remainingLabel);
             Controls.Add(progressBar);
             Controls.Add(lstSimulationLog);
             Controls.Add(cmbRoutes);
@@ -166,9 +145,7 @@
         private ListBox lstSimulationLog;
         private ProgressBar progressBar;
         private System.Windows.Forms.Timer timer1;
-        private Label label1;
-        private Label label2;
-        private Label label3;
+        private Label remainingLabel;
         private DataGridView dataGridView1;
         private Button btnStopSimulation;
         private ComboBox cmbSchedules;

@@ -12,6 +12,8 @@ namespace BusStationInterface.Utilities
     {
         private readonly BusManagementContext _context;
         public event Action<string> OnUpdateStatus;
+        public event Action<int> OnCurrentStopChanged;
+        public int CurrentRouteDetailID { get; private set; }
 
         internal BusSimulationService(BusManagementContext context)
         {
@@ -28,10 +30,9 @@ namespace BusStationInterface.Utilities
                 .Include(s => s.Tickets)
                 .FirstOrDefault(s => s.ScheduleID == scheduleId);
 
-
             if (schedule == null)
             {
-                Console.WriteLine("Schedule not found.");
+                MessageBox.Show("Schedule not found.");
                 return;
             }
 
@@ -41,6 +42,11 @@ namespace BusStationInterface.Utilities
             foreach (var routeDetail in sortedRouteDetails)
             {
                 cancellationToken.ThrowIfCancellationRequested();
+
+                CurrentRouteDetailID = routeDetail.RouteDetailID;
+
+                // Raise the event with the new current RouteDetailID
+                 OnCurrentStopChanged?.Invoke(routeDetail.RouteDetailID);
 
                 // Simulate arrival at each stop
                 OnUpdateStatus.Invoke($"Arriving in {routeDetail.Location.Name}.");
@@ -65,8 +71,8 @@ namespace BusStationInterface.Utilities
 
                 // Simulate time spent until reaching the next stop
 
-                int timeToNextStopInMinutes = routeDetail.Time; // Assuming 'Time' is now an int representing minutes
-                    Thread.Sleep(timeToNextStopInMinutes * 100); // Convert minutes to milliseconds
+                int timeToNextStopInMinutes = routeDetail.Time;
+                    Thread.Sleep(timeToNextStopInMinutes * 100); 
                 }
 
             Console.WriteLine("Route simulation complete.");
