@@ -15,6 +15,6 @@ namespace BusStationInterface.Models
 
         // Navigation Properties
         public Bus Bus { get; set; }
-        public Ticket Ticket { get; set; }
+        public ICollection<Ticket> Tickets { get; set; }
     }
 }

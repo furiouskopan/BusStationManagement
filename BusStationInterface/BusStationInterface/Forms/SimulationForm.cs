@@ -74,7 +74,7 @@ namespace BusStationInterface.Forms
 
             if (schedule == null || schedule.Route.RouteDetails == null)
             {
-                return 0; // Or handle this case as needed.
+                return 0; 
             }
 
             // Since each minute in real time is simulated as 100 milliseconds
@@ -111,7 +111,7 @@ namespace BusStationInterface.Forms
             var remainingSeconds = remainingMilliseconds / 1000; // Convert milliseconds to seconds
 
             // Update the remaining time label to display remaining time in seconds
-            remainingLabel.Text = $"Remaining Time: {Math.Max(0, (int)remainingSeconds)} seconds"; // Ensure remaining time doesn't go below 0
+            remainingLabel.Text = $"Remaining Time: {Math.Max(0, (int)remainingSeconds)} seconds"; 
 
             if (progressPercentage >= 100)
             {
@@ -182,7 +182,7 @@ namespace BusStationInterface.Forms
                     return;
                 }
 
-                _currentBusId = schedule.BusID; // Set the currentBusId here based on the selected schedule
+                _currentBusId = schedule.BusID; 
                 PopulateSeats(_currentBusId, currentRouteDetailId);
             }
         }
@@ -194,14 +194,10 @@ namespace BusStationInterface.Forms
                 throw new InvalidOperationException("DataGridView is not initialized.");
             }
 
-            // Clear any existing columns before adding new ones
             dataGridView1.Columns.Clear();
 
-            // Add the SeatNumber and IsOccupied columns
             dataGridView1.Columns.Add("SeatNumber", "Seat Number");
             dataGridView1.Columns.Add("IsOccupied", "Occupied Status");
-
-            // Optional properties for better visual representation
         }
         private void PopulateSeats(int busId, int currentRouteDetailId)
         {
@@ -256,25 +252,15 @@ namespace BusStationInterface.Forms
                 }
             }
         }
-
         private int? GetBusIdFromSchedule(int scheduleId)
         {
             var schedule = _context.Schedules.FirstOrDefault(s => s.ScheduleID == scheduleId);
             return schedule?.BusID; // This will return null if the schedule is not found
         }
 
-        //private int GetCurrentRouteDetailIdForStop(int stopId, int scheduleId)
-        //{
-        //    var routeDetail = _context.RouteDetails
-        //        .Include(rd => rd.Route) // Include Route to access the RouteDetails
-        //        .Where(rd => rd.LocationID == stopId && rd.Route.Schedules.Any(s => s.ScheduleID == scheduleId))
-        //        .OrderBy(rd => rd.SequenceNumber)
-        //        .FirstOrDefault();
-        //    return routeDetail?.RouteDetailID ?? -1;
-        //}
         private void SimulationService_OnCurrentStopChanged(int currentRouteDetailId)
         {
-            // Ensure the UI update is performed on the UI thread
+            // Ensure the UI update is performed on the UI thread 
             this.Invoke((MethodInvoker)delegate
             {
                 PopulateSeats(_currentBusId, currentRouteDetailId);
@@ -307,7 +293,6 @@ namespace BusStationInterface.Forms
                 dataGridView1.Rows.Add(seat.SeatNumber, isOccupied ? "Occupied" : "Free");
             }
         }
-
         private void cmbRoutes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbRoutes.SelectedValue is int selectedRouteId)

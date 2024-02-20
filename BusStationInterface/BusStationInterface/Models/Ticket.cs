@@ -10,7 +10,7 @@ namespace BusStationInterface.Models
     {
         public int TicketID { get; set; }
         public int ScheduleID { get; set; }
-        public int SeatID { get; set; }
+        public int? SeatID { get; set; }
         public int StartRouteDetailID { get; set; }
         public int EndRouteDetailID { get; set; }
         public decimal Price { get; set; }

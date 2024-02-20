@@ -161,7 +161,7 @@ namespace BusStationInterface.Forms
                                 .Sum(rd => rd.PriceToNextStop);
             return price;
         }
-        // Attach this event handler to the SelectedIndexChanged event of both cmbStartDestination and cmbEndDestination.
+
         private void DestinationComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbStartDestination.SelectedItem is RouteDetailViewModel startDetail &&
@@ -256,6 +256,79 @@ namespace BusStationInterface.Forms
             }
         }
 
+        public List<Seat> GetAvailableSeatsForSubroute(int scheduleId, int startDetailId, int endDetailId)
+        {
+            var schedule = _context.Schedules
+                                   .Include(s => s.Tickets)
+                                   .ThenInclude(t => t.Seat)
+                                   .FirstOrDefault(s => s.ScheduleID == scheduleId);
+
+            if (schedule == null) return new List<Seat>();
+
+            // Assuming RouteDetails are ordered by SequenceNumber
+            var allSeats = _context.Seats.Where(s => s.BusID == schedule.BusID).ToList();
+            var unavailableSeatIds = new HashSet<int>();
+
+            foreach (var ticket in schedule.Tickets)
+            {
+                if ((ticket.StartRouteDetailID <= startDetailId && ticket.EndRouteDetailID > startDetailId) ||
+                    (ticket.StartRouteDetailID < endDetailId && ticket.EndRouteDetailID >= endDetailId))
+                {
+                    unavailableSeatIds.Add(ticket.SeatID.Value);
+                }
+            }
+
+            return allSeats.Where(s => !unavailableSeatIds.Contains(s.SeatID)).ToList();
+        }
+        public bool IsSeatAvailable(int seatId, int startDetailId, int endDetailId, int scheduleId)
+        {
+            // Fetch all tickets for the schedule that involve the seat
+            var ticketsForSeat = _context.Tickets
+                .Where(t => t.ScheduleID == scheduleId && t.SeatID == seatId)
+                .ToList();
+
+            // Check each ticket to see if the seat is occupied for the desired segment
+            foreach (var ticket in ticketsForSeat)
+            {
+                // If the ticket's route segment overlaps with the desired segment, seat is not available
+                if ((ticket.StartRouteDetailID < endDetailId && ticket.EndRouteDetailID > startDetailId))
+                {
+                    return false; // Seat is occupied in the desired segment
+                }
+            }
+
+            return true; // Seat is available
+        }
+        public DateTime CalculateDepartureTimeForStop(Schedule schedule, int startStopId)
+        {
+            DateTime departureTime = schedule.DepartureTime;
+            int cumulativeTime = 0;
+
+            foreach (var detail in schedule.Route.RouteDetails.OrderBy(rd => rd.SequenceNumber))
+            {
+                if (detail.RouteDetailID == startStopId)
+                    break;
+
+                cumulativeTime += detail.Time;
+            }
+
+            return departureTime.AddMinutes(cumulativeTime);
+        }
+
+        public DateTime CalculateArrivalTimeForStop(Schedule schedule, int endStopId)
+        {
+            DateTime departureTime = schedule.DepartureTime;
+            int cumulativeTime = 0;
+
+            foreach (var detail in schedule.Route.RouteDetails.OrderBy(rd => rd.SequenceNumber))
+            {
+                cumulativeTime += detail.Time;
+                if (detail.RouteDetailID == endStopId)
+                    break;
+            }
+
+            return departureTime.AddMinutes(cumulativeTime);
+        }
         public class TicketPDFGenerator
         {
             public static void CreateTicketPDF(string fileName, Ticket ticket, DateTime segmentDepartureTime, DateTime segmentArrivalTime)
@@ -288,60 +361,7 @@ namespace BusStationInterface.Forms
                 document.Close();
             }
         }
-        public DateTime CalculateDepartureTimeForStop(Schedule schedule, int startStopId)
-        {
-            DateTime departureTime = schedule.DepartureTime;
-            int cumulativeTime = 0;
 
-            foreach (var detail in schedule.Route.RouteDetails.OrderBy(rd => rd.SequenceNumber))
-            {
-                if (detail.RouteDetailID == startStopId)
-                    break;
-
-                cumulativeTime += detail.Time;
-            }
-
-            return departureTime.AddMinutes(cumulativeTime);
-        }
-
-        public DateTime CalculateArrivalTimeForStop(Schedule schedule, int endStopId)
-        {
-            DateTime departureTime = schedule.DepartureTime;
-            int cumulativeTime = 0;
-
-            foreach (var detail in schedule.Route.RouteDetails.OrderBy(rd => rd.SequenceNumber))
-            {
-                cumulativeTime += detail.Time;
-                if (detail.RouteDetailID == endStopId)
-                    break;
-            }
-
-            return departureTime.AddMinutes(cumulativeTime);
-        }
-        public List<Seat> GetAvailableSeatsForSubroute(int scheduleId, int startDetailId, int endDetailId)
-        {
-            var schedule = _context.Schedules
-                                   .Include(s => s.Tickets)
-                                   .ThenInclude(t => t.Seat)
-                                   .FirstOrDefault(s => s.ScheduleID == scheduleId);
-
-            if (schedule == null) return new List<Seat>();
-
-            // Assuming RouteDetails are ordered by SequenceNumber
-            var allSeats = _context.Seats.Where(s => s.BusID == schedule.BusID).ToList();
-            var unavailableSeatIds = new HashSet<int>();
-
-            foreach (var ticket in schedule.Tickets)
-            {
-                if ((ticket.StartRouteDetailID <= startDetailId && ticket.EndRouteDetailID > startDetailId) ||
-                    (ticket.StartRouteDetailID < endDetailId && ticket.EndRouteDetailID >= endDetailId))
-                {
-                    unavailableSeatIds.Add(ticket.SeatID);
-                }
-            }
-
-            return allSeats.Where(s => !unavailableSeatIds.Contains(s.SeatID)).ToList();
-        }
         private void OnDestinationSelectionChanged()
         {
             if (dataGridViewTicketSchedule.CurrentRow != null)

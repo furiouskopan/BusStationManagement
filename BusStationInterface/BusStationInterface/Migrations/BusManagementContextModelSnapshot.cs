@@ -311,7 +311,7 @@ namespace BusStationInterface.Migrations
                     b.Property<int>("ScheduleID")
                         .HasColumnType("int");
 
-                    b.Property<int>("SeatID")
+                    b.Property<int?>("SeatID")
                         .HasColumnType("int");
 
                     b.Property<int>("StartRouteDetailID")
@@ -323,8 +323,7 @@ namespace BusStationInterface.Migrations
 
                     b.HasIndex("ScheduleID");
 
-                    b.HasIndex("SeatID")
-                        .IsUnique();
+                    b.HasIndex("SeatID");
 
                     b.HasIndex("StartRouteDetailID");
 
@@ -536,10 +535,9 @@ namespace BusStationInterface.Migrations
                         .IsRequired();
 
                     b.HasOne("BusStationInterface.Models.Seat", "Seat")
-                        .WithOne("Ticket")
-                        .HasForeignKey("BusStationInterface.Models.Ticket", "SeatID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .WithMany("Tickets")
+                        .HasForeignKey("SeatID")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("BusStationInterface.Models.RouteDetail", "StartRouteDetail")
                         .WithMany()
@@ -617,8 +615,7 @@ namespace BusStationInterface.Migrations
 
             modelBuilder.Entity("BusStationInterface.Models.Seat", b =>
                 {
-                    b.Navigation("Ticket")
-                        .IsRequired();
+                    b.Navigation("Tickets");
                 });
 
             modelBuilder.Entity("BusStationInterface.Models.Ticket", b =>
