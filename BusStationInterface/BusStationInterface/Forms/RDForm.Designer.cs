@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -116,7 +118,7 @@
             groupBox1.Controls.Add(txtDescription);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.Location = new Point(12, 25);
+            groupBox1.Location = new Point(103, 75);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(323, 167);
             groupBox1.TabIndex = 6;
@@ -153,10 +155,26 @@
             dataGridViewRoutes.AllowUserToResizeColumns = false;
             dataGridViewRoutes.AllowUserToResizeRows = false;
             dataGridViewRoutes.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewRoutes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewRoutes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewRoutes.Columns.AddRange(new DataGridViewColumn[] { StartDestination, EndDestination, descriptionDataGridViewTextBoxColumn });
             dataGridViewRoutes.DataSource = routeBindingSource;
-            dataGridViewRoutes.Location = new Point(473, 38);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViewRoutes.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewRoutes.Location = new Point(832, 88);
             dataGridViewRoutes.Name = "dataGridViewRoutes";
             dataGridViewRoutes.RowHeadersVisible = false;
             dataGridViewRoutes.RowHeadersWidth = 51;
@@ -199,10 +217,12 @@
             dataGridViewRouteDetails.AllowUserToResizeColumns = false;
             dataGridViewRouteDetails.AllowUserToResizeRows = false;
             dataGridViewRouteDetails.AutoGenerateColumns = false;
+            dataGridViewRouteDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewRouteDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { SequenceNumber, RouteID, RouteDetailID, Location, LocationID, Time, Description, PriceToNextStop });
             dataGridViewRouteDetails.DataSource = routeDetailBindingSource;
-            dataGridViewRouteDetails.Location = new Point(12, 232);
+            dataGridViewRouteDetails.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewRouteDetails.Location = new Point(72, 274);
             dataGridViewRouteDetails.Name = "dataGridViewRouteDetails";
             dataGridViewRouteDetails.RowHeadersVisible = false;
             dataGridViewRouteDetails.RowHeadersWidth = 51;
@@ -295,9 +315,9 @@
             groupBox2.Controls.Add(txtTime);
             groupBox2.Controls.Add(label6);
             groupBox2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox2.Location = new Point(642, 232);
+            groupBox2.Location = new Point(857, 269);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(331, 248);
+            groupBox2.Size = new Size(331, 267);
             groupBox2.TabIndex = 9;
             groupBox2.TabStop = false;
             groupBox2.Text = "Add Route Detail";
@@ -306,7 +326,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(22, 201);
+            label8.Location = new Point(25, 209);
             label8.Name = "label8";
             label8.Size = new Size(130, 21);
             label8.TabIndex = 9;
@@ -314,7 +334,7 @@
             // 
             // txtPriceToNextStop
             // 
-            txtPriceToNextStop.Location = new Point(178, 201);
+            txtPriceToNextStop.Location = new Point(178, 206);
             txtPriceToNextStop.Name = "txtPriceToNextStop";
             txtPriceToNextStop.Size = new Size(140, 29);
             txtPriceToNextStop.TabIndex = 10;
@@ -322,7 +342,7 @@
             // cmbDetailLocation
             // 
             cmbDetailLocation.FormattingEnabled = true;
-            cmbDetailLocation.Location = new Point(178, 28);
+            cmbDetailLocation.Location = new Point(178, 33);
             cmbDetailLocation.Name = "cmbDetailLocation";
             cmbDetailLocation.Size = new Size(140, 29);
             cmbDetailLocation.TabIndex = 8;
@@ -331,7 +351,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(25, 157);
+            label7.Location = new Point(25, 162);
             label7.Name = "label7";
             label7.Size = new Size(89, 21);
             label7.TabIndex = 6;
@@ -339,14 +359,14 @@
             // 
             // txtRouteDetailDescription
             // 
-            txtRouteDetailDescription.Location = new Point(178, 157);
+            txtRouteDetailDescription.Location = new Point(178, 162);
             txtRouteDetailDescription.Name = "txtRouteDetailDescription";
             txtRouteDetailDescription.Size = new Size(140, 29);
             txtRouteDetailDescription.TabIndex = 7;
             // 
             // txtSequenceNumber
             // 
-            txtSequenceNumber.Location = new Point(178, 71);
+            txtSequenceNumber.Location = new Point(178, 76);
             txtSequenceNumber.Name = "txtSequenceNumber";
             txtSequenceNumber.Size = new Size(140, 29);
             txtSequenceNumber.TabIndex = 3;
@@ -355,7 +375,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(25, 115);
+            label4.Location = new Point(25, 120);
             label4.Name = "label4";
             label4.Size = new Size(44, 21);
             label4.TabIndex = 2;
@@ -365,7 +385,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(25, 28);
+            label5.Location = new Point(25, 33);
             label5.Name = "label5";
             label5.Size = new Size(69, 21);
             label5.TabIndex = 1;
@@ -373,7 +393,7 @@
             // 
             // txtTime
             // 
-            txtTime.Location = new Point(178, 115);
+            txtTime.Location = new Point(178, 117);
             txtTime.Name = "txtTime";
             txtTime.Size = new Size(140, 29);
             txtTime.TabIndex = 5;
@@ -382,7 +402,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(22, 71);
+            label6.Location = new Point(25, 76);
             label6.Name = "label6";
             label6.Size = new Size(139, 21);
             label6.TabIndex = 0;
@@ -395,7 +415,7 @@
             btnDeleteRouteDetail.Depth = 0;
             btnDeleteRouteDetail.HighEmphasis = true;
             btnDeleteRouteDetail.Icon = null;
-            btnDeleteRouteDetail.Location = new Point(820, 471);
+            btnDeleteRouteDetail.Location = new Point(1035, 526);
             btnDeleteRouteDetail.Margin = new Padding(4, 6, 4, 6);
             btnDeleteRouteDetail.MouseState = MaterialSkin.MouseState.HOVER;
             btnDeleteRouteDetail.Name = "btnDeleteRouteDetail";
@@ -416,7 +436,7 @@
             btnAddRouteDetails.Depth = 0;
             btnAddRouteDetails.HighEmphasis = true;
             btnAddRouteDetails.Icon = null;
-            btnAddRouteDetails.Location = new Point(664, 473);
+            btnAddRouteDetails.Location = new Point(882, 526);
             btnAddRouteDetails.Margin = new Padding(4, 6, 4, 6);
             btnAddRouteDetails.MouseState = MaterialSkin.MouseState.HOVER;
             btnAddRouteDetails.Name = "btnAddRouteDetails";
@@ -438,7 +458,7 @@
             btnSaveRoutesEdit.Depth = 0;
             btnSaveRoutesEdit.HighEmphasis = true;
             btnSaveRoutesEdit.Icon = null;
-            btnSaveRoutesEdit.Location = new Point(388, 521);
+            btnSaveRoutesEdit.Location = new Point(609, 584);
             btnSaveRoutesEdit.Margin = new Padding(4, 6, 4, 6);
             btnSaveRoutesEdit.MouseState = MaterialSkin.MouseState.HOVER;
             btnSaveRoutesEdit.Name = "btnSaveRoutesEdit";
@@ -460,7 +480,7 @@
             btnAddRoute.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddRoute.HighEmphasis = true;
             btnAddRoute.Icon = null;
-            btnAddRoute.Location = new Point(342, 61);
+            btnAddRoute.Location = new Point(555, 100);
             btnAddRoute.Margin = new Padding(4, 8, 4, 8);
             btnAddRoute.MouseState = MaterialSkin.MouseState.HOVER;
             btnAddRoute.Name = "btnAddRoute";
@@ -471,7 +491,7 @@
             btnAddRoute.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnAddRoute.UseAccentColor = false;
             btnAddRoute.UseVisualStyleBackColor = true;
-            btnAddRoute.Click += btnDeleteRoute_Click;
+            btnAddRoute.Click += btnAddRoute_Click;
             // 
             // btnDeleteRoute
             // 
@@ -480,7 +500,7 @@
             btnDeleteRoute.Depth = 0;
             btnDeleteRoute.HighEmphasis = true;
             btnDeleteRoute.Icon = null;
-            btnDeleteRoute.Location = new Point(342, 125);
+            btnDeleteRoute.Location = new Point(555, 164);
             btnDeleteRoute.Margin = new Padding(4, 6, 4, 6);
             btnDeleteRoute.MouseState = MaterialSkin.MouseState.HOVER;
             btnDeleteRoute.Name = "btnDeleteRoute";
@@ -497,7 +517,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(997, 589);
+            ClientSize = new Size(1310, 635);
             Controls.Add(btnDeleteRoute);
             Controls.Add(btnAddRoute);
             Controls.Add(btnSaveRoutesEdit);

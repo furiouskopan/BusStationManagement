@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             dataGridViewTicketSchedule = new DataGridView();
             scheduleIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -38,7 +41,6 @@
             estimatedArrivalTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             dayDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             statusDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            //priceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             startDestinationIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             endDestinationIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             startDestinationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -48,7 +50,6 @@
             driverDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ticketsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             scheduleBindingSource = new BindingSource(components);
-            btnTicket = new Button();
             label1 = new Label();
             label2 = new Label();
             cmbSeat = new ComboBox();
@@ -57,6 +58,7 @@
             cmbEndDestination = new ComboBox();
             label3 = new Label();
             lblPrice = new Label();
+            btnTicket = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTicketSchedule).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)seatBindingSource).BeginInit();
@@ -67,17 +69,42 @@
             dataGridViewTicketSchedule.AllowUserToAddRows = false;
             dataGridViewTicketSchedule.AllowUserToDeleteRows = false;
             dataGridViewTicketSchedule.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewTicketSchedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewTicketSchedule.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewTicketSchedule.Columns.AddRange(new DataGridViewColumn[] { scheduleIDDataGridViewTextBoxColumn, busIDDataGridViewTextBoxColumn, routeIDDataGridViewTextBoxColumn, driverIDDataGridViewTextBoxColumn, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, dayDataGridViewTextBoxColumn, statusDataGridViewTextBoxColumn, startDestinationIdDataGridViewTextBoxColumn, endDestinationIdDataGridViewTextBoxColumn, startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn, busDataGridViewTextBoxColumn, routeDataGridViewTextBoxColumn, driverDataGridViewTextBoxColumn, ticketsDataGridViewTextBoxColumn });
             dataGridViewTicketSchedule.DataSource = scheduleBindingSource;
-            dataGridViewTicketSchedule.Location = new Point(10, 37);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViewTicketSchedule.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewTicketSchedule.Location = new Point(159, 80);
             dataGridViewTicketSchedule.Margin = new Padding(3, 2, 3, 2);
             dataGridViewTicketSchedule.Name = "dataGridViewTicketSchedule";
             dataGridViewTicketSchedule.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewTicketSchedule.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewTicketSchedule.RowHeadersVisible = false;
             dataGridViewTicketSchedule.RowHeadersWidth = 51;
             dataGridViewTicketSchedule.RowTemplate.Height = 29;
             dataGridViewTicketSchedule.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTicketSchedule.Size = new Size(937, 268);
+            dataGridViewTicketSchedule.Size = new Size(1182, 351);
             dataGridViewTicketSchedule.TabIndex = 0;
             dataGridViewTicketSchedule.SelectionChanged += dataGridViewTicketSchedule_SelectionChanged;
             // 
@@ -155,15 +182,6 @@
             statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
             statusDataGridViewTextBoxColumn.ReadOnly = true;
             statusDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            //priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            //priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            //priceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            //priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            //priceDataGridViewTextBoxColumn.ReadOnly = true;
-            //priceDataGridViewTextBoxColumn.Width = 125;
             // 
             // startDestinationIdDataGridViewTextBoxColumn
             // 
@@ -245,44 +263,33 @@
             // 
             scheduleBindingSource.DataSource = typeof(Models.Schedule);
             // 
-            // btnTicket
-            // 
-            btnTicket.Location = new Point(420, 402);
-            btnTicket.Margin = new Padding(3, 2, 3, 2);
-            btnTicket.Name = "btnTicket";
-            btnTicket.Size = new Size(114, 36);
-            btnTicket.TabIndex = 1;
-            btnTicket.Text = "Print Ticket";
-            btnTicket.UseVisualStyleBackColor = true;
-            btnTicket.Click += btnTicket_Click;
-            // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(428, 14);
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(656, 44);
             label1.Name = "label1";
-            label1.Size = new Size(129, 21);
+            label1.Size = new Size(211, 34);
             label1.TabIndex = 2;
             label1.Text = "Pick a Schedule";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(10, 310);
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(332, 445);
             label2.Name = "label2";
-            label2.Size = new Size(29, 15);
+            label2.Size = new Size(82, 20);
             label2.TabIndex = 4;
             label2.Text = "Seat";
             // 
             // cmbSeat
             // 
             cmbSeat.DataSource = seatBindingSource;
+            cmbSeat.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbSeat.FormattingEnabled = true;
-            cmbSeat.Location = new Point(10, 328);
+            cmbSeat.Location = new Point(332, 467);
             cmbSeat.Margin = new Padding(3, 2, 3, 2);
             cmbSeat.Name = "cmbSeat";
-            cmbSeat.Size = new Size(64, 23);
+            cmbSeat.Size = new Size(99, 29);
             cmbSeat.TabIndex = 5;
             // 
             // seatBindingSource
@@ -292,50 +299,71 @@
             // cmbStartDestination
             // 
             cmbStartDestination.DataSource = seatBindingSource;
+            cmbStartDestination.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbStartDestination.FormattingEnabled = true;
-            cmbStartDestination.Location = new Point(301, 328);
+            cmbStartDestination.Location = new Point(536, 471);
             cmbStartDestination.Margin = new Padding(3, 2, 3, 2);
             cmbStartDestination.Name = "cmbStartDestination";
-            cmbStartDestination.Size = new Size(117, 23);
+            cmbStartDestination.Size = new Size(117, 29);
             cmbStartDestination.TabIndex = 6;
             cmbStartDestination.SelectedIndexChanged += DestinationComboBox_SelectedIndexChanged;
             // 
             // cmbEndDestination
             // 
             cmbEndDestination.DataSource = seatBindingSource;
+            cmbEndDestination.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbEndDestination.FormattingEnabled = true;
-            cmbEndDestination.Location = new Point(519, 328);
+            cmbEndDestination.Location = new Point(869, 468);
             cmbEndDestination.Margin = new Padding(3, 2, 3, 2);
             cmbEndDestination.Name = "cmbEndDestination";
-            cmbEndDestination.Size = new Size(112, 23);
+            cmbEndDestination.Size = new Size(112, 29);
             cmbEndDestination.TabIndex = 7;
             cmbEndDestination.SelectedIndexChanged += DestinationComboBox_SelectedIndexChanged;
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(698, 336);
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(1036, 468);
             label3.Name = "label3";
-            label3.Size = new Size(44, 20);
+            label3.Size = new Size(63, 28);
             label3.TabIndex = 8;
             label3.Text = "Price:";
             // 
             // lblPrice
             // 
-            lblPrice.AutoSize = true;
-            lblPrice.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPrice.Location = new Point(738, 336);
+            lblPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPrice.Location = new Point(1088, 467);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(50, 20);
+            lblPrice.Size = new Size(73, 28);
             lblPrice.TabIndex = 9;
             lblPrice.Text = "label4";
+            // 
+            // btnTicket
+            // 
+            btnTicket.AutoSize = false;
+            btnTicket.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnTicket.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnTicket.Depth = 0;
+            btnTicket.HighEmphasis = true;
+            btnTicket.Icon = null;
+            btnTicket.Location = new Point(682, 506);
+            btnTicket.Margin = new Padding(4, 6, 4, 6);
+            btnTicket.MouseState = MaterialSkin.MouseState.HOVER;
+            btnTicket.Name = "btnTicket";
+            btnTicket.NoAccentTextColor = Color.Empty;
+            btnTicket.Size = new Size(161, 36);
+            btnTicket.TabIndex = 10;
+            btnTicket.Text = "Print Ticket";
+            btnTicket.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnTicket.UseAccentColor = false;
+            btnTicket.UseVisualStyleBackColor = true;
             // 
             // TicketForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(958, 447);
+            ClientSize = new Size(1485, 591);
+            Controls.Add(btnTicket);
             Controls.Add(lblPrice);
             Controls.Add(label3);
             Controls.Add(cmbEndDestination);
@@ -343,7 +371,6 @@
             Controls.Add(cmbSeat);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(btnTicket);
             Controls.Add(dataGridViewTicketSchedule);
             Margin = new Padding(3, 2, 3, 2);
             Name = "TicketForm";
@@ -353,14 +380,12 @@
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)seatBindingSource).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridViewTicketSchedule;
         private BindingSource scheduleBindingSource;
-        private Button btnTicket;
         private Label label1;
         private Label label2;
         private ComboBox cmbSeat;
@@ -386,5 +411,6 @@
         private ComboBox cmbEndDestination;
         private Label label3;
         private Label lblPrice;
+        private MaterialSkin.Controls.MaterialButton btnTicket;
     }
 }

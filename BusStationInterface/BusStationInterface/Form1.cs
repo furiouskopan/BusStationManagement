@@ -41,18 +41,17 @@ namespace BusStationInterface
             LoadSchedules();
             timer1.Start();
             dataGridViewRouteDetails.DataSource = null;
-            label9.Text = UserSession.CurrentEmployeeName;
-            // Check if the user is not an admin
-            //if (UserSession.CurrentUserRole != "Administrator")
-            //{
-            //    adminPanel.Visible = false;
-            //    schedulesPanel.Location = new Point(20, 67);
-            //    schedulesPanel.Size = new Size(840, 230);
-            //    dataGridViewSchedules.Size = new Size(800, 200);
-            //    btnTicket.Location = new Point(827, 326);
-            //    Size = new Size(934, 652);
-            //    lblTimer.ForeColor = Color.White;
-            //}
+            lblEmployee.Text = UserSession.CurrentEmployeeName;
+            if (UserSession.CurrentUserRole != "Administrator")
+            {
+                adminPanel.Visible = false;
+                schedulesPanel.Location = new Point(20, 67);
+                schedulesPanel.Size = new Size(840, 230);
+                materialTabControl1.TabPages.Remove(tabPageBuses);
+                materialTabControl1.TabPages.Remove(tabPageDrivers);
+                materialTabControl1.TabPages.Remove(tabPageLocations);
+
+            }
 
             dataGridViewRoutes.ClearSelection();
             dataGridViewBuses.ClearSelection();
@@ -60,6 +59,7 @@ namespace BusStationInterface
             dataGridViewDestinations.ClearSelection();
             dataGridViewRouteDetails.ClearSelection();
             dataGridViewSchedules.ClearSelection();
+            SetLabelsFont();
 
             materialTabControl1.SendToBack();
 
@@ -302,6 +302,7 @@ namespace BusStationInterface
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblTimer.Text = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+            lblTimer.Font = new Font("Segoe UI", 15, FontStyle.Regular);
         }
 
         private void btnEditSchedules_Click(object sender, EventArgs e)
@@ -371,8 +372,16 @@ namespace BusStationInterface
         {
             if (materialTabControl1.SelectedIndex == 8)
             {
-                MessageBox.Show("Are you sure you want to log out?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(
+                    "Are you sure you want to log out?",
+                    "Logout Confirmation",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
 
+                if (result == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
             }
         }
         private void btnSimulation_Click(object sender, EventArgs e)
@@ -390,6 +399,17 @@ namespace BusStationInterface
                 ScheduleService scheduleService = new ScheduleService(context);
                 scheduleService.UpdateScheduleDatesForNextWeek();
             }
+        }
+        private void SetLabelsFont()
+        {
+            Font labelFont = new Font("Segoe UI", 15, FontStyle.Regular);
+
+            label1.Font = labelFont;
+            label2.Font = labelFont;
+            label3.Font = labelFont;
+            label5.Font = labelFont;
+            label8.Font = labelFont;
+            lblEmployee.Font = labelFont;
         }
     }
 }

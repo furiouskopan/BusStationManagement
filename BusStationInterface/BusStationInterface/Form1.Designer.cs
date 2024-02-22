@@ -39,6 +39,10 @@
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             dataGridViewBuses = new DataGridView();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -89,15 +93,15 @@
             scheduleBindingSource = new BindingSource(components);
             txtLocationFilter = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            label9 = new Label();
+            lblEmployee = new Label();
             adminPanel = new Panel();
             schedulesPanel = new Panel();
             materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             tabPageHome = new TabPage();
+            btnUpdateScheduleDates = new MaterialSkin.Controls.MaterialButton();
             btnSimulation = new MaterialSkin.Controls.MaterialButton();
-            btnTicketReport = new MaterialSkin.Controls.MaterialButton();
             btnSearchRoute = new MaterialSkin.Controls.MaterialButton();
             btnTicket = new MaterialSkin.Controls.MaterialButton();
             tabPageBuses = new TabPage();
@@ -109,7 +113,6 @@
             tabPageTicketReports = new TabPage();
             tabPageLogout = new TabPage();
             imageList1 = new ImageList(components);
-            btnUpdateScheduleDates = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBuses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)driverBindingSource).BeginInit();
@@ -143,7 +146,7 @@
             dataGridViewBuses.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.PaleTurquoise;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = Color.PaleTurquoise;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -154,14 +157,14 @@
             dataGridViewBuses.DataSource = busBindingSource;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = Color.IndianRed;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridViewBuses.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewBuses.EnableHeadersVisualStyles = false;
-            dataGridViewBuses.Location = new Point(17, 36);
+            dataGridViewBuses.Location = new Point(3, 36);
             dataGridViewBuses.Name = "dataGridViewBuses";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = SystemColors.ControlLight;
@@ -212,26 +215,24 @@
             // 
             // label1
             // 
-            label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.Black;
             label1.Location = new Point(17, 8);
             label1.Name = "label1";
-            label1.Size = new Size(94, 25);
+            label1.Size = new Size(125, 25);
             label1.TabIndex = 1;
             label1.Text = "All Buses\r\n";
             // 
             // label2
             // 
-            label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.FlatStyle = FlatStyle.Flat;
-            label2.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(221, 9);
+            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(193, 8);
             label2.Name = "label2";
-            label2.Size = new Size(105, 25);
+            label2.Size = new Size(133, 25);
             label2.TabIndex = 2;
             label2.Text = "All Drivers";
             // 
@@ -248,7 +249,7 @@
             dataGridViewDrivers.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = Color.PaleTurquoise;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle5.SelectionBackColor = Color.PaleTurquoise;
             dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
@@ -259,8 +260,9 @@
             dataGridViewDrivers.DataSource = driverBindingSource;
             dataGridViewDrivers.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewDrivers.EnableHeadersVisualStyles = false;
-            dataGridViewDrivers.Location = new Point(206, 37);
+            dataGridViewDrivers.Location = new Point(178, 36);
             dataGridViewDrivers.Name = "dataGridViewDrivers";
+            dataGridViewDrivers.RowHeadersVisible = false;
             dataGridViewDrivers.RowHeadersWidth = 51;
             dataGridViewDrivers.RowTemplate.Height = 25;
             dataGridViewDrivers.ScrollBars = ScrollBars.Vertical;
@@ -305,7 +307,7 @@
             dataGridViewDestinations.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = Color.PaleTurquoise;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle6.SelectionBackColor = Color.PaleTurquoise;
             dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
@@ -314,12 +316,20 @@
             dataGridViewDestinations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDestinations.Columns.AddRange(new DataGridViewColumn[] { destinationIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn1, descriptionDataGridViewTextBoxColumn });
             dataGridViewDestinations.DataSource = destinationBindingSource;
-            dataGridViewDestinations.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Window;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = Color.IndianRed;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dataGridViewDestinations.DefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewDestinations.EnableHeadersVisualStyles = false;
-            dataGridViewDestinations.Location = new Point(544, 40);
+            dataGridViewDestinations.Location = new Point(471, 36);
             dataGridViewDestinations.Name = "dataGridViewDestinations";
             dataGridViewDestinations.ReadOnly = true;
             dataGridViewDestinations.RightToLeft = RightToLeft.No;
+            dataGridViewDestinations.RowHeadersVisible = false;
             dataGridViewDestinations.RowHeadersWidth = 51;
             dataGridViewDestinations.RowTemplate.Height = 25;
             dataGridViewDestinations.ScrollBars = ScrollBars.Vertical;
@@ -361,11 +371,10 @@
             // 
             // label3
             // 
-            label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Microsoft JhengHei", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(544, 10);
+            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.Black;
+            label3.Location = new Point(471, 6);
             label3.Name = "label3";
             label3.Size = new Size(167, 27);
             label3.TabIndex = 7;
@@ -374,29 +383,39 @@
             // dataGridViewRoutes
             // 
             dataGridViewRoutes.AllowUserToResizeRows = false;
-            dataGridViewRoutes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewRoutes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             dataGridViewRoutes.AutoGenerateColumns = false;
             dataGridViewRoutes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.PaleTurquoise;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = Color.PaleTurquoise;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dataGridViewRoutes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dataGridViewRoutes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dataGridViewRoutes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewRoutes.Columns.AddRange(new DataGridViewColumn[] { descriptionDataGridViewTextBoxColumn1, startDestinationDataGridViewTextBoxColumn, endDestinationDataGridViewTextBoxColumn });
             dataGridViewRoutes.DataSource = routeBindingSource1;
-            dataGridViewRoutes.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = SystemColors.Window;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = Color.CadetBlue;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
+            dataGridViewRoutes.DefaultCellStyle = dataGridViewCellStyle10;
             dataGridViewRoutes.EnableHeadersVisualStyles = false;
             dataGridViewRoutes.Location = new Point(15, 332);
             dataGridViewRoutes.Margin = new Padding(3, 2, 3, 2);
             dataGridViewRoutes.Name = "dataGridViewRoutes";
+            dataGridViewRoutes.RowHeadersVisible = false;
             dataGridViewRoutes.RowHeadersWidth = 51;
             dataGridViewRoutes.RowTemplate.Height = 29;
             dataGridViewRoutes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewRoutes.Size = new Size(430, 189);
+            dataGridViewRoutes.Size = new Size(377, 189);
             dataGridViewRoutes.TabIndex = 10;
             dataGridViewRoutes.SelectionChanged += dataGridViewRoutes_SelectionChanged;
             // 
@@ -443,30 +462,30 @@
             // dataGridViewRouteDetails
             // 
             dataGridViewRouteDetails.AllowUserToResizeRows = false;
-            dataGridViewRouteDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewRouteDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             dataGridViewRouteDetails.AutoGenerateColumns = false;
             dataGridViewRouteDetails.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.PaleTurquoise;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = Color.PaleTurquoise;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.Window;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridViewRouteDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.Window;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+            dataGridViewRouteDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dataGridViewRouteDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { sequenceNumberDataGridViewTextBoxColumn, timeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn2, LocationName });
             dataGridViewRouteDetails.DataSource = routeDetailBindingSource;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = SystemColors.Window;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = Color.Silver;
-            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            dataGridViewRouteDetails.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = SystemColors.Window;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
+            dataGridViewRouteDetails.DefaultCellStyle = dataGridViewCellStyle12;
             dataGridViewRouteDetails.EnableHeadersVisualStyles = false;
-            dataGridViewRouteDetails.Location = new Point(491, 332);
+            dataGridViewRouteDetails.Location = new Point(441, 331);
             dataGridViewRouteDetails.Margin = new Padding(3, 2, 3, 2);
             dataGridViewRouteDetails.Name = "dataGridViewRouteDetails";
             dataGridViewRouteDetails.RowHeadersVisible = false;
@@ -516,11 +535,10 @@
             // 
             // label5
             // 
-            label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Microsoft JhengHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(496, 298);
+            label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.ForeColor = Color.Black;
+            label5.Location = new Point(446, 297);
             label5.Name = "label5";
             label5.Size = new Size(220, 25);
             label5.TabIndex = 17;
@@ -532,23 +550,22 @@
             // 
             // lblTimer
             // 
-            lblTimer.AutoSize = true;
             lblTimer.BackColor = Color.Transparent;
             lblTimer.Font = new Font("Verdana", 17.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblTimer.ForeColor = Color.Brown;
-            lblTimer.Location = new Point(1336, -1);
+            lblTimer.Location = new Point(1277, 0);
             lblTimer.Margin = new Padding(0, 38, 0, 38);
             lblTimer.Name = "lblTimer";
-            lblTimer.Size = new Size(81, 28);
+            lblTimer.Size = new Size(296, 28);
             lblTimer.TabIndex = 21;
             lblTimer.Text = "label8";
             // 
             // label8
             // 
             label8.BackColor = Color.Transparent;
-            label8.Font = new Font("Microsoft JhengHei", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(14, 12);
+            label8.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.ForeColor = Color.Black;
+            label8.Location = new Point(14, 9);
             label8.Name = "label8";
             label8.Size = new Size(193, 27);
             label8.TabIndex = 22;
@@ -559,26 +576,34 @@
             dataGridViewSchedules.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewSchedules.AutoGenerateColumns = false;
             dataGridViewSchedules.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = Color.PaleTurquoise;
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = Color.PaleTurquoise;
-            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            dataGridViewSchedules.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle13.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle13.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
+            dataGridViewSchedules.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             dataGridViewSchedules.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewSchedules.Columns.AddRange(new DataGridViewColumn[] { Status, DriverID, Driver, scheduleIDDataGridViewTextBoxColumn, busIDDataGridViewTextBoxColumn1, departureTimeDataGridViewTextBoxColumn, estimatedArrivalTimeDataGridViewTextBoxColumn, Route, RouteID, dayDataGridViewTextBoxColumn });
             dataGridViewSchedules.DataSource = scheduleBindingSource;
-            dataGridViewSchedules.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = SystemColors.Window;
+            dataGridViewCellStyle14.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle14.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = Color.IndianRed;
+            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.False;
+            dataGridViewSchedules.DefaultCellStyle = dataGridViewCellStyle14;
             dataGridViewSchedules.EnableHeadersVisualStyles = false;
-            dataGridViewSchedules.Location = new Point(14, 42);
+            dataGridViewSchedules.Location = new Point(3, 38);
             dataGridViewSchedules.Margin = new Padding(3, 2, 3, 2);
             dataGridViewSchedules.Name = "dataGridViewSchedules";
+            dataGridViewSchedules.RowHeadersVisible = false;
             dataGridViewSchedules.RowHeadersWidth = 51;
             dataGridViewSchedules.RowTemplate.Height = 29;
             dataGridViewSchedules.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewSchedules.Size = new Size(510, 161);
+            dataGridViewSchedules.Size = new Size(602, 161);
             dataGridViewSchedules.TabIndex = 24;
             // 
             // Status
@@ -671,7 +696,7 @@
             // 
             // txtLocationFilter
             // 
-            txtLocationFilter.Location = new Point(381, 18);
+            txtLocationFilter.Location = new Point(462, 11);
             txtLocationFilter.Margin = new Padding(3, 2, 3, 2);
             txtLocationFilter.Name = "txtLocationFilter";
             txtLocationFilter.Size = new Size(143, 23);
@@ -684,17 +709,16 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
-            // label9
+            // lblEmployee
             // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.ForeColor = Color.White;
-            label9.Location = new Point(285, 36);
-            label9.Name = "label9";
-            label9.Size = new Size(63, 25);
-            label9.TabIndex = 28;
-            label9.Text = "label9";
+            lblEmployee.BackColor = Color.Transparent;
+            lblEmployee.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblEmployee.ForeColor = Color.Black;
+            lblEmployee.Location = new Point(50, 15);
+            lblEmployee.Name = "lblEmployee";
+            lblEmployee.Size = new Size(182, 25);
+            lblEmployee.TabIndex = 28;
+            lblEmployee.Text = "label9";
             // 
             // adminPanel
             // 
@@ -707,7 +731,7 @@
             adminPanel.Controls.Add(label3);
             adminPanel.Location = new Point(16, 52);
             adminPanel.Name = "adminPanel";
-            adminPanel.Size = new Size(934, 224);
+            adminPanel.Size = new Size(876, 224);
             adminPanel.TabIndex = 29;
             // 
             // schedulesPanel
@@ -716,9 +740,9 @@
             schedulesPanel.Controls.Add(dataGridViewSchedules);
             schedulesPanel.Controls.Add(label8);
             schedulesPanel.Controls.Add(txtLocationFilter);
-            schedulesPanel.Location = new Point(956, 50);
+            schedulesPanel.Location = new Point(898, 50);
             schedulesPanel.Name = "schedulesPanel";
-            schedulesPanel.Size = new Size(536, 226);
+            schedulesPanel.Size = new Size(608, 226);
             schedulesPanel.TabIndex = 30;
             // 
             // materialLabel1
@@ -774,7 +798,7 @@
             // 
             tabPageHome.Controls.Add(btnUpdateScheduleDates);
             tabPageHome.Controls.Add(btnSimulation);
-            tabPageHome.Controls.Add(btnTicketReport);
+            tabPageHome.Controls.Add(lblEmployee);
             tabPageHome.Controls.Add(btnSearchRoute);
             tabPageHome.Controls.Add(btnTicket);
             tabPageHome.Controls.Add(adminPanel);
@@ -795,6 +819,27 @@
             tabPageHome.Text = "Home";
             tabPageHome.UseVisualStyleBackColor = true;
             // 
+            // btnUpdateScheduleDates
+            // 
+            btnUpdateScheduleDates.AutoSize = false;
+            btnUpdateScheduleDates.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnUpdateScheduleDates.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnUpdateScheduleDates.Depth = 0;
+            btnUpdateScheduleDates.HighEmphasis = true;
+            btnUpdateScheduleDates.Icon = null;
+            btnUpdateScheduleDates.Location = new Point(441, 528);
+            btnUpdateScheduleDates.Margin = new Padding(4, 6, 4, 6);
+            btnUpdateScheduleDates.MouseState = MaterialSkin.MouseState.HOVER;
+            btnUpdateScheduleDates.Name = "btnUpdateScheduleDates";
+            btnUpdateScheduleDates.NoAccentTextColor = Color.Empty;
+            btnUpdateScheduleDates.Size = new Size(177, 36);
+            btnUpdateScheduleDates.TabIndex = 37;
+            btnUpdateScheduleDates.Text = "Update Schedules";
+            btnUpdateScheduleDates.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnUpdateScheduleDates.UseAccentColor = false;
+            btnUpdateScheduleDates.UseVisualStyleBackColor = true;
+            btnUpdateScheduleDates.Click += btnUpdateScheduleDates_Click;
+            // 
             // btnSimulation
             // 
             btnSimulation.AutoSize = false;
@@ -803,7 +848,7 @@
             btnSimulation.Depth = 0;
             btnSimulation.HighEmphasis = true;
             btnSimulation.Icon = null;
-            btnSimulation.Location = new Point(939, 390);
+            btnSimulation.Location = new Point(752, 527);
             btnSimulation.Margin = new Padding(4, 6, 4, 6);
             btnSimulation.MouseState = MaterialSkin.MouseState.HOVER;
             btnSimulation.Name = "btnSimulation";
@@ -816,26 +861,6 @@
             btnSimulation.UseVisualStyleBackColor = true;
             btnSimulation.Click += btnSimulation_Click;
             // 
-            // btnTicketReport
-            // 
-            btnTicketReport.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnTicketReport.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnTicketReport.Depth = 0;
-            btnTicketReport.HighEmphasis = true;
-            btnTicketReport.Icon = null;
-            btnTicketReport.Location = new Point(939, 299);
-            btnTicketReport.Margin = new Padding(4, 6, 4, 6);
-            btnTicketReport.MouseState = MaterialSkin.MouseState.HOVER;
-            btnTicketReport.Name = "btnTicketReport";
-            btnTicketReport.NoAccentTextColor = Color.Empty;
-            btnTicketReport.Size = new Size(71, 36);
-            btnTicketReport.TabIndex = 35;
-            btnTicketReport.Text = "Ticket";
-            btnTicketReport.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnTicketReport.UseAccentColor = false;
-            btnTicketReport.UseVisualStyleBackColor = true;
-            btnTicketReport.Click += btnTicketReport_Click;
-            // 
             // btnSearchRoute
             // 
             btnSearchRoute.AutoSize = false;
@@ -845,7 +870,7 @@
             btnSearchRoute.Font = new Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point);
             btnSearchRoute.HighEmphasis = true;
             btnSearchRoute.Icon = null;
-            btnSearchRoute.Location = new Point(317, 298);
+            btnSearchRoute.Location = new Point(264, 299);
             btnSearchRoute.Margin = new Padding(4, 6, 4, 6);
             btnSearchRoute.MouseState = MaterialSkin.MouseState.HOVER;
             btnSearchRoute.Name = "btnSearchRoute";
@@ -864,7 +889,7 @@
             btnTicket.Depth = 0;
             btnTicket.HighEmphasis = true;
             btnTicket.Icon = null;
-            btnTicket.Location = new Point(848, 287);
+            btnTicket.Location = new Point(798, 287);
             btnTicket.Margin = new Padding(4, 6, 4, 6);
             btnTicket.MouseState = MaterialSkin.MouseState.HOVER;
             btnTicket.Name = "btnTicket";
@@ -974,27 +999,6 @@
             imageList1.Images.SetKeyName(7, "icons8-logout-48.png");
             imageList1.Images.SetKeyName(8, "tickets.png");
             // 
-            // btnUpdateScheduleDates
-            // 
-            btnUpdateScheduleDates.AutoSize = false;
-            btnUpdateScheduleDates.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnUpdateScheduleDates.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnUpdateScheduleDates.Depth = 0;
-            btnUpdateScheduleDates.HighEmphasis = true;
-            btnUpdateScheduleDates.Icon = null;
-            btnUpdateScheduleDates.Location = new Point(1286, 527);
-            btnUpdateScheduleDates.Margin = new Padding(4, 6, 4, 6);
-            btnUpdateScheduleDates.MouseState = MaterialSkin.MouseState.HOVER;
-            btnUpdateScheduleDates.Name = "btnUpdateScheduleDates";
-            btnUpdateScheduleDates.NoAccentTextColor = Color.Empty;
-            btnUpdateScheduleDates.Size = new Size(177, 36);
-            btnUpdateScheduleDates.TabIndex = 37;
-            btnUpdateScheduleDates.Text = "Update Schedules";
-            btnUpdateScheduleDates.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnUpdateScheduleDates.UseAccentColor = false;
-            btnUpdateScheduleDates.UseVisualStyleBackColor = true;
-            btnUpdateScheduleDates.Click += btnUpdateScheduleDates_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1002,7 +1006,6 @@
             BackColor = SystemColors.Menu;
             ClientSize = new Size(1600, 700);
             Controls.Add(materialTabControl1);
-            Controls.Add(label9);
             DrawerShowIconsWhenHidden = true;
             DrawerTabControl = materialTabControl1;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -1026,14 +1029,12 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewSchedules).EndInit();
             ((System.ComponentModel.ISupportInitialize)scheduleBindingSource).EndInit();
             adminPanel.ResumeLayout(false);
-            adminPanel.PerformLayout();
             schedulesPanel.ResumeLayout(false);
             schedulesPanel.PerformLayout();
             materialTabControl1.ResumeLayout(false);
             tabPageHome.ResumeLayout(false);
             tabPageHome.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -1089,7 +1090,7 @@
         private DataGridViewTextBoxColumn Route;
         private DataGridViewTextBoxColumn RouteID;
         private DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
-        private Label label9;
+        private Label lblEmployee;
         private Panel adminPanel;
         private Panel schedulesPanel;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
@@ -1105,7 +1106,6 @@
         private TabPage tabPageLogout;
         private MaterialSkin.Controls.MaterialButton btnSearchRoute;
         private MaterialSkin.Controls.MaterialButton btnTicket;
-        private MaterialSkin.Controls.MaterialButton btnTicketReport;
         private TabPage tabPageTicketReports;
         private TabPage tabPageTicket;
         private MaterialSkin.Controls.MaterialButton btnSimulation;

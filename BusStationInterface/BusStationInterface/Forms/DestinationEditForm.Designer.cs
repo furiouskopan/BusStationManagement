@@ -39,9 +39,9 @@
             descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             destinationBindingSource = new BindingSource(components);
             groupboxAddDest = new GroupBox();
+            btnAddDestination = new MaterialSkin.Controls.MaterialButton();
             label1 = new Label();
             btnSaveDestinationEdit = new MaterialSkin.Controls.MaterialButton();
-            btnAddDestination = new MaterialSkin.Controls.MaterialButton();
             btnDeleteDestination = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDestinationsOnEditForm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)destinationBindingSource).BeginInit();
@@ -90,6 +90,7 @@
             dataGridViewDestinationsOnEditForm.DataSource = destinationBindingSource;
             dataGridViewDestinationsOnEditForm.Location = new Point(32, 73);
             dataGridViewDestinationsOnEditForm.Name = "dataGridViewDestinationsOnEditForm";
+            dataGridViewDestinationsOnEditForm.RowHeadersVisible = false;
             dataGridViewDestinationsOnEditForm.RowTemplate.Height = 25;
             dataGridViewDestinationsOnEditForm.ScrollBars = ScrollBars.Vertical;
             dataGridViewDestinationsOnEditForm.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -134,13 +135,33 @@
             groupboxAddDest.TabStop = false;
             groupboxAddDest.Text = "Insert";
             // 
+            // btnAddDestination
+            // 
+            btnAddDestination.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAddDestination.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAddDestination.Depth = 0;
+            btnAddDestination.HighEmphasis = true;
+            btnAddDestination.Icon = null;
+            btnAddDestination.Location = new Point(338, 36);
+            btnAddDestination.Margin = new Padding(4, 6, 4, 6);
+            btnAddDestination.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAddDestination.Name = "btnAddDestination";
+            btnAddDestination.NoAccentTextColor = Color.Empty;
+            btnAddDestination.Size = new Size(148, 36);
+            btnAddDestination.TabIndex = 26;
+            btnAddDestination.Text = "Add Destination";
+            btnAddDestination.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAddDestination.UseAccentColor = false;
+            btnAddDestination.UseVisualStyleBackColor = true;
+            btnAddDestination.Click += btnAddDestination_Click;
+            // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(32, 18);
             label1.Name = "label1";
-            label1.Size = new Size(169, 30);
+            label1.Size = new Size(193, 32);
             label1.TabIndex = 24;
             label1.Text = "Edit Destinations";
             // 
@@ -163,26 +184,6 @@
             btnSaveDestinationEdit.UseAccentColor = false;
             btnSaveDestinationEdit.UseVisualStyleBackColor = true;
             btnSaveDestinationEdit.Click += btnSaveDestinationEdit_Click;
-            // 
-            // btnAddDestination
-            // 
-            btnAddDestination.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnAddDestination.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnAddDestination.Depth = 0;
-            btnAddDestination.HighEmphasis = true;
-            btnAddDestination.Icon = null;
-            btnAddDestination.Location = new Point(338, 36);
-            btnAddDestination.Margin = new Padding(4, 6, 4, 6);
-            btnAddDestination.MouseState = MaterialSkin.MouseState.HOVER;
-            btnAddDestination.Name = "btnAddDestination";
-            btnAddDestination.NoAccentTextColor = Color.Empty;
-            btnAddDestination.Size = new Size(148, 36);
-            btnAddDestination.TabIndex = 26;
-            btnAddDestination.Text = "Add Destination";
-            btnAddDestination.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnAddDestination.UseAccentColor = false;
-            btnAddDestination.UseVisualStyleBackColor = true;
-            btnAddDestination.Click += btnAddDestination_Click;
             // 
             // btnDeleteDestination
             // 
@@ -208,7 +209,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(657, 530);
+            ClientSize = new Size(1188, 575);
             Controls.Add(btnDeleteDestination);
             Controls.Add(btnSaveDestinationEdit);
             Controls.Add(label1);

@@ -58,6 +58,7 @@
             dataGridViewDriversOnEditForm.DataSource = driverBindingSource;
             dataGridViewDriversOnEditForm.Location = new Point(36, 59);
             dataGridViewDriversOnEditForm.Name = "dataGridViewDriversOnEditForm";
+            dataGridViewDriversOnEditForm.RowHeadersVisible = false;
             dataGridViewDriversOnEditForm.RowHeadersWidth = 51;
             dataGridViewDriversOnEditForm.RowTemplate.Height = 25;
             dataGridViewDriversOnEditForm.ScrollBars = ScrollBars.Vertical;
@@ -162,10 +163,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(36, 17);
             label1.Name = "label1";
-            label1.Size = new Size(118, 30);
+            label1.Size = new Size(135, 32);
             label1.TabIndex = 16;
             label1.Text = "Edit Drivers";
             // 
@@ -213,7 +214,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(637, 501);
+            ClientSize = new Size(960, 538);
             Controls.Add(btnDeleteDriver);
             Controls.Add(btnSaveDriverEdit);
             Controls.Add(label1);
