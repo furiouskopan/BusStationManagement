@@ -118,7 +118,7 @@
             groupBox1.Controls.Add(txtDescription);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.Location = new Point(103, 75);
+            groupBox1.Location = new Point(67, 51);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(323, 167);
             groupBox1.TabIndex = 6;
@@ -174,7 +174,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridViewRoutes.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewRoutes.Location = new Point(832, 88);
+            dataGridViewRoutes.Location = new Point(778, 64);
             dataGridViewRoutes.Name = "dataGridViewRoutes";
             dataGridViewRoutes.RowHeadersVisible = false;
             dataGridViewRoutes.RowHeadersWidth = 51;
@@ -222,7 +222,7 @@
             dataGridViewRouteDetails.Columns.AddRange(new DataGridViewColumn[] { SequenceNumber, RouteID, RouteDetailID, Location, LocationID, Time, Description, PriceToNextStop });
             dataGridViewRouteDetails.DataSource = routeDetailBindingSource;
             dataGridViewRouteDetails.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewRouteDetails.Location = new Point(72, 274);
+            dataGridViewRouteDetails.Location = new Point(67, 250);
             dataGridViewRouteDetails.Name = "dataGridViewRouteDetails";
             dataGridViewRouteDetails.RowHeadersVisible = false;
             dataGridViewRouteDetails.RowHeadersWidth = 51;
@@ -315,7 +315,7 @@
             groupBox2.Controls.Add(txtTime);
             groupBox2.Controls.Add(label6);
             groupBox2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox2.Location = new Point(857, 269);
+            groupBox2.Location = new Point(825, 250);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(331, 267);
             groupBox2.TabIndex = 9;
@@ -415,7 +415,7 @@
             btnDeleteRouteDetail.Depth = 0;
             btnDeleteRouteDetail.HighEmphasis = true;
             btnDeleteRouteDetail.Icon = null;
-            btnDeleteRouteDetail.Location = new Point(1035, 526);
+            btnDeleteRouteDetail.Location = new Point(1003, 507);
             btnDeleteRouteDetail.Margin = new Padding(4, 6, 4, 6);
             btnDeleteRouteDetail.MouseState = MaterialSkin.MouseState.HOVER;
             btnDeleteRouteDetail.Name = "btnDeleteRouteDetail";
@@ -436,7 +436,7 @@
             btnAddRouteDetails.Depth = 0;
             btnAddRouteDetails.HighEmphasis = true;
             btnAddRouteDetails.Icon = null;
-            btnAddRouteDetails.Location = new Point(882, 526);
+            btnAddRouteDetails.Location = new Point(850, 507);
             btnAddRouteDetails.Margin = new Padding(4, 6, 4, 6);
             btnAddRouteDetails.MouseState = MaterialSkin.MouseState.HOVER;
             btnAddRouteDetails.Name = "btnAddRouteDetails";
@@ -458,7 +458,7 @@
             btnSaveRoutesEdit.Depth = 0;
             btnSaveRoutesEdit.HighEmphasis = true;
             btnSaveRoutesEdit.Icon = null;
-            btnSaveRoutesEdit.Location = new Point(609, 584);
+            btnSaveRoutesEdit.Location = new Point(577, 527);
             btnSaveRoutesEdit.Margin = new Padding(4, 6, 4, 6);
             btnSaveRoutesEdit.MouseState = MaterialSkin.MouseState.HOVER;
             btnSaveRoutesEdit.Name = "btnSaveRoutesEdit";
@@ -480,7 +480,7 @@
             btnAddRoute.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddRoute.HighEmphasis = true;
             btnAddRoute.Icon = null;
-            btnAddRoute.Location = new Point(555, 100);
+            btnAddRoute.Location = new Point(550, 87);
             btnAddRoute.Margin = new Padding(4, 8, 4, 8);
             btnAddRoute.MouseState = MaterialSkin.MouseState.HOVER;
             btnAddRoute.Name = "btnAddRoute";
@@ -500,7 +500,7 @@
             btnDeleteRoute.Depth = 0;
             btnDeleteRoute.HighEmphasis = true;
             btnDeleteRoute.Icon = null;
-            btnDeleteRoute.Location = new Point(555, 164);
+            btnDeleteRoute.Location = new Point(550, 151);
             btnDeleteRoute.Margin = new Padding(4, 6, 4, 6);
             btnDeleteRoute.MouseState = MaterialSkin.MouseState.HOVER;
             btnDeleteRoute.Name = "btnDeleteRoute";

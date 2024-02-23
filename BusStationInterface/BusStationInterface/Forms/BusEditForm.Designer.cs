@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             dataGridViewBusesOnEditForm = new DataGridView();
             busIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             busTypeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -55,26 +55,26 @@
             dataGridViewBusesOnEditForm.AllowUserToResizeColumns = false;
             dataGridViewBusesOnEditForm.AllowUserToResizeRows = false;
             dataGridViewBusesOnEditForm.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewBusesOnEditForm.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridViewBusesOnEditForm.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewBusesOnEditForm.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewBusesOnEditForm.Columns.AddRange(new DataGridViewColumn[] { busIDDataGridViewTextBoxColumn, busTypeDataGridViewTextBoxColumn, totalSeatsDataGridViewTextBoxColumn });
             dataGridViewBusesOnEditForm.DataSource = busBindingSource;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridViewBusesOnEditForm.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewBusesOnEditForm.Location = new Point(171, 69);
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dataGridViewBusesOnEditForm.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewBusesOnEditForm.Location = new Point(50, 69);
             dataGridViewBusesOnEditForm.MultiSelect = false;
             dataGridViewBusesOnEditForm.Name = "dataGridViewBusesOnEditForm";
             dataGridViewBusesOnEditForm.RowHeadersVisible = false;
@@ -82,7 +82,7 @@
             dataGridViewBusesOnEditForm.RowTemplate.Height = 25;
             dataGridViewBusesOnEditForm.ScrollBars = ScrollBars.Vertical;
             dataGridViewBusesOnEditForm.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewBusesOnEditForm.Size = new Size(387, 206);
+            dataGridViewBusesOnEditForm.Size = new Size(377, 206);
             dataGridViewBusesOnEditForm.TabIndex = 7;
             // 
             // busIDDataGridViewTextBoxColumn
@@ -116,7 +116,7 @@
             // lblSeats
             // 
             lblSeats.AutoSize = true;
-            lblSeats.Location = new Point(138, 28);
+            lblSeats.Location = new Point(150, 23);
             lblSeats.Name = "lblSeats";
             lblSeats.Size = new Size(44, 20);
             lblSeats.TabIndex = 11;
@@ -125,7 +125,7 @@
             // lblType
             // 
             lblType.AutoSize = true;
-            lblType.Location = new Point(23, 28);
+            lblType.Location = new Point(23, 23);
             lblType.Name = "lblType";
             lblType.Size = new Size(40, 20);
             lblType.TabIndex = 10;
@@ -133,7 +133,7 @@
             // 
             // txtBusType
             // 
-            txtBusType.Location = new Point(23, 51);
+            txtBusType.Location = new Point(23, 46);
             txtBusType.Name = "txtBusType";
             txtBusType.Size = new Size(100, 27);
             txtBusType.TabIndex = 9;
@@ -146,16 +146,16 @@
             groupBox1.Controls.Add(lblSeats);
             groupBox1.Controls.Add(lblType);
             groupBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox1.Location = new Point(171, 290);
+            groupBox1.Location = new Point(50, 290);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(412, 103);
+            groupBox1.Size = new Size(444, 98);
             groupBox1.TabIndex = 14;
             groupBox1.TabStop = false;
             groupBox1.Text = "Insert";
             // 
             // txtTotalSeats
             // 
-            txtTotalSeats.Location = new Point(150, 51);
+            txtTotalSeats.Location = new Point(150, 46);
             txtTotalSeats.Name = "txtTotalSeats";
             txtTotalSeats.Size = new Size(100, 27);
             txtTotalSeats.TabIndex = 8;
@@ -183,10 +183,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(171, 36);
+            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(49, 29);
             label1.Name = "label1";
-            label1.Size = new Size(122, 32);
+            label1.Size = new Size(136, 37);
             label1.TabIndex = 15;
             label1.Text = "Edit Buses";
             // 
@@ -197,7 +197,7 @@
             btnDeleteBus.Depth = 0;
             btnDeleteBus.HighEmphasis = true;
             btnDeleteBus.Icon = null;
-            btnDeleteBus.Location = new Point(555, 332);
+            btnDeleteBus.Location = new Point(434, 332);
             btnDeleteBus.Margin = new Padding(4, 6, 4, 6);
             btnDeleteBus.MouseState = MaterialSkin.MouseState.HOVER;
             btnDeleteBus.Name = "btnDeleteBus";
@@ -217,7 +217,7 @@
             btnSaveBusEdit.Depth = 0;
             btnSaveBusEdit.HighEmphasis = true;
             btnSaveBusEdit.Icon = null;
-            btnSaveBusEdit.Location = new Point(170, 419);
+            btnSaveBusEdit.Location = new Point(38, 415);
             btnSaveBusEdit.Margin = new Padding(4, 6, 4, 6);
             btnSaveBusEdit.MouseState = MaterialSkin.MouseState.HOVER;
             btnSaveBusEdit.Name = "btnSaveBusEdit";
@@ -235,7 +235,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnablePreventFocusChange;
-            ClientSize = new Size(1231, 514);
+            ClientSize = new Size(1188, 575);
             Controls.Add(btnSaveBusEdit);
             Controls.Add(btnDeleteBus);
             Controls.Add(label1);

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             dataGridViewDriversOnEditForm = new DataGridView();
             driverIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -53,17 +55,33 @@
             dataGridViewDriversOnEditForm.AllowUserToResizeColumns = false;
             dataGridViewDriversOnEditForm.AllowUserToResizeRows = false;
             dataGridViewDriversOnEditForm.AutoGenerateColumns = false;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dataGridViewDriversOnEditForm.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dataGridViewDriversOnEditForm.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDriversOnEditForm.Columns.AddRange(new DataGridViewColumn[] { driverIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, contactInformationDataGridViewTextBoxColumn });
             dataGridViewDriversOnEditForm.DataSource = driverBindingSource;
-            dataGridViewDriversOnEditForm.Location = new Point(36, 59);
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = SystemColors.Window;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
+            dataGridViewDriversOnEditForm.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewDriversOnEditForm.Location = new Point(50, 69);
             dataGridViewDriversOnEditForm.Name = "dataGridViewDriversOnEditForm";
             dataGridViewDriversOnEditForm.RowHeadersVisible = false;
             dataGridViewDriversOnEditForm.RowHeadersWidth = 51;
             dataGridViewDriversOnEditForm.RowTemplate.Height = 25;
             dataGridViewDriversOnEditForm.ScrollBars = ScrollBars.Vertical;
             dataGridViewDriversOnEditForm.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewDriversOnEditForm.Size = new Size(333, 209);
+            dataGridViewDriversOnEditForm.Size = new Size(308, 206);
             dataGridViewDriversOnEditForm.TabIndex = 0;
             // 
             // driverIDDataGridViewTextBoxColumn
@@ -96,22 +114,22 @@
             // 
             // txtDriverContact
             // 
-            txtDriverContact.Location = new Point(156, 39);
+            txtDriverContact.Location = new Point(172, 44);
             txtDriverContact.Name = "txtDriverContact";
-            txtDriverContact.Size = new Size(136, 23);
+            txtDriverContact.Size = new Size(145, 27);
             txtDriverContact.TabIndex = 2;
             // 
             // txtDriverName
             // 
-            txtDriverName.Location = new Point(14, 39);
+            txtDriverName.Location = new Point(21, 44);
             txtDriverName.Name = "txtDriverName";
-            txtDriverName.Size = new Size(136, 23);
+            txtDriverName.Size = new Size(145, 27);
             txtDriverName.TabIndex = 3;
             // 
             // lblName
             // 
-            lblName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblName.Location = new Point(14, 19);
+            lblName.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblName.Location = new Point(21, 23);
             lblName.Name = "lblName";
             lblName.Size = new Size(60, 23);
             lblName.TabIndex = 4;
@@ -119,8 +137,8 @@
             // 
             // lblContact
             // 
-            lblContact.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblContact.Location = new Point(156, 19);
+            lblContact.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblContact.Location = new Point(172, 23);
             lblContact.Name = "lblContact";
             lblContact.Size = new Size(92, 23);
             lblContact.TabIndex = 5;
@@ -133,26 +151,28 @@
             groupBox1.Controls.Add(txtDriverName);
             groupBox1.Controls.Add(lblContact);
             groupBox1.Controls.Add(lblName);
-            groupBox1.Location = new Point(36, 301);
+            groupBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox1.Location = new Point(50, 290);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(444, 86);
+            groupBox1.Size = new Size(562, 98);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             groupBox1.Text = "Insert";
             // 
             // btnAddDriver
             // 
+            btnAddDriver.AutoSize = false;
             btnAddDriver.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnAddDriver.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             btnAddDriver.Depth = 0;
             btnAddDriver.HighEmphasis = true;
             btnAddDriver.Icon = null;
-            btnAddDriver.Location = new Point(315, 31);
+            btnAddDriver.Location = new Point(334, 39);
             btnAddDriver.Margin = new Padding(4, 6, 4, 6);
             btnAddDriver.MouseState = MaterialSkin.MouseState.HOVER;
             btnAddDriver.Name = "btnAddDriver";
             btnAddDriver.NoAccentTextColor = Color.Empty;
-            btnAddDriver.Size = new Size(104, 36);
+            btnAddDriver.Size = new Size(121, 36);
             btnAddDriver.TabIndex = 19;
             btnAddDriver.Text = "Add Driver";
             btnAddDriver.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -163,10 +183,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(36, 17);
+            label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(49, 29);
             label1.Name = "label1";
-            label1.Size = new Size(135, 32);
+            label1.Size = new Size(152, 37);
             label1.TabIndex = 16;
             label1.Text = "Edit Drivers";
             // 
@@ -177,7 +197,7 @@
             btnSaveDriverEdit.Depth = 0;
             btnSaveDriverEdit.HighEmphasis = true;
             btnSaveDriverEdit.Icon = null;
-            btnSaveDriverEdit.Location = new Point(165, 440);
+            btnSaveDriverEdit.Location = new Point(38, 415);
             btnSaveDriverEdit.Margin = new Padding(4, 6, 4, 6);
             btnSaveDriverEdit.MouseState = MaterialSkin.MouseState.HOVER;
             btnSaveDriverEdit.Name = "btnSaveDriverEdit";
@@ -197,7 +217,7 @@
             btnDeleteDriver.Depth = 0;
             btnDeleteDriver.HighEmphasis = true;
             btnDeleteDriver.Icon = null;
-            btnDeleteDriver.Location = new Point(254, 396);
+            btnDeleteDriver.Location = new Point(513, 329);
             btnDeleteDriver.Margin = new Padding(4, 6, 4, 6);
             btnDeleteDriver.MouseState = MaterialSkin.MouseState.HOVER;
             btnDeleteDriver.Name = "btnDeleteDriver";
@@ -214,7 +234,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(960, 538);
+            ClientSize = new Size(1188, 575);
             Controls.Add(btnDeleteDriver);
             Controls.Add(btnSaveDriverEdit);
             Controls.Add(label1);

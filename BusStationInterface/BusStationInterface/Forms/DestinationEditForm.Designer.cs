@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             lblDescription = new Label();
             lblName = new Label();
             txtDestinationName = new TextBox();
@@ -51,18 +53,18 @@
             // lblDescription
             // 
             lblDescription.AutoSize = true;
-            lblDescription.Location = new Point(172, 26);
+            lblDescription.Location = new Point(172, 23);
             lblDescription.Name = "lblDescription";
-            lblDescription.Size = new Size(67, 15);
+            lblDescription.Size = new Size(85, 20);
             lblDescription.TabIndex = 20;
             lblDescription.Text = "Description";
             // 
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Location = new Point(21, 26);
+            lblName.Location = new Point(21, 23);
             lblName.Name = "lblName";
-            lblName.Size = new Size(39, 15);
+            lblName.Size = new Size(49, 20);
             lblName.TabIndex = 19;
             lblName.Text = "Name";
             // 
@@ -70,14 +72,14 @@
             // 
             txtDestinationName.Location = new Point(21, 44);
             txtDestinationName.Name = "txtDestinationName";
-            txtDestinationName.Size = new Size(145, 23);
+            txtDestinationName.Size = new Size(145, 27);
             txtDestinationName.TabIndex = 18;
             // 
             // txtDestinationDescription
             // 
             txtDestinationDescription.Location = new Point(172, 44);
             txtDestinationDescription.Name = "txtDestinationDescription";
-            txtDestinationDescription.Size = new Size(145, 23);
+            txtDestinationDescription.Size = new Size(145, 27);
             txtDestinationDescription.TabIndex = 17;
             // 
             // dataGridViewDestinationsOnEditForm
@@ -85,16 +87,32 @@
             dataGridViewDestinationsOnEditForm.AllowUserToResizeColumns = false;
             dataGridViewDestinationsOnEditForm.AllowUserToResizeRows = false;
             dataGridViewDestinationsOnEditForm.AutoGenerateColumns = false;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewDestinationsOnEditForm.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewDestinationsOnEditForm.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDestinationsOnEditForm.Columns.AddRange(new DataGridViewColumn[] { destinationIDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn });
             dataGridViewDestinationsOnEditForm.DataSource = destinationBindingSource;
-            dataGridViewDestinationsOnEditForm.Location = new Point(32, 73);
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Window;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridViewDestinationsOnEditForm.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewDestinationsOnEditForm.Location = new Point(50, 69);
             dataGridViewDestinationsOnEditForm.Name = "dataGridViewDestinationsOnEditForm";
             dataGridViewDestinationsOnEditForm.RowHeadersVisible = false;
             dataGridViewDestinationsOnEditForm.RowTemplate.Height = 25;
             dataGridViewDestinationsOnEditForm.ScrollBars = ScrollBars.Vertical;
             dataGridViewDestinationsOnEditForm.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewDestinationsOnEditForm.Size = new Size(367, 203);
+            dataGridViewDestinationsOnEditForm.Size = new Size(307, 206);
             dataGridViewDestinationsOnEditForm.TabIndex = 15;
             // 
             // destinationIDDataGridViewTextBoxColumn
@@ -128,9 +146,10 @@
             groupboxAddDest.Controls.Add(txtDestinationName);
             groupboxAddDest.Controls.Add(lblDescription);
             groupboxAddDest.Controls.Add(lblName);
-            groupboxAddDest.Location = new Point(32, 294);
+            groupboxAddDest.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            groupboxAddDest.Location = new Point(50, 290);
             groupboxAddDest.Name = "groupboxAddDest";
-            groupboxAddDest.Size = new Size(504, 92);
+            groupboxAddDest.Size = new Size(562, 98);
             groupboxAddDest.TabIndex = 23;
             groupboxAddDest.TabStop = false;
             groupboxAddDest.Text = "Insert";
@@ -142,7 +161,7 @@
             btnAddDestination.Depth = 0;
             btnAddDestination.HighEmphasis = true;
             btnAddDestination.Icon = null;
-            btnAddDestination.Location = new Point(338, 36);
+            btnAddDestination.Location = new Point(324, 39);
             btnAddDestination.Margin = new Padding(4, 6, 4, 6);
             btnAddDestination.MouseState = MaterialSkin.MouseState.HOVER;
             btnAddDestination.Name = "btnAddDestination";
@@ -158,10 +177,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(32, 18);
+            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(49, 29);
             label1.Name = "label1";
-            label1.Size = new Size(193, 32);
+            label1.Size = new Size(217, 37);
             label1.TabIndex = 24;
             label1.Text = "Edit Destinations";
             // 
@@ -172,7 +191,7 @@
             btnSaveDestinationEdit.Depth = 0;
             btnSaveDestinationEdit.HighEmphasis = true;
             btnSaveDestinationEdit.Icon = null;
-            btnSaveDestinationEdit.Location = new Point(164, 449);
+            btnSaveDestinationEdit.Location = new Point(38, 415);
             btnSaveDestinationEdit.Margin = new Padding(4, 6, 4, 6);
             btnSaveDestinationEdit.MouseState = MaterialSkin.MouseState.HOVER;
             btnSaveDestinationEdit.Name = "btnSaveDestinationEdit";
@@ -192,7 +211,7 @@
             btnDeleteDestination.Depth = 0;
             btnDeleteDestination.HighEmphasis = true;
             btnDeleteDestination.Icon = null;
-            btnDeleteDestination.Location = new Point(243, 395);
+            btnDeleteDestination.Location = new Point(530, 330);
             btnDeleteDestination.Margin = new Padding(4, 6, 4, 6);
             btnDeleteDestination.MouseState = MaterialSkin.MouseState.HOVER;
             btnDeleteDestination.Name = "btnDeleteDestination";

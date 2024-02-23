@@ -90,24 +90,27 @@
             // 
             // dateTimePickerFrom
             // 
-            dateTimePickerFrom.Location = new Point(63, 147);
+            dateTimePickerFrom.CalendarFont = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePickerFrom.Location = new Point(34, 147);
             dateTimePickerFrom.Name = "dateTimePickerFrom";
             dateTimePickerFrom.Size = new Size(200, 23);
             dateTimePickerFrom.TabIndex = 3;
             // 
             // dateTimePickerTo
             // 
-            dateTimePickerTo.Location = new Point(714, 147);
+            dateTimePickerTo.CalendarFont = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePickerTo.Location = new Point(751, 147);
             dateTimePickerTo.Name = "dateTimePickerTo";
             dateTimePickerTo.Size = new Size(200, 23);
             dateTimePickerTo.TabIndex = 4;
             // 
             // cmbRoute
             // 
+            cmbRoute.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbRoute.FormattingEnabled = true;
-            cmbRoute.Location = new Point(306, 147);
+            cmbRoute.Location = new Point(442, 146);
             cmbRoute.Name = "cmbRoute";
-            cmbRoute.Size = new Size(121, 23);
+            cmbRoute.Size = new Size(121, 28);
             cmbRoute.TabIndex = 5;
             // 
             // TicketReportsForm
