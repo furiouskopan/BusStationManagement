@@ -34,6 +34,7 @@
             dateTimePickerFrom = new DateTimePicker();
             dateTimePickerTo = new DateTimePicker();
             cmbRoute = new ComboBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewReports).BeginInit();
             SuspendLayout();
             // 
@@ -108,16 +109,27 @@
             // 
             cmbRoute.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbRoute.FormattingEnabled = true;
-            cmbRoute.Location = new Point(442, 146);
+            cmbRoute.Location = new Point(431, 146);
             cmbRoute.Name = "cmbRoute";
-            cmbRoute.Size = new Size(121, 28);
+            cmbRoute.Size = new Size(132, 28);
             cmbRoute.TabIndex = 5;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(447, 90);
+            label1.Name = "label1";
+            label1.Size = new Size(106, 32);
+            label1.TabIndex = 12;
+            label1.Text = "REPORT";
             // 
             // TicketReportsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(987, 575);
+            Controls.Add(label1);
             Controls.Add(cmbRoute);
             Controls.Add(dateTimePickerTo);
             Controls.Add(dateTimePickerFrom);
@@ -129,6 +141,7 @@
             Load += TicketReportsForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewReports).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -139,5 +152,6 @@
         private DateTimePicker dateTimePickerFrom;
         private DateTimePicker dateTimePickerTo;
         private ComboBox cmbRoute;
+        private Label label1;
     }
 }
