@@ -249,7 +249,7 @@ namespace BusStationInterface.Forms
                         LocationID = Convert.ToInt32(row.Cells["LocationID"].Value),
                         SequenceNumber = Convert.ToInt32(row.Cells["SequenceNumber"].Value),
                         Time = Convert.ToInt32(row.Cells["Time"].Value),
-                        Description = row.Cells["Description"].Value.ToString(),
+                        Description = row.Cells["Description"].Value?.ToString() ?? string.Empty,
                         PriceToNextStop = Convert.ToInt32(row.Cells["PriceToNextStop"].Value)
                     };
 

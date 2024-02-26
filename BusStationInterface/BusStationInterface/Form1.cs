@@ -129,8 +129,8 @@ namespace BusStationInterface
                 route.RouteID,
                 StartDestinationId = route.StartDestinationID,
                 EndDestinationId = route.EndDestinationID,
-                StartDestination = route.StartDestination.Name, // Assuming Name is the property of the Destination entity.
-                EndDestination = route.EndDestination.Name,     // Assuming Name is the property of the Destination entity.
+                StartDestination = route.StartDestination.Name, 
+                EndDestination = route.EndDestination.Name,     
                 route.Description
             }).ToList();
 
@@ -210,8 +210,6 @@ namespace BusStationInterface
 
             dataGridViewSchedules.DataSource = filteredSchedules;
 
-            //dataGridViewSchedules.Columns["StartDestination"].DataPropertyName = "StartDestinationName";
-            //dataGridViewSchedules.Columns["EndDestination"].DataPropertyName = "EndDestinationName";
             dataGridViewSchedules.Columns["Driver"].DataPropertyName = "DriverName";
             dataGridViewSchedules.Columns["Route"].DataPropertyName = "RouteDescription";
 
@@ -225,54 +223,6 @@ namespace BusStationInterface
             EmbedFormInTab(new ScheduleEditForm(), tabPageSchedules);
         }
 
-        private void btnEditBus_Click(object sender, EventArgs e)
-        {
-            // Create an instance of BusDataAccess to pass to the edit form
-            BusDataAccess busDataAccess = new BusDataAccess();
-
-            // Create an instance of the edit window and pass the bus data access
-            BusEditForm editForm = new BusEditForm(busDataAccess);
-
-
-
-            // Show the edit window
-            if (editForm.ShowDialog() == DialogResult.OK)
-            {
-                // Reload the buses on the main form after editing
-                LoadBuses();
-            }
-        }
-        private void btnEditDriver_Click(object sender, EventArgs e)
-        {
-            // Create an instance of BusDataAccess to pass to the edit form
-            DriverDataAccess driverDataAccess = new DriverDataAccess();
-
-            // Create an instance of the edit window and pass the bus data access
-            DriverEditForm editForm = new DriverEditForm(driverDataAccess);
-
-            // Show the edit window
-            if (editForm.ShowDialog() == DialogResult.OK)
-            {
-                // Reload the buses on the main form after editing
-                LoadDrivers();
-            }
-        }
-
-        private void btnEditDestinations_Click(object sender, EventArgs e)
-        {
-            // Create an instance of BusDataAccess to pass to the edit form
-            DestinationDataAccess destinationDataAccess = new DestinationDataAccess();
-
-            // Create an instance of the edit window and pass the bus data access
-            DestinationEditForm editForm = new DestinationEditForm(destinationDataAccess);
-
-            // Show the edit window
-            if (editForm.ShowDialog() == DialogResult.OK)
-            {
-                // Reload the buses on the main form after editing
-                LoadDestinations();
-            }
-        }
         private void dataGridViewRoutes_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridViewRoutes.SelectedRows.Count > 0)
@@ -292,24 +242,11 @@ namespace BusStationInterface
                 LoadRouteDetails(selectedRoute);
             }
         }
-        private void btnEditRD_Click(object sender, EventArgs e)
-        {
-            RDForm rdForm = new RDForm();
-            rdForm.ShowDialog();
-            LoadRoutes();
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblTimer.Text = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
             lblTimer.Font = new Font("Segoe UI", 15, FontStyle.Regular);
-        }
-
-        private void btnEditSchedules_Click(object sender, EventArgs e)
-        {
-            ScheduleEditForm schEditForm = new ScheduleEditForm();
-            schEditForm.ShowDialog();
-            LoadSchedules();
         }
 
         private void btnTicket_Click(object sender, EventArgs e)

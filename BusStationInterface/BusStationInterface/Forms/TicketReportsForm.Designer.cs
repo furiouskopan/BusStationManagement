@@ -109,7 +109,7 @@
             // 
             cmbRoute.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbRoute.FormattingEnabled = true;
-            cmbRoute.Location = new Point(431, 146);
+            cmbRoute.Location = new Point(419, 146);
             cmbRoute.Name = "cmbRoute";
             cmbRoute.Size = new Size(132, 28);
             cmbRoute.TabIndex = 5;
@@ -118,7 +118,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(447, 90);
+            label1.Location = new Point(435, 90);
             label1.Name = "label1";
             label1.Size = new Size(106, 32);
             label1.TabIndex = 12;

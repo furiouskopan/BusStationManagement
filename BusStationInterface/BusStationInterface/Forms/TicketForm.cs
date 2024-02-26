@@ -182,18 +182,23 @@ namespace BusStationInterface.Forms
         }
         private void btnTicket_Click(object sender, EventArgs e)
         {
+            // Check if a seat, start, and end destinations are selected by the user
             if (cmbSeat.SelectedItem != null && cmbStartDestination.SelectedItem is RouteDetailViewModel startDetailViewModel && cmbEndDestination.SelectedItem is RouteDetailViewModel endDetailViewModel)
             {
+                // Retrieve selected schedule, seat, and route details from the form controls
                 int scheduleId = Convert.ToInt32(dataGridViewTicketSchedule.CurrentRow.Cells["scheduleIDDataGridViewTextBoxColumn"].Value);
                 int seatId = Convert.ToInt32(cmbSeat.SelectedValue);
 
                 int startDetailId = startDetailViewModel.RouteDetailID;
                 int endDetailId = endDetailViewModel.RouteDetailID;
 
+                // Fetch the current logged-in employee's ID for ticket auditing
                 int employeeId = UserSession.CurrentEmployeeId;
 
+                // Calculate the ticket price based on the start and end destinations
                 var price = CalculatePrice(startDetailId, endDetailId);
 
+                // Initialize a new Ticket object with selected and calculated details
                 var ticket = new Ticket
                 {
                     ScheduleID = scheduleId,
@@ -203,31 +208,33 @@ namespace BusStationInterface.Forms
                     Price = price,
                 };
 
+                // Add the new ticket to the context for database persistence
                 _context.Tickets.Add(ticket);
 
-                // Ensure the schedule is loaded correctly
+                // Load the schedule from the database to ensure it exists and to get additional details
                 var schedule = _context.Schedules.Include(s => s.Route).ThenInclude(r => r.RouteDetails)
                                   .FirstOrDefault(s => s.ScheduleID == scheduleId);
                 if (schedule == null)
                 {
-                    MessageBox.Show("Schedule not found.");
+                    MessageBox.Show("Schedule not found."); // Inform the user if the selected schedule does not exist
                     return;
                 }
 
-                // Mark the seat as occupied    
+                // Find the selected seat and mark it as occupied in the database
                 var seat = _context.Seats.FirstOrDefault(s => s.SeatID == seatId);
                 if (seat != null)
                 {
                     seat.IsOccupied = true;
                 }
 
+                // Commit the changes to the database
                 _context.SaveChanges();
 
-                // Calculate the departure and arrival times for the ticket segment
+                // Calculate the departure and arrival times for the selected ticket segment
                 DateTime segmentDepartureTime = CalculateDepartureTimeForStop(schedule, startDetailId);
                 DateTime segmentArrivalTime = CalculateArrivalTimeForStop(schedule, endDetailId);
 
-                // Optionally, add to TicketingLog as well
+                // Log the ticket issuance in the TicketingLog for auditing purposes
                 var ticketingLog = new TicketingLog
                 {
                     TicketID = ticket.TicketID,
@@ -236,22 +243,25 @@ namespace BusStationInterface.Forms
                 };
 
                 _context.TicketingLogs.Add(ticketingLog);
-                _context.SaveChanges();
+                _context.SaveChanges(); // Commit the log entry to the database
 
+                // Ensure the ticket references are properly loaded with their associated locations
                 _context.Entry(ticket).Reference(t => t.StartRouteDetail).Query().Include(rd => rd.Location).Load();
                 _context.Entry(ticket).Reference(t => t.EndRouteDetail).Query().Include(rd => rd.Location).Load();
 
-                // Generate and save the PDF with segment-specific times
+                // Generate a PDF ticket for the user with all relevant details and save it
                 string pdfFileName = $"Ticket_{ticket.TicketID}.pdf";
                 TicketPDFGenerator.CreateTicketPDF(pdfFileName, ticket, segmentDepartureTime, segmentArrivalTime);
 
+                // Notify the user of the successful ticket issuance and PDF generation
                 MessageBox.Show("Ticket issued successfully! PDF created at: " + pdfFileName);
 
-                // Refresh the ComboBox to update the available seats
+                // Refresh the available seats in the ComboBox to reflect the current seat occupancy status
                 RefreshAvailableSeats(scheduleId);
             }
             else
             {
+                // Prompt the user to select a seat if none is selected
                 MessageBox.Show("Please select a seat.");
             }
         }

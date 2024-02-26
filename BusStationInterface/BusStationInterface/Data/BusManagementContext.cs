@@ -61,7 +61,6 @@ namespace BusStationInterface.Data
                 .HasForeignKey(log => log.ScheduleID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-
             modelBuilder.Entity<Ticket>()
                 .HasOne(t => t.StartRouteDetail)
                 .WithMany()
@@ -74,19 +73,12 @@ namespace BusStationInterface.Data
                 .HasForeignKey(t => t.EndRouteDetailID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            //modelBuilder.Entity<Seat>()
-            //    .HasOne(s => s.Ticket)
-            //    .WithOne(t => t.Seat)
-            //    .HasForeignKey<Ticket>(t => t.SeatID)
-            //    .IsRequired(true)
-            //    .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<Ticket>()
                 .HasOne(t => t.Seat) // Each Ticket has one Seat.
                 .WithMany(s => s.Tickets) // A Seat can have many Tickets.
                 .HasForeignKey(t => t.SeatID) // Specifies the foreign key in the Ticket table.
                 .IsRequired(false) // Makes the relationship optional.
                 .OnDelete(DeleteBehavior.Restrict); // Prevents cascade deletion.
-
 
             modelBuilder.Entity<Seat>()
                 .HasMany(s => s.Tickets) // Indicating that a Seat can have multiple Tickets

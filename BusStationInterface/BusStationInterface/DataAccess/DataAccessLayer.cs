@@ -77,7 +77,6 @@ public class BusDataAccess
                 {
                     // Handle exception
                     transaction.Rollback();
-                    // Depending on your error handling policy, you may want to rethrow, log the exception, or handle it in another way.
                 }
             }
         }
@@ -200,7 +199,6 @@ public class RouteDataAccess
             }
         }
     }
-    // Method to retrieve routes with related data.
     public List<Route> GetRoutesIncludingDestinations()
     {
         using (var context = new BusManagementContext())
@@ -385,4 +383,3 @@ public class TicketDataAccess
         return _context.Routes.ToList();
     }
 }
-

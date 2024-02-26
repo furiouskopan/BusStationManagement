@@ -290,7 +290,7 @@
             cmbSeat.Margin = new Padding(3, 2, 3, 2);
             cmbSeat.Name = "cmbSeat";
             cmbSeat.Size = new Size(99, 29);
-            cmbSeat.TabIndex = 5;
+            cmbSeat.TabIndex = 1;
             // 
             // seatBindingSource
             // 
@@ -305,7 +305,7 @@
             cmbStartDestination.Margin = new Padding(3, 2, 3, 2);
             cmbStartDestination.Name = "cmbStartDestination";
             cmbStartDestination.Size = new Size(117, 29);
-            cmbStartDestination.TabIndex = 6;
+            cmbStartDestination.TabIndex = 2;
             cmbStartDestination.SelectedIndexChanged += DestinationComboBox_SelectedIndexChanged;
             // 
             // cmbEndDestination
@@ -317,7 +317,7 @@
             cmbEndDestination.Margin = new Padding(3, 2, 3, 2);
             cmbEndDestination.Name = "cmbEndDestination";
             cmbEndDestination.Size = new Size(112, 29);
-            cmbEndDestination.TabIndex = 7;
+            cmbEndDestination.TabIndex = 3;
             cmbEndDestination.SelectedIndexChanged += DestinationComboBox_SelectedIndexChanged;
             // 
             // label3
@@ -352,7 +352,7 @@
             btnTicket.Name = "btnTicket";
             btnTicket.NoAccentTextColor = Color.Empty;
             btnTicket.Size = new Size(161, 36);
-            btnTicket.TabIndex = 10;
+            btnTicket.TabIndex = 4;
             btnTicket.Text = "Print Ticket";
             btnTicket.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnTicket.UseAccentColor = false;
